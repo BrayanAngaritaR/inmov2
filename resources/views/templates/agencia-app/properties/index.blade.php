@@ -313,7 +313,7 @@
             <article class="geodir-category-listing fl-wrap">
                <div class="geodir-category-img fl-wrap">
                   <a href="{{ route('user.properties.show', 1) }}" class="geodir-category-img_item">
-                     <img src="https://www.semana.com/resizer/IEcOf8TJx4XxRszD1F26YO7lixw=/1200x675/filters:format(jpg):quality(50)//cloudfront-us-east-1.images.arcpublishing.com/semana/4KEOUCGM7FDRHGJVNJJWTAF464.jpeg" alt="" />
+                     <img src="https://cloudfront-us-east-1.images.arcpublishing.com/semana/4KEOUCGM7FDRHGJVNJJWTAF464.jpeg" alt="" />
                      <div class="overlay"></div>
                   </a>
                   <div class="geodir-category-location">
