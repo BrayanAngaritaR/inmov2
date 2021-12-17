@@ -1,0 +1,9 @@
+@media (min-width: 1200px){
+	.wide-lg {
+		max-width: 1220px !important;
+	}
+}
+
+.traffic-channel-group{
+	width: 800px;
+}
