@@ -45,6 +45,8 @@ Route::get('/contacto', [App\Http\Controllers\User\ContactController::class, 'in
 Route::get('/faqs', [App\Http\Controllers\User\FaqController::class, 'index'])
     ->name('user.faq.index');
 
+Route::view('/calculadora', 'templates.agencia-app.soon')
+    ->name('user.soon.index');
 
 
 

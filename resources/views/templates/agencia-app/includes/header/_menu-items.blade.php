@@ -17,12 +17,12 @@
          <a href="#">Calculadora <i class="fa fa-caret-down"></i></a>
          <!--second level -->
          <ul>
-            <li><a href="#">Oportunidades</a></li>
-            <li><a href="#">Costos de estructuración</a></li>
-            <li><a href="#">Cabida normativa</a></li>
-            <li><a href="#">Producto inmobiliario</a></li>
-            <li><a href="#">CAPEX</a></li>
-            <li><a href="#">Rentabilidad</a></li>
+            <li><a href="{{ route('user.soon.index') }}">Oportunidades</a></li>
+            <li><a href="{{ route('user.soon.index') }}">Costos de estructuración</a></li>
+            <li><a href="{{ route('user.soon.index') }}">Cabida normativa</a></li>
+            <li><a href="{{ route('user.soon.index') }}">Producto inmobiliario</a></li>
+            <li><a href="{{ route('user.soon.index') }}">CAPEX</a></li>
+            <li><a href="{{ route('user.soon.index') }}">Rentabilidad</a></li>
          </ul>
          <!--second level end-->
       </li>
