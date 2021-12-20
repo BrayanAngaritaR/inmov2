@@ -11,3 +11,7 @@
 .footer-widget-logo img{
 	height: 80px;
 }
+
+.main-header{
+	min-height: 80px;
+}
