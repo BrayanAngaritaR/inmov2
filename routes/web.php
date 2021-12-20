@@ -26,7 +26,21 @@ require __DIR__.'/auth.php';
 
 //https://uniwebsidad.com/libros/jobeet-1-4/capitulo-22/guardando-formularios-en-la-cache
 
-Route::get('/', [App\Http\Controllers\User\HomeController::class, 'index'])->name('user.index');
+
+/*
+|--------------------------------------------------------------------------
+| Rutas informativas 
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/', [App\Http\Controllers\User\HomeController::class, 'index'])
+    ->name('user.index');
+Route::get('/nosotros', [App\Http\Controllers\User\AboutController::class, 'index'])
+    ->name('user.about.index');
+
+
+
+
 Route::get('/{property}', [App\Http\Controllers\User\HomeController::class, 'show'])->name('user.properties.show');
 
 Route::get('/panel/statistics', [App\Http\Controllers\Panel\StatisticsController::class, 'index'])->name('panel.statistics.index');

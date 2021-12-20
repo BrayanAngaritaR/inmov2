@@ -11,6 +11,8 @@
       <link type="text/css" rel="stylesheet" href="{{ asset('templates/agencia-app/css/plugins.css')}}" />
       <link type="text/css" rel="stylesheet" href="{{ asset('templates/agencia-app/css/style.css')}}" />
       <link type="text/css" rel="stylesheet" href="{{ asset('templates/agencia-app/css/color.css')}}" />
+      <link type="text/css" rel="stylesheet" href="{{ asset('templates/agencia-app/css/custom.css')}}" />
+      <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
       <!--=============== favicons ===============-->
       <link rel="shortcut icon" href="{{ asset('templates/agencia-app/images/favicon.ico')}}" />
    </head>

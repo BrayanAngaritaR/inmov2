@@ -30,7 +30,7 @@
          <a href="#">Más <i class="fa fa-caret-down"></i></a>
          <!--second level -->
          <ul>
-            <li><a href="#">Sobre nosotros</a></li>
+            <li><a href="{{ route('user.about.index') }}">Sobre nosotros</a></li>
             <li><a href="#">Contáctanos</a></li>
             <li><a href="#">Preguntas frecuentes</a></li>
          </ul>
