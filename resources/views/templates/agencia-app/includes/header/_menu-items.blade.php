@@ -1,7 +1,7 @@
 <nav>
    <ul class="no-list-style">
    	<li>
-         <a href="/">Inicio</a>
+         <a href="/" class="act-link">Inicio</a>
       </li>
 
       <li>
@@ -14,7 +14,7 @@
          <!--second level end-->
       </li>
       <li>
-         <a href="#" class="act-link">Calculadora <i class="fa fa-caret-down"></i></a>
+         <a href="#">Calculadora <i class="fa fa-caret-down"></i></a>
          <!--second level -->
          <ul>
             <li><a href="#">Oportunidades</a></li>
@@ -31,8 +31,8 @@
          <!--second level -->
          <ul>
             <li><a href="{{ route('user.about.index') }}">Sobre nosotros</a></li>
-            <li><a href="#">Contáctanos</a></li>
-            <li><a href="#">Preguntas frecuentes</a></li>
+            <li><a href="{{ route('user.contact.index') }}">Contáctanos</a></li>
+            <li><a href="{{ route('user.faq.index') }}">Preguntas frecuentes</a></li>
          </ul>
          <!--second level end-->
       </li>

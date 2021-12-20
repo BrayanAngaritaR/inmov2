@@ -35,8 +35,15 @@ require __DIR__.'/auth.php';
 
 Route::get('/', [App\Http\Controllers\User\HomeController::class, 'index'])
     ->name('user.index');
+
 Route::get('/nosotros', [App\Http\Controllers\User\AboutController::class, 'index'])
     ->name('user.about.index');
+
+Route::get('/contacto', [App\Http\Controllers\User\ContactController::class, 'index'])
+    ->name('user.contact.index');
+
+Route::get('/faqs', [App\Http\Controllers\User\FaqController::class, 'index'])
+    ->name('user.faq.index');
 
 
 
