@@ -729,6 +729,11 @@
       </div>
       <!-- pagination end-->
       <div class="small-footer fl-wrap">
+         <div class="text-center">
+            <a href="{{ url('/') }}">
+               <img class="img-fluid" width="500" src="{{ asset('templates/agencia-app/images/big-logo.png') }}" alt="" />
+            </a>
+         </div>
          <div class="copyright">© InmoAPP {{ date('Y') }}. Derechos reservados.</div>
          <a class="custom-to-top color-bg custom-scroll-link" href="#main"><i class="fas fa-caret-up"></i></a>
       </div>

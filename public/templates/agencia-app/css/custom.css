@@ -3,3 +3,11 @@
 	line-height: 22px;
 	color: #878d9e;
 }
+
+.logo-holder img{
+	height: 50px;
+}
+
+.footer-widget-logo img{
+	height: 80px;
+}

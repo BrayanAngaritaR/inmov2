@@ -5,7 +5,7 @@
    <!--  section  -->
    <section class="hidden-section single-par2" data-scrollax-parent="true">
       <div class="bg-wrap bg-parallax-wrap-gradien">
-         <div class="bg par-elem" data-bg="http://inmo.test/templates/agencia-app/images/bg/banner.jpeg" data-scrollax="properties: { translateY: '30%' }"></div>
+         <div class="bg par-elem" data-bg="{{ asset('templates/agencia-app/images/bg/banner.jpeg') }}" data-scrollax="properties: { translateY: '30%' }"></div>
       </div>
       <div class="container">
          <div class="section-title center-align big-title">

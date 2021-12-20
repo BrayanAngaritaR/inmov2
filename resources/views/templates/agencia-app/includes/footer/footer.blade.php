@@ -7,7 +7,7 @@
             <div class="col-md-3">
                <div class="footer-widget fl-wrap">
                   <div class="footer-widget-logo fl-wrap">
-                     <img src="{{ asset('templates/agencia-app/images/logo.png') }}" alt="" />
+                     <img src="{{ asset('templates/agencia-app/images/big-logo.png') }}" height="80" alt="" />
                   </div>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.</p>
                   <div class="fw_hours fl-wrap">

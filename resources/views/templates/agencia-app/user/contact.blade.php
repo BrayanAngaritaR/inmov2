@@ -5,7 +5,7 @@
    <!--  section  -->
    <section class="hidden-section single-par2" data-scrollax-parent="true">
       <div class="bg-wrap bg-parallax-wrap-gradien">
-         <div class="bg par-elem" data-bg="http://inmo.test/templates/agencia-app/images/bg/banner.jpeg" data-scrollax="properties: { translateY: '30%' }"></div>
+         <div class="bg par-elem" data-bg="{{ asset('templates/agencia-app/images/bg/banner.jpeg') }}" data-scrollax="properties: { translateY: '30%' }"></div>
       </div>
       <div class="container">
          <div class="section-title center-align big-title">
@@ -111,20 +111,20 @@
             <div class="contact-form-container">
                 <div class="contact-form-main fl-wrap">
                     <div class="contact-form-header">
-                        <h4>Get In Touch</h4>
+                        <h4>Enviar mensaje</h4>
                         <span class="close-contact-form"><i class="fal fa-times"></i></span>
                     </div>
                     <div id="contact-form" class="contact-form fl-wrap">
                         <div id="message"></div>
                         <form  class="custom-form" action="php/contact.php" name="contactform" id="contactform">
                             <fieldset>
-                                <label>Your name* <span class="dec-icon"><i class="fas fa-user"></i></span></label>
-                                <input type="text" name="name" id="name" placeholder="Your Name *" value=""/>
-                                <label>Your mail* <span class="dec-icon"><i class="fas fa-envelope"></i></span></label>
-                                <input type="text"  name="email" id="email" placeholder="Email Address*" value=""/>
-                                <textarea name="comments"  id="comments" cols="40" rows="3" placeholder="Your Message:"></textarea>
+                                <label>Nombre completo* <span class="dec-icon"><i class="fas fa-user"></i></span></label>
+                                <input type="text" name="name" id="name"/>
+                                <label>Correo electrónico* <span class="dec-icon"><i class="fas fa-envelope"></i></span></label>
+                                <input type="text"  name="email" id="email"/>
+                                <textarea name="comments"  id="comments" cols="40" rows="3" placeholder="Tu mensaje:"></textarea>
                             </fieldset>
-                            <button class="btn float-btn color-bg" style="margin-top:15px;" id="submit">Send Message</button>
+                            <button class="btn float-btn color-bg" style="margin-top:15px;" id="submit">Enviar mensaje</button>
                         </form>
                     </div>
                     <!-- contact form  end-->               
