@@ -80,6 +80,17 @@
                </div>
             </div>
             <!-- listsearch-input-item -->
+
+            <!-- listsearch-input-item -->
+            <div class="col-sm-2">
+               <div class="listsearch-input-item">
+                  <select data-placeholder="All Cities" class="chosen-select on-radius no-search-select">
+                     <option selected disabled>Comuna</option>
+                     <option>De mayor a menor área</option>
+                  </select>
+               </div>
+            </div>
+            <!-- listsearch-input-item -->
          </div>
       </div>
       <div class="more-opt_btn mor-opt-btn_act">

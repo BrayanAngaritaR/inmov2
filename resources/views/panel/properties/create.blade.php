@@ -4,6 +4,12 @@
    <div class="card card-preview">
       <div class="card-inner">
          <div class="preview-block">
+
+            <div class="alert alert-danger print-error-msg" style="display:none">
+               <ul></ul>
+            </div>
+
+
             <div class="col-12">
                <ul class="nav nav-tabs nav-tabs-s2">
                   <li class="nav-item">
@@ -31,21 +37,24 @@
                         <div class="col-sm-12 col-lg-4">
                            <div class="form-group">
                               <label class="form-label" for="code">ID*</label>
-                              <input type="text" name="code" class="form-control" id="code" />
+                              <input type="text" name="code" class="form-control" value="{{ old('code') }}" id="code" />
+                              <span class="text-danger error-text code_err"></span>
                            </div>
                         </div>
 
                         <div class="col-sm-12 col-lg-4">
                            <div class="form-group">
                               <label class="form-label" for="link">Link*</label>
-                              <input name="link" class="form-control" id="link" type="text" />
+                              <input name="link" value="{{ old('link') }}" class="form-control" id="link" type="text" />
+                              <span class="text-danger error-text link_err"></span>
                            </div>
                         </div>
 
                         <div class="col-sm-12 col-lg-4">
                            <div class="form-group">
                               <label class="form-label" for="plate">Matrícula*</label>
-                              <input type="text" class="form-control" id="plate" name="plate" />
+                              <input type="text" class="form-control" value="{{ old('plate') }}" id="plate" name="plate" />
+                              <span class="text-danger error-text plate_err"></span>
                            </div>
                         </div>
 
@@ -73,7 +82,7 @@
                         <div class="col-sm-12" id="repeated_concept">
                            <div class="form-group">
                               <label class="form-label" for="repeated_concept">Concepto de por qué está repetida</label>
-                              <input type="text" id="repeated_concept" class="form-control" name="repeated_concept" />
+                              <input type="text" value="{{ old('repeated_concept') }}" id="repeated_concept" class="form-control" name="repeated_concept" />
                            </div>
                         </div>
 
@@ -131,7 +140,8 @@
                            <div class="form-group">
                               <label class="form-label">Activo fijo*</label>
                               <div class="form-control-wrap">
-                                 <input type="text" class="form-control" name="fixed_asset" id="fixed_asset" placeholder="Ej: 500L" />
+                                 <input type="text" class="form-control" name="fixed_asset" id="fixed_asset" value="{{ old('fixed_asset') }}" placeholder="Ej: 500L" />
+                                 <span class="text-danger error-text fixed_asset_err"></span>
                               </div>
                            </div>
                         </div>
@@ -144,7 +154,8 @@
                                     <div class="input-group-prepend">
                                        <span class="input-group-text">$</span>
                                     </div>
-                                    <input name="commercial_appraisal" id="commercial_appraisal" type="text" placeholder="Ej: 60,000,000" class="form-control" />
+                                    <input name="commercial_appraisal" id="commercial_appraisal" type="text" placeholder="Ej: 60,000,000" class="form-control" value="{{ old('commercial_appraisal') }}"/>
+                                    <span class="text-danger error-text commercial_appraisal_err"></span>
                                  </div>
                               </div>
                            </div>
@@ -154,7 +165,8 @@
                            <div class="form-group">
                               <label class="form-label">Dirección*</label>
                               <div class="form-control-wrap">
-                                 <input type="text" class="form-control" name="sss_address" id="sss_address" placeholder="Ej: CR 72 A 92 BB 20" />
+                                 <input type="text" class="form-control" name="sss_address" id="sss_address" value="{{ old('sss_address') }}" placeholder="Ej: CR 72 A 92 BB 20" />
+                                 <span class="text-danger error-text sss_address_err"></span>
                               </div>
                            </div>
                         </div>
@@ -163,7 +175,8 @@
                            <div class="form-group">
                               <label class="form-label">Barrio o urbanización*</label>
                               <div class="form-control-wrap">
-                                 <input type="text" class="form-control" name="urbanization_or_neighborhood" id="urbanization_or_neighborhood" placeholder="Ej: Francisco Antonio Zea" />
+                                 <input type="text" class="form-control" name="urbanization_or_neighborhood" id="urbanization_or_neighborhood" placeholder="Ej: Francisco Antonio Zea" value="{{ old('urbanization_or_neighborhood') }}" />
+                                 <span class="text-danger error-text urbanization_or_neighborhood_err"></span>
                               </div>
                            </div>
                         </div>
@@ -172,7 +185,8 @@
                            <div class="form-group">
                               <label class="form-label" for="sss_description">Descripción corta* (Utilizado para el nombre del bien)</label>
                               <div class="form-control-wrap">
-                                 <textarea class="form-control" id="sss_description" name="sss_description" placeholder="Ej: Junta de acción comunal, cancha, Biblioteca Santo Domingo, Cárcel, ..."></textarea>
+                                 <input type="text" class="form-control" id="sss_description" name="sss_description" value="{{ old('sss_description') }}" placeholder="Ej: Junta de acción comunal, cancha, Biblioteca Santo Domingo, Cárcel, ..." />
+                                 <span class="text-danger error-text sss_description_err"></span>
                               </div>
                            </div>
                         </div>
@@ -196,7 +210,8 @@
                         <div class="col-sm-12 col-lg-4">
                            <div class="form-group">
                               <label class="form-label" for="plate_number">No. de escritura</label>
-                              <input type="text" name="plate_number" class="form-control" id="plate_number" />
+                              <input type="text" name="plate_number" class="form-control" id="plate_number" value="{{ old('plate_number') }}" />
+                              <span class="text-danger error-text plate_number_err"></span>
                            </div>
                         </div>
 
@@ -205,7 +220,7 @@
                               <label class="form-label" for="property_deed">
                                  Superferficie jurídica (Área)
                               </label>
-                              <input type="text" name="property_deed" class="form-control" id="property_deed" />
+                              <input type="text" value="{{ old('property_deed') }}" name="property_deed" class="form-control" id="property_deed" />
                            </div>
                         </div>
 
@@ -227,7 +242,7 @@
                               <label class="form-label" for="writing_date">
                                  Fecha de escritura
                               </label>
-                              <input type="date" name="writing_date" class="form-control" id="writing_date" />
+                              <input type="date" value="{{ old('writing_date') }}" name="writing_date" class="form-control" id="writing_date" />
                            </div>
                         </div>
 
@@ -248,7 +263,7 @@
                            <label class="form-label" for="which_notary">
                               ¿Cuál?
                            </label>
-                           <input type="text" placeholder="Ej: Notaría 2 de Bogotá" name="which_notary" class="form-control" id="which_notary" />
+                           <input type="text" placeholder="Ej: Notaría 2 de Bogotá" name="which_notary" value="{{ old('which_notary') }}" class="form-control" id="which_notary" />
                         </div>
                      </div>
                      <!-- Información jurídica -->
@@ -260,7 +275,8 @@
                         <div class="col-sm-12 col-lg-4">
                            <div class="form-group">
                               <label class="form-label" for="cbml">CBML*</label>
-                              <input type="text" name="cbml" pattern="[0-9]{10}" maxlength="11" minlength="11" class="form-control" id="cbml" />
+                              <input type="text" name="cbml" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="11" minlength="11" value="{{ old('cbml') }}" class="form-control" id="cbml" />
+                              <span class="text-danger error-text cbml_err"></span>
                            </div>
                         </div>
 
@@ -292,6 +308,7 @@
                            <div class="form-group">
                               <label class="form-label" for="cadastral_address">Dirección de catastro*</label>
                               <input placeholder="Ej: CR 72 A 92 BB 20" type="text" name="cadastral_address" autocomplete="off" class="form-control" id="cadastral_address" />
+                              <span class="text-danger error-text cadastral_address_err"></span>
                            </div>
                         </div>
 
@@ -312,6 +329,7 @@
                                        <span class="input-group-text">m²</span>
                                     </div>
                                  </div>
+                                 <span class="text-danger error-text cadastral_area_err"></span>
                               </div>
                            </div>
                         </div>
@@ -327,6 +345,7 @@
                                        <span class="input-group-text">m²</span>
                                     </div>
                                  </div>
+                                 <span class="text-danger error-text construction_area_err"></span>
                               </div>
                            </div>
                         </div>
@@ -342,6 +361,7 @@
                                     </div>
                                     <input type="text" name="property_valuation" id="property_valuation" placeholder="Ej: 60,000,000" class="form-control" />
                                  </div>
+                                 <span class="text-danger error-text property_valuation_err"></span>
                               </div>
                            </div>
                         </div>
@@ -466,10 +486,25 @@
          success: function (data) {
             if (data.status == 'ok') {
                window.location.href = data.url;
+            } else{
+               printErrorMsg(data.error);
             }
          },
       });
    }
+
+   // function printErrorMsg (msg) {
+   
+   // }
+
+   function printErrorMsg (msg) {
+      $(".print-error-msg").find("ul").html('');
+      $(".print-error-msg").css('display','block');
+      $.each( msg, function( key, value ) {
+         $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
+         $('.'+key+'_err').text(value);
+      });
+  }
 
    $(document).ready(function () {
       //Verificar si la opción seleccionada es "Repetida"

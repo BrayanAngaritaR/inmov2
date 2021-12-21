@@ -21,6 +21,7 @@ use App\Models\Property\ThirdLevelInstrument;
 use App\Models\Property\Treatment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Validator;
 
 class PropertiesController extends Controller
 {
@@ -165,6 +166,47 @@ class PropertiesController extends Controller
       // } else {
       //    $longitude = $this->DMStoDEC($long_deg,$long_min,$long_sec);
       // }
+
+
+      $validator = Validator::make($request->all(), [
+         'code' => ['required', 'max:255'],
+         'link' => 'required',
+         'plate' => 'required|email',
+         'fixed_asset_code_id' => 'required',
+         'fixed_asset' => 'required',
+         'sss_description' => ['required', 'max:255'],
+         'sss_address' => ['required', 'max:255'],
+         'urbanization_or_neighborhood' => ['required', 'max:255'],
+         'cbml' => ['required', 'digits:11', 'min:0'],
+         'cadastral_address' => ['required'],
+         'cadastral_area' => ['required'],
+         'construction_area' => ['required'],
+         'property_valuation' => ['required'],
+      ], [
+         'code.required' => 'El código es requerido',
+         'code.max' => 'El código no debe ser mayor a 255 dígitos',
+         'fixed_asset.required' => 'El activo fijo es requerido',
+         'sss_description.required' => 'Debes agregar una descripción',
+         'sss_description.max' => 'La descripción no debe ser mayor a 255 dígitos',
+         'sss_address.required' => 'Debes agregar una dirección',
+         'sss_address.max' => 'La dirección no debe ser mayor a 255 dígitos',
+         'urbanization_or_neighborhood.required' => 'Debes agregar un barrio o urbanización',
+         'urbanization_or_neighborhood.max' => 'El barrio o urbanización no debe ser mayor a 255 dígitos',
+         'cbml.required' => 'Debes agregar un código CBML',
+         'cbml.digits' => 'El código CBML debe 11 dígitos. Prueba con un 0 al inicio para completar',
+         'cbml.min' => 'El código CBML no debe ser inferior a 0',
+         'cadastral_address.required' => 'Debes agregar la dirección de catastro',
+         'cadastral_area.required' => 'Debes agregar el área catastral',
+         'construction_area.required' => 'Debes agregar el área de construcción',
+         'property_valuation.required' => 'Debes agregar el avalúo catastral',
+      ]);
+
+     
+      // if ($validator->passes()) {
+      //    return response()->json(['success'=>'Added new records.']);
+      // }
+
+      return response()->json(['error'=>$validator->errors()]);
 
       $property = Property::create([
          'code' => $request->code,

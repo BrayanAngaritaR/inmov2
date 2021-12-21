@@ -62,6 +62,7 @@
                      <div class="list-single-main-item-title big-lsmt fl-wrap">
                         <h3>Pagos</h3>
                      </div>
+
                      <!--   accordion-lite -->
                      <div class="accordion-lite-container fl-wrap">
                         <div class="accordion-lite-header fl-wrap">¿Qué medios de pago puedo utilizar dentro de la plataforma? <i class="fas fa-plus"></i></div>

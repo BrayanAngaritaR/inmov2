@@ -911,7 +911,7 @@ function getValues() {
     apr /= 1200;
     term *= 12;
     mPmt = calculatePayment();
-    document.getElementById("pmt").value = mPmt.toFixed(2);
+    document.getElementById("pmt").value = mPmt.toFixed(0);
 }
 function calculatePayment() {
     var payment = amt * (apr * Math.pow((1 + apr), term)) / (Math.pow((1 + apr), term) - 1);

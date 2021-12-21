@@ -7,7 +7,14 @@
       <div class="dashbard-menu-header">
          <div class="dashbard-menu-avatar fl-wrap">
             <img src="images/avatar/5.jpg" alt="" />
-            <h4>Esta funcionalidad estará disponible <span>pronto</span>.</h4>
+         </div>
+      </div>
+
+      <div class="row container">
+         <div class="col-sm-12">
+            <div class="alert alert-info mt-5">
+               <h4>Esta funcionalidad estará disponible <span>pronto</span>.</h4>
+            </div>
          </div>
       </div>
    </div>
