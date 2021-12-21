@@ -21,7 +21,7 @@ class CreatePropertiesTable extends Migration
          #######################
 
          //ID
-         $table->integer('code'); 
+         $table->string('code'); 
          //Link  
          $table->string('link'); 
          //Matrícula - (Es de tipo texto porque puede contener N de Norte o S de Sur)

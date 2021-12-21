@@ -79,7 +79,7 @@
                            </div>
                         </div>
 
-                        <div class="col-sm-12" id="repeated_concept">
+                        <div class="col-sm-12" id="repeated_concept" style="display: none;">
                            <div class="form-group">
                               <label class="form-label" for="repeated_concept">Concepto de por qué está repetida</label>
                               <input type="text" value="{{ old('repeated_concept') }}" id="repeated_concept" class="form-control" name="repeated_concept" />

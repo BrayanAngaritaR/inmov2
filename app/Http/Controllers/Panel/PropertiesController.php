@@ -3,22 +3,17 @@
 namespace App\Http\Controllers\Panel;
 
 use App\Http\Controllers\Controller;
-use App\Models\Property\Action;
+/*Create*/
 use App\Models\Property\Commune;
-use App\Models\Property\Destination;
 use App\Models\Property\District;
-use App\Models\Property\FloorClassification;
-use App\Models\Property\FloorUse;
-use App\Models\Property\Macroproject;
 use App\Models\Property\Notary;
-use App\Models\Property\Opportunity;
-use App\Models\Property\Polygon;
 use App\Models\Property\Property;
 use App\Models\Property\PropertyType;
 use App\Models\Property\Secretaryship;
 use App\Models\Property\SecretaryshipAssetCode;
-use App\Models\Property\ThirdLevelInstrument;
-use App\Models\Property\Treatment;
+/*Create*/
+
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Validator;
@@ -65,39 +60,6 @@ class PropertiesController extends Controller
       ]));
    }
 
-   public function create_old()
-   {
-      $secretaryships = Secretaryship::orderBy('title', 'ASC')->get();
-      $propertytypes = PropertyType::all();
-      $communes = Commune::orderBy('name', 'ASC')->get();
-      $districts = District::orderBy('name', 'ASC')->get();
-      $floorclassifications = FloorClassification::all();
-      $macroprojects = Macroproject::orderBy('name', 'ASC')->get();
-      $treatments = Treatment::orderBy('title', 'ASC')->get();
-      $polygons = Polygon::orderBy('title', 'ASC')->get();
-      $flooruses = FloorUse::orderBy('title', 'ASC')->get();
-      $inst_3nivels = ThirdLevelInstrument::orderBy('title', 'ASC')->get();
-      $destinations = Destination::orderBy('title', 'ASC')->get();
-      $opportunities = Opportunity::orderBy('title', 'ASC')->get();
-      $actions = Action::orderBy('title', 'ASC')->get();
-
-      return view('panel.properties.create-old', compact([
-         'secretaryships',
-         'propertytypes',
-         'communes',
-         'districts',
-         'floorclassifications',
-         'macroprojects',
-         'treatments',
-         'polygons',
-         'flooruses',
-         'inst_3nivels', 
-         'destinations', 
-         'opportunities', 
-         'actions'
-      ]));
-   }
-
    /**
    * Store a newly created resource in storage.
    *
@@ -106,72 +68,10 @@ class PropertiesController extends Controller
    */
    public function store(Request $request)
    {
-      // $cadastral_file = false;
-      // $vur = false;
-      // $title_study = false;
-      // $loan = false;
-
-      // if ($request->cadastral_file) {
-      //    $cadastral_file = true;
-      // }
-
-      // if ($request->vur) {
-      //    $vur = true;
-      // }
-
-      // if ($request->title_study) {
-      //    $title_study = true;
-      // }
-
-      // if ($request->loan) {
-      //    $loan = true;
-      // }
-
-      // //Calcular latitud
-      // $lat = $request->lat;
-      // $lat_deg = $this->before('°', $lat);
-      // $lat_min = $this->between ('°', "'", $lat);
-
-      // if (str_contains($lat, 'N')) {
-      //    $lat_sec = $this->between ("'", "N", $lat);
-      //    $lat_orientation = 'N';
-      // } else {
-      //    $lat_sec = $this->between ("'", "S", $lat);
-      //    $lat_orientation = 'S';
-      // }
-
-      // if ($lat_orientation == 'S') {
-      //    $latitude = $this->DMStoDEC($lat_deg,$lat_min,$lat_sec);
-      //    $latitude = '-'.$latitude;
-      // } else {
-      //    $latitude = $this->DMStoDEC($lat_deg,$lat_min,$lat_sec);
-      // }
-
-      // //Calcular longitud
-      // $long = $request->long;
-      // $long_deg = $this->before('°', $long);
-      // $long_min = $this->between ('°', "'", $long);
-
-      // if (str_contains($long, 'W')) {
-      //    $long_sec = $this->between ("'", "W", $long);
-      //    $long_orientation = 'W';
-      // } else {
-      //    $long_sec = $this->between ("'", "E", $long);
-      //    $lat_orientation = 'E';
-      // }
-
-      // if ($long_orientation == 'W') {
-      //    $longitude = $this->DMStoDEC($long_deg,$long_min,$long_sec);
-      //    $longitude = '-'.$longitude;
-      // } else {
-      //    $longitude = $this->DMStoDEC($long_deg,$long_min,$long_sec);
-      // }
-
-
       $validator = Validator::make($request->all(), [
-         'code' => ['required', 'max:255'],
+         'code' => ['required', 'max:255', 'unique:properties'],
          'link' => 'required',
-         'plate' => 'required|email',
+         'plate' => 'required',
          'fixed_asset_code_id' => 'required',
          'fixed_asset' => 'required',
          'sss_description' => ['required', 'max:255'],
@@ -183,6 +83,7 @@ class PropertiesController extends Controller
          'construction_area' => ['required'],
          'property_valuation' => ['required'],
       ], [
+         'code.unique' => 'Ya existe otro inmueble con ese código',
          'code.required' => 'El código es requerido',
          'code.max' => 'El código no debe ser mayor a 255 dígitos',
          'fixed_asset.required' => 'El activo fijo es requerido',
@@ -200,53 +101,47 @@ class PropertiesController extends Controller
          'construction_area.required' => 'Debes agregar el área de construcción',
          'property_valuation.required' => 'Debes agregar el avalúo catastral',
       ]);
-
      
-      // if ($validator->passes()) {
-      //    return response()->json(['success'=>'Added new records.']);
-      // }
+      if ($validator->passes()) {
+         $property = Property::create([
+            'code' => $request->code,
+            'link' => $request->link,
+            'plate' => $request->plate,
+            'repeated' => $request->repeated,
+            'repeated_concept' => $request->repeated_concept,
+            'discharged' => $request->discharged,
+            'secretaryship_id' => $request->secretaryship,
+            'property_id' => $request->property_id,
+            'fixed_asset_code_id' => $request->fixed_asset_code_id,
+            'fixed_asset' => $request->fixed_asset,
+            'sss_description' => $request->sss_description,
+            'commercial_appraisal' => $request->commercial_appraisal,
+            'sss_address' => $request->sss_address,
+            'urbanization_or_neighborhood' => $request->urbanization_or_neighborhood,
+            'plate_number' => $request->plate_number,
+            'property_deed' => $request->property_deed,
+            'units' => $request->units,
+            'writing_date' => $request->writing_date,
+            'notary_id' => $request->notary_id,
+            'cbml' => $request->cbml,
+            'commune_id' => $request->commune_id,
+            'district_id' => $request->district_id,
+            'cadastral_address' => $request->cadastral_address,
+            'cadastral_area' => $request->cadastral_area,
+            'construction_area' => $request->construction_area,
+            'property_valuation' => $request->property_valuation,
+            'is_rph' => $request->is_rph,
+         ]);
+
+         Session::flash('info', ['success', __('Se ha agregado el inmueble')]); 
+
+         return response()->json([
+            'status' => 'ok',
+            'url' => route('panel.properties.edit', $property)
+         ]);
+      }
 
       return response()->json(['error'=>$validator->errors()]);
-
-      $property = Property::create([
-         'code' => $request->code,
-         'link' => $request->link,
-         'plate' => $request->plate,
-         'repeated' => $request->repeated,
-         'repeated_concept' => $request->repeated_concept,
-         'discharged' => $request->discharged,
-         'secretaryship_id' => $request->secretaryship,
-         'property_id' => $request->property_id,
-         'fixed_asset_code_id' => $request->fixed_asset_code_id,
-         'fixed_asset' => $request->fixed_asset,
-         'sss_description' => $request->sss_description,
-         'commercial_appraisal' => $request->commercial_appraisal,
-         'sss_address' => $request->sss_address,
-         'urbanization_or_neighborhood' => $request->urbanization_or_neighborhood,
-         'plate_number' => $request->plate_number,
-         'property_deed' => $request->property_deed,
-         'units' => $request->units,
-         'writing_date' => $request->writing_date,
-         'notary_id' => $request->notary_id,
-         'cbml' => $request->cbml,
-         'commune_id' => $request->commune_id,
-         'district_id' => $request->district_id,
-         'cadastral_address' => $request->cadastral_address,
-         'cadastral_area' => $request->cadastral_area,
-         'construction_area' => $request->construction_area,
-         'property_valuation' => $request->property_valuation,
-         'is_rph' => $request->is_rph,
-      ]);
-
-      Session::flash('info', ['success', __('Se ha agregado el inmueble')]); 
-
-      return response()->json([
-         'status' => 'ok',
-         'url' => route('panel.properties.edit', $property)
-      ]);
-
-
-      //return back()->with('status', ['theme', 'Se ha agregado el inmueble']);
    }
 
    function DMStoDEC($deg,$min,$sec)
@@ -305,26 +200,44 @@ class PropertiesController extends Controller
    */
    public function update(Request $request, Property $property)
    {
-      $cadastral_file = false;
-      $vur = false;
-      $title_study = false;
-      $loan = false;
+      // $lat = $request->lat;
+      // $lat_deg = $this->before('°', $lat);
+      // $lat_min = $this->between ('°', "'", $lat);
 
-      if ($request->cadastral_file) {
-         $cadastral_file = true;
-      }
+      // if (str_contains($lat, 'N')) {
+      //    $lat_sec = $this->between ("'", "N", $lat);
+      //    $lat_orientation = 'N';
+      // } else {
+      //    $lat_sec = $this->between ("'", "S", $lat);
+      //    $lat_orientation = 'S';
+      // }
 
-      if ($request->vur) {
-         $vur = true;
-      }
+      // if ($lat_orientation == 'S') {
+      //    $latitude = $this->DMStoDEC($lat_deg,$lat_min,$lat_sec);
+      //    $latitude = '-'.$latitude;
+      // } else {
+      //    $latitude = $this->DMStoDEC($lat_deg,$lat_min,$lat_sec);
+      // }
 
-      if ($request->title_study) {
-         $title_study = true;
-      }
+      // //Calcular longitud
+      // $long = $request->long;
+      // $long_deg = $this->before('°', $long);
+      // $long_min = $this->between ('°', "'", $long);
 
-      if ($request->loan) {
-         $loan = true;
-      }
+      // if (str_contains($long, 'W')) {
+      //    $long_sec = $this->between ("'", "W", $long);
+      //    $long_orientation = 'W';
+      // } else {
+      //    $long_sec = $this->between ("'", "E", $long);
+      //    $lat_orientation = 'E';
+      // }
+
+      // if ($long_orientation == 'W') {
+      //    $longitude = $this->DMStoDEC($long_deg,$long_min,$long_sec);
+      //    $longitude = '-'.$longitude;
+      // } else {
+      //    $longitude = $this->DMStoDEC($long_deg,$long_min,$long_sec);
+      // }
 
       $property->secretaryship_id = $request->secretaryship;
       $property->property_type = $request->propertytype;
