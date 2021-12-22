@@ -333,13 +333,14 @@
 </div>
                                             <div class="box-widget-content fl-wrap">
                                                 <div class="custom-form">
-                                                    <form method="post"  name="contact-property-form">
+                                                    <form method="post"  name="contact-property-form" action="{{ route('user.request_info.store', 20141833333) }}">
+                                                        @csrf
                                                         <label>Nombre completo* <span class="dec-icon"><i class="fas fa-user"></i></span></label>
-                                                        <input   name="phone" type="text"    onClick="this.select()" value="">
+                                                        <input   name="name" type="text"    onClick="this.select()" value="">
                                                         <label>Correo electrónico  * <span class="dec-icon"><i class="fas fa-envelope"></i></span></label>
                                                         <input   name="email" type="email"    onClick="this.select()" value="">      
                                                         <label>Tu mensaje* </label>
-                                                        <textarea> </textarea>
+                                                        <textarea name="info"> </textarea>
 
                                                         <input type="checkbox" name="account">Crear mi cuenta
                                                         <button type="submit" class="btn float-btn color-bg fw-btn"> Solicitar información</button>
@@ -357,8 +358,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- content end -->	
-                <!-- subscribe-wrap -->	
+                <!-- content end -->    
+                <!-- subscribe-wrap --> 
                 <div class="subscribe-wrap fl-wrap">
                     <div class="container">
                         <div class="subscribe-container fl-wrap color-bg">
@@ -389,4 +390,7 @@
                         </div>
                     </div>
                 </div>
+
+                @include('templates.agencia-app.includes.footer.footer')
+
                 @stop

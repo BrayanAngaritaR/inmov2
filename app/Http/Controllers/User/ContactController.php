@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\User\InfoRequest;
 use Illuminate\Http\Request;
+use Validator;
+use Illuminate\Support\Facades\Session;
 
 class ContactController extends Controller
 {
@@ -18,25 +21,35 @@ class ContactController extends Controller
    {
       return view($this->template.'.user.contact');
    }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+   public function store(Request $request)
+   {
+      $validator = Validator::make($request->all(), [
+         'name' => ['required', 'max:255', 'min:8'],
+         'email' => ['required', 'email'],
+      ], [
+         'name.required' => 'Debes ingresar tu nombre completo',
+         'name.max' => 'El nombre es demasiado largo',
+         'name.min' => 'El nombre es demasiado corto',
+         'email.required' => 'El correo electrónico es requerido',
+         'email.email' => 'Debe ser un correo electrónico válido',
+      ]);
+
+      $info = array(
+         "name" => $request->name,
+         "email" => $request->email,
+         "info" => $request->info,
+      );
+
+      if ($validator->passes()) {
+         $info_request = InfoRequest::create([
+            'type' => 'Contacto',
+            'info' => json_encode($info),
+         ]);
+      }
+
+      Session::flash('info', ['success', __('Formulario de contacto enviado correctamente, recibirás respuesta pronto.')]);
+      return back();
     }
 
     /**

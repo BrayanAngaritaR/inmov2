@@ -245,7 +245,7 @@ class CreatePropertiesTable extends Migration
          #  Análisis   
          #######################################
 
-         //Destinacion Actual
+         //Destinación actual
          $table->unsignedBigInteger('destination_id')->nullable();
          $table->foreign('destination_id')->references('id')->on('destinations');
 

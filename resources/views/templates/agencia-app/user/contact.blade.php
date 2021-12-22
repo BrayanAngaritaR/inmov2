@@ -116,13 +116,14 @@
                     </div>
                     <div id="contact-form" class="contact-form fl-wrap">
                         <div id="message"></div>
-                        <form  class="custom-form" action="php/contact.php" name="contactform" id="contactform">
+                        <form method="POST" class="custom-form" action="{{ route('user.contact.store') }}">
+                            @csrf
                             <fieldset>
                                 <label>Nombre completo* <span class="dec-icon"><i class="fas fa-user"></i></span></label>
                                 <input type="text" name="name" id="name"/>
                                 <label>Correo electrónico* <span class="dec-icon"><i class="fas fa-envelope"></i></span></label>
                                 <input type="text"  name="email" id="email"/>
-                                <textarea name="comments"  id="comments" cols="40" rows="3" placeholder="Tu mensaje:"></textarea>
+                                <textarea name="info"  id="info" cols="40" rows="3" placeholder="Tu mensaje:"></textarea>
                             </fieldset>
                             <button class="btn float-btn color-bg" style="margin-top:15px;" id="submit">Enviar mensaje</button>
                         </form>

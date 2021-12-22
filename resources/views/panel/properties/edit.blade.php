@@ -18,7 +18,11 @@
                   </li>
 
                   <li class="nav-item">
-                     <a class="nav-link active" data-toggle="tab" href="#docsInfo" id="docsInfoLink">Información documental</a>
+                     <a class="nav-link active" data-toggle="tab" href="#docsInfo" id="docsInfoLink">Información normativa</a>
+                  </li>
+
+                  <li class="nav-item">
+                     <a class="nav-link" data-toggle="tab" href="#documentalInfo" id="documentalInfoLink">Información documental</a>
                   </li>
 
                   <li class="nav-item">
@@ -488,7 +492,7 @@
 
                         <div class="col-sm-12 text-right mt-5 mr-0">
                            <div class="form-group">
-                              <button type="button" onclick="getAnalysisTab();" class="btn btn-outline-dark">
+                              <button type="button" onclick="getDocumentalTab();" class="btn btn-outline-dark">
                                  Continuar
                               </button>
                            </div>
@@ -497,12 +501,10 @@
                      <!-- Suelo de protección   -->
 
                   </div>
-                  <div class="tab-pane" id="analysisInfo">
 
-                     <span class="preview-title-lg overline-title mt-5 mb-4">Coordenadas</span>
+                  <div class="tab-pane" id="documentalInfo">
 
-                     <!-- Coordenadas-->
-                     <div class="row gy-4 align-center">
+                     <div class="row gy-4 align-center mt-5 pt-5">
 
                         <div class="col-sm-12 col-lg-6 col-xl-3">
                            <div class="form-group">
@@ -575,7 +577,7 @@
                               <p class="form-label">¿Está en comodato?*</p>
 
                               <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="loan" @if($property->loan == 1) checked @endif/>
+                                 <input type="checkbox" onchange="checkBool();" class="custom-control-input" id="loan" @if($property->loan == 1) checked @endif/>
                                  <label class="custom-control-label" for="loan">Sí / No</label>
                               </div>
                            </div>
@@ -583,43 +585,46 @@
 
                         <!-- Información del comodato -->
 
-                        <div class="col-sm-12">
-                           <span class="preview-title-lg overline-title mt-3">Información del comodato</span>
-                        </div>
+                        <div class="row" id="loan_container" style="display: none;">
+                           <div class="col-sm-12">
+                              <span class="preview-title-lg overline-title mt-3">Información del comodato</span>
+                           </div>
 
-                        <div class="col-sm-12 col-lg-4">
-                           <div class="form-group">
-                              <label class="form-label" for="loan_start_date">
-                                 Fecha de inicio
-                              </label>
-                              <input type="date" value="{{ $property->loan_start_date }}" name="loan_start_date" class="form-control" id="loan_start_date" />
+                           <div class="col-sm-12 col-lg-4">
+                              <div class="form-group">
+                                 <label class="form-label" for="loan_start_date">
+                                    Fecha de inicio
+                                 </label>
+                                 <input type="date" value="{{ $property->loan_start_date }}" name="loan_start_date" class="form-control" id="loan_start_date" />
+                              </div>
+                           </div>
+
+                           <div class="col-sm-12 col-lg-4">
+                              <div class="form-group">
+                                 <label class="form-label" for="loan_end_date">
+                                    Fecha de finalización
+                                 </label>
+                                 <input type="date" value="{{ $property->loan_end_date }}" name="loan_end_date" class="form-control" id="loan_end_date" />
+                              </div>
+                           </div>
+
+                           <div class="col-sm-12 col-lg-4">
+                              <div class="form-group">
+                                 <label class="form-label" for="entity_to_which_is_assigned">Entidad a la que se asignó</label>
+                                 <select class="form-control" name="entity_to_which_is_assigned" id="entity_to_which_is_assigned">
+                                    <option value="m2">Option</option>
+                                 </select>
+                              </div>
+                           </div>
+
+                           <div class="col-sm-12 mt-3">
+                              <div class="form-group">
+                                 <label class="form-label" for="loan_information">Información del comodato</label>
+                                 <textarea name="loan_information" class="form-control" id="loan_information"></textarea>
+                              </div>
                            </div>
                         </div>
 
-                        <div class="col-sm-12 col-lg-4">
-                           <div class="form-group">
-                              <label class="form-label" for="loan_end_date">
-                                 Fecha de finalización
-                              </label>
-                              <input type="date" value="{{ $property->loan_end_date }}" name="loan_end_date" class="form-control" id="loan_end_date" />
-                           </div>
-                        </div>
-
-                        <div class="col-sm-12 col-lg-4">
-                           <div class="form-group">
-                              <label class="form-label" for="entity_to_which_is_assigned">Entidad a la que se asignó</label>
-                              <select class="form-control" name="entity_to_which_is_assigned" id="entity_to_which_is_assigned">
-                                 <option value="m2">Option</option>
-                              </select>
-                           </div>
-                        </div>
-
-                        <div class="col-sm-12">
-                           <div class="form-group">
-                              <label class="form-label" for="loan_information">Información del comodato</label>
-                              <textarea name="loan_information" class="form-control" id="loan_information"></textarea>
-                           </div>
-                        </div>
                         <!-- /Información del comodato -->
 
                         <!-- Licencia de construcción -->
@@ -633,15 +638,15 @@
                               <p class="form-label">¿Tiene licencia de construcción?*</p>
 
                               <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="building_permit" @if($property->building_permit == 1) checked @endif/>
+                                 <input type="checkbox" class="custom-control-input" id="building_permit" onchange="checkBool();" @if($property->building_permit == 1) checked @endif/>
                                  <label class="custom-control-label" for="building_permit">Sí / No</label>
                               </div>
                            </div>
                         </div>
 
-                        <div class="col-sm-12">
+                        <div class="col-sm-12" id="resolution_container" style="display: none;">
                            <div class="form-group">
-                              <label class="form-label" for="resolution">Resolución - <span class="text-danger">Depende de SI tiene licencia de construcción</span></label>
+                              <label class="form-label" for="resolution">Resolución</label>
                               <input type="text" name="resolution" class="form-control" id="resolution" />
                            </div>
                         </div>
@@ -657,54 +662,56 @@
                               <p class="form-label">¿Es un bien de interés cultural?*</p>
 
                               <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="bic" @if($property->bic == 1) checked @endif/>
+                                 <input type="checkbox" onchange="checkBool();" class="custom-control-input" id="bic" @if($property->bic == 1) checked @endif/>
                                  <label class="custom-control-label" for="bic">Sí / No</label>
                               </div>
                            </div>
                         </div>
 
-                        <div class="col-sm-12">
-                           <div class="form-group">
-                              <label class="form-label" for="bic_name">Nombre del BIC - <span class="text-danger">Depende de SI es BIC</span></label>
-                              <input type="text" name="bic_name" class="form-control" id="bic_name" />
+                        <div class="row" id="bic_container" style="display: none;">
+                           <div class="col-sm-12">
+                              <div class="form-group">
+                                 <label class="form-label" for="bic_name">Nombre del BIC</label>
+                                 <input type="text" name="bic_name" class="form-control" id="bic_name" />
+                              </div>
                            </div>
-                        </div>
 
-                        <div class="col-sm-12 col-lg-4">
-                           <div class="form-group">
-                              <label class="form-label" for="bic_group">Grupo del BIC</label>
-                              <select class="form-control" name="bic_group" id="bic_group">
-                                 <option value="Arquitectónico">Arquitectónico</option>
-                                 <option value="Urbano">Urbano</option>
-                              </select>
+                           <div class="col-sm-12 col-lg-4 mt-3">
+                              <div class="form-group">
+                                 <label class="form-label" for="bic_group">Grupo del BIC</label>
+                                 <select class="form-control" name="bic_group" id="bic_group">
+                                    <option value="Arquitectónico">Arquitectónico</option>
+                                    <option value="Urbano">Urbano</option>
+                                 </select>
+                              </div>
                            </div>
-                        </div>
 
-                        <div class="col-sm-12 col-lg-4">
-                           <div class="form-group">
-                              <label class="form-label" for="bic_order">Orden del BIC</label>
-                              <select class="form-control" name="bic_order" id="bic_order">
-                                 <option value="Bien de Interés Cultural Nacional">Bien de Interés Cultural Nacional</option>
-                                 <option value="Bien de Interés Cultural Municipal">Bien de Interés Cultural Municipal</option>
-                              </select>
+                           <div class="col-sm-12 col-lg-4 mt-3">
+                              <div class="form-group">
+                                 <label class="form-label" for="bic_order">Orden del BIC</label>
+                                 <select class="form-control" name="bic_order" id="bic_order">
+                                    <option value="Bien de Interés Cultural Nacional">Bien de Interés Cultural Nacional</option>
+                                    <option value="Bien de Interés Cultural Municipal">Bien de Interés Cultural Municipal</option>
+                                 </select>
+                              </div>
                            </div>
-                        </div>
 
-                        <div class="col-sm-12 col-lg-4">
-                           <div class="form-group">
-                              <label class="form-label" for="conservation_level">Nivel de conservación del BIC</label>
-                              <select class="form-control" name="conservation_level" id="conservation_level">
-                                 <option value="Integral">Integral</option>
-                                 <option value="Arquitectónico 1">Arquitectónico 1</option>
-                                 <option value="Arquitectónico 2">Arquitectónico 2</option>
-                              </select>
+                           <div class="col-sm-12 col-lg-4 mt-3">
+                              <div class="form-group">
+                                 <label class="form-label" for="conservation_level">Nivel de conservación del BIC</label>
+                                 <select class="form-control" name="conservation_level" id="conservation_level">
+                                    <option value="Integral">Integral</option>
+                                    <option value="Arquitectónico 1">Arquitectónico 1</option>
+                                    <option value="Arquitectónico 2">Arquitectónico 2</option>
+                                 </select>
+                              </div>
                            </div>
-                        </div>
 
-                        <div class="col-sm-12">
-                           <div class="form-group">
-                              <label class="form-label" for="bic_act">Acto administrativo de declaratoria del BIC - <span class="text-danger">Depende de SI es BIC</span></label>
-                              <input type="text" name="bic_act" class="form-control" id="bic_act" />
+                           <div class="col-sm-12 mt-3">
+                              <div class="form-group">
+                                 <label class="form-label" for="bic_act">Acto administrativo de declaratoria del BIC</label>
+                                 <input type="text" name="bic_act" class="form-control" id="bic_act" />
+                              </div>
                            </div>
                         </div>
 
@@ -713,7 +720,88 @@
 
                      <div class="col-sm-12 text-right mt-5 mr-0">
                         <div class="form-group">
-                           <button type="button" onclick="getCadastralTab();" class="btn btn-outline-dark">
+                           <button type="button" onclick="getAnalysisTab();" class="btn btn-outline-dark">
+                              Continuar
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+
+                  <div class="tab-pane" id="analysisInfo">
+
+                     <span class="preview-title-lg overline-title mt-5 mb-4">Análisis </span>
+
+                     <div class="row gy-4 align-center">
+                        <div class="col-sm-12 col-lg-4">
+                           <div class="form-group">
+                              <label class="form-label" for="destination_id">
+                                 Destinación actual
+                              </label>
+                              <select class="form-control" name="destination_id" id="destination_id">
+                                 <option value="">Option</option>
+                              </select>
+                           </div>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-4">
+                           <div class="form-group">
+                              <label class="form-label" for="opportunity_id">
+                                 Oportunidad
+                              </label>
+                              <select class="form-control" name="opportunity_id" id="opportunity_id">
+                                 <option value="">Option</option>
+                              </select>
+                           </div>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-4">
+                           <div class="form-group">
+                              <label class="form-label" for="prioritization_level">
+                                 Nivel de priorización
+                              </label>
+                              <select class="form-control" name="prioritization_level" id="prioritization_level">
+                                 <option value="Alta">Alta</option>
+                                 <option value="Media">Media</option>
+                                 <option value="Baja">Baja</option>
+                              </select>
+                           </div>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-4">
+                           <div class="form-group">
+                              <label class="form-label" for="action_id">
+                                 Acción
+                              </label>
+                              <select class="form-control" name="action_id" id="action_id">
+                                 <option value="">Option</option>
+                              </select>
+                           </div>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-8">
+                           <div class="form-group">
+                              <label class="form-label" for="project_managed">Proyecto gestionado</label>
+                              <input type="text" name="project_managed" placeholder="Ej: Estación de Bomberos Libertadores" class="form-control" id="project_managed" />
+                           </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                           <div class="form-group">
+                              <label class="form-label" for="observations">Observaciones</label>
+                              <textarea name="observations" class="form-control" id="observations"></textarea>
+                           </div>
+                        </div>
+
+                        
+
+
+
+                     
+
+                     </div>
+                     <div class="col-sm-12 text-right mt-5 mr-0">
+                        <div class="form-group">
+                           <button type="button" onclick="sendInfo();" class="btn btn-outline-dark">
                               Terminar
                            </button>
                         </div>
@@ -728,6 +816,8 @@
 
 @stop @push('scripts')
 <script type="text/javascript">
+
+   //Cambiar de tabs mediante los botones
    function getCadastralTab() {
       //Cambiar al tab de información catastral
       $("#identificationInfo").removeClass("active");
@@ -744,13 +834,24 @@
       $("#docsInfoLink").addClass("active");
    }
 
-   function getAnalysisTab() {
-      //Cambiar al tab de análisis
+   function getDocumentalTab() {
+      //Cambiar al tab de información documental
       $("#docsInfo").removeClass("active");
       $("#docsInfoLink").removeClass("active");
+      $("#documentalInfo").addClass("active");
+      $("#documentalInfoLink").addClass("active");
+   }
+
+   function getAnalysisTab() {
+      //Cambiar al tab de análisis
+      $("#documentalInfo").removeClass("active");
+      $("#documentalInfoLink").removeClass("active");
       $("#analysisInfo").addClass("active");
       $("#analysisInfoLink").addClass("active");
    }
+
+
+   
 
    function sendInfo() {
       let code = $("#code").val();
@@ -785,7 +886,21 @@
          is_rph = 1;
       }
 
+      lat
+      long
+      floor_classification_id
+      macroproject_id
+      treatment_id
+      polygon_id
+      floor_use_id
+      third_level_instrument_id
+      threat_torrential_avenues_id
+      threat_floods_id
+      threat_mass_movements_id
+      other_protection_categories_id
+
       let data = {
+         //Identificación
          code,
          link,
          plate,
@@ -800,6 +915,8 @@
          sss_address,
          urbanization_or_neighborhood,
          sss_description,
+
+         //Información catastral
          plate_number,
          property_deed,
          units,
@@ -813,6 +930,44 @@
          construction_area,
          property_valuation,
          is_rph,
+
+         //Información normativa
+         lat,
+         long,
+         floor_classification_id,
+         macroproject_id,
+         treatment_id,
+         polygon_id,
+         floor_use_id,
+         third_level_instrument_id,
+         threat_torrential_avenues_id,
+         threat_floods_id,
+         threat_mass_movements_id,
+         other_protection_categories_id,
+
+         //Información documental
+         photography,
+         cadastral_file,
+         vur,
+         title_study,
+         georeferenced,
+         scriptures,
+         loan,
+         loan_start_date,
+         loan_end_date,
+         entity_to_which_is_assigned,
+         loan_information,
+         building_permit,
+         resolution,
+         bic,
+         bic_name,
+         bic_group,
+         bic_order,
+         conservation_level,
+         bic_act,
+
+         //Análisis
+
       };
 
       $.ajaxSetup({
@@ -830,6 +985,29 @@
             }
          },
       });
+   }
+
+   function checkBool(){
+      //Verificar si tiene licencia de construcción
+      if ($("#building_permit").is(":checked")) {
+         $('#resolution_container').fadeIn(500);
+      } else {
+         $('#resolution_container').fadeOut(500);
+      }
+
+      //Verificar si el bien está dado en comodato
+      if ($("#loan").is(":checked")) {
+         $('#loan_container').fadeIn(500);
+      } else {
+         $('#loan_container').fadeOut(500);
+      }
+
+      //Verificar si tiene es un BIC
+      if ($("#bic").is(":checked")) {
+         $('#bic_container').fadeIn(500);
+      } else {
+         $('#bic_container').fadeOut(500);
+      }
    }
 
    $(document).ready(function () {

@@ -42,15 +42,24 @@ Route::get('/nosotros', [App\Http\Controllers\User\AboutController::class, 'inde
 Route::get('/contacto', [App\Http\Controllers\User\ContactController::class, 'index'])
     ->name('user.contact.index');
 
+Route::post('/contacto', [App\Http\Controllers\User\ContactController::class, 'store'])
+    ->name('user.contact.store');
+
 Route::get('/faqs', [App\Http\Controllers\User\FaqController::class, 'index'])
     ->name('user.faq.index');
 
 Route::view('/calculadora', 'templates.agencia-app.soon')
     ->name('user.soon.index');
 
-
+/*
+|--------------------------------------------------------------------------
+| Bienes inmuebles
+|--------------------------------------------------------------------------
+*/
+Route::post('solicitar-informacion/{property}', [App\Http\Controllers\User\InfoRequestController::class, 'store'])->name('user.request_info.store');
 
 Route::get('/{property}', [App\Http\Controllers\User\HomeController::class, 'show'])->name('user.properties.show');
+
 
 Route::get('/panel/statistics', [App\Http\Controllers\Panel\StatisticsController::class, 'index'])->name('panel.statistics.index');
 
