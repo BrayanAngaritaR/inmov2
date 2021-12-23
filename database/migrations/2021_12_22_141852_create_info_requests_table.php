@@ -23,6 +23,7 @@ class CreateInfoRequestsTable extends Migration
 
          $table->string('type')->default('Solicitud de información');
          $table->json('info');
+         $table->string('status')->default('Pending');
          $table->timestamps();
       });
    }
