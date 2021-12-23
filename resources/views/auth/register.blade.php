@@ -1,59 +1,22 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+@extends('templates.agencia-app.app') 
+@section('title', 'Registro en la plataforma')
+@section('content')
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+<div class="content mt-5 pt-5 mb-5 pb-5">
+   <div class="row container">
+      <div class="col-sm-12 col-lg-6 my-auto text-start">
+         <img src="{{ asset('templates/agencia-app/images/big-logo.png') }}" height="120"/>
+      </div>
+      <div class="col-sm-12 col-lg-6 my-auto">
+         
+         @include('templates.agencia-app.includes.auth._register-form')
+         <div class="log-separator fl-wrap"><span>o</span></div>
+         <div class="soc-log fl-wrap">
+            <p>Para ingresar o crear tu cuenta más rápido usa una red social</p>
+            <a href="#" class="facebook-log"> Facebook</a>
+         </div>
+      </div>
+   </div>
+</div>
 
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
-
-            <!-- Name -->
-            <div>
-                <x-label for="name" :value="__('Name')" />
-
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-            </div>
-
-            <!-- Email Address -->
-            <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
-            </div>
-
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-button class="ml-4">
-                    {{ __('Register') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+@include('templates.agencia-app.includes.footer.footer') @stop

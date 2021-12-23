@@ -3,7 +3,7 @@
    <head>
       <!--=============== basic  ===============-->
       <meta charset="UTF-8" />
-      <title>Inmo APP - Plataforma de gestión de bienes inmuebles</title>
+      <title>@yield('title', 'Inmo APP - Plataforma de gestión de bienes inmuebles')</title>
       <meta name="robots" content="index, follow" />
       <meta name="keywords" content="" />
       <meta name="description" content="" />

@@ -53,13 +53,18 @@ Route::view('/calculadora', 'templates.agencia-app.soon')
 
 /*
 |--------------------------------------------------------------------------
-| Bienes inmuebles
+| Bienes inmuebles - Usuario
 |--------------------------------------------------------------------------
 */
 Route::post('solicitar-informacion/{property}', [App\Http\Controllers\User\InfoRequestController::class, 'store'])->name('user.request_info.store');
 
 Route::get('/{property}', [App\Http\Controllers\User\HomeController::class, 'show'])->name('user.properties.show');
 
+/*
+|--------------------------------------------------------------------------
+| Estadísticas - Panel
+|--------------------------------------------------------------------------
+*/
 
 Route::get('/panel/statistics', [App\Http\Controllers\Panel\StatisticsController::class, 'index'])->name('panel.statistics.index');
 
@@ -78,3 +83,12 @@ Route::get('/panel/properties/{property}/edit', [App\Http\Controllers\Panel\Prop
 Route::post('/panel/properties/{property}/edit', [App\Http\Controllers\Panel\PropertiesController::class, 'update'])->name('panel.properties.update');
 
 Route::delete('/panel/properties/{property}/destroy', [App\Http\Controllers\Panel\PropertiesController::class, 'destroy'])->name('panel.properties.destroy');
+
+
+/*
+|--------------------------------------------------------------------------
+| Solicitudes - Panel
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/panel/requests', [App\Http\Controllers\Panel\Info\InfoRequestController::class, 'index'])->name('panel.requests.index');

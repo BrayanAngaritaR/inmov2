@@ -188,6 +188,18 @@
                      <!-- .nk-menu-sub -->
                   </li>
                   <!-- .nk-menu-item -->
+
+                  <li class="nk-menu-heading">
+                     <h6 class="overline-title text-primary-alt">Solicitudes</h6>
+                  </li>
+                  <!-- .nk-menu-item -->
+                  <li class="nk-menu-item">
+                     <a href="{{ route('panel.requests.index') }}" class="nk-menu-link">
+                        <span class="nk-menu-icon"><em class="icon ni ni-question"></em></span>
+                        <span class="nk-menu-text">Lista de solicitudes</span>
+                     </a>
+                  </li>
+                  <!-- .nk-menu-item -->
                </ul>
             <!-- .nk-menu -->
          </div>

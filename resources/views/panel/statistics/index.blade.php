@@ -29,28 +29,7 @@
 @stop @section('content')
 <div class="nk-block">
    <div class="row g-gs">
-      <div class="col-sm-12 col-lg-3">
-         <div class="card card-full">
-            <div class="card-inner">
-               <div class="card-title-group align-start mb-3">
-                  <div class="card-title">
-                     <h6 class="title">Bienes inmuebles</h6>
-                  </div>
-               </div>
-               <div class="user-activity-group g-4">
-                  <div class="user-activity">
-                     <em class="icon lni lni-apartment"></em>
-                     <div class="info">
-                        <span class="amount">6,293</span>
-                        <span class="title">En total</span>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-
-      <div class="col-sm-12 col-lg-3">
+      <div class="col-sm-12 col-lg-4">
          <div class="card card-full">
             <div class="card-inner">
                <div class="card-title-group align-start mb-3">
@@ -71,7 +50,7 @@
          </div>
       </div>
 
-      <div class="col-sm-12 col-lg-3">
+      <div class="col-sm-12 col-lg-4">
          <div class="card card-full">
             <div class="card-inner">
                <div class="card-title-group align-start mb-3">
@@ -92,7 +71,7 @@
          </div>
       </div>
 
-      <div class="col-sm-12 col-lg-3">
+      <div class="col-sm-12 col-lg-4">
          <div class="card card-full">
             <div class="card-inner">
                <div class="card-title-group align-start mb-3">
@@ -113,7 +92,28 @@
          </div>
       </div>
 
-      <div class="col-sm-12 col-lg-6">
+      <div class="col-sm-12 col-lg-4">
+         <div class="card card-full">
+            <div class="card-inner">
+               <div class="card-title-group align-start mb-3">
+                  <div class="card-title">
+                     <h6 class="title">Bienes inmuebles</h6>
+                  </div>
+               </div>
+               <div class="user-activity-group g-4">
+                  <div class="user-activity">
+                     <em class="icon lni lni-apartment"></em>
+                     <div class="info">
+                        <span class="amount">6,293</span>
+                        <span class="title">En total</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="col-sm-12 col-lg-4">
          <div class="card card-full">
             <div class="card-inner">
                <div class="card-title-group align-start mb-3">
@@ -134,7 +134,7 @@
          </div>
       </div>
 
-      <div class="col-sm-12 col-lg-6">
+      <div class="col-sm-12 col-lg-4">
          <div class="card card-full">
             <div class="card-inner">
                <div class="card-title-group align-start mb-3">

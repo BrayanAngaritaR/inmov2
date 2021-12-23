@@ -1,8 +1,8 @@
 @extends('panel.app')
 @section('content')
 
-@section('title', 'Lista de inmuebles')
-@section('subtitle', 'esta es la lista de inmuebles que están registrados.')
+@section('title', 'Lista de solicitudes')
+@section('subtitle', 'esta es la lista de solicitudes de más información y/o de contacto.')
 
 <div class="nk-block">
 	<div class="card shadow-sm card-preview">
@@ -14,10 +14,9 @@
 					<div class="nk-tb-list is-separate mb-3">
 					   <div class="nk-tb-item nk-tb-head">
 					      <div class="nk-tb-col"><span class="sub-text">ID</span></div>
-					      <div class="nk-tb-col tb-col-mb"><span class="sub-text">Matrícula</span></div>
-					      <div class="nk-tb-col tb-col-lg"><span class="sub-text">Descripción</span></div>
-					      <div class="nk-tb-col tb-col-lg"><span class="sub-text">Avalúo</span></div>
+					      <div class="nk-tb-col tb-col-mb"><span class="sub-text">Tipo</span></div>
 					      <div class="nk-tb-col tb-col-md"><span class="sub-text">Estado</span></div>
+					      <div class="nk-tb-col tb-col-lg"><span class="sub-text">Información</span></div>
 					      <div class="nk-tb-col nk-tb-col-tools">
 					         <ul class="nk-tb-actions gx-1 my-n1">
 					            <li>
@@ -45,7 +44,7 @@
 					      </div>
 					   </div>
 
-					   @foreach($properties as $property)
+					   @foreach($requests as $property)
 					   <div class="nk-tb-item">
 					      <div class="nk-tb-col">
 					         <a href="#">
@@ -118,18 +117,3 @@
 	</div>
 </div>
 @stop
-
-@push('scripts')
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('input[name="loan"]').click(function(){
-			if($(this).prop("checked") == true){
-				$('#loanDiv').fadeIn(500);
-			}
-			else if($(this).prop("checked") == false){
-				$('#loanDiv').fadeOut(1000);
-			}
-		});
-	});
-</script>
-@endpush
