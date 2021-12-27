@@ -319,13 +319,13 @@ class CreatePropertiesTable extends Migration
          #######################################
 
          //Fecha de análisis por Secretaría de Suministros y Servicios
-         $table->date('date_of_analysis_by_sas')->nullable(); 
+         $table->date('date_of_analysis_by_sss')->nullable(); 
 
          //Revisada
-         $table->enum('revised', ['Falta', 'Lista', 'No disponible'])->nullable(); 
+         $table->enum('revised', ['Falta', 'Lista', 'No disponible'])->default('Falta'); 
 
          //Disponible para analizar
-         $table->enum('available', ['Asignada', 'Por asignar', 'Disponible', 'No disponible'])->nullable(); 
+         $table->enum('available', ['Asignada', 'Por asignar', 'Disponible', 'No disponible'])->default('Por asignar'); 
          
          $table->unsignedBigInteger('responsable_id')->nullable();//Responsable
          $table->foreign('responsable_id')->references('id')->on('users');

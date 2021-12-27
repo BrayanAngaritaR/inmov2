@@ -36,5 +36,20 @@
          </ul>
          <!--second level end-->
       </li>
+
+      @auth
+      <li>
+         <a href="#">Mi cuenta <i class="fa fa-caret-down"></i></a>
+         <!--second level -->
+         <ul>
+            <li><a href="{{ route('dashboard') }}">Panel</a></li>
+            <li><a href="{{ route('user.soon.index') }}">Mi perfil</a></li>
+            <li><a href="{{ route('user.soon.index') }}">Configuración</a></li>
+            <li><a href="{{ route('user.soon.index') }}">Suscripción</a></li>
+            <li><a href="{{ route('user.soon.index') }}">Salir</a></li>
+         </ul>
+         <!--second level end-->
+      </li>
+      @endauth
    </ul>
 </nav>

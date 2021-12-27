@@ -398,7 +398,11 @@
                            <div class="form-group">
                               <label class="form-label" for="floor_classification_id">Clasificación del suelo</label>
                               <select class="form-control" name="floor_classification_id" id="floor_classification_id">
-                                 <option value="m2">Option</option>
+                                 @foreach($floor_classifications as $floor_classification)
+                                    <option value="{{ $floor_classification->id }}">
+                                       {{ $floor_classification->title }}
+                                    </option>
+                                 @endforeach
                               </select>
                            </div>
                         </div>
@@ -407,7 +411,11 @@
                            <div class="form-group">
                               <label class="form-label" for="macroproject_id">Macroproyecto</label>
                               <select class="form-control" name="macroproject_id" id="macroproject_id">
-                                 <option value="m2">Option</option>
+                                 @foreach($macroprojects as $macroproject)
+                                    <option value="{{ $macroproject->id }}">
+                                       {{ $macroproject->name }}
+                                    </option>
+                                 @endforeach
                               </select>
                            </div>
                         </div>
@@ -416,7 +424,11 @@
                            <div class="form-group">
                               <label class="form-label" for="treatment_id">Tratamiento</label>
                               <select class="form-control" name="treatment_id" id="treatment_id">
-                                 <option value="m2">Option</option>
+                                 @foreach($treatments as $treatment)
+                                    <option value="{{ $treatment->id }}">
+                                       {{ $treatment->title }}
+                                    </option>
+                                 @endforeach
                               </select>
                            </div>
                         </div>
@@ -425,7 +437,11 @@
                            <div class="form-group">
                               <label class="form-label" for="polygon_id">Polígono</label>
                               <select class="form-control" name="polygon_id" id="polygon_id">
-                                 <option value="m2">Option</option>
+                                 @foreach($polygons as $polygon)
+                                    <option value="{{ $polygon->id }}">
+                                       {{ $polygon->title }}
+                                    </option>
+                                 @endforeach
                               </select>
                            </div>
                         </div>
@@ -434,7 +450,11 @@
                            <div class="form-group">
                               <label class="form-label" for="floor_use_id">Uso del suelo</label>
                               <select class="form-control" name="floor_use_id" id="floor_use_id">
-                                 <option value="m2">Option</option>
+                                 @foreach($floor_uses as $floor_use)
+                                    <option value="{{ $floor_use->id }}">
+                                       {{ $floor_use->title }}
+                                    </option>
+                                 @endforeach
                               </select>
                            </div>
                         </div>
@@ -443,7 +463,11 @@
                            <div class="form-group">
                               <label class="form-label" for="third_level_instrument_id">Instrumento de tercer nivel</label>
                               <select class="form-control" name="third_level_instrument_id" id="third_level_instrument_id">
-                                 <option value="m2">Option</option>
+                                 @foreach($third_level_instruments as $third_level_instrument)
+                                    <option value="{{ $third_level_instrument->id }}">
+                                       {{ $third_level_instrument->title }}
+                                    </option>
+                                 @endforeach
                               </select>
                            </div>
                         </div>
@@ -458,7 +482,11 @@
                            <div class="form-group">
                               <label class="form-label" for="threat_torrential_avenues_id">Amenaza avenidas torrenciales</label>
                               <select class="form-control" name="threat_torrential_avenues_id" id="threat_torrential_avenues_id">
-                                 <option value="m2">Option</option>
+                                 @foreach($threats as $threat)
+                                    <option value="{{ $threat->id }}">
+                                       {{ $threat->title }}
+                                    </option>
+                                 @endforeach
                               </select>
                            </div>
                         </div>
@@ -467,7 +495,11 @@
                            <div class="form-group">
                               <label class="form-label" for="threat_floods_id">Amenaza de inundaciones</label>
                               <select class="form-control" name="threat_floods_id" id="threat_floods_id">
-                                 <option value="m2">Option</option>
+                                 @foreach($threats as $threat)
+                                    <option value="{{ $threat->id }}">
+                                       {{ $threat->title }}
+                                    </option>
+                                 @endforeach
                               </select>
                            </div>
                         </div>
@@ -476,7 +508,11 @@
                            <div class="form-group">
                               <label class="form-label" for="threat_mass_movements_id">Amenaza de movimientos en masa</label>
                               <select class="form-control" name="threat_mass_movements_id" id="threat_mass_movements_id">
-                                 <option value="m2">Option</option>
+                                 @foreach($threats as $threat)
+                                    <option value="{{ $threat->id }}">
+                                       {{ $threat->title }}
+                                    </option>
+                                 @endforeach
                               </select>
                            </div>
                         </div>
@@ -485,7 +521,11 @@
                            <div class="form-group">
                               <label class="form-label" for="other_protection_categories_id">Otras categorías de protección</label>
                               <select class="form-control" name="other_protection_categories_id" id="other_protection_categories_id">
-                                 <option value="m2">Option</option>
+                                 @foreach($threats as $threat)
+                                    <option value="{{ $threat->id }}">
+                                       {{ $threat->title }}
+                                    </option>
+                                 @endforeach
                               </select>
                            </div>
                         </div>
@@ -611,9 +651,7 @@
                            <div class="col-sm-12 col-lg-4">
                               <div class="form-group">
                                  <label class="form-label" for="entity_to_which_is_assigned">Entidad a la que se asignó</label>
-                                 <select class="form-control" name="entity_to_which_is_assigned" id="entity_to_which_is_assigned">
-                                    <option value="m2">Option</option>
-                                 </select>
+                                 <input type="text" class="form-control" name="entity_to_which_is_assigned" id="entity_to_which_is_assigned"/>
                               </div>
                            </div>
 
@@ -738,7 +776,11 @@
                                  Destinación actual
                               </label>
                               <select class="form-control" name="destination_id" id="destination_id">
-                                 <option value="">Option</option>
+                                 @foreach($destinations as $destination)
+                                    <option value="{{ $destination->id }}">
+                                       {{ $destination->title }}
+                                    </option>
+                                 @endforeach
                               </select>
                            </div>
                         </div>
@@ -749,7 +791,11 @@
                                  Oportunidad
                               </label>
                               <select class="form-control" name="opportunity_id" id="opportunity_id">
-                                 <option value="">Option</option>
+                                 @foreach($opportunities as $opportunity)
+                                    <option value="{{ $opportunity->id }}">
+                                       {{ $opportunity->title }}
+                                    </option>
+                                 @endforeach
                               </select>
                            </div>
                         </div>
@@ -773,7 +819,11 @@
                                  Acción
                               </label>
                               <select class="form-control" name="action_id" id="action_id">
-                                 <option value="">Option</option>
+                                 @foreach($actions as $action)
+                                    <option value="{{ $action->id }}">
+                                       {{ $action->title }}
+                                    </option>
+                                 @endforeach
                               </select>
                            </div>
                         </div>
@@ -791,14 +841,104 @@
                               <textarea name="observations" class="form-control" id="observations"></textarea>
                            </div>
                         </div>
-
-                        
-
-
-
-                     
-
                      </div>
+
+                     <span class="preview-title-lg overline-title mt-5 mb-4">Disponibilidad </span>
+
+                     <div class="row gy-4 align-center">
+                        <div class="col-sm-12 col-lg-6">
+                           <div class="form-group">
+                              <label class="form-label" for="date_of_analysis_by_sss">
+                                 Fecha de análisis por Secretaría de Suministros y Servicios
+                              </label>
+                              <input type="date" value="{{ $property->date_of_analysis_by_sss }}" name="date_of_analysis_by_sss" class="form-control" id="date_of_analysis_by_sss" />
+                           </div>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-6">
+                           <div class="form-group">
+                              <label class="form-label" for="date_of_analysis_by_sss">
+                                 Revisada
+                              </label>
+                              <select class="form-control" name="revised" id="revised">
+                                 <option 
+                                    @if($property->revised == 'Falta') selected 
+                                    @endif 
+                                    value="Falta">
+                                       Falta
+                                 </option>
+
+                                 <option 
+                                    @if($property->revised == 'Lista') selected 
+                                    @endif 
+                                    value="Lista">
+                                       Lista
+                                 </option>
+
+                                 <option 
+                                    @if($property->revised == 'No disponible') selected 
+                                    @endif 
+                                    value="No disponible">
+                                       No disponible
+                                 </option>
+                              </select>
+                           </div>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-6">
+                           <div class="form-group">
+                              <label class="form-label" for="available">
+                                 Disponible para analizar
+                              </label>
+                              <select class="form-control" name="available" id="available">
+                                 <option 
+                                    @if($property->available == 'Asignada') selected 
+                                    @endif 
+                                    value="Asignada">
+                                       Asignada
+                                 </option>
+
+                                 <option 
+                                    @if($property->available == 'Por asignar') selected 
+                                    @endif 
+                                    value="Por asignar">
+                                       Por asignar
+                                 </option>
+
+                                 <option 
+                                    @if($property->available == 'Disponible') selected 
+                                    @endif 
+                                    value="Disponible">
+                                       Disponible
+                                 </option>
+
+                                 <option 
+                                    @if($property->available == 'No disponible') selected 
+                                    @endif 
+                                    value="No disponible">
+                                       No disponible
+                                 </option>
+                              </select>
+                           </div>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-6">
+                           <div class="form-group">
+                              <label class="form-label" for="responsable_id">
+                                 Fecha de análisis por Secretaría de Suministros y Servicios
+                              </label>
+                              <select class="form-control" name="responsable_id" id="responsable_id">
+                                 @foreach($users as $user)
+                                 <option 
+                                    value="{{ $user->id }}">
+                                       {{ $user->name }}
+                                 </option>
+                                 @endforeach
+                              </select>
+                           </div>
+                        </div>
+                     </div>
+
                      <div class="col-sm-12 text-right mt-5 mr-0">
                         <div class="form-group">
                            <button type="button" onclick="sendInfo();" class="btn btn-outline-dark">
@@ -854,6 +994,7 @@
    
 
    function sendInfo() {
+      //Identificación
       let code = $("#code").val();
       let link = $("#link").val();
       let plate = $("#plate").val();
@@ -865,6 +1006,8 @@
       let fixed_asset_code_id = $("#fixed_asset_code_id").val();
       let fixed_asset = $("#fixed_asset").val();
       let sss_description = $("#sss_description").val();
+
+      //Información catastral
       let commercial_appraisal = $("#commercial_appraisal").val();
       let sss_address = $("#sss_address").val();
       let urbanization_or_neighborhood = $("#urbanization_or_neighborhood").val();
@@ -882,22 +1025,92 @@
       let property_valuation = $("#property_valuation").val();
       let is_rph = 0;
 
+      //Información normativa
+      let lat = $("#lat").val();
+      let long = $("#long").val();
+      let floor_classification_id = $("#floor_classification_id").val();
+      let macroproject_id = $("#macroproject_id").val();
+      let treatment_id = $("#treatment_id").val();
+      let polygon_id = $("#polygon_id").val();
+      let floor_use_id = $("#floor_use_id").val();
+      let third_level_instrument_id = $("#third_level_instrument_id").val();
+      let threat_torrential_avenues_id = $("#threat_torrential_avenues_id").val();
+      let threat_floods_id = $("#threat_floods_id").val();
+      let threat_mass_movements_id = $("#threat_mass_movements_id").val();
+      let other_protection_categories_id = $("#other_protection_categories_id").val();
+
+      //Información documental
+      let photography = 0;
+      let cadastral_file = 0;
+      let vur = 0;
+      let title_study = 0;
+      let georeferenced = 0;
+      let scriptures = 0;
+      let loan = 0;
+      let building_permit = 0;
+      let bic = 0;
+      let loan_start_date = $("#loan_start_date").val();
+      let loan_end_date = $("#loan_end_date").val();
+      let entity_to_which_is_assigned = $("#entity_to_which_is_assigned").val();
+      let loan_information = $("#loan_information").val();
+      let resolution = $("#resolution").val();
+      let bic_name = $("#bic_name").val();
+      let bic_group = $("#bic_group").val();
+      let bic_order = $("#bic_order").val();
+      let conservation_level = $("#conservation_level").val();
+      let bic_act = $("#bic_act").val();
+
+      //Análisis
+      let destination_id = $("#destination_id").val();
+      let opportunity_id = $("#opportunity_id").val();
+      let prioritization_level = $("#prioritization_level").val();
+      let action_id = $("#action_id").val();
+      let project_managed = $("#project_managed").val();
+      let observations = $("#observations").val();
+      let date_of_analysis_by_sss = $("#date_of_analysis_by_sss").val();
+      let revised = $("#revised").val();
+      let available = $("#available").val();
+      let responsable_id = $("#responsable_id").val();
+
       if ($("#is_rph").is(":checked")) {
          is_rph = 1;
       }
 
-      lat
-      long
-      floor_classification_id
-      macroproject_id
-      treatment_id
-      polygon_id
-      floor_use_id
-      third_level_instrument_id
-      threat_torrential_avenues_id
-      threat_floods_id
-      threat_mass_movements_id
-      other_protection_categories_id
+      if ($("#photography").is(":checked")) {
+         photography = 1;
+      }
+
+      if ($("#cadastral_file").is(":checked")) {
+         cadastral_file = 1;
+      }
+
+      if ($("#vur").is(":checked")) {
+         vur = 1;
+      }
+
+      if ($("#title_study").is(":checked")) {
+         title_study = 1;
+      }
+
+      if ($("#georeferenced").is(":checked")) {
+         georeferenced = 1;
+      }
+
+      if ($("#scriptures").is(":checked")) {
+         scriptures = 1;
+      }
+
+      if ($("#loan").is(":checked")) {
+         loan = 1;
+      }
+
+      if ($("#building_permit").is(":checked")) {
+         building_permit = 1;
+      }
+
+      if ($("#bic").is(":checked")) {
+         bic = 1;
+      }
 
       let data = {
          //Identificación
@@ -967,7 +1180,16 @@
          bic_act,
 
          //Análisis
-
+         destination_id,
+         opportunity_id,
+         prioritization_level,
+         action_id,
+         project_managed,
+         observations,
+         date_of_analysis_by_sss,
+         revised,
+         available,
+         responsable_id,
       };
 
       $.ajaxSetup({

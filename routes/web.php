@@ -56,9 +56,13 @@ Route::view('/calculadora', 'templates.agencia-app.soon')
 | Bienes inmuebles - Usuario
 |--------------------------------------------------------------------------
 */
+
+Route::get('/propiedades', [App\Http\Controllers\User\PropertiesController::class, 'index'])->name('user.properties.index');
+
+Route::get('/{property}', [App\Http\Controllers\User\PropertiesController::class, 'show'])->name('user.properties.show');
+
 Route::post('solicitar-informacion/{property}', [App\Http\Controllers\User\InfoRequestController::class, 'store'])->name('user.request_info.store');
 
-Route::get('/{property}', [App\Http\Controllers\User\HomeController::class, 'show'])->name('user.properties.show');
 
 /*
 |--------------------------------------------------------------------------

@@ -10,11 +10,13 @@ use App\Models\Property\FloorUse;
 use App\Models\Property\Opportunity;
 use App\Models\Property\PropertyType;
 use App\Models\User;
+use Database\Seeders\DestinationSeeder;
 use Database\Seeders\FloorClasificationSeeder;
 use Database\Seeders\MacroProjectSeeder;
 use Database\Seeders\NotarySeeder;
 use Database\Seeders\PolygonSeeder;
 use Database\Seeders\SecretaryshipSeeder;
+use Database\Seeders\ThirdLevelInstrumentSeeder;
 use Database\Seeders\ThreatSeeder;
 use Database\Seeders\TreatmentSeeder;
 use Illuminate\Database\Seeder;
@@ -44,6 +46,8 @@ class DatabaseSeeder extends Seeder
          TreatmentSeeder::class,
          PolygonSeeder::class,
          ThreatSeeder::class,
+         ThirdLevelInstrumentSeeder::class,
+         DestinationSeeder::class,
       ]);
 
       PropertyType::create(['title' => 'Público']);
@@ -190,49 +194,11 @@ class DatabaseSeeder extends Seeder
       FloorUse::create(['title' => 'Servicios e industria']);
       FloorUse::create(['title' => 'No aplica']);
 
-
-      //Destinación
-      Destination::create(['title' => 'Residencial']);
-      Destination::create(['title' => 'Comercial']);
-      Destination::create(['title' => 'Servicios']);
-      Destination::create(['title' => 'Industrial']);
-      Destination::create(['title' => 'Espacio público']);
-      Destination::create(['title' => 'Equipamientos Básicos Sociales EBS']);
-      Destination::create(['title' => 'Equipamientos Básicos Comunitarios EBC']);
-      Destination::create(['title' => 'Equipamientos de Seguridad y Convivencia ESC']);
-      Destination::create(['title' => 'Equipamientos de Infraestructuras EII ']);
-      Destination::create(['title' => 'Equipamientos Institucionales EIN ']);
-      Destination::create(['title' => 'Sin uso']);
-      Destination::create(['title' => 'No requiere análisis']);
-      Destination::create(['title' => 'EBS - Salud']);
-      Destination::create(['title' => 'EBS - Recreación y deporte']);
-      Destination::create(['title' => 'EBS - Cultura']);
-      Destination::create(['title' => 'EBC - Comunitario']);
-      Destination::create(['title' => 'EBC - Culto']);
-      Destination::create(['title' => 'EBC - Asistencia social']);
-      Destination::create(['title' => 'ESC - Fuerza pública']);
-      Destination::create(['title' => 'ESC - Administración de Justicia']);
-      Destination::create(['title' => 'ESC - Justicia cercana al ciudadano']);
-      Destination::create(['title' => 'ESC - Prevención y atención desastres']);
-      Destination::create(['title' => 'EII - Prestación servicios públicos']);
-      Destination::create(['title' => 'EII - Transporte']);
-      Destination::create(['title' => 'EII - Almacenamiento y distribución sector primario']);
-      Destination::create(['title' => 'EII - Almacenamiento y distribución combustibles']);
-      Destination::create(['title' => 'EII - Sanitarios']);
-      Destination::create(['title' => 'EIN - Institución internacional']);
-      Destination::create(['title' => 'EIN - Institución nacional']);
-      Destination::create(['title' => 'EIN - Institución regional']);
-      Destination::create(['title' => 'EIN - Institución metropolitana']);
-      Destination::create(['title' => 'EIN - Institución local']);
-
-
       //Oportunidad
       Opportunity::create(['title' => 'Oportunidad Inmobiliaria']);
       Opportunity::create(['title' => 'Gestión comercial ']);
       Opportunity::create(['title' => 'Otro']);
       Opportunity::create(['title' => 'No requiere análisis']);
-
-
 
       Action::create(['title' => 'Residencial']);
       Action::create(['title' => 'Comercial']);

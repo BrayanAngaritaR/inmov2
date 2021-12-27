@@ -12,23 +12,43 @@
    </div>
    <div class="custom-form">
       <form method="post" name="registerform">
-         <label>Comuna </label>
-         <select data-placeholder="Comuna" class="chosen-select on-radius no-search-select">
-            <option>Todas las comunas</option>
-            <option>Popular 1</option>
-            <option>Aranjuez</option>
-         </select>
-         <label>Destinación actual</label>
-         <select data-placeholder="Categories" class="chosen-select on-radius no-search-select">
+         <label>Destinación actual </label>
+         <select data-placeholder="Categories" class="form-control">
             <option>Todas las destinaciones</option>
             <option>Comercial</option>
             <option>Espacio público</option>
             <option>Residencial</option>
             <option>Servicios</option>
          </select>
+         <label class="mt-3">Comuna </label>
+         <select data-placeholder="Comuna" name="commune_search" class="form-control">
+            <option>Todas las comunas</option>
+            <option value="19">Altavista</option>
+            <option value="4">Aranjuez</option>
+            <option value="16">Belén</option>
+            <option value="9">Buenos Aires</option>
+            <option value="5">Castilla</option>
+            <option value="6">Doce de octubre</option>
+            <option value="15">Guayabal</option>
+            <option value="12">La América</option>
+            <option value="10">La Candelaria</option>
+            <option value="11">Laureles Estadio</option>
+            <option value="3">Manrique</option>
+            <option value="17">Palmitas</option>
+            <option value="14">Poblado</option>
+            <option value="1">Popular</option>
+            <option value="7">Robledo</option>
+            <option value="20">San Antonio de Prado</option>
+            <option value="18">San Cristóbal</option>
+            <option value="13">San Javier</option>
+            <option value="2">Santa Cruz</option>
+            <option value="21">Santa Elena</option>
+            <option value="8">Villa Hermosa</option>
+         </select>
+         
          <label style="margin-top: 10px;">Avalúo máximo</label>
          <div class="price-rage-item fl-wrap">
-            <input type="text" class="price-range" data-min="500000" data-max="10000000" name="price-range1" data-step="1" value="1" data-prefix="$" />
+            <input type="text" class="price-range" data-min="500000" data-max="1000000000" name="price-range1" data-step="1" value="1" data-prefix="$" />
          </div>
          <button type="button" class="btn float-btn color-bg"><i class="fal fa-search"></i> Buscar</button>
       </form>

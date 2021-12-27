@@ -3,17 +3,24 @@
 namespace App\Http\Controllers\Panel;
 
 use App\Http\Controllers\Controller;
-/*Create*/
+use App\Models\Property\Action;
 use App\Models\Property\Commune;
+use App\Models\Property\Destination;
 use App\Models\Property\District;
+use App\Models\Property\FloorClassification;
+use App\Models\Property\FloorUse;
+use App\Models\Property\Macroproject;
 use App\Models\Property\Notary;
+use App\Models\Property\Opportunity;
+use App\Models\Property\Polygon;
 use App\Models\Property\Property;
 use App\Models\Property\PropertyType;
 use App\Models\Property\Secretaryship;
 use App\Models\Property\SecretaryshipAssetCode;
-/*Create*/
-
-
+use App\Models\Property\ThirdLevelInstrument;
+use App\Models\Property\Threat;
+use App\Models\Property\Treatment;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Validator;
@@ -180,6 +187,18 @@ class PropertiesController extends Controller
       $communes = Commune::orderBy('name', 'ASC')->get();
       $districts = District::orderBy('name', 'ASC')->get();
 
+      $floor_classifications = FloorClassification::orderBy('title', 'ASC')->get();
+      $macroprojects = Macroproject::orderBy('name', 'ASC')->get();
+      $treatments = Treatment::orderBy('title', 'ASC')->get();
+      $polygons = Polygon::orderBy('title', 'ASC')->get();
+      $floor_uses = FloorUse::orderBy('title', 'ASC')->get();
+      $third_level_instruments = ThirdLevelInstrument::orderBy('title', 'ASC')->get();
+      $threats = Threat::orderBy('title', 'ASC')->get();
+      $destinations = Destination::orderBy('title', 'ASC')->get();
+      $opportunities = Opportunity::orderBy('title', 'ASC')->get();
+      $actions = Action::orderBy('title', 'ASC')->get();
+      $users = User::orderBy('name', 'ASC')->get();
+
       return view('panel.properties.edit', compact([
          'secretaryships',
          'propertytypes',
@@ -187,7 +206,19 @@ class PropertiesController extends Controller
          'notaries',
          'communes',
          'districts',
-         'property'
+         'property',
+
+         'floor_classifications',
+         'macroprojects',
+         'treatments',
+         'polygons',
+         'floor_uses',
+         'third_level_instruments',
+         'threats',
+         'destinations',
+         'opportunities',
+         'actions',
+         'users'
       ]));
    }
 

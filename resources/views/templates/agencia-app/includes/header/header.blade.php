@@ -29,10 +29,12 @@
    <!--  Notifications end -->
 
    <!--  login btn -->
-   <div class="show-reg-form modal-open">
-   	<i class="fas fa-user"></i>
-   	<span>Mi cuenta</span>
-   </div>
+   @guest
+      <div class="show-reg-form modal-open">
+      	<i class="fas fa-user"></i>
+      	<span>Mi cuenta</span>
+      </div>
+   @endguest
    <!--  login btn  end -->
    <!--  navigation -->
    <div class="nav-holder main-menu">
@@ -53,7 +55,7 @@
             <div class="header-opt-modal-list fl-wrap">
                <ul>
                   <li><a href="#" class="current-lan" data-lantext="EN">English</a></li>
-                  <li><a href="#" data-lantext="FR">Franais</a></li>
+                  <li><a href="#" data-lantext="FR">Français</a></li>
                   <li><a href="#" data-lantext="ES">Español</a></li>
                   <li><a href="#" data-lantext="DE">Deutsch</a></li>
                </ul>

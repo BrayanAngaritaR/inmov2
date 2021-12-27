@@ -123,8 +123,8 @@
    <div class="nk-sidebar-element nk-sidebar-head">
       <div class="nk-sidebar-brand">
          <a href="{{ url('/') }}" class="logo-link nk-sidebar-logo">
-            <img class="logo-light logo-img" src="{{ asset('user/img/logo.png') }}" srcset="{{ asset('user/img/logo.png') }} 2x" alt="logo" />
-            <img class="logo-dark logo-img" src="{{ asset('user/img/logo.png') }}" srcset="{{ asset('user/img/logo.png') }} 2x" alt="logo-dark" />
+            <img class="logo-light logo-img" src="{{ asset('templates/agencia-app/images/big-logo.png') }}" srcset="{{ asset('templates/agencia-app/images/big-logo.png') }} 2x" alt="logo" />
+            <img class="logo-dark logo-img" src="{{ asset('templates/agencia-app/images/big-logo.png') }}" srcset="{{ asset('templates/agencia-app/images/big-logo.png') }} 2x" alt="logo-dark" />
          </a>
       </div>
       <div class="nk-menu-trigger mr-n2">
