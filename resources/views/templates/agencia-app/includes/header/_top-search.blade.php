@@ -11,7 +11,7 @@
       </div>
    </div>
    <div class="custom-form">
-      <form method="post" name="registerform">
+      <form method="get" action="{{ route('user.properties.index') }}" name="registerform">
          <label>Destinación actual </label>
          <select data-placeholder="Categories" class="form-control">
             <option>Todas las destinaciones</option>
@@ -21,7 +21,7 @@
             <option>Servicios</option>
          </select>
          <label class="mt-3">Comuna </label>
-         <select data-placeholder="Comuna" name="commune_search" class="form-control">
+         <select data-placeholder="Comuna" name="commune" class="form-control">
             <option>Todas las comunas</option>
             <option value="19">Altavista</option>
             <option value="4">Aranjuez</option>
@@ -46,11 +46,11 @@
             <option value="8">Villa Hermosa</option>
          </select>
          
-         <label style="margin-top: 10px;">Avalúo máximo</label>
+         <label class="mt-3">Avalúo máximo</label>
          <div class="price-rage-item fl-wrap">
-            <input type="text" class="price-range" data-min="500000" data-max="1000000000" name="price-range1" data-step="1" value="1" data-prefix="$" />
+            <input type="text" class="price-range" data-min="500000" data-max="1000000000" name="max_price" data-step="100" value="100000" data-prefix="$" />
          </div>
-         <button type="button" class="btn float-btn color-bg"><i class="fal fa-search"></i> Buscar</button>
+         <button type="submit" class="btn float-btn color-bg"><i class="fal fa-search"></i> Buscar</button>
       </form>
    </div>
 </div>

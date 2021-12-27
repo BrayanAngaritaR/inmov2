@@ -63,13 +63,15 @@ class PropertiesController extends Controller
    */
    public function show()
    {
+      $property = Property::whereId(1)->first();
+
       $titles = [1 => 'CESION DE FAJAS-EQUIPAMIENTO-EPQ1', 2 =>'JAC SAN FRANCISCO DE PAULA', 3 => 'BODEGA DE ACOPIO MUNICIPAL No.2', 4 =>'LAVADERO DE CARROS LOVAINA', 5 =>'LOTE PARA EQUIPAMIENTO'];
 
       $array_random_title = array_rand($titles);
 
       $random_title = $titles[$array_random_title];
 
-      return view($this->template.'properties.show', compact('random_title'));
+      return view($this->template.'properties.show', compact(['random_title', 'property']));
    }
 
    /**

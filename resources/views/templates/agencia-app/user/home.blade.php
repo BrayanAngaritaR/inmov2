@@ -59,7 +59,7 @@
                                     <option value="8">Villa Hermosa</option>
                                  </select>
                               </div>
-                              <button class="main-search-button color-bg">Buscar <i class="far fa-search"></i></button>
+                              <button class="main-search-button color-bg" onclick="window.location.href='{{ route('user.properties.index') }}'">Buscar <i class="far fa-search"></i></button>
                            </div>
                         </div>
                         <div class="hero-notifer fl-wrap">¿Y si mejor exploramos? <a href="{{ route('user.properties.index') }}">Explorar inmuebles</a></div>

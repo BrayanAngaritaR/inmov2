@@ -61,7 +61,7 @@ Route::get('/propiedades', [App\Http\Controllers\User\PropertiesController::clas
 
 Route::get('/{property}', [App\Http\Controllers\User\PropertiesController::class, 'show'])->name('user.properties.show');
 
-Route::post('solicitar-informacion/{property}', [App\Http\Controllers\User\InfoRequestController::class, 'store'])->name('user.request_info.store');
+Route::post('propiedad/{property}/solicitar-informacion', [App\Http\Controllers\User\InfoRequestController::class, 'store'])->name('user.request_info.store');
 
 
 /*
