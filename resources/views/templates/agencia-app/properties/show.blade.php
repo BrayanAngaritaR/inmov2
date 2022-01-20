@@ -20,7 +20,7 @@
             <div class="row">
                <div class="col-md-12">
                   <h1>
-                     {{ $random_title }} <span class="verified-badge tolt" data-microtip-position="bottom" data-tooltip="Verified"><i class="fas fa-check"></i></span>
+                     {{ $property->sss_description }} <span class="verified-badge tolt" data-microtip-position="bottom" data-tooltip="Verified"><i class="fas fa-check"></i></span>
                   </h1>
                   <div class="geodir-category-location fl-wrap">
                      <a href="#"><i class="fas fa-map-marker-alt"></i> Área de expansión Altavista</a>
@@ -33,8 +33,8 @@
                </div>
             </div>
             <div class="list-single-header-footer fl-wrap">
-               <div class="list-single-header-price" data-propertyprise="50500"><strong>Avalúo catastral:</strong><span>$</span>50,000,000</div>
-               <div class="list-single-header-date"><span>Publicado:</span>20.05.2021</div>
+               <div class="list-single-header-price" data-propertyprise="50500"><strong>Avalúo catastral:</strong><span>$</span>{{ number_format($property->property_valuation) }}</div>
+               <div class="list-single-header-date"><span>Publicado:</span>{{ $property->updated_at->diffForHumans() }} | {{ $property->updated_at->format('d/m/y h:i:s') }}</div>
                <div class="list-single-stats">
                   <ul class="no-list-style">
                      <li>
@@ -55,7 +55,7 @@
          <div class="breadcrumbs-list">
             <a href="#">Inicio</a>
             <a href="#">Bienes</a>
-            <span>{{ $random_title }}</span>
+            <span>{{ $property->sss_description }}</span>
          </div>
          <div class="show-more-snopt smact"><i class="fal fa-ellipsis-v"></i></div>
          <div class="show-more-snopt-tooltip">
@@ -71,6 +71,7 @@
       <div class="container">
          <div class="row">
             <!--  listing-single content -->
+
             <div class="col-md-8">
                <div class="list-single-main-wrapper fl-wrap">
                   <!--  scroll-nav-wrap -->
@@ -78,30 +79,17 @@
                      <nav class="scroll-nav scroll-init fixed-column_menu-init">
                         <ul class="no-list-style">
                            <li>
-                              <a class="act-scrlink" href="#sec1"><i class="fal fa-home-lg-alt"></i></a><span>Detalles</span>
+                              <a class="act-scrlink" href="#sec1"><i class="fal fa-home-lg-alt"></i></a><span>Toda la informacion</span>
                            </li>
                            <li>
-                              <a href="#sec2"><i class="fal fa-image"></i></a><span>Galería</span>
+                              <a href="#sec2"><i class="fal fa-image"></i></a><span>Galeria</span>
                            </li>
                            <li>
-                              <a href="#sec3"><i class="fal fa-info"></i> </a><span>Información adicional</span>
-                           </li>
-                           {{--
-                           <li>
-                              <a href="#sec4"><i class="fal fa-bed"></i></a><span>Rooms</span>
+                              <a href="#sec3"><i class="fal fa-info"></i> </a><span>Detalles</span>
                            </li>
                            <li>
-                              <a href="#sec5"><i class="fal fa-video"></i></a><span>Video</span>
+                              <a href="#sec6"><i class="fal fa-map-pin"></i></a><span>Ubicacion</span>
                            </li>
-                           --}}
-                           <li>
-                              <a href="#sec6"><i class="fal fa-map-pin"></i></a><span>Ubicación</span>
-                           </li>
-                           {{--
-                           <li>
-                              <a href="#sec7"><i class="fal fa-comment-alt-lines"></i></a><span>Reviews</span>
-                           </li>
-                           --}}
                         </ul>
                         <div class="progress-indicator">
                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 34 34">
@@ -114,14 +102,13 @@
                   <!--  scroll-nav-wrap end-->
                   <div class="list-single-main-media fl-wrap" id="sec2">
                      <!-- gallery-items   -->
-                     {{--
                      <div class="gallery-items grid-small-pad list-single-gallery three-coulms lightgallery">
                         <!-- 1 -->
                         <div class="gallery-item">
                            <div class="grid-item-holder">
                               <div class="box-item">
-                                 <img src="images/all/1.jpg" alt="" />
-                                 <a href="images/all/1.jpg" class="gal-link popup-image"><i class="fa fa-search"></i></a>
+                                 <img src="{{ asset('templates/agencia-app/images/default.png') }}" alt="" />
+                                 <a href="{{ asset('templates/agencia-app/images/default.png') }}" class="gal-link popup-image"><i class="fa fa-search"></i></a>
                               </div>
                            </div>
                         </div>
@@ -130,54 +117,13 @@
                         <div class="gallery-item">
                            <div class="grid-item-holder">
                               <div class="box-item">
-                                 <img src="images/all/8.jpg" alt="" />
-                                 <a href="images/all/8.jpg" class="gal-link popup-image"><i class="fa fa-search"></i></a>
+                                 <img src="{{ asset('templates/agencia-app/images/default.png') }}" alt="" />
+                                 <a href="{{ asset('templates/agencia-app/images/default.png') }}" class="gal-link popup-image"><i class="fa fa-search"></i></a>
                               </div>
                            </div>
                         </div>
                         <!-- 2 end -->
-                        <!-- 3 -->
-                        <div class="gallery-item gallery-item-second">
-                           <div class="grid-item-holder">
-                              <div class="box-item">
-                                 <img src="images/all/3.jpg" alt="" />
-                                 <a href="images/all/3.jpg" class="gal-link popup-image"><i class="fa fa-search"></i></a>
-                              </div>
-                           </div>
-                        </div>
-                        <!-- 3 end -->
-                        <!-- 4 -->
-                        <div class="gallery-item">
-                           <div class="grid-item-holder">
-                              <div class="box-item">
-                                 <img src="images/all/4.jpg" alt="" />
-                                 <a href="images/all/4.jpg" class="gal-link popup-image"><i class="fa fa-search"></i></a>
-                              </div>
-                           </div>
-                        </div>
-                        <!-- 4 end -->
-                        <!-- 5 -->
-                        <div class="gallery-item">
-                           <div class="grid-item-holder">
-                              <div class="box-item">
-                                 <img src="images/all/5.jpg" alt="" />
-                                 <a href="images/all/5.jpg" class="gal-link popup-image"><i class="fa fa-search"></i></a>
-                              </div>
-                           </div>
-                        </div>
-                        <!-- 5 end -->
-                        <!-- 7 -->
-                        <div class="gallery-item">
-                           <div class="grid-item-holder">
-                              <div class="box-item">
-                                 <img src="images/all/9.jpg" alt="" />
-                                 <a href="images/all/9.jpg" class="gal-link popup-image"><i class="fa fa-search"></i></a>
-                              </div>
-                           </div>
-                        </div>
-                        <!-- 7 end -->
                      </div>
-                     --}}
                      <!-- end gallery items -->
                   </div>
                   <div class="list-single-facts fl-wrap">
@@ -226,8 +172,7 @@
                         </div>
                         <div class="list-single-main-item_content fl-wrap">
                            <p>
-                              Celebra la lluvia, los días soleados y las noches estrelladas. Celebra la dicha de vivir rodeado de naturaleza. Celebra el privilegio de vivir tranquilo. Celebra el vivir rodeado de bosque en lotes urbanizados
-                              con áreas desde 1.000 m2 hasta 4.000 m2. Podrás disfrutar de Portería, vías pavimentadas, redes subterráneas, acueducto y alcantarillado. Las Palmas, sector Charco Azul.
+                              Este inmueble esta ubicado en <b>{{ $property->district->name }}</b>, comuna <b>{{ $property->commune->name }}</b> y se encuentra en <b>{{ $property->action->title }}</b>.
                            </p>
                         </div>
                      </div>
@@ -235,33 +180,130 @@
                      <!-- list-single-main-item -->
                      <div class="list-single-main-item fl-wrap">
                         <div class="list-single-main-item-title">
-                           <h3>Details</h3>
+                           <h3>Detalles</h3>
                         </div>
                         <div class="list-single-main-item_content fl-wrap">
                            <div class="details-list">
                               <ul>
-                                 <li><span>Código:</span>154</li>
+                                 <li><span>Codigo:</span>{{ $property->code }}</li>
+                                 <li><span>Matrícula:</span>{{ $property->plate }}</li>
+                                 <li><span>Area total:</span>
+                                    {{ $property->cadastral_area }} {{ $property->units }}
+                                 </li>
+                                 <li><span>Area construida:</span>{{ $property->construction_area }} {{ $property->units }}</li>
 
-                                 <li><span>Barrio: </span>Área de Expansión Altavista</li>
+                                 <li><span>Avaluo catastral:</span>${{ number_format($property->property_valuation) }}</li>
+                              </ul>
+                           </div>
+                        </div>
 
-                                 <li><span>Área catastral (lote): </span>1942,44 m²</li>
-                                 <li><span>Área construida: </span>0 m²</li>
-                                 <li><span>Avalúo catastral: </span>$22,855,000 COP</li>
-                                 <li><span>Macroproyecto:</span>AIE_MED Borde Urbano Noroccidental</li>
-                                 <li><span>Instrumento de tercer nivel: </span>API</li>
-                                 <li><span>Uso del suelo: </span>Agrícola</li>
-                                 <li><span>:</span></li>
-                                 <li><span>:</span></li>
-                                 <li><span>:</span></li>
+                        <div class="list-single-main-item-title mt-5">
+                           <h3>Información adicional</h3>
+                        </div>
+
+                        <div class="extra-info">
+                           <p class="text-justify">
+                              <b>Act. fijo que contienen lotes</b>: {{ $property->fixed_asset }}
+                           </p>
+
+                           <p class="text-justify">
+                              <b>No. Escritura</b>: {{ $property->plate_number }}
+                           </p>
+
+                           <p class="text-justify">
+                              <b>CBML</b>: {{ $property->cbml }}
+                           </p>
+
+                           <p class="text-justify">
+                              <b>Clasificación del suelo</b>: {{ $property->floorClassification->title }}
+                           </p>
+
+                           <p class="text-justify">
+                              <b>Macroproyecto</b>: {{ $property->macroproject->name }}
+                           </p>
+
+                           <p class="text-justify">
+                              <b>Tratamiento</b>: {{ $property->treatment->title }}
+                           </p>
+
+                           <p class="text-justify">
+                              <b>Polígono</b>: {{ $property->polygon->title }}
+                           </p>
+
+                           <p class="text-justify">
+                              <b>Inst_3Nivel</b>: {{ $property->thirdLevelInstrument->title }}
+                           </p>
+
+                           <p class="text-justify">
+                              <b>Destinacion actual</b>: {{ $property->destination->title }}
+                           </p>
+
+                           <p class="text-justify">
+                              <b>Uso del suelo</b>: {{ $property->floorUse->title }}
+                           </p>
+
+                           <p class="text-justify">
+                              <b>Acción</b>: {{ $property->action->title }}
+                           </p>
+                        </div>
+                     </div>
+                     <div class="list-single-main-item fl-wrap">
+                        <div class="list-single-main-item-title">
+                           <h3>Caracteristicas adicionales</h3>
+                        </div>
+                        <div class="list-single-main-item_content fl-wrap">
+                           <div class="listing-features">
+                              <ul>
+                                 <li>
+                                    <a href="#"><i class="fal fa-dumbbell"></i> Gimnasio</a>
+                                 </li>
+                                 <li>
+                                    <a href="#"><i class="fal fa-wifi"></i> Wi Fi</a>
+                                 </li>
+                                 <li>
+                                    <a href="#"><i class="fal fa-parking"></i> Parqueadero</a>
+                                 </li>
+                                 <li>
+                                    <a href="#"><i class="fal fa-cloud"></i> Aire acondicionado</a>
+                                 </li>
+                                 <li>
+                                    <a href="#"><i class="fal fa-swimmer"></i> Piscina</a>
+                                 </li>
+                                 <li>
+                                    <a href="#"><i class="fal fa-cctv"></i> Seguridad</a>
+                                 </li>
+                                 <li>
+                                    <a href="#"><i class="fal fa-washer"></i> Cuarto de ropa</a>
+                                 </li>
+                                 <li>
+                                    <a href="#"><i class="fal fa-utensils"></i> Comedor</a>
+                                 </li>
                               </ul>
                            </div>
                         </div>
                      </div>
                      <!-- list-single-main-item end -->
-                     <!--   list-single-main-item -->
+                     <!-- list-single-main-item -->
+                     <div class="list-single-main-item fw-lmi fl-wrap" id="sec6">
+                        <div class="list-single-main-item fl-wrap">
+                           <div class="list-single-main-item-title">
+                              <h3>Ubicación</h3>
+                           </div>
+
+                           <p><b>Dirección</b>: {{ $property->sss_address }}</p>
+                           <p><b>Dirección catastral</b>: {{ $property->cadastral_address }}</p>
+                           <div class="map-container mapC_vis mapC_vis2">
+                              <div id="singleMap" data-latitude="{{ $property->map_latitude }}" data-longitude="{{ $property->map_longitude }}" data-mapTitle="Our Location" data-infotitle="House in Financial Distric" data-infotext="70 Bright St New York, USA"></div>
+                              <div class="scrollContorl"></div>
+                           </div>
+                           <input id="pac-input" class="controls fl-wrap controls-mapwn" autocomplete="on" type="text" placeholder="¿Quieres buscar lugares cerca? " value="" />
+                        </div>
+                     </div>
+                     <!-- list-single-main-item end -->
                   </div>
                </div>
             </div>
+
             <!-- listing-single content end-->
             <!-- sidebar -->
 
@@ -315,7 +357,7 @@
                <!--box-widget end -->
                <!--box-widget end -->
                <!--box-widget-->
-               <div class="box-widget fl-wrap hidden-section" style="margin-top: 30px;">
+               {{-- <div class="box-widget fl-wrap hidden-section" style="margin-top: 30px;">
                   <div class="box-widget-content fl-wrap color-bg">
                      <div class="color-form reset-action">
                         <div class="color-form-title fl-wrap">
@@ -347,7 +389,7 @@
                         </form>
                      </div>
                   </div>
-               </div>
+               </div> --}}
                <!--box-widget end -->
                <!--box-widget-->
                <div class="box-widget fl-wrap">
@@ -437,3 +479,7 @@
 </div>
 
 @include('templates.agencia-app.includes.footer.footer') @stop
+@push('scripts')
+
+<script src="{{ asset('templates/agencia-app/js/map-single.js' )}}"></script>
+@endpush

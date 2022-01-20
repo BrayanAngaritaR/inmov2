@@ -83,7 +83,7 @@
 				<h3 class="listing-desc-headline margin-top-60 margin-bottom-30">Ubicación</h3>
 
             <div id="singleListingMap-container">
-               <div id="singleListingMap" data-latitude="{{ $property->latitude }}" data-longitude="{{ $property->longitude }}" data-map-icon="im im-icon-Home-2"></div>
+               <div id="singleListingMap" data-latitude="{{ $property->map_latitude }}" data-longitude="{{ $property->map_longitude }}" data-map-icon="im im-icon-Home-2"></div>
                <a href="#" id="streetView">Abrir en Google Maps</a>
             </div>
 			</div>

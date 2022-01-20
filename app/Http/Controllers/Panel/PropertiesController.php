@@ -446,7 +446,7 @@ class PropertiesController extends Controller
    { 
       $status = 'Pending';
 
-      if ($request->published_now == 'Sí') {
+      if ($request->publish_now == 'Sí') {
          $status = 'Published';
       }
 

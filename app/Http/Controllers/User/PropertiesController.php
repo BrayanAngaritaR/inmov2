@@ -27,10 +27,15 @@ class PropertiesController extends Controller
       $destinations = Destination::orderBy('title', 'ASC')->get();
       $districts = District::orderBy('name', 'ASC')->get();
       $macroprojects = Macroproject::orderBy('name', 'ASC')->get();
-      $instruments = ThirdLevelInstrument::orderBy('title', 'ASC')->get(); //Instrumento de tercer nivel
+      //Instrumento de tercer nivel
+      $instruments = ThirdLevelInstrument::orderBy('title', 'ASC')->get(); 
       $floor_uses = FloorUse::orderBy('title', 'ASC')->get(); 
 
-      $properties = Property::with(['destination', 'propertyType', 'district', 'action'])->latest()->get();
+      $properties = Property::where('status', 'Published')
+         ->with(['images', 'district'])
+         ->latest()
+         ->get();
+      
       return view($this->template.'properties.index', compact(['actions', 'macroprojects', 'districts', 'properties', 'destinations', 'instruments', 'floor_uses']));
    }
 
@@ -61,17 +66,16 @@ class PropertiesController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-   public function show()
+   public function show(Property $property)
    {
-      $property = Property::whereId(1)->first();
 
-      $titles = [1 => 'CESION DE FAJAS-EQUIPAMIENTO-EPQ1', 2 =>'JAC SAN FRANCISCO DE PAULA', 3 => 'BODEGA DE ACOPIO MUNICIPAL No.2', 4 =>'LAVADERO DE CARROS LOVAINA', 5 =>'LOTE PARA EQUIPAMIENTO'];
+      //$titles = [1 => 'CESION DE FAJAS-EQUIPAMIENTO-EPQ1', 2 =>'JAC SAN FRANCISCO DE PAULA', 3 => 'BODEGA DE ACOPIO MUNICIPAL No.2', 4 =>'LAVADERO DE CARROS LOVAINA', 5 =>'LOTE PARA EQUIPAMIENTO'];
 
-      $array_random_title = array_rand($titles);
+      // $array_random_title = array_rand($titles);
 
-      $random_title = $titles[$array_random_title];
+      // $random_title = $titles[$array_random_title];
 
-      return view($this->template.'properties.show', compact(['random_title', 'property']));
+      return view($this->template.'properties.show', compact('property'));
    }
 
    /**

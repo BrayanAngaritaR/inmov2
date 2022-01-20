@@ -73,7 +73,7 @@
             <p class="form-label">¿Tiene expediente?*</p>
 
             <div class="custom-control custom-checkbox">
-               <input type="checkbox" onchange="checkBool();" class="custom-control-input" id="expedient" @if($property->expedient == 1) checked @endif/>
+               <input type="checkbox" class="custom-control-input" id="expedient" @if($property->expedient == 1) checked @endif/>
                <label class="custom-control-label" for="expedient">Sí / No</label>
             </div>
          </div>

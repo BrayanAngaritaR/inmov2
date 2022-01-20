@@ -8,17 +8,17 @@ use App\Models\Property\Destination;
 use App\Models\Property\District;
 use App\Models\Property\FloorClassification;
 use App\Models\Property\FloorUse;
+use App\Models\Property\Image;
 use App\Models\Property\Inst_3nivel;
 use App\Models\Property\Macroproject;
 use App\Models\Property\Opportunity;
 use App\Models\Property\Polygon;
 use App\Models\Property\PropertyType;
 use App\Models\Property\Secretaryship;
+use App\Models\Property\ThirdLevelInstrument;
 use App\Models\Property\Treatment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
-//Audit package
 use OwenIt\Auditing\Contracts\Auditable;
 
 class Property extends Model implements Auditable
@@ -61,6 +61,9 @@ class Property extends Model implements Auditable
 
 		'map_latitude',
 		'map_longitude',
+
+		'floor_clasification_id',
+		'secretaryship_id',
 		
 
 		//Información documental
@@ -126,6 +129,12 @@ class Property extends Model implements Auditable
    	return $this->belongsTo(Commune::class);
    }
 
+   public function images()
+   {
+   	return $this->hasMany(Image::class);
+   }
+
+
    public function secretaryship()
    {
    	return $this->belongsTo(Secretaryship::class);
@@ -133,7 +142,7 @@ class Property extends Model implements Auditable
 
    public function floorClassification()
    {
-   	return $this->belongsTo(FloorClassification::class, 'floor_clasification_id');
+   	return $this->belongsTo(FloorClassification::class, 'floor_classification_id');
    }
 
    public function macroproject()
@@ -156,9 +165,9 @@ class Property extends Model implements Auditable
    	return $this->belongsTo(FloorUse::class);
    }
 
-   public function inst3nivel()
+   public function thirdLevelInstrument()
    {
-   	return $this->belongsTo(Inst_3nivel::class, 'inst_3nivel_id');
+   	return $this->belongsTo(ThirdLevelInstrument::class, 'third_level_instrument_id');
    }
 
    public function opportunity()
@@ -170,6 +179,8 @@ class Property extends Model implements Auditable
    {
    	return $this->belongsTo(Action::class);
    }
+
+   
 
 
    //$post = Post::with('audits')->first();  //Get the first post

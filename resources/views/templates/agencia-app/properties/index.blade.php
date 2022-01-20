@@ -238,7 +238,7 @@
          <div class="container">
             <!-- list-main-wrap-title-->
             <div class="list-main-wrap-title">
-               <h2><strong>8</strong> Bienes encontrados</h2>
+               <h2><strong>{{ $properties->count() }}</strong> Bienes encontrados</h2>
             </div>
             <!-- list-main-wrap-title end-->
             <!-- list-main-wrap-opt-->
@@ -274,19 +274,23 @@
       <!-- list-main-wrap-header end-->
       <!-- listing-item-wrap-->
       <div class="listing-item-container fl-wrap">
+         @foreach($properties as $property)
          <!-- listing-item -->
          <div class="listing-item">
             <article class="geodir-category-listing fl-wrap">
                <div class="geodir-category-img fl-wrap">
-                  <a href="{{ route('user.properties.show', 1) }}" class="geodir-category-img_item">
-                     <img src="{{ asset('templates/agencia-app/images/properties/lote1.jpeg') }}" alt="" />
+                  <a href="{{ route('user.properties.show', $property) }}" class="geodir-category-img_item">
+                     {{-- https://fakeimg.pl/350x200/ff0000%2C10/112%2C252/?text=AGENCIA%20APP --}}
+                     <img src="{{ asset('templates/agencia-app/images/default.png') }}" alt="" />
                      <div class="overlay"></div>
                   </a>
                   <div class="geodir-category-location">
-                     <a href="#1" class="map-item tolt" data-microtip-position="top-left" data-tooltip="On the map"><i class="fas fa-map-marker-alt"></i> Área de Expansión Altavista</a>
+                     <a href="#1" class="map-item tolt" data-microtip-position="top-left" data-tooltip="On the map"><i class="fas fa-map-marker-alt"></i> 
+                        {{ $property->cadastral_address }}
+                     </a>
                   </div>
                   <ul class="list-single-opt_header_cat">
-                     <li><a href="#" class="cat-opt blue-bg">En venta</a></li>
+                     <li><a href="#" class="cat-opt blue-bg">{{$property->action->title}}</a></li>
                      <li><a href="#" class="cat-opt color-bg">Lote</a></li>
                   </ul>
                   <a href="#" class="geodir_save-btn tolt" data-microtip-position="left" data-tooltip="Guardar">
@@ -296,18 +300,31 @@
                      <span><i class="fal fa-random"></i></span>
                   </a> --}}
                   <div class="geodir-category-listing_media-list">
-                     <span><i class="fas fa-camera"></i> 8</span>
+                     <span><i class="fas fa-camera"></i> {{ $property->images->count() }}</span>
                   </div>
                </div>
                <div class="geodir-category-content fl-wrap">
-                  <h3><a href="{{ route('user.properties.show', 1) }}">CESION DE FAJAS-EQUIPAMIENTO-EPQ1</a></h3>
-                  <div class="geodir-category-content_price">$196,431,000</div>
-                  <p>Área útil aproximada 1300 m2. Área neta aproximada 1712 m². El predio està comprometido por la retiro de quebrada en 603 m²; sin embargo, quedan 697 m² de área útil, que podrían ser utilizados para oportunidad inmobiliaria. Cobertura de servicios públicos en el área útil. Se sugiere equipamiento de escala barrial tipo jardín infantil.</p>
+                  <h3>
+                     <a href="{{ route('user.properties.show', $property) }}">
+                        {{ Str::limit($property->sss_description, 50) }}
+                     </a>
+                  </h3>
+                  <div class="geodir-category-content_price">${{ number_format($property->property_valuation) }}</div>
+
+                  <p class="mt-3">
+                     Este inmueble está ubicado en <b>{{ $property->district->name }}</b> en la comuna  
+                  </p>
+
                   <div class="geodir-category-content-details">
                      <ul>
-                        {{-- <li><i class="fal fa-bed"></i><span>3</span></li>
-                        <li><i class="fal fa-bath"></i><span>2</span></li> --}}
-                        <li><i class="fal fa-cube"></i><span>450 ft2</span></li>
+                        <li>
+                           <i class="fal fa-cube"></i>
+                           <span>{{ $property->cadastral_area }} {{ $property->units }}</span>
+                        </li>
+                        <li>
+                           <i class="fas fa-hard-hat"></i>
+                           <span>{{ $property->construction_area }} {{ $property->units }}</span>
+                        </li>
                      </ul>
                   </div>
                   <div class="geodir-category-footer fl-wrap">
@@ -318,427 +335,24 @@
             </article>
          </div>
          <!-- listing-item end-->
-
-         <!-- listing-item -->
-         <div class="listing-item">
-            <article class="geodir-category-listing fl-wrap">
-               <div class="geodir-category-img fl-wrap">
-                  <a href="{{ route('user.properties.show', 2) }}" class="geodir-category-img_item">
-                     <img src="{{ asset('templates/agencia-app/images/properties/lote2.jpeg') }}" alt="" />
-                     <div class="overlay"></div>
-                  </a>
-                  <div class="geodir-category-location">
-                     <a href="#1" class="map-item tolt" data-microtip-position="top-left" data-tooltip="On the map"><i class="fas fa-map-marker-alt"></i> Área de Expansión Altavista</a>
-                  </div>
-                  <ul class="list-single-opt_header_cat">
-                     <li><a href="#" class="cat-opt blue-bg">En venta</a></li>
-                     <li><a href="#" class="cat-opt color-bg">Lote</a></li>
-                  </ul>
-                  <a href="#" class="geodir_save-btn tolt" data-microtip-position="left" data-tooltip="Guardar">
-                     <span><i class="fal fa-heart"></i></span>
-                  </a>
-                  {{-- <a href="#" class="compare-btn tolt" data-microtip-position="left" data-tooltip="Compare">
-                     <span><i class="fal fa-random"></i></span>
-                  </a> --}}
-                  <div class="geodir-category-listing_media-list">
-                     <span><i class="fas fa-camera"></i> 8</span>
-                  </div>
-               </div>
-               <div class="geodir-category-content fl-wrap">
-                  <h3><a href="{{ route('user.properties.show', 2) }}"> JAC SAN FRANCISCO DE PAULA</a></h3>
-                  <div class="geodir-category-content_price">$3,872,415,000</div>
-                  <p>Área útil aproximada 1300 m2. Área neta aproximada 1712 m². El predio està comprometido por la retiro de quebrada en 603 m²; sin embargo, quedan 697 m² de área útil, que podrían ser utilizados para oportunidad inmobiliaria. Cobertura de servicios públicos en el área útil. Se sugiere equipamiento de escala barrial tipo jardín infantil.</p>
-                  <div class="geodir-category-content-details">
-                     <ul>
-                        {{-- <li><i class="fal fa-bed"></i><span>3</span></li>
-                        <li><i class="fal fa-bath"></i><span>2</span></li> --}}
-                        <li><i class="fal fa-cube"></i><span>450 m2</span></li>
-                     </ul>
-                  </div>
-                  <div class="geodir-category-footer fl-wrap">
-                     <a href="#" class="gcf-company"><img src="{{ asset('/templates/agencia-app/images/logo.png') }}" alt="" /><span>Por AGENCIA APP</span></a>
-                     <div class="listing-rating card-popup-rainingvis tolt" data-microtip-position="top" data-tooltip="Good" data-starrating2="4"></div>
-                  </div>
-               </div>
-            </article>
-         </div>
-         <!-- listing-item end-->
-
-         <!-- listing-item -->
-         <div class="listing-item">
-            <article class="geodir-category-listing fl-wrap">
-               <div class="geodir-category-img fl-wrap">
-                  <a href="{{ route('user.properties.show', 3) }}" class="geodir-category-img_item">
-                     <img src="{{ asset('templates/agencia-app/images/properties/apto1.jpeg') }}" alt="" />
-                     <div class="overlay"></div>
-                  </a>
-                  <div class="geodir-category-location">
-                     <a href="#1" class="map-item tolt" data-microtip-position="top-left" data-tooltip="On the map"><i class="fas fa-map-marker-alt"></i> Calle 4 sur</a>
-                  </div>
-                  <ul class="list-single-opt_header_cat">
-                     <li><a href="#" class="cat-opt blue-bg">En venta</a></li>
-                     <li><a href="#" class="cat-opt color-bg">Lote</a></li>
-                  </ul>
-                  <a href="#" class="geodir_save-btn tolt" data-microtip-position="left" data-tooltip="Guardar">
-                     <span><i class="fal fa-heart"></i></span>
-                  </a>
-                  {{-- <a href="#" class="compare-btn tolt" data-microtip-position="left" data-tooltip="Compare">
-                     <span><i class="fal fa-random"></i></span>
-                  </a> --}}
-                  <div class="geodir-category-listing_media-list">
-                     <span><i class="fas fa-camera"></i> 8</span>
-                  </div>
-               </div>
-               <div class="geodir-category-content fl-wrap">
-                  <h3><a href="{{ route('user.properties.show', 3) }}">BODEGA DE ACOPIO MUNICIPAL No.2</a></h3>
-                  <div class="geodir-category-content_price">$567,207,000</div>
-                  <p>Área útil aproximada 1300 m2. Área neta aproximada 1712 m². El predio està comprometido por la retiro de quebrada en 603 m²; sin embargo, quedan 697 m² de área útil, que podrían ser utilizados para oportunidad inmobiliaria. Cobertura de servicios públicos en el área útil. Se sugiere equipamiento de escala barrial tipo jardín infantil.</p>
-                  <div class="geodir-category-content-details">
-                     <ul>
-                        {{-- <li><i class="fal fa-bed"></i><span>3</span></li>
-                        <li><i class="fal fa-bath"></i><span>2</span></li> --}}
-                        <li><i class="fal fa-cube"></i><span>450 ft2</span></li>
-                     </ul>
-                  </div>
-                  <div class="geodir-category-footer fl-wrap">
-                     <a href="#" class="gcf-company"><img src="{{ asset('/templates/agencia-app/images/logo.png') }}" alt="" /><span>Por AGENCIA APP</span></a>
-                     <div class="listing-rating card-popup-rainingvis tolt" data-microtip-position="top" data-tooltip="Good" data-starrating2="4"></div>
-                  </div>
-               </div>
-            </article>
-         </div>
-         <!-- listing-item end-->
-
-         <!-- listing-item -->
-         <div class="listing-item">
-            <article class="geodir-category-listing fl-wrap">
-               <div class="geodir-category-img fl-wrap">
-                  <a href="{{ route('user.properties.show', 4) }}" class="geodir-category-img_item">
-                     <img src="{{ asset('templates/agencia-app/images/properties/lavadero1.jpeg') }}" alt="" />
-                     <div class="overlay"></div>
-                  </a>
-                  <div class="geodir-category-location">
-                     <a href="#1" class="map-item tolt" data-microtip-position="top-left" data-tooltip="On the map"><i class="fas fa-map-marker-alt"></i> San Pedro</a>
-                  </div>
-                  <ul class="list-single-opt_header_cat">
-                     <li><a href="#" class="cat-opt blue-bg">En venta</a></li>
-                     <li><a href="#" class="cat-opt color-bg">Lote</a></li>
-                  </ul>
-                  <a href="#" class="geodir_save-btn tolt" data-microtip-position="left" data-tooltip="Guardar">
-                     <span><i class="fal fa-heart"></i></span>
-                  </a>
-                  {{-- <a href="#" class="compare-btn tolt" data-microtip-position="left" data-tooltip="Compare">
-                     <span><i class="fal fa-random"></i></span>
-                  </a> --}}
-                  <div class="geodir-category-listing_media-list">
-                     <span><i class="fas fa-camera"></i> 8</span>
-                  </div>
-               </div>
-               <div class="geodir-category-content fl-wrap">
-                  <h3><a href="{{ route('user.properties.show', 4) }}">LAVADERO DE CARROS LOVAINA</a></h3>
-                  <div class="geodir-category-content_price">$309,174,000</div>
-                  <p>Área útil aproximada 1300 m2. Área neta aproximada 1712 m². El predio està comprometido por la retiro de quebrada en 603 m²; sin embargo, quedan 697 m² de área útil, que podrían ser utilizados para oportunidad inmobiliaria. Cobertura de servicios públicos en el área útil. Se sugiere equipamiento de escala barrial tipo jardín infantil.</p>
-                  <div class="geodir-category-content-details">
-                     <ul>
-                        {{-- <li><i class="fal fa-bed"></i><span>3</span></li>
-                        <li><i class="fal fa-bath"></i><span>2</span></li> --}}
-                        <li><i class="fal fa-cube"></i><span>450 ft2</span></li>
-                     </ul>
-                  </div>
-                  <div class="geodir-category-footer fl-wrap">
-                     <a href="#" class="gcf-company"><img src="{{ asset('/templates/agencia-app/images/logo.png') }}" alt="" /><span>Por AGENCIA APP</span></a>
-                     <div class="listing-rating card-popup-rainingvis tolt" data-microtip-position="top" data-tooltip="Good" data-starrating2="4"></div>
-                  </div>
-               </div>
-            </article>
-         </div>
-         <!-- listing-item end-->
-
-         <!-- listing-item -->
-         <div class="listing-item">
-            <article class="geodir-category-listing fl-wrap">
-               <div class="geodir-category-img fl-wrap">
-                  <a href="{{ route('user.properties.show', 5) }}" class="geodir-category-img_item">
-                     <img src="{{ asset('templates/agencia-app/images/properties/apto2.jpeg') }}">
-                     <div class="overlay"></div>
-                  </a>
-                  <div class="geodir-category-location">
-                     <a href="#1" class="map-item tolt" data-microtip-position="top-left" data-tooltip="On the map"><i class="fas fa-map-marker-alt"></i> Área de Expansión Altavista</a>
-                  </div>
-                  <ul class="list-single-opt_header_cat">
-                     <li><a href="#" class="cat-opt blue-bg">Arriendo</a></li>
-                     <li><a href="#" class="cat-opt color-bg">Lote</a></li>
-                  </ul>
-                  <a href="#" class="geodir_save-btn tolt" data-microtip-position="left" data-tooltip="Guardar">
-                     <span><i class="fal fa-heart"></i></span>
-                  </a>
-                  {{-- <a href="#" class="compare-btn tolt" data-microtip-position="left" data-tooltip="Compare">
-                     <span><i class="fal fa-random"></i></span>
-                  </a> --}}
-                  <div class="geodir-category-listing_media-list">
-                     <span><i class="fas fa-camera"></i> 8</span>
-                  </div>
-               </div>
-               <div class="geodir-category-content fl-wrap">
-                  <h3><a href="{{ route('user.properties.show', 5) }}">LOTE PARA EQUIPAMIENTO</a></h3>
-                  <div class="geodir-category-content_price">$22,855,000</div>
-                  <p>Área útil aproximada 1300 m2. Área neta aproximada 1712 m². El predio està comprometido por la retiro de quebrada en 603 m²; sin embargo, quedan 697 m² de área útil, que podrían ser utilizados para oportunidad inmobiliaria. Cobertura de servicios públicos en el área útil. Se sugiere equipamiento de escala barrial tipo jardín infantil.</p>
-                  <div class="geodir-category-content-details">
-                     <ul>
-                        {{-- <li><i class="fal fa-bed"></i><span>3</span></li>
-                        <li><i class="fal fa-bath"></i><span>2</span></li> --}}
-                        <li><i class="fal fa-cube"></i><span>450 ft2</span></li>
-                     </ul>
-                  </div>
-                  <div class="geodir-category-footer fl-wrap">
-                     <a href="#" class="gcf-company"><img src="{{ asset('/templates/agencia-app/images/logo.png') }}" alt="" /><span>Por AGENCIA APP</span></a>
-                     <div class="listing-rating card-popup-rainingvis tolt" data-microtip-position="top" data-tooltip="Good" data-starrating2="4"></div>
-                  </div>
-               </div>
-            </article>
-         </div>
-         <!-- listing-item end-->
-
-
-         <!-- listing-item -->
-         <div class="listing-item">
-            <article class="geodir-category-listing fl-wrap">
-               <div class="geodir-category-img fl-wrap">
-                  <a href="{{ route('user.properties.show', 6) }}" class="geodir-category-img_item">
-                     <img src="{{ asset('templates/agencia-app/images/properties/apto3.jpeg') }}" alt="" />
-                     <div class="overlay"></div>
-                  </a>
-                  <div class="geodir-category-location">
-                     <a href="#1" class="map-item tolt" data-microtip-position="top-left" data-tooltip="On the map"><i class="fas fa-map-marker-alt"></i> Área de Expansión Altavista</a>
-                  </div>
-                  <ul class="list-single-opt_header_cat">
-                     <li><a href="#" class="cat-opt blue-bg">En venta</a></li>
-                     <li><a href="#" class="cat-opt color-bg">Lote</a></li>
-                  </ul>
-                  <a href="#" class="geodir_save-btn tolt" data-microtip-position="left" data-tooltip="Guardar">
-                     <span><i class="fal fa-heart"></i></span>
-                  </a>
-                  {{-- <a href="#" class="compare-btn tolt" data-microtip-position="left" data-tooltip="Compare">
-                     <span><i class="fal fa-random"></i></span>
-                  </a> --}}
-                  <div class="geodir-category-listing_media-list">
-                     <span><i class="fas fa-camera"></i> 8</span>
-                  </div>
-               </div>
-               <div class="geodir-category-content fl-wrap">
-                  <h3><a href="{{ route('user.properties.show', 6) }}">Lote de la 4 sur en venta</a></h3>
-                  <div class="geodir-category-content_price">$6,000,000,000</div>
-                  <p>Área útil aproximada 1300 m2. Área neta aproximada 1712 m². El predio està comprometido por la retiro de quebrada en 603 m²; sin embargo, quedan 697 m² de área útil, que podrían ser utilizados para oportunidad inmobiliaria. Cobertura de servicios públicos en el área útil. Se sugiere equipamiento de escala barrial tipo jardín infantil.</p>
-                  <div class="geodir-category-content-details">
-                     <ul>
-                        {{-- <li><i class="fal fa-bed"></i><span>3</span></li>
-                        <li><i class="fal fa-bath"></i><span>2</span></li> --}}
-                        <li><i class="fal fa-cube"></i><span>450 ft2</span></li>
-                     </ul>
-                  </div>
-                  <div class="geodir-category-footer fl-wrap">
-                     <a href="#" class="gcf-company"><img src="{{ asset('/templates/agencia-app/images/logo.png') }}" alt="" /><span>Por AGENCIA APP</span></a>
-                     <div class="listing-rating card-popup-rainingvis tolt" data-microtip-position="top" data-tooltip="Good" data-starrating2="4"></div>
-                  </div>
-               </div>
-            </article>
-         </div>
-         <!-- listing-item end-->
-
-
-         <!-- listing-item -->
-         <div class="listing-item">
-            <article class="geodir-category-listing fl-wrap">
-               <div class="geodir-category-img fl-wrap">
-                  <a href="{{ route('user.properties.show', 7) }}" class="geodir-category-img_item">
-                     <img src="{{ asset('templates/agencia-app/images/properties/apto4.jpeg') }}" alt="" />
-                     <div class="overlay"></div>
-                  </a>
-                  <div class="geodir-category-location">
-                     <a href="#1" class="map-item tolt" data-microtip-position="top-left" data-tooltip="On the map"><i class="fas fa-map-marker-alt"></i> Área de Expansión Altavista</a>
-                  </div>
-                  <ul class="list-single-opt_header_cat">
-                     <li><a href="#" class="cat-opt blue-bg">En venta</a></li>
-                     <li><a href="#" class="cat-opt color-bg">Lote</a></li>
-                  </ul>
-                  <a href="#" class="geodir_save-btn tolt" data-microtip-position="left" data-tooltip="Guardar">
-                     <span><i class="fal fa-heart"></i></span>
-                  </a>
-                  {{-- <a href="#" class="compare-btn tolt" data-microtip-position="left" data-tooltip="Compare">
-                     <span><i class="fal fa-random"></i></span>
-                  </a> --}}
-                  <div class="geodir-category-listing_media-list">
-                     <span><i class="fas fa-camera"></i> 8</span>
-                  </div>
-               </div>
-               <div class="geodir-category-content fl-wrap">
-                  <h3><a href="{{ route('user.properties.show', 7) }}">Lote de la 4 sur en venta</a></h3>
-                  <div class="geodir-category-content_price">$6,000,000,000</div>
-                  <p>Área útil aproximada 1300 m2. Área neta aproximada 1712 m². El predio està comprometido por la retiro de quebrada en 603 m²; sin embargo, quedan 697 m² de área útil, que podrían ser utilizados para oportunidad inmobiliaria. Cobertura de servicios públicos en el área útil. Se sugiere equipamiento de escala barrial tipo jardín infantil.</p>
-                  <div class="geodir-category-content-details">
-                     <ul>
-                        {{-- <li><i class="fal fa-bed"></i><span>3</span></li>
-                        <li><i class="fal fa-bath"></i><span>2</span></li> --}}
-                        <li><i class="fal fa-cube"></i><span>450 ft2</span></li>
-                     </ul>
-                  </div>
-                  <div class="geodir-category-footer fl-wrap">
-                     <a href="#" class="gcf-company"><img src="{{ asset('/templates/agencia-app/images/logo.png') }}" alt="" /><span>Por AGENCIA APP</span></a>
-                     <div class="listing-rating card-popup-rainingvis tolt" data-microtip-position="top" data-tooltip="Good" data-starrating2="4"></div>
-                  </div>
-               </div>
-            </article>
-         </div>
-         <!-- listing-item end-->
-
-         <!-- listing-item -->
-         <div class="listing-item">
-            <article class="geodir-category-listing fl-wrap">
-               <div class="geodir-category-img fl-wrap">
-                  <a href="{{ route('user.properties.show', 8) }}" class="geodir-category-img_item">
-                     <img src="{{ asset('templates/agencia-app/images/properties/lote3.jpg') }}" alt="" />
-                     <div class="overlay"></div>
-                  </a>
-                  <div class="geodir-category-location">
-                     <a href="#1" class="map-item tolt" data-microtip-position="top-left" data-tooltip="On the map"><i class="fas fa-map-marker-alt"></i> Área de Expansión Altavista</a>
-                  </div>
-                  <ul class="list-single-opt_header_cat">
-                     <li><a href="#" class="cat-opt blue-bg">En venta</a></li>
-                     <li><a href="#" class="cat-opt color-bg">Lote</a></li>
-                  </ul>
-                  <a href="#" class="geodir_save-btn tolt" data-microtip-position="left" data-tooltip="Guardar">
-                     <span><i class="fal fa-heart"></i></span>
-                  </a>
-                  {{-- <a href="#" class="compare-btn tolt" data-microtip-position="left" data-tooltip="Compare">
-                     <span><i class="fal fa-random"></i></span>
-                  </a> --}}
-                  <div class="geodir-category-listing_media-list">
-                     <span><i class="fas fa-camera"></i> 8</span>
-                  </div>
-               </div>
-               <div class="geodir-category-content fl-wrap">
-                  <h3><a href="{{ route('user.properties.show', 8) }}">Lote de la 4 sur en venta</a></h3>
-                  <div class="geodir-category-content_price">$6,000,000,000</div>
-                  <p>Área útil aproximada 1300 m2. Área neta aproximada 1712 m². El predio està comprometido por la retiro de quebrada en 603 m²; sin embargo, quedan 697 m² de área útil, que podrían ser utilizados para oportunidad inmobiliaria. Cobertura de servicios públicos en el área útil. Se sugiere equipamiento de escala barrial tipo jardín infantil.</p>
-                  <div class="geodir-category-content-details">
-                     <ul>
-                        {{-- <li><i class="fal fa-bed"></i><span>3</span></li>
-                        <li><i class="fal fa-bath"></i><span>2</span></li> --}}
-                        <li><i class="fal fa-cube"></i><span>450 ft2</span></li>
-                     </ul>
-                  </div>
-                  <div class="geodir-category-footer fl-wrap">
-                     <a href="#" class="gcf-company"><img src="{{ asset('/templates/agencia-app/images/logo.png') }}" alt="" /><span>Por AGENCIA APP</span></a>
-                     <div class="listing-rating card-popup-rainingvis tolt" data-microtip-position="top" data-tooltip="Good" data-starrating2="4"></div>
-                  </div>
-               </div>
-            </article>
-         </div>
-         <!-- listing-item end-->
-
-         <!-- listing-item -->
-         <div class="listing-item">
-            <article class="geodir-category-listing fl-wrap">
-               <div class="geodir-category-img fl-wrap">
-                  <a href="{{ route('user.properties.show', 9) }}" class="geodir-category-img_item">
-                     <img src="{{ asset('templates/agencia-app/images/properties/lote4.jpeg') }}" alt="" />
-                     <div class="overlay"></div>
-                  </a>
-                  <div class="geodir-category-location">
-                     <a href="#1" class="map-item tolt" data-microtip-position="top-left" data-tooltip="On the map"><i class="fas fa-map-marker-alt"></i> Área de Expansión Altavista</a>
-                  </div>
-                  <ul class="list-single-opt_header_cat">
-                     <li><a href="#" class="cat-opt blue-bg">En venta</a></li>
-                     <li><a href="#" class="cat-opt color-bg">Lote</a></li>
-                  </ul>
-                  <a href="#" class="geodir_save-btn tolt" data-microtip-position="left" data-tooltip="Guardar">
-                     <span><i class="fal fa-heart"></i></span>
-                  </a>
-                  {{-- <a href="#" class="compare-btn tolt" data-microtip-position="left" data-tooltip="Compare">
-                     <span><i class="fal fa-random"></i></span>
-                  </a> --}}
-                  <div class="geodir-category-listing_media-list">
-                     <span><i class="fas fa-camera"></i> 8</span>
-                  </div>
-               </div>
-               <div class="geodir-category-content fl-wrap">
-                  <h3><a href="{{ route('user.properties.show', 1) }}">Lote de la 4 sur en venta</a></h3>
-                  <div class="geodir-category-content_price">$6,000,000,000</div>
-                  <p>Área útil aproximada 1300 m2. Área neta aproximada 1712 m². El predio està comprometido por la retiro de quebrada en 603 m²; sin embargo, quedan 697 m² de área útil, que podrían ser utilizados para oportunidad inmobiliaria. Cobertura de servicios públicos en el área útil. Se sugiere equipamiento de escala barrial tipo jardín infantil.</p>
-                  <div class="geodir-category-content-details">
-                     <ul>
-                        {{-- <li><i class="fal fa-bed"></i><span>3</span></li>
-                        <li><i class="fal fa-bath"></i><span>2</span></li> --}}
-                        <li><i class="fal fa-cube"></i><span>450 ft2</span></li>
-                     </ul>
-                  </div>
-                  <div class="geodir-category-footer fl-wrap">
-                     <a href="#" class="gcf-company"><img src="{{ asset('/templates/agencia-app/images/logo.png') }}" alt="" /><span>Por AGENCIA APP</span></a>
-                     <div class="listing-rating card-popup-rainingvis tolt" data-microtip-position="top" data-tooltip="Good" data-starrating2="4"></div>
-                  </div>
-               </div>
-            </article>
-         </div>
-         <!-- listing-item end-->
-
-         <!-- listing-item -->
-         <div class="listing-item">
-            <article class="geodir-category-listing fl-wrap">
-               <div class="geodir-category-img fl-wrap">
-                  <a href="{{ route('user.properties.show', 10) }}" class="geodir-category-img_item">
-                     <img src="{{ asset('templates/agencia-app/images/properties/lago1.jpg') }}" alt="" />
-                     <div class="overlay"></div>
-                  </a>
-                  <div class="geodir-category-location">
-                     <a href="#1" class="map-item tolt" data-microtip-position="top-left" data-tooltip="On the map"><i class="fas fa-map-marker-alt"></i> Área de Expansión Altavista</a>
-                  </div>
-                  <ul class="list-single-opt_header_cat">
-                     <li><a href="#" class="cat-opt blue-bg">En venta</a></li>
-                     <li><a href="#" class="cat-opt color-bg">Lote</a></li>
-                  </ul>
-                  <a href="#" class="geodir_save-btn tolt" data-microtip-position="left" data-tooltip="Guardar">
-                     <span><i class="fal fa-heart"></i></span>
-                  </a>
-                  {{-- <a href="#" class="compare-btn tolt" data-microtip-position="left" data-tooltip="Compare">
-                     <span><i class="fal fa-random"></i></span>
-                  </a> --}}
-                  <div class="geodir-category-listing_media-list">
-                     <span><i class="fas fa-camera"></i> 8</span>
-                  </div>
-               </div>
-
-               <div class="geodir-category-content fl-wrap">
-                  <h3><a href="{{ route('user.properties.show', 10) }}">Lote de la 4 sur en venta</a></h3>
-                  <div class="geodir-category-content_price">$6,000,000,000</div>
-                  <p>Área útil aproximada 1300 m2. Área neta aproximada 1712 m². El predio està comprometido por la retiro de quebrada en 603 m²; sin embargo, quedan 697 m² de área útil, que podrían ser utilizados para oportunidad inmobiliaria. Cobertura de servicios públicos en el área útil. Se sugiere equipamiento de escala barrial tipo jardín infantil.</p>
-                  <div class="geodir-category-content-details">
-                     <ul>
-                        {{-- <li><i class="fal fa-bed"></i><span>3</span></li>
-                        <li><i class="fal fa-bath"></i><span>2</span></li> --}}
-                        <li><i class="fal fa-cube"></i><span>450 ft2</span></li>
-                     </ul>
-                  </div>
-                  <div class="geodir-category-footer fl-wrap">
-                     <a href="#" class="gcf-company"><img src="{{ asset('/templates/agencia-app/images/logo.png') }}" alt="" /><span>Por AGENCIA APP</span></a>
-                     <div class="listing-rating card-popup-rainingvis tolt" data-microtip-position="top" data-tooltip="Good" data-starrating2="4"></div>
-                  </div>
-               </div>
-            </article>
-         </div>
-         <!-- listing-item end-->
-        
+         @endforeach
       </div>
+
+      <div class="listing-item-container">
+         <!-- pagination-->
+         <div class="pagination ml-5">
+            <a href="#" class="prevposts-link"><i class="fa fa-caret-left"></i></a>
+            <a href="#">1</a>
+            <a href="#" class="current-page">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#" class="nextposts-link"><i class="fa fa-caret-right"></i></a>
+         </div>
+         <!-- pagination end-->
+      </div>
+
       <!-- listing-item-wrap end-->
-      <!-- pagination-->
-      <div class="pagination">
-         <a href="#" class="prevposts-link"><i class="fa fa-caret-left"></i></a>
-         <a href="#">1</a>
-         <a href="#" class="current-page">2</a>
-         <a href="#">3</a>
-         <a href="#">4</a>
-         <a href="#" class="nextposts-link"><i class="fa fa-caret-right"></i></a>
-      </div>
-      <!-- pagination end-->
+      
       <div class="small-footer fl-wrap">
          <div class="text-center">
             <a href="{{ url('/') }}">

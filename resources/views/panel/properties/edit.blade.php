@@ -269,6 +269,7 @@
       let georeferenced = 0;
       let scriptures = 0;
       let loan = 0;
+      let expedient = 0;
       let building_permit = 0;
       let bic = 0;
       let loan_start_date = $("#loan_start_date").val();
@@ -281,7 +282,6 @@
       let bic_order = $("#bic_order").val();
       let conservation_level = $("#conservation_level").val();
       let bic_act = $("#bic_act").val();
-      let expedient = $("#expedient").val();
 
       if ($("#photography").is(":checked")) {
          photography = 1;
