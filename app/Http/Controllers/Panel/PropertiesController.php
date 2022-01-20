@@ -35,85 +35,84 @@ class PropertiesController extends Controller
    }
 
    /**
-   * Display a listing of the resource.
-   *
-   * @return \Illuminate\Http\Response
-   */
+    * Display a listing of the resource.
+    *
+    * @return \Illuminate\Http\Response
+    */
    public function index()
    {
-      $properties = Property::with(['district', 'commune'])->latest()->get();
+      $properties = Property::with(['district', 'commune'])
+         ->latest()
+         ->get();
       return view('panel.properties.index', compact(['properties']));
    }
 
    /**
-   * Show the form for creating a new resource.
-   *
-   * @return \Illuminate\Http\Response
-   */
+    * Show the form for creating a new resource.
+    *
+    * @return \Illuminate\Http\Response
+    */
    public function create()
    {
       $secretaryships = Secretaryship::orderBy('title', 'ASC')->get();
       $propertytypes = PropertyType::all();
       $asset_secretaryships = SecretaryshipAssetCode::all();
       $notaries = Notary::all();
-      $communes = Commune::orderBy('name', 'ASC')->get();
+      $communes = Commune::get();
       $districts = District::orderBy('name', 'ASC')->get();
 
-      return view('panel.properties.create', compact([
-         'secretaryships',
-         'propertytypes',
-         'asset_secretaryships',
-         'notaries',
-         'communes',
-         'districts'
-      ]));
+      return view('panel.properties.create', compact(['secretaryships', 'propertytypes', 'asset_secretaryships', 'notaries', 'communes', 'districts']));
    }
 
    /**
-   * Store a newly created resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @return \Illuminate\Http\Response
-   */
+    * Store a newly created resource in storage.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @return \Illuminate\Http\Response
+    */
    public function store(Request $request)
    {
-      $validator = Validator::make($request->all(), [
-         'code' => ['required', 'max:255', 'unique:properties,code'],
-         'link' => 'required',
-         'plate' => 'required',
-         'fixed_asset_code_id' => 'required',
-         'fixed_asset' => 'required',
-         'sss_description' => ['required', 'max:255'],
-         'sss_address' => ['required', 'max:255'],
-         'urbanization_or_neighborhood' => ['required', 'max:255'],
-         'cbml' => ['required', 'digits:11', 'min:0'],
-         'cadastral_address' => ['required'],
-         'cadastral_area' => ['required'],
-         'construction_area' => ['required'],
-         'property_valuation' => ['required'],
-      ], [
-         'code.unique' => 'Ya existe otro inmueble con ese código',
-         'code.required' => 'El código es requerido',
-         'code.max' => 'El código no debe ser mayor a 255 dígitos',
-         'fixed_asset.required' => 'El activo fijo es requerido',
-         'sss_description.required' => 'Debes agregar una descripción',
-         'sss_description.max' => 'La descripción no debe ser mayor a 255 dígitos',
-         'sss_address.required' => 'Debes agregar una dirección',
-         'sss_address.max' => 'La dirección no debe ser mayor a 255 dígitos',
-         'urbanization_or_neighborhood.required' => 'Debes agregar un barrio o urbanización',
-         'urbanization_or_neighborhood.max' => 'El barrio o urbanización no debe ser mayor a 255 dígitos',
-         'cbml.required' => 'Debes agregar un código CBML',
-         'cbml.digits' => 'El código CBML debe 11 dígitos. Prueba con un 0 al inicio para completar',
-         'cbml.min' => 'El código CBML no debe ser inferior a 0',
-         'cadastral_address.required' => 'Debes agregar la dirección de catastro',
-         'cadastral_area.required' => 'Debes agregar el área catastral',
-         'construction_area.required' => 'Debes agregar el área de construcción',
-         'property_valuation.required' => 'Debes agregar el avalúo catastral',
-      ]);
-     
+      $validator = Validator::make(
+         $request->all(),
+         [
+            'code' => ['required', 'max:255', 'unique:properties,code'],
+            'link' => 'required',
+            'plate' => 'required',
+            'fixed_asset_code_id' => 'required',
+            'fixed_asset' => 'required',
+            'sss_description' => ['required', 'max:255'],
+            'sss_address' => ['required', 'max:255'],
+            'urbanization_or_neighborhood' => ['required', 'max:255'],
+            'cbml' => ['required', 'digits:11', 'min:0'],
+            'cadastral_address' => ['required'],
+            'cadastral_area' => ['required'],
+            'construction_area' => ['required'],
+            'property_valuation' => ['required'],
+         ],
+         [
+            'code.unique' => 'Ya existe otro inmueble con ese código',
+            'code.required' => 'El código es requerido',
+            'code.max' => 'El código no debe ser mayor a 255 dígitos',
+            'fixed_asset.required' => 'El activo fijo es requerido',
+            'sss_description.required' => 'Debes agregar una descripción',
+            'sss_description.max' => 'La descripción no debe ser mayor a 255 dígitos',
+            'sss_address.required' => 'Debes agregar una dirección',
+            'sss_address.max' => 'La dirección no debe ser mayor a 255 dígitos',
+            'urbanization_or_neighborhood.required' => 'Debes agregar un barrio o urbanización',
+            'urbanization_or_neighborhood.max' => 'El barrio o urbanización no debe ser mayor a 255 dígitos',
+            'cbml.required' => 'Debes agregar un código CBML',
+            'cbml.digits' => 'El código CBML debe 11 dígitos. Prueba con un 0 al inicio para completar',
+            'cbml.min' => 'El código CBML no debe ser inferior a 0',
+            'cadastral_address.required' => 'Debes agregar la dirección de catastro',
+            'cadastral_area.required' => 'Debes agregar el área catastral',
+            'construction_area.required' => 'Debes agregar el área de construcción',
+            'property_valuation.required' => 'Debes agregar el avalúo catastral',
+         ]
+      );
+
       if ($validator->passes()) {
          $property = Property::create([
-            'secure_code' =>  Str::uuid()->toString(),
+            'secure_code' => Str::uuid()->toString(),
             'code' => $request->code,
             'link' => $request->link,
             'plate' => $request->plate,
@@ -143,36 +142,36 @@ class PropertiesController extends Controller
             'is_rph' => $request->is_rph,
          ]);
 
-         Session::flash('info', ['success', __('Se ha agregado el inmueble')]); 
+         Session::flash('info', ['success', __('Se ha agregado el inmueble')]);
 
          return response()->json([
             'status' => 'ok',
-            'url' => route('panel.properties.edit', $property)
+            'url' => route('panel.properties.edit', $property),
          ]);
       }
 
-      return response()->json(['error'=>$validator->errors()]);
+      return response()->json(['error' => $validator->errors()]);
    }
 
    function getLatitude($lat)
    {
       //Calcular la latitud
       $lat_deg = $this->before('°', $lat);
-      $lat_min = $this->between ('°', "'", $lat);
+      $lat_min = $this->between('°', "'", $lat);
 
       if (str_contains($lat, 'N')) {
-         $lat_sec = $this->between ("'", "N", $lat);
+         $lat_sec = $this->between("'", "N", $lat);
          $lat_orientation = 'N';
       } else {
-         $lat_sec = $this->between ("'", "S", $lat);
+         $lat_sec = $this->between("'", "S", $lat);
          $lat_orientation = 'S';
       }
 
       if ($lat_orientation == 'S') {
-         $latitude = $this->DMStoDEC($lat_deg,$lat_min,$lat_sec);
-         $latitude = '-'.$latitude;
+         $latitude = $this->DMStoDEC($lat_deg, $lat_min, $lat_sec);
+         $latitude = '-' . $latitude;
       } else {
-         $latitude = $this->DMStoDEC($lat_deg,$lat_min,$lat_sec);
+         $latitude = $this->DMStoDEC($lat_deg, $lat_min, $lat_sec);
       }
 
       return $latitude;
@@ -182,53 +181,54 @@ class PropertiesController extends Controller
    {
       //Calcular longitud
       $long_deg = $this->before('°', $long);
-      $long_min = $this->between ('°', "'", $long);
+      $long_min = $this->between('°', "'", $long);
 
       if (str_contains($long, 'W')) {
-         $long_sec = $this->between ("'", "W", $long);
+         $long_sec = $this->between("'", "W", $long);
          $long_orientation = 'W';
       } else {
-         $long_sec = $this->between ("'", "E", $long);
+         $long_sec = $this->between("'", "E", $long);
          $lat_orientation = 'E';
       }
 
       if ($long_orientation == 'W') {
-         $longitude = $this->DMStoDEC($long_deg,$long_min,$long_sec);
-         $longitude = '-'.$longitude;
+         $longitude = $this->DMStoDEC($long_deg, $long_min, $long_sec);
+         $longitude = '-' . $longitude;
       } else {
-         $longitude = $this->DMStoDEC($long_deg,$long_min,$long_sec);
+         $longitude = $this->DMStoDEC($long_deg, $long_min, $long_sec);
       }
 
       return $longitude;
    }
 
-   function DMStoDEC($deg,$min,$sec)
+   function DMStoDEC($deg, $min, $sec)
    {
-      return $deg+((($min*60)+($sec))/3600);
-   }  
-
-   function after ($char, $inthat)
-   {
-      if (!is_bool(strpos($inthat, $char)))
-      return substr($inthat, strpos($inthat,$char)+strlen($char));
+      return $deg + ($min * 60 + $sec) / 3600;
    }
 
-   function before ($char, $inthat)
+   function after($char, $inthat)
+   {
+      if (!is_bool(strpos($inthat, $char))) {
+         return substr($inthat, strpos($inthat, $char) + strlen($char));
+      }
+   }
+
+   function before($char, $inthat)
    {
       return substr($inthat, 0, strpos($inthat, $char));
    }
 
-   function between ($char, $that, $inthat)
+   function between($char, $that, $inthat)
    {
-      return $this->before ($that, $this->after($char, $inthat));
+      return $this->before($that, $this->after($char, $inthat));
    }
 
    /**
-   * Show the form for editing the specified resource.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
+    * Show the form for editing the specified resource.
+    *
+    * @param  int  $id
+    * @return \Illuminate\Http\Response
+    */
    public function edit(Property $property)
    {
       $secretaryships = Secretaryship::orderBy('title', 'ASC')->get();
@@ -249,142 +249,151 @@ class PropertiesController extends Controller
       $actions = Action::orderBy('title', 'ASC')->get();
       $users = User::orderBy('name', 'ASC')->get();
 
-      return view('panel.properties.edit', compact([
-         'secretaryships',
-         'propertytypes',
-         'asset_secretaryships',
-         'notaries',
-         'communes',
-         'districts',
-         'property',
-         'floor_classifications',
-         'macroprojects',
-         'treatments',
-         'polygons',
-         'floor_uses',
-         'third_level_instruments',
-         'threats',
-         'destinations',
-         'opportunities',
-         'actions',
-         'users'
-      ]));
+      return view(
+         'panel.properties.edit',
+         compact([
+            'secretaryships',
+            'propertytypes',
+            'asset_secretaryships',
+            'notaries',
+            'communes',
+            'districts',
+            'property',
+            'floor_classifications',
+            'macroprojects',
+            'treatments',
+            'polygons',
+            'floor_uses',
+            'third_level_instruments',
+            'threats',
+            'destinations',
+            'opportunities',
+            'actions',
+            'users',
+         ])
+      );
    }
 
    public function update_identification(Request $request, Property $property)
    {
-      $validator = Validator::make($request->all(), [
-         'code' => [
-            'required', 'max:255',
-            Rule::unique('properties')->ignore($property->id),
-         ],
+      $validator = Validator::make(
+         $request->all(),
+         [
+            'code' => ['required', 'max:255', Rule::unique('properties')->ignore($property->id)],
 
-         'link' => 'required',
-         'plate' => 'required',
-         'fixed_asset' => 'required',
-         'sss_description' => ['required', 'max:255'],
-         'sss_address' => ['required', 'max:255'],
-         'urbanization_or_neighborhood' => ['required', 'max:255']
-      ], [
-         'code.unique' => 'Ya existe otro inmueble con ese código',
-         'code.required' => 'El código es requerido',
-         'code.max' => 'El código no debe ser mayor a 255 dígitos',
-         'fixed_asset.required' => 'El activo fijo es requerido',
-         'sss_description.required' => 'Debes agregar una descripción',
-         'sss_description.max' => 'La descripción no debe ser mayor a 255 dígitos',
-         'sss_address.required' => 'Debes agregar una dirección',
-         'sss_address.max' => 'La dirección no debe ser mayor a 255 dígitos',
-         'urbanization_or_neighborhood.required' => 'Debes agregar un barrio o urbanización',
-         'urbanization_or_neighborhood.max' => 'El barrio o urbanización no debe ser mayor a 255 dígitos',
-      ]);
+            'link' => 'required',
+            'plate' => 'required',
+            'fixed_asset' => 'required',
+            'sss_description' => ['required', 'max:255'],
+            'sss_address' => ['required', 'max:255'],
+            'urbanization_or_neighborhood' => ['required', 'max:255'],
+         ],
+         [
+            'code.unique' => 'Ya existe otro inmueble con ese código',
+            'code.required' => 'El código es requerido',
+            'code.max' => 'El código no debe ser mayor a 255 dígitos',
+            'fixed_asset.required' => 'El activo fijo es requerido',
+            'sss_description.required' => 'Debes agregar una descripción',
+            'sss_description.max' => 'La descripción no debe ser mayor a 255 dígitos',
+            'sss_address.required' => 'Debes agregar una dirección',
+            'sss_address.max' => 'La dirección no debe ser mayor a 255 dígitos',
+            'urbanization_or_neighborhood.required' => 'Debes agregar un barrio o urbanización',
+            'urbanization_or_neighborhood.max' => 'El barrio o urbanización no debe ser mayor a 255 dígitos',
+         ]
+      );
 
       if ($validator->passes()) {
          $property->update([
-            'code'   => $request->code,
-            'link'   => $request->link,
-            'plate'  => $request->plate,
-            'repeated'  => $request->repeated,
-            'discharged'=> $request->discharged,
-            'repeated_concept'=> $request->repeated_concept,
-            'secretaryship_id'   => $request->secretaryship,
-            'property_id'     => $request->property_id,
+            'code' => $request->code,
+            'link' => $request->link,
+            'plate' => $request->plate,
+            'repeated' => $request->repeated,
+            'discharged' => $request->discharged,
+            'repeated_concept' => $request->repeated_concept,
+            'secretaryship_id' => $request->secretaryship,
+            'property_id' => $request->property_id,
             'fixed_asset_code_id' => $request->fixed_asset_code_id,
-            'fixed_asset'         => $request->fixed_asset,
-            'commercial_appraisal'=> $request->commercial_appraisal,
-            'sss_address'         => $request->sss_address,
+            'fixed_asset' => $request->fixed_asset,
+            'commercial_appraisal' => $request->commercial_appraisal,
+            'sss_address' => $request->sss_address,
             'urbanization_or_neighborhood' => $request->urbanization_or_neighborhood,
-            'sss_description'     => $request->sss_description
+            'sss_description' => $request->sss_description,
          ]);
 
          return response()->json([
-            'status' => 'ok'
+            'status' => 'ok',
          ]);
       }
-      
-      return response()->json(['error'=>$validator->errors()]);
+
+      return response()->json(['error' => $validator->errors()]);
    }
 
    public function update_cadastral(Request $request, Property $property)
    {
-      $validator = Validator::make($request->all(), [
-         'cbml' => ['required', 'digits:11', 'min:0'],
-         'district_id' => 'required',
-         'cadastral_address' => ['required', 'max:255'],
-         'cadastral_area' => 'required',
-         'construction_area' => 'required',
-         'property_valuation' => 'required',
-         
-      ], [
-         'cbml.required' => 'Debes agregar un código CBML',
-         'cbml.digits' => 'El código CBML debe 11 dígitos. Prueba con un 0 al inicio para completar',
-         'cbml.min' => 'El código CBML no debe ser inferior a 0',
-         'cadastral_address.required' => 'Debes agregar la dirección de catastro',
-         'cadastral_address.max' => 'La dirección no debe ser mayor a 255 dígitos',
-         'cadastral_area.required' => 'Debes agregar el área catastral',
-         'construction_area.required' => 'Debes agregar el área de construcción',
-         'property_valuation.required' => 'Debes agregar el avalúo catastral',
-      ]);
+      $validator = Validator::make(
+         $request->all(),
+         [
+            'cbml' => ['required', 'digits:11', 'min:0'],
+            'district_id' => 'required',
+            'cadastral_address' => ['required', 'max:255'],
+            'cadastral_area' => 'required',
+            'construction_area' => 'required',
+            'property_valuation' => 'required',
+         ],
+         [
+            'cbml.required' => 'Debes agregar un código CBML',
+            'cbml.digits' => 'El código CBML debe 11 dígitos. Prueba con un 0 al inicio para completar',
+            'cbml.min' => 'El código CBML no debe ser inferior a 0',
+            'cadastral_address.required' => 'Debes agregar la dirección de catastro',
+            'cadastral_address.max' => 'La dirección no debe ser mayor a 255 dígitos',
+            'cadastral_area.required' => 'Debes agregar el área catastral',
+            'construction_area.required' => 'Debes agregar el área de construcción',
+            'property_valuation.required' => 'Debes agregar el avalúo catastral',
+         ]
+      );
 
       if ($validator->passes()) {
          $property->update([
-            'plate_number'   => $request->plate_number,
-            'property_deed'   => $request->property_deed,
-            'units'   => $request->units,
-            'writing_date'   => $request->writing_date,
-            'notary_id'   => $request->notary_id,
-            'which_notary_container'   => $request->which_notary_container,
-            'cbml'   => $request->cbml,
-            'commune_id'   => $request->commune_id,
-            'district_id'   => $request->district_id,
-            'cadastral_address'   => $request->cadastral_address,
-            'cadastral_area'   => $request->cadastral_area,
-            'construction_area'   => $request->construction_area,
-            'property_valuation'   => $request->property_valuation,
-            'is_rph'   => $request->is_rph
+            'plate_number' => $request->plate_number,
+            'property_deed' => $request->property_deed,
+            'units' => $request->units,
+            'writing_date' => $request->writing_date,
+            'notary_id' => $request->notary_id,
+            'which_notary_container' => $request->which_notary_container,
+            'cbml' => $request->cbml,
+            'commune_id' => $request->commune_id,
+            'district_id' => $request->district_id,
+            'cadastral_address' => $request->cadastral_address,
+            'cadastral_area' => $request->cadastral_area,
+            'construction_area' => $request->construction_area,
+            'property_valuation' => $request->property_valuation,
+            'is_rph' => $request->is_rph,
          ]);
 
          return response()->json([
-            'status' => 'ok'
+            'status' => 'ok',
          ]);
       }
-      
-      return response()->json(['error'=>$validator->errors()]);
+
+      return response()->json(['error' => $validator->errors()]);
    }
 
    public function update_normative(Request $request, Property $property)
    {
-      $validator = Validator::make($request->all(), [
-         'lat' => 'required',
-         'long' => 'required',
-         
-      ], [
-         'lat.required' => 'Debes agregar una coordenada',
-         'long.required' => 'Debes agregar una coordenada',
-      ]);
+      $validator = Validator::make(
+         $request->all(),
+         [
+            'lat' => 'required',
+            'long' => 'required',
+         ],
+         [
+            'lat.required' => 'Debes agregar una coordenada',
+            'long.required' => 'Debes agregar una coordenada',
+         ]
+      );
 
       if ($validator->passes()) {
-
-         $lat  = $this->getLatitude($request->lat);
+         $lat = $this->getLatitude($request->lat);
          $long = $this->getLongitude($request->long);
 
          $property->update([
@@ -401,15 +410,15 @@ class PropertiesController extends Controller
             'threat_torrential_avenues_id' => $request->threat_torrential_avenues_id,
             'threat_floods_id' => $request->threat_floods_id,
             'threat_mass_movements_id' => $request->threat_mass_movements_id,
-            'other_protection_categories_id' => $request->other_protection_categories_id
+            'other_protection_categories_id' => $request->other_protection_categories_id,
          ]);
 
          return response()->json([
-            'status' => 'ok'
+            'status' => 'ok',
          ]);
       }
-      
-      return response()->json(['error'=>$validator->errors()]);
+
+      return response()->json(['error' => $validator->errors()]);
    }
 
    public function update_documental(Request $request, Property $property)
@@ -434,16 +443,16 @@ class PropertiesController extends Controller
          'bic_group' => $request->bic_group,
          'bic_order' => $request->bic_order,
          'conservation_level' => $request->conservation_level,
-         'bic_act' => $request->bic_act
+         'bic_act' => $request->bic_act,
       ]);
 
       return response()->json([
-         'status' => 'ok'
+         'status' => 'ok',
       ]);
    }
 
    public function update(Request $request, Property $property)
-   { 
+   {
       $status = 'Pending';
 
       if ($request->publish_now == 'Sí') {
@@ -465,16 +474,16 @@ class PropertiesController extends Controller
       ]);
 
       return response()->json([
-         'status' => 'ok'
+         'status' => 'ok',
       ]);
    }
-   
+
    /**
-   * Remove the specified resource from storage.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
+    * Remove the specified resource from storage.
+    *
+    * @param  int  $id
+    * @return \Illuminate\Http\Response
+    */
    public function destroy(Property $property)
    {
       return back()->with('status', ['theme', 'Acción no permitida']);

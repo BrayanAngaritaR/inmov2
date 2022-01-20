@@ -14,6 +14,7 @@ class PolygonSeeder extends Seeder
    */
    public function run()
    {
+      Polygon::create(['title' => '-- Sin seleccionar']);
       Polygon::create(['title' => 'Z3_C1_1 Prado Centro']);
       Polygon::create(['title' => 'Z2_C2_3 Tricentenario']);
       Polygon::create(['title' => 'Z2_C2_4 ']);

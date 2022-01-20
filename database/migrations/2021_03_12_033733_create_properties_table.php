@@ -73,7 +73,7 @@ class CreatePropertiesTable extends Migration
 
          $table->mediumText('sss_description'); //Descripción corta (Junta de acción comunal, cancha, Biblioteca Santo Domingo, Cárcel, ...)
 
-         $table->double('commercial_appraisal')->nullable(); //Valor Libros (avaluo comercial) para SSS
+         $table->double('commercial_appraisal')->nullable(); //Valor Libros (avalúo comercial) para SSS
 
          $table->string('sss_address'); //Denominación (Dirección) por parte de SSS
          $table->string('urbanization_or_neighborhood'); //Ubanización/Barrio

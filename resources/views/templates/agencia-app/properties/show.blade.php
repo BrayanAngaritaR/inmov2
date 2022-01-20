@@ -79,16 +79,16 @@
                      <nav class="scroll-nav scroll-init fixed-column_menu-init">
                         <ul class="no-list-style">
                            <li>
-                              <a class="act-scrlink" href="#sec1"><i class="fal fa-home-lg-alt"></i></a><span>Toda la informacion</span>
+                              <a class="act-scrlink" href="#sec1"><i class="fal fa-home-lg-alt"></i></a><span>Toda la información</span>
                            </li>
                            <li>
-                              <a href="#sec2"><i class="fal fa-image"></i></a><span>Galeria</span>
+                              <a href="#sec2"><i class="fal fa-image"></i></a><span>Galería</span>
                            </li>
                            <li>
                               <a href="#sec3"><i class="fal fa-info"></i> </a><span>Detalles</span>
                            </li>
                            <li>
-                              <a href="#sec6"><i class="fal fa-map-pin"></i></a><span>Ubicacion</span>
+                              <a href="#sec6"><i class="fal fa-map-pin"></i></a><span>Ubicación</span>
                            </li>
                         </ul>
                         <div class="progress-indicator">
@@ -172,7 +172,7 @@
                         </div>
                         <div class="list-single-main-item_content fl-wrap">
                            <p>
-                              Este inmueble esta ubicado en <b>{{ $property->district->name }}</b>, comuna <b>{{ $property->commune->name }}</b> y se encuentra en <b>{{ $property->action->title }}</b>.
+                              Este inmueble está ubicado en <b>{{ $property->district->name }}</b>, comuna <b>{{ $property->commune->name }}</b> y se encuentra en <b>{{ $property->action->title }}</b>.
                            </p>
                         </div>
                      </div>
@@ -185,14 +185,14 @@
                         <div class="list-single-main-item_content fl-wrap">
                            <div class="details-list">
                               <ul>
-                                 <li><span>Codigo:</span>{{ $property->code }}</li>
+                                 <li><span>Código:</span>{{ $property->code }}</li>
                                  <li><span>Matrícula:</span>{{ $property->plate }}</li>
-                                 <li><span>Area total:</span>
+                                 <li><span>Área total:</span>
                                     {{ $property->cadastral_area }} {{ $property->units }}
                                  </li>
-                                 <li><span>Area construida:</span>{{ $property->construction_area }} {{ $property->units }}</li>
+                                 <li><span>Área construida:</span>{{ $property->construction_area }} {{ $property->units }}</li>
 
-                                 <li><span>Avaluo catastral:</span>${{ number_format($property->property_valuation) }}</li>
+                                 <li><span>Avalúo catastral:</span>${{ number_format($property->property_valuation) }}</li>
                               </ul>
                            </div>
                         </div>
@@ -231,11 +231,11 @@
                            </p>
 
                            <p class="text-justify">
-                              <b>Inst_3Nivel</b>: {{ $property->thirdLevelInstrument->title }}
+                              <b>Instrumento de tercer nivel</b>: {{ $property->thirdLevelInstrument->title }}
                            </p>
 
                            <p class="text-justify">
-                              <b>Destinacion actual</b>: {{ $property->destination->title }}
+                              <b>Destinación actual</b>: {{ $property->destination->title }}
                            </p>
 
                            <p class="text-justify">
@@ -249,7 +249,7 @@
                      </div>
                      <div class="list-single-main-item fl-wrap">
                         <div class="list-single-main-item-title">
-                           <h3>Caracteristicas adicionales</h3>
+                           <h3>Características adicionales</h3>
                         </div>
                         <div class="list-single-main-item_content fl-wrap">
                            <div class="listing-features">

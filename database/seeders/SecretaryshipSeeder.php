@@ -15,26 +15,15 @@ class SecretaryshipSeeder extends Seeder
    */
    public function run()
    {
-      Secretaryship::create(['title' => 'Secretaría de hacienda']);
+      SecretaryshipAssetCode::create([
+         'code' => '--',
+         'description' => 'Sin seleccionar'
+      ]);
 
       SecretaryshipAssetCode::create([
          'code' => 'BZ',
          'description' => 'Bienes Fiscales'
       ]);
-
-// Secretaría de Cultura Ciudadana
-// Secretaría de Desarrollo Social - Participación Ciudadana
-// Secretaría de Desarrollo Económico
-// Secretaria de Educación
-// Equipamiento Recreativo
-// Fondo Local de Salud- Secretaría de Salud
-// Secretaría General
-// Secretaría de Gobierno
-// Secretaría de Medio Ambiente
-// Secretaria de Obras Públicas- Infraestructura Física
-// Secretaría de Servicios Administrativos - Suministros y Servicios
-// Secretaría de  la Mujer
-// Secretaría de Transito -Movilidad
 
       SecretaryshipAssetCode::create([
          'code' => 'IZ',
@@ -99,6 +88,7 @@ class SecretaryshipSeeder extends Seeder
          'code' => 'TZ',
       ]);
 
+      Secretaryship::create(['title' => 'Secretaría de hacienda']);
       Secretaryship::create(['title' => 'Secretaría general']);
       Secretaryship::create(['title' => 'Secretaría de gestión humana y servicio a la ciudadanía ']);
       Secretaryship::create(['title' => 'Secretaría de suministros y servicios']);
@@ -111,6 +101,16 @@ class SecretaryshipSeeder extends Seeder
       Secretaryship::create(['title' => 'Secretaría de la juventud']);
       Secretaryship::create(['title' => 'Secretaría de seguridad y convivencia']);
       Secretaryship::create(['title' => 'Departamento administrativo de gestión del riesgo de desastres']);
+
+      Secretaryship::create(['title' => 'Secretaría de Desarrollo Social - Participación Ciudadana']);
+      Secretaryship::create(['title' => 'Secretaria de Educación']);
+      Secretaryship::create(['title' => 'Equipamiento Recreativo']);
+      Secretaryship::create(['title' => 'Fondo Local de Salud- Secretaría de Salud']);
+      Secretaryship::create(['title' => 'Secretaría de Gobierno']);
+      Secretaryship::create(['title' => 'Secretaria de Obras Públicas- Infraestructura Física']);
+      Secretaryship::create(['title' => 'Secretaría de Servicios Administrativos - Suministros y Servicios']);
+      Secretaryship::create(['title' => 'Secretaría de la Mujer']);
+      Secretaryship::create(['title' => 'Secretaría de Tránsito - Movilidad']);
       Secretaryship::create(['title' => 'Secretaría de infraestructura física ']);
       Secretaryship::create(['title' => 'Secretaría de medio ambiente']);
       Secretaryship::create(['title' => 'Secretaría de movilidad ']);

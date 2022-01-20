@@ -23,166 +23,170 @@ use OwenIt\Auditing\Contracts\Auditable;
 
 class Property extends Model implements Auditable
 {
-	use \OwenIt\Auditing\Auditable;
-	use HasFactory;
+   use \OwenIt\Auditing\Auditable;
+   use HasFactory;
 
-	protected $fillable = [
-		'secure_code',
-		'code',
-		'link',
-		'plate',
-		'repeated',
-		'discharged',
-		'repeated_concept',
-		'secretaryship',
-		'property_id',
-		'fixed_asset_code_id',
-		'fixed_asset',
-		'commercial_appraisal',
-		'sss_address',
-		'urbanization_or_neighborhood',
-		'sss_description',
-		'plate_number',
-		'property_deed',
-		'units',
-		'writing_date',
-		'notary_id',
-		'cbml',
-		'commune_id',
-		'district_id',
-		'cadastral_address',
-		'cadastral_area',
-		'construction_area',
-		'property_valuation',
-		'is_rph',
+   protected $fillable = [
+      //Identificación
+      'secure_code',
+      'code',
+      'link',
+      'plate',
+      'repeated',
+      'repeated_concept',
+      'discharged',
+      'secretaryship_id',
+      'property_id',
+      'fixed_asset_code_id',
+      'fixed_asset',
+      'sss_description',
+      'commercial_appraisal',
 
-		'latitude',
-		'longitude',
+      //Información catastral
+      'plate_number',
+      'property_deed',
+      'units',
+      'writing_date',
+      'notary_id',
+      'which_notary_container',
+      'cbml',
+      'commune_id',
+      'district_id',
+      'cadastral_address',
+      'cadastral_area',
+      'construction_area',
+      'property_valuation',
+      'sss_address',
+      'urbanization_or_neighborhood',
+      'is_rph',
 
-		'map_latitude',
-		'map_longitude',
+      //Información normativa
+      'latitude',
+      'longitude',
+      'map_latitude',
+      'map_longitude',
+      'floor_classification_id',
+      'macroproject_id',
+      'treatment_id',
+      'polygon_id',
+      'floor_use_id',
+      'third_level_instrument_id',
+      'threat_torrential_avenues_id',
+      'threat_floods_id',
+      'threat_mass_movements_id',
+      'other_protection_categories_id',
 
-		'floor_clasification_id',
-		'secretaryship_id',
-		
+      //Información documental
+      'photography',
+      'cadastral_file',
+      'vur',
+      'title_study',
+      'georeferenced',
+      'scriptures',
+      'loan',
+      'loan_start_date',
+      'loan_end_date',
+      'entity_to_which_is_assigned',
+      'loan_information',
+      'expedient',
+      'building_permit',
+      'resolution',
+      'bic',
+      'bic_name',
+      'bic_group',
+      'bic_order',
+      'conservation_level',
+      'bic_act',
 
-		//Información documental
-		'photography',
-		'loan',
-		'loan_start_date',
-		'loan_end_date',
-		'entity_id',
-		'loan_information',
-		'cadastral_file',
-		'vur',
-		'title_study',
-		'georeferenced',
-		'scriptures',
-		'expedient',
-		'entity_to_which_is_assigned',
-		'building_permit',
-		'bic',
-		'bic_name',
-		'bic_group',
-		'bic_order',
-		'conservation_level',
-		'bic_act',
-		'resolution',
-
-		//Análisis
-		'destination_id',
-		'opportunity_id',
-		'prioritization_level',
-		'action_id',
-		'project_managed',
-		'observations',
-		'date_of_analysis_by_sss',
-		'revised',
-		'available',
-		'responsable_id',
-		'status'
+      //Análisis
+      'status',
+      'destination_id',
+      'opportunity_id',
+      'prioritization_level',
+      'action_id',
+      'project_managed',
+      'observations',
+      'date_of_analysis_by_sss',
+      'revised',
+      'available',
+      'responsable_id',
    ];
 
    public function getRouteKeyName()
    {
-   	return 'code';
+      return 'code';
    }
 
    //Relaciones
    public function destination()
    {
-   	return $this->belongsTo(Destination::class);
+      return $this->belongsTo(Destination::class);
    }
 
    public function propertyType()
    {
-   	return $this->belongsTo(PropertyType::class, 'property_type');
+      return $this->belongsTo(PropertyType::class, 'property_type');
    }
 
    public function district()
    {
-   	return $this->belongsTo(District::class);
+      return $this->belongsTo(District::class);
    }
 
    public function commune()
    {
-   	return $this->belongsTo(Commune::class);
+      return $this->belongsTo(Commune::class);
    }
 
    public function images()
    {
-   	return $this->hasMany(Image::class);
+      return $this->hasMany(Image::class);
    }
-
 
    public function secretaryship()
    {
-   	return $this->belongsTo(Secretaryship::class);
+      return $this->belongsTo(Secretaryship::class);
    }
 
    public function floorClassification()
    {
-   	return $this->belongsTo(FloorClassification::class, 'floor_classification_id');
+      return $this->belongsTo(FloorClassification::class, 'floor_classification_id');
    }
 
    public function macroproject()
    {
-   	return $this->belongsTo(Macroproject::class);
+      return $this->belongsTo(Macroproject::class);
    }
 
    public function treatment()
    {
-   	return $this->belongsTo(Treatment::class);
+      return $this->belongsTo(Treatment::class);
    }
 
    public function polygon()
    {
-   	return $this->belongsTo(Polygon::class);
+      return $this->belongsTo(Polygon::class);
    }
 
    public function floorUse()
    {
-   	return $this->belongsTo(FloorUse::class);
+      return $this->belongsTo(FloorUse::class);
    }
 
    public function thirdLevelInstrument()
    {
-   	return $this->belongsTo(ThirdLevelInstrument::class, 'third_level_instrument_id');
+      return $this->belongsTo(ThirdLevelInstrument::class, 'third_level_instrument_id');
    }
 
    public function opportunity()
    {
-   	return $this->belongsTo(Opportunity::class);
+      return $this->belongsTo(Opportunity::class);
    }
 
    public function action()
    {
-   	return $this->belongsTo(Action::class);
+      return $this->belongsTo(Action::class);
    }
 
-   
-
-
    //$post = Post::with('audits')->first();  //Get the first post
-
 }

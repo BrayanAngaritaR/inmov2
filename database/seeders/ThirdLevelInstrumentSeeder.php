@@ -14,6 +14,7 @@ class ThirdLevelInstrumentSeeder extends Seeder
    */
    public function run()
    {
+      ThirdLevelInstrument::create(['title' => '-- Sin seleccionar']);
       ThirdLevelInstrument::create(['title' => 'Plan especial de manejo del patrimonio (PEMP)']);
       ThirdLevelInstrument::create(['title' => 'Plan Parcial (PP)']);
       ThirdLevelInstrument::create(['title' => 'Plan Maestro (PM)']);

@@ -14,6 +14,7 @@ class FloorClasificationSeeder extends Seeder
    */
    public function run()
    {
+      FloorClassification::create(['title' => '-- Sin seleccionar']);
       FloorClassification::create(['title' => 'Urbano']);
       FloorClassification::create(['title' => 'Rural']);
       FloorClassification::create(['title' => 'Expansión urbana']);

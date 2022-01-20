@@ -57,7 +57,6 @@
       <script src="{{ asset('templates/agencia-app/js/scripts.js' )}}"></script>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuZG3kop9LguoZtwoDdypGB23EnY5f9p4&libraries=places"></script>
       <script src="{{ asset('templates/agencia-app/js/map-plugins.js' )}}"></script>
-      <script src="{{ asset('templates/agencia-app/js/map-listing.js' )}}"></script>
 
       <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 

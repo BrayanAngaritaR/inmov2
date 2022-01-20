@@ -14,6 +14,7 @@ class ThreatSeeder extends Seeder
    */
    public function run()
    {
+      Threat::create(['title' => '-- Sin seleccionar']);
       Threat::create(['title' => 'Alto riesgo no mitigable']);
       Threat::create(['title' => 'Alta']);
       Threat::create(['title' => 'Media - Zona con condiciones de riesgo']);

@@ -14,6 +14,7 @@ class TreatmentSeeder extends Seeder
    */
    public function run()
    {
+      Treatment::create(['title' => '-- Sin seleccionar']);
       Treatment::create(['title' => 'Áreas de Preservación de Infraestructuras y del Sistema Público y Colectivo']);
       Treatment::create(['title' => 'Conservación']);
       Treatment::create(['title' => 'Conservación en zonas de influencia de los BIC Nacional']);

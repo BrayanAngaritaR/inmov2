@@ -15,6 +15,7 @@ class DestinationSeeder extends Seeder
    public function run()
    {
       //Destinación
+      Destination::create(['title' => '-- Sin seleccionar']);
       Destination::create(['title' => 'Residencial']);
       Destination::create(['title' => 'Comercial']);
       Destination::create(['title' => 'Servicios']);
