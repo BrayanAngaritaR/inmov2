@@ -27,6 +27,7 @@ class Property extends Model implements Auditable
 	use HasFactory;
 
 	protected $fillable = [
+		'secure_code',
 		'code',
 		'link',
 		'plate',
@@ -55,32 +56,15 @@ class Property extends Model implements Auditable
 		'property_valuation',
 		'is_rph',
 
-        //Revisar de ahí para abajo
-		'secretaryship_id',
-		'property_id',
-		'code',
-		'fixed_asset',
-		'plate_number',
-		'plate',
-		'description',
-		'cbml',
-		'commune_id',
-		'district_id',
-		'address',
-		'cadastral_area',
-		'construction_area',
-		'property_valuation',
-		'floor_clasification_id',
-		'macroproject_id',
-		'treatment_id',
-		'polygon_id',
-		'floor_use_id',
-		'inst_3nivel_id',
-		'destination_id',
-		'opportunity_id',
-		'action_id',
-		'project_managed',
-		'observations',
+		'latitude',
+		'longitude',
+
+		'map_latitude',
+		'map_longitude',
+		
+
+		//Información documental
+		'photography',
 		'loan',
 		'loan_start_date',
 		'loan_end_date',
@@ -89,11 +73,31 @@ class Property extends Model implements Auditable
 		'cadastral_file',
 		'vur',
 		'title_study',
-		'link',
-		'property_opportunity',
-		'priorization',
-		'latitude',
-		'longitude',
+		'georeferenced',
+		'scriptures',
+		'expedient',
+		'entity_to_which_is_assigned',
+		'building_permit',
+		'bic',
+		'bic_name',
+		'bic_group',
+		'bic_order',
+		'conservation_level',
+		'bic_act',
+		'resolution',
+
+		//Análisis
+		'destination_id',
+		'opportunity_id',
+		'prioritization_level',
+		'action_id',
+		'project_managed',
+		'observations',
+		'date_of_analysis_by_sss',
+		'revised',
+		'available',
+		'responsable_id',
+		'status'
    ];
 
    public function getRouteKeyName()

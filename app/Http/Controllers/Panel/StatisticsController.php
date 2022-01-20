@@ -7,16 +7,13 @@ use Illuminate\Http\Request;
 
 class StatisticsController extends Controller
 {
+   //Solicitar que el usuario esté autenticado
    public function __construct()
    {
       $this->middleware('auth');
    }
    
-   /**
-   * Display a listing of the resource.
-   *
-   * @return \Illuminate\Http\Response
-   */
+   //Muestra la página principal de las estadísticas
    public function index()
    {
       return view('panel.statistics.index');

@@ -13,6 +13,19 @@
          </ul>
          <!--second level end-->
       </li>
+
+      <li>
+         <a href="#">Proyectos <i class="fa fa-caret-down"></i></a>
+         <!--second level -->
+         <ul>
+            <li><a href="{{ route('user.soon.index') }}">Hotel y centro de negocios Plaza Mayor</a></li>
+            <li><a href="{{ route('user.soon.index') }}">Plan rector</a></li>
+            <li><a href="{{ route('user.soon.index') }}">Zona Franca Medellín</a></li>
+            <li><a href="{{ route('user.soon.index') }}">Plan integral del barrio Prado</a></li>
+         </ul>
+         <!--second level end-->
+      </li>
+
       <li>
          <a href="#">Calculadora <i class="fa fa-caret-down"></i></a>
          <!--second level -->
@@ -30,6 +43,8 @@
          <a href="#">Más <i class="fa fa-caret-down"></i></a>
          <!--second level -->
          <ul>
+            <li><a href="{{ route('user.about.index') }}">Blog</a></li>
+            <li><a href="{{ route('user.about.index') }}">Noticias</a></li>
             <li><a href="{{ route('user.about.index') }}">Sobre nosotros</a></li>
             <li><a href="{{ route('user.contact.index') }}">Contáctanos</a></li>
             <li><a href="{{ route('user.faq.index') }}">Preguntas frecuentes</a></li>

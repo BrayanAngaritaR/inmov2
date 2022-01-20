@@ -24,6 +24,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Validator;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
 
 class PropertiesController extends Controller
 {
@@ -76,7 +78,7 @@ class PropertiesController extends Controller
    public function store(Request $request)
    {
       $validator = Validator::make($request->all(), [
-         'code' => ['required', 'max:255', 'unique:properties'],
+         'code' => ['required', 'max:255', 'unique:properties,code'],
          'link' => 'required',
          'plate' => 'required',
          'fixed_asset_code_id' => 'required',
@@ -111,6 +113,7 @@ class PropertiesController extends Controller
      
       if ($validator->passes()) {
          $property = Property::create([
+            'secure_code' =>  Str::uuid()->toString(),
             'code' => $request->code,
             'link' => $request->link,
             'plate' => $request->plate,
@@ -151,6 +154,54 @@ class PropertiesController extends Controller
       return response()->json(['error'=>$validator->errors()]);
    }
 
+   function getLatitude($lat)
+   {
+      //Calcular la latitud
+      $lat_deg = $this->before('°', $lat);
+      $lat_min = $this->between ('°', "'", $lat);
+
+      if (str_contains($lat, 'N')) {
+         $lat_sec = $this->between ("'", "N", $lat);
+         $lat_orientation = 'N';
+      } else {
+         $lat_sec = $this->between ("'", "S", $lat);
+         $lat_orientation = 'S';
+      }
+
+      if ($lat_orientation == 'S') {
+         $latitude = $this->DMStoDEC($lat_deg,$lat_min,$lat_sec);
+         $latitude = '-'.$latitude;
+      } else {
+         $latitude = $this->DMStoDEC($lat_deg,$lat_min,$lat_sec);
+      }
+
+      return $latitude;
+   }
+
+   function getLongitude($long)
+   {
+      //Calcular longitud
+      $long_deg = $this->before('°', $long);
+      $long_min = $this->between ('°', "'", $long);
+
+      if (str_contains($long, 'W')) {
+         $long_sec = $this->between ("'", "W", $long);
+         $long_orientation = 'W';
+      } else {
+         $long_sec = $this->between ("'", "E", $long);
+         $lat_orientation = 'E';
+      }
+
+      if ($long_orientation == 'W') {
+         $longitude = $this->DMStoDEC($long_deg,$long_min,$long_sec);
+         $longitude = '-'.$longitude;
+      } else {
+         $longitude = $this->DMStoDEC($long_deg,$long_min,$long_sec);
+      }
+
+      return $longitude;
+   }
+
    function DMStoDEC($deg,$min,$sec)
    {
       return $deg+((($min*60)+($sec))/3600);
@@ -186,7 +237,6 @@ class PropertiesController extends Controller
       $notaries = Notary::all();
       $communes = Commune::orderBy('name', 'ASC')->get();
       $districts = District::orderBy('name', 'ASC')->get();
-
       $floor_classifications = FloorClassification::orderBy('title', 'ASC')->get();
       $macroprojects = Macroproject::orderBy('name', 'ASC')->get();
       $treatments = Treatment::orderBy('title', 'ASC')->get();
@@ -207,7 +257,6 @@ class PropertiesController extends Controller
          'communes',
          'districts',
          'property',
-
          'floor_classifications',
          'macroprojects',
          'treatments',
@@ -222,98 +271,204 @@ class PropertiesController extends Controller
       ]));
    }
 
-   /**
-   * Update the specified resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-   public function update(Request $request, Property $property)
+   public function update_identification(Request $request, Property $property)
    {
-      // $lat = $request->lat;
-      // $lat_deg = $this->before('°', $lat);
-      // $lat_min = $this->between ('°', "'", $lat);
+      $validator = Validator::make($request->all(), [
+         'code' => [
+            'required', 'max:255',
+            Rule::unique('properties')->ignore($property->id),
+         ],
 
-      // if (str_contains($lat, 'N')) {
-      //    $lat_sec = $this->between ("'", "N", $lat);
-      //    $lat_orientation = 'N';
-      // } else {
-      //    $lat_sec = $this->between ("'", "S", $lat);
-      //    $lat_orientation = 'S';
-      // }
+         'link' => 'required',
+         'plate' => 'required',
+         'fixed_asset' => 'required',
+         'sss_description' => ['required', 'max:255'],
+         'sss_address' => ['required', 'max:255'],
+         'urbanization_or_neighborhood' => ['required', 'max:255']
+      ], [
+         'code.unique' => 'Ya existe otro inmueble con ese código',
+         'code.required' => 'El código es requerido',
+         'code.max' => 'El código no debe ser mayor a 255 dígitos',
+         'fixed_asset.required' => 'El activo fijo es requerido',
+         'sss_description.required' => 'Debes agregar una descripción',
+         'sss_description.max' => 'La descripción no debe ser mayor a 255 dígitos',
+         'sss_address.required' => 'Debes agregar una dirección',
+         'sss_address.max' => 'La dirección no debe ser mayor a 255 dígitos',
+         'urbanization_or_neighborhood.required' => 'Debes agregar un barrio o urbanización',
+         'urbanization_or_neighborhood.max' => 'El barrio o urbanización no debe ser mayor a 255 dígitos',
+      ]);
 
-      // if ($lat_orientation == 'S') {
-      //    $latitude = $this->DMStoDEC($lat_deg,$lat_min,$lat_sec);
-      //    $latitude = '-'.$latitude;
-      // } else {
-      //    $latitude = $this->DMStoDEC($lat_deg,$lat_min,$lat_sec);
-      // }
+      if ($validator->passes()) {
+         $property->update([
+            'code'   => $request->code,
+            'link'   => $request->link,
+            'plate'  => $request->plate,
+            'repeated'  => $request->repeated,
+            'discharged'=> $request->discharged,
+            'repeated_concept'=> $request->repeated_concept,
+            'secretaryship_id'   => $request->secretaryship,
+            'property_id'     => $request->property_id,
+            'fixed_asset_code_id' => $request->fixed_asset_code_id,
+            'fixed_asset'         => $request->fixed_asset,
+            'commercial_appraisal'=> $request->commercial_appraisal,
+            'sss_address'         => $request->sss_address,
+            'urbanization_or_neighborhood' => $request->urbanization_or_neighborhood,
+            'sss_description'     => $request->sss_description
+         ]);
 
-      // //Calcular longitud
-      // $long = $request->long;
-      // $long_deg = $this->before('°', $long);
-      // $long_min = $this->between ('°', "'", $long);
-
-      // if (str_contains($long, 'W')) {
-      //    $long_sec = $this->between ("'", "W", $long);
-      //    $long_orientation = 'W';
-      // } else {
-      //    $long_sec = $this->between ("'", "E", $long);
-      //    $lat_orientation = 'E';
-      // }
-
-      // if ($long_orientation == 'W') {
-      //    $longitude = $this->DMStoDEC($long_deg,$long_min,$long_sec);
-      //    $longitude = '-'.$longitude;
-      // } else {
-      //    $longitude = $this->DMStoDEC($long_deg,$long_min,$long_sec);
-      // }
-
-      $property->secretaryship_id = $request->secretaryship;
-      $property->property_type = $request->propertytype;
-      $property->code = $request->code;
-      $property->fixed_asset = $request->fixed_asset;
-      $property->plate_number = $request->plate_number;
-      $property->plate = $request->plate;
-      $property->description = $request->description;
-      $property->cbml = $request->cbml;
-      $property->commune_id = $request->commune_id;
-      $property->district_id = $request->district_id;
-      $property->address = $request->address;
-      $property->cadastral_area = $request->cadastral_area;
-      $property->construction_area = $request->construction_area;
-      $property->property_valuation = $request->property_valuation;
-      $property->floor_clasification_id = $request->floor_clasification_id;
-      $property->macroproject_id = $request->macroproject_id;
-      $property->treatment_id = $request->treatment_id;
-      $property->polygon_id = $request->polygon_id;
-      $property->floor_use_id = $request->floor_use_id;
-      $property->inst_3nivel_id = $request->inst_3nivel_id;
-      $property->destination_id = $request->destination_id;
-      $property->opportunity_id = $request->opportunity_id;
-      $property->action_id = $request->action_id;
-      $property->project_managed = $request->project_managed;
-      $property->observations = $request->observations;
-      $property->loan = $loan;
-      $property->loan_start_date = $request->loan_start_date;
-      $property->loan_end_date = $request->loan_end_date;
-      $property->entity_id = $request->secretaryship;
-      $property->loan_information = $request->loan_information;
-      $property->cadastral_file = $cadastral_file;
-      $property->vur = $vur;
-      $property->title_study = $title_study;
-      $property->link = $request->link;
-      $property->property_opportunity = $request->property_opportunity;
-      $property->priorization = $request->priorization;
-      $property->latitude = $request->lat;
-      $property->longitude = $request->long;
-
-      $property->update();
-
-      return back()->with('status', ['theme', 'Se ha actualizado el inmueble']);
+         return response()->json([
+            'status' => 'ok'
+         ]);
+      }
+      
+      return response()->json(['error'=>$validator->errors()]);
    }
 
+   public function update_cadastral(Request $request, Property $property)
+   {
+      $validator = Validator::make($request->all(), [
+         'cbml' => ['required', 'digits:11', 'min:0'],
+         'district_id' => 'required',
+         'cadastral_address' => ['required', 'max:255'],
+         'cadastral_area' => 'required',
+         'construction_area' => 'required',
+         'property_valuation' => 'required',
+         
+      ], [
+         'cbml.required' => 'Debes agregar un código CBML',
+         'cbml.digits' => 'El código CBML debe 11 dígitos. Prueba con un 0 al inicio para completar',
+         'cbml.min' => 'El código CBML no debe ser inferior a 0',
+         'cadastral_address.required' => 'Debes agregar la dirección de catastro',
+         'cadastral_address.max' => 'La dirección no debe ser mayor a 255 dígitos',
+         'cadastral_area.required' => 'Debes agregar el área catastral',
+         'construction_area.required' => 'Debes agregar el área de construcción',
+         'property_valuation.required' => 'Debes agregar el avalúo catastral',
+      ]);
+
+      if ($validator->passes()) {
+         $property->update([
+            'plate_number'   => $request->plate_number,
+            'property_deed'   => $request->property_deed,
+            'units'   => $request->units,
+            'writing_date'   => $request->writing_date,
+            'notary_id'   => $request->notary_id,
+            'which_notary_container'   => $request->which_notary_container,
+            'cbml'   => $request->cbml,
+            'commune_id'   => $request->commune_id,
+            'district_id'   => $request->district_id,
+            'cadastral_address'   => $request->cadastral_address,
+            'cadastral_area'   => $request->cadastral_area,
+            'construction_area'   => $request->construction_area,
+            'property_valuation'   => $request->property_valuation,
+            'is_rph'   => $request->is_rph
+         ]);
+
+         return response()->json([
+            'status' => 'ok'
+         ]);
+      }
+      
+      return response()->json(['error'=>$validator->errors()]);
+   }
+
+   public function update_normative(Request $request, Property $property)
+   {
+      $validator = Validator::make($request->all(), [
+         'lat' => 'required',
+         'long' => 'required',
+         
+      ], [
+         'lat.required' => 'Debes agregar una coordenada',
+         'long.required' => 'Debes agregar una coordenada',
+      ]);
+
+      if ($validator->passes()) {
+
+         $lat  = $this->getLatitude($request->lat);
+         $long = $this->getLongitude($request->long);
+
+         $property->update([
+            'latitude' => $request->lat,
+            'longitude' => $request->long,
+            'map_latitude' => $lat,
+            'map_longitude' => $long,
+            'floor_classification_id' => $request->floor_classification_id,
+            'macroproject_id' => $request->macroproject_id,
+            'treatment_id' => $request->treatment_id,
+            'polygon_id' => $request->polygon_id,
+            'floor_use_id' => $request->floor_use_id,
+            'third_level_instrument_id' => $request->third_level_instrument_id,
+            'threat_torrential_avenues_id' => $request->threat_torrential_avenues_id,
+            'threat_floods_id' => $request->threat_floods_id,
+            'threat_mass_movements_id' => $request->threat_mass_movements_id,
+            'other_protection_categories_id' => $request->other_protection_categories_id
+         ]);
+
+         return response()->json([
+            'status' => 'ok'
+         ]);
+      }
+      
+      return response()->json(['error'=>$validator->errors()]);
+   }
+
+   public function update_documental(Request $request, Property $property)
+   {
+      $property->update([
+         'photography' => $request->photography,
+         'cadastral_file' => $request->cadastral_file,
+         'vur' => $request->vur,
+         'title_study' => $request->title_study,
+         'georeferenced' => $request->georeferenced,
+         'scriptures' => $request->scriptures,
+         'loan' => $request->loan,
+         'loan_start_date' => $request->loan_start_date,
+         'loan_end_date' => $request->loan_end_date,
+         'entity_to_which_is_assigned' => $request->entity_to_which_is_assigned,
+         'loan_information' => $request->loan_information,
+         'expedient' => $request->expedient,
+         'building_permit' => $request->building_permit,
+         'resolution' => $request->resolution,
+         'bic' => $request->bic,
+         'bic_name' => $request->bic_name,
+         'bic_group' => $request->bic_group,
+         'bic_order' => $request->bic_order,
+         'conservation_level' => $request->conservation_level,
+         'bic_act' => $request->bic_act
+      ]);
+
+      return response()->json([
+         'status' => 'ok'
+      ]);
+   }
+
+   public function update(Request $request, Property $property)
+   { 
+      $status = 'Pending';
+
+      if ($request->published_now == 'Sí') {
+         $status = 'Published';
+      }
+
+      $property->update([
+         'status' => $status,
+         'destination_id' => $request->destination_id,
+         'opportunity_id' => $request->opportunity_id,
+         'prioritization_level' => $request->prioritization_level,
+         'action_id' => $request->action_id,
+         'project_managed' => $request->project_managed,
+         'observations' => $request->observations,
+         'date_of_analysis_by_sss' => $request->date_of_analysis_by_sss,
+         'revised' => $request->revised,
+         'available' => $request->available,
+         'responsable_id' => $request->responsable_id,
+      ]);
+
+      return response()->json([
+         'status' => 'ok'
+      ]);
+   }
+   
    /**
    * Remove the specified resource from storage.
    *

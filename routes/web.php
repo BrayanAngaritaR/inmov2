@@ -84,7 +84,18 @@ Route::post('/panel/properties/create', [App\Http\Controllers\Panel\PropertiesCo
 
 Route::get('/panel/properties/{property}/edit', [App\Http\Controllers\Panel\PropertiesController::class, 'edit'])->name('panel.properties.edit');
 
-Route::post('/panel/properties/{property}/edit', [App\Http\Controllers\Panel\PropertiesController::class, 'update'])->name('panel.properties.update');
+//Actualizar la información de los TABS
+Route::post('/panel/properties/{property}/update-identification', [App\Http\Controllers\Panel\PropertiesController::class, 'update_identification'])->name('panel.properties.update.identification');
+
+Route::post('/panel/properties/{property}/update-cadastral', [App\Http\Controllers\Panel\PropertiesController::class, 'update_cadastral'])->name('panel.properties.update.cadastral');
+
+Route::post('/panel/properties/{property}/update-normative', [App\Http\Controllers\Panel\PropertiesController::class, 'update_normative'])->name('panel.properties.update.normative');
+
+Route::post('/panel/properties/{property}/update-documental', [App\Http\Controllers\Panel\PropertiesController::class, 'update_documental'])->name('panel.properties.update.documental');
+
+Route::post('/panel/properties/{property}/update-analysis', [App\Http\Controllers\Panel\PropertiesController::class, 'update_analysis'])->name('panel.properties.update.analysis');
+
+Route::post('/panel/properties/{property}/update', [App\Http\Controllers\Panel\PropertiesController::class, 'update'])->name('panel.properties.update');
 
 Route::delete('/panel/properties/{property}/destroy', [App\Http\Controllers\Panel\PropertiesController::class, 'destroy'])->name('panel.properties.destroy');
 

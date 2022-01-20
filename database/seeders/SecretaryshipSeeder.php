@@ -124,6 +124,8 @@ class SecretaryshipSeeder extends Seeder
       Secretaryship::create(['title' => 'Instituto Tecnológico Metropolitano –ITM–']);
       Secretaryship::create(['title' => 'Instituto de deportes y recreación de Medellín –INDER–']);
       Secretaryship::create(['title' => 'Biblioteca Pública Piloto']);
+      Secretaryship::create(['title' => 'Bienes fiscales de los que no se tiene identificada a qué secretaría están adscritos.']);
+
       Secretaryship::create(['title' => 'Agencia para la Educación Superior –SAPIENCIA–']);
       Secretaryship::create(['title' => 'Hospital General de Medellín -E.S.E-']);
       Secretaryship::create(['title' => 'Metrosalud -E.S.E']);

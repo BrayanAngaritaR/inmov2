@@ -161,6 +161,16 @@
                            </div>
                         </div>
 
+                        <div class="col-sm-12">
+                           <div class="form-group">
+                              <label class="form-label" for="sss_description">Descripción corta* (Utilizado para el nombre del bien)</label>
+                              <div class="form-control-wrap">
+                                 <input type="text" class="form-control" id="sss_description" name="sss_description" value="{{ old('sss_description') }}" placeholder="Ej: Junta de acción comunal, cancha, Biblioteca Santo Domingo, Cárcel, ..." />
+                                 <span class="text-danger error-text sss_description_err"></span>
+                              </div>
+                           </div>
+                        </div>
+
                         <div class="col-sm-12 col-lg-6">
                            <div class="form-group">
                               <label class="form-label">Dirección*</label>
@@ -177,16 +187,6 @@
                               <div class="form-control-wrap">
                                  <input type="text" class="form-control" name="urbanization_or_neighborhood" id="urbanization_or_neighborhood" placeholder="Ej: Francisco Antonio Zea" value="{{ old('urbanization_or_neighborhood') }}" />
                                  <span class="text-danger error-text urbanization_or_neighborhood_err"></span>
-                              </div>
-                           </div>
-                        </div>
-
-                        <div class="col-sm-12">
-                           <div class="form-group">
-                              <label class="form-label" for="sss_description">Descripción corta* (Utilizado para el nombre del bien)</label>
-                              <div class="form-control-wrap">
-                                 <input type="text" class="form-control" id="sss_description" name="sss_description" value="{{ old('sss_description') }}" placeholder="Ej: Junta de acción comunal, cancha, Biblioteca Santo Domingo, Cárcel, ..." />
-                                 <span class="text-danger error-text sss_description_err"></span>
                               </div>
                            </div>
                         </div>
@@ -320,7 +320,7 @@
 
                         <div class="col-sm-12 col-lg-4">
                            <div class="form-group">
-                              <label class="form-label" for="cadastral_area">Área catastral*</label>
+                              <label class="form-label" for="cadastral_area">Área catastral (lote)*</label>
 
                               <div class="form-control-wrap">
                                  <div class="input-group">
@@ -493,10 +493,6 @@
       });
    }
 
-   // function printErrorMsg (msg) {
-   
-   // }
-
    function printErrorMsg (msg) {
       $(".print-error-msg").find("ul").html('');
       $(".print-error-msg").css('display','block');
@@ -504,7 +500,7 @@
          $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
          $('.'+key+'_err').text(value);
       });
-  }
+   }
 
    $(document).ready(function () {
       //Verificar si la opción seleccionada es "Repetida"

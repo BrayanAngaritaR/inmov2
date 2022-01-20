@@ -15,13 +15,13 @@ class CreatePropertiesTable extends Migration
    {
       Schema::create('properties', function (Blueprint $table) {
          $table->id();
-
+         $table->uuid('secure_code');
          #######################
          #  Identificación
          #######################
 
          //ID
-         $table->string('code'); 
+         $table->string('code')->unique(); 
          //Link  
          $table->string('link'); 
          //Matrícula - (Es de tipo texto porque puede contener N de Norte o S de Sur)
@@ -128,6 +128,9 @@ class CreatePropertiesTable extends Migration
          $table->string('latitude')->nullable();
          $table->string('longitude')->nullable();
 
+         $table->string('map_latitude')->nullable();
+         $table->string('map_longitude')->nullable();
+
          #######################################
          #  Información normativa            
          #######################################
@@ -197,6 +200,9 @@ class CreatePropertiesTable extends Migration
 
          //Escrituras
          $table->boolean('scriptures')->default(false); 
+
+         //Expediente
+         $table->boolean('expedient')->default(false); 
 
          //Comodato
          $table->boolean('loan')->default(false); 
