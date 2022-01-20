@@ -369,6 +369,144 @@ class DatabaseSeeder extends Seeder
       District::create(['commune_id' => $commune11['id'], 'name' => 'Unidad Deportiva Atanasio Girardot']);
       District::create(['commune_id' => $commune11['id'], 'name' => 'Florida Nueva']);
 
+      //Barrios de la comuna 12
+      District::create(['commune_id' => $commune12['id'], 'name' => 'Ferrini']);
+      District::create(['commune_id' => $commune12['id'], 'name' => 'Calasanz']);
+      District::create(['commune_id' => $commune12['id'], 'name' => 'Los Pinos']);
+      District::create(['commune_id' => $commune12['id'], 'name' => 'La América']);
+      District::create(['commune_id' => $commune12['id'], 'name' => 'La Floresta']);
+      District::create(['commune_id' => $commune12['id'], 'name' => 'Santa Lucía']);
+      District::create(['commune_id' => $commune12['id'], 'name' => 'El Danubio']);
+      District::create(['commune_id' => $commune12['id'], 'name' => 'Campo Alegre']);
+      District::create(['commune_id' => $commune12['id'], 'name' => 'Santa Mónica']);
+      District::create(['commune_id' => $commune12['id'], 'name' => 'Barrio Cristóbal']);
+      District::create(['commune_id' => $commune12['id'], 'name' => 'Simón Bolívar']);
+      District::create(['commune_id' => $commune12['id'], 'name' => 'Santa Teresita']);
+      District::create(['commune_id' => $commune12['id'], 'name' => 'Calasanz parte alta']);
+
+      //Barrios de la comuna 13
+      District::create(['commune_id' => $commune13['id'], 'name' => 'El Pesebre']);
+      District::create(['commune_id' => $commune13['id'], 'name' => 'Blanquizal']);
+      District::create(['commune_id' => $commune13['id'], 'name' => 'Santa Rosa de Lima']);
+      District::create(['commune_id' => $commune13['id'], 'name' => 'Los Alcázares']);
+      District::create(['commune_id' => $commune13['id'], 'name' => 'Metropolitano']);
+      District::create(['commune_id' => $commune13['id'], 'name' => 'La Pradera']);
+      District::create(['commune_id' => $commune13['id'], 'name' => 'Juan XXIII La Quiebra']);
+      District::create(['commune_id' => $commune13['id'], 'name' => 'San Javier No. 1']);
+      District::create(['commune_id' => $commune13['id'], 'name' => 'San Javier No. 2']);
+      District::create(['commune_id' => $commune13['id'], 'name' => '20 de Julio']);
+      District::create(['commune_id' => $commune13['id'], 'name' => 'Belencito']);
+      District::create(['commune_id' => $commune13['id'], 'name' => 'Betania']);
+      District::create(['commune_id' => $commune13['id'], 'name' => 'El Corazón']);
+      District::create(['commune_id' => $commune13['id'], 'name' => 'Las Independencias']);
+      District::create(['commune_id' => $commune13['id'], 'name' => 'Nuevos Conquistadores']);
+      District::create(['commune_id' => $commune13['id'], 'name' => 'El Salado']);
+      District::create(['commune_id' => $commune13['id'], 'name' => 'Eduardo Santos']);
+      District::create(['commune_id' => $commune13['id'], 'name' => 'Antonio Nariño']);
+      District::create(['commune_id' => $commune13['id'], 'name' => 'El Socorro']);
+
+      //Barrios de la comuna 14
+      District::create(['commune_id' => $commune14['id'], 'name' => 'Barrio Colombia']);
+      District::create(['commune_id' => $commune14['id'], 'name' => 'Villa Carlota']);
+      District::create(['commune_id' => $commune14['id'], 'name' => 'Castropol']);
+      District::create(['commune_id' => $commune14['id'], 'name' => 'Lalinde']);
+      District::create(['commune_id' => $commune14['id'], 'name' => 'Las Lomas No. 1']);
+      District::create(['commune_id' => $commune14['id'], 'name' => 'Las Lomas No. 2']);
+      District::create(['commune_id' => $commune14['id'], 'name' => 'Altos del Poblado']);
+      District::create(['commune_id' => $commune14['id'], 'name' => 'El Tesoro']);
+      District::create(['commune_id' => $commune14['id'], 'name' => 'Los Naranjos']);
+      District::create(['commune_id' => $commune14['id'], 'name' => 'Los Balsos No. 1']);
+      District::create(['commune_id' => $commune14['id'], 'name' => 'Los Balsos No. 2']);
+      District::create(['commune_id' => $commune14['id'], 'name' => 'San Lucas']);
+      District::create(['commune_id' => $commune14['id'], 'name' => 'El Diamante No. 2']);
+      District::create(['commune_id' => $commune14['id'], 'name' => 'El Castillo']);
+      District::create(['commune_id' => $commune14['id'], 'name' => 'Alejandría']);
+      District::create(['commune_id' => $commune14['id'], 'name' => 'La Florida']);
+      District::create(['commune_id' => $commune14['id'], 'name' => 'El Poblado']);
+      District::create(['commune_id' => $commune14['id'], 'name' => 'Manila']);
+      District::create(['commune_id' => $commune14['id'], 'name' => 'Astorga']);
+      District::create(['commune_id' => $commune14['id'], 'name' => 'Patio Bonito']);
+      District::create(['commune_id' => $commune14['id'], 'name' => 'La Aguacatala']);
+      District::create(['commune_id' => $commune14['id'], 'name' => 'Santa María de los Ángeles']);
+
+      //Barrios de la comuna 15
+      District::create(['commune_id' => $commune15['id'], 'name' => 'El Rodeo']);
+      District::create(['commune_id' => $commune15['id'], 'name' => 'Tenche']);
+      District::create(['commune_id' => $commune15['id'], 'name' => 'Trinidad']);
+      District::create(['commune_id' => $commune15['id'], 'name' => 'Santa Fé']);
+      District::create(['commune_id' => $commune15['id'], 'name' => 'Aeroparque Juan Pablo II']);
+      District::create(['commune_id' => $commune15['id'], 'name' => 'Campo Amor']);
+      District::create(['commune_id' => $commune15['id'], 'name' => 'Cristo Rey']);
+      District::create(['commune_id' => $commune15['id'], 'name' => 'Guayabal']);
+      District::create(['commune_id' => $commune15['id'], 'name' => 'La Colina']);
+
+      //Barrios de la comuna 16
+      District::create(['commune_id' => $commune16['id'], 'name' => 'Fátima']);
+      District::create(['commune_id' => $commune16['id'], 'name' => 'Rosales']);
+      District::create(['commune_id' => $commune16['id'], 'name' => 'Belén']);
+      District::create(['commune_id' => $commune16['id'], 'name' => 'Granada']);
+      District::create(['commune_id' => $commune16['id'], 'name' => 'San Bernardo']);
+      District::create(['commune_id' => $commune16['id'], 'name' => 'Las Playas']);
+      District::create(['commune_id' => $commune16['id'], 'name' => 'Diego Echavarría']);
+      District::create(['commune_id' => $commune16['id'], 'name' => 'La Mota']);
+      District::create(['commune_id' => $commune16['id'], 'name' => 'La Hondonada']);
+      District::create(['commune_id' => $commune16['id'], 'name' => 'El Rincón']);
+      District::create(['commune_id' => $commune16['id'], 'name' => 'Loma de los Bernal']);
+      District::create(['commune_id' => $commune16['id'], 'name' => 'La Gloria']);
+      District::create(['commune_id' => $commune16['id'], 'name' => 'Altavista']);
+      District::create(['commune_id' => $commune16['id'], 'name' => 'La Palma']);
+      District::create(['commune_id' => $commune16['id'], 'name' => 'Los Alpes']);
+      District::create(['commune_id' => $commune16['id'], 'name' => 'Las Violetas']);
+      District::create(['commune_id' => $commune16['id'], 'name' => 'Las Mercedes']);
+      District::create(['commune_id' => $commune16['id'], 'name' => 'Nueva Villa de Aburrá']);
+      District::create(['commune_id' => $commune16['id'], 'name' => 'Miravalle']);
+      District::create(['commune_id' => $commune16['id'], 'name' => 'El Nogal - Los Almendros']);
+      District::create(['commune_id' => $commune16['id'], 'name' => 'Centro Nutibara']);
+
+      //Barrios de la comuna 50
+      District::create(['commune_id' => $commune50['id'], 'name' => 'La Suiza']);
+      District::create(['commune_id' => $commune50['id'], 'name' => 'La Frisolera']);
+      District::create(['commune_id' => $commune50['id'], 'name' => 'La Volcana y Guayabal']);
+      District::create(['commune_id' => $commune50['id'], 'name' => 'Palmitas']);
+      District::create(['commune_id' => $commune50['id'], 'name' => 'La Aldea']);
+      District::create(['commune_id' => $commune50['id'], 'name' => 'La Potrera Miserenga']);
+      District::create(['commune_id' => $commune50['id'], 'name' => 'La Urquita']);
+      District::create(['commune_id' => $commune50['id'], 'name' => 'Suburbio Urquita']);
+      District::create(['commune_id' => $commune50['id'], 'name' => 'Suburbio Potrera Miserenga']);
+      District::create(['commune_id' => $commune50['id'], 'name' => 'Suburbio La Aldea']);
+      District::create(['commune_id' => $commune50['id'], 'name' => 'Suburbio Palmitas']);
+
+      //Barrios de la comuna 60
+      District::create(['commune_id' => $commune60['id'], 'name' => 'Cabecera San Cristóbal']);
+      District::create(['commune_id' => $commune60['id'], 'name' => 'La Loma']);
+      District::create(['commune_id' => $commune60['id'], 'name' => 'La Palma Patio']);
+      District::create(['commune_id' => $commune60['id'], 'name' => 'Las Playas']);
+      District::create(['commune_id' => $commune60['id'], 'name' => 'El Uvito']);
+      District::create(['commune_id' => $commune60['id'], 'name' => 'Naranjal']);
+      District::create(['commune_id' => $commune60['id'], 'name' => 'Pajarito']);
+      District::create(['commune_id' => $commune60['id'], 'name' => 'La Cuchilla']);
+      District::create(['commune_id' => $commune60['id'], 'name' => 'El Llano']);
+      District::create(['commune_id' => $commune60['id'], 'name' => 'Travesías']);
+      District::create(['commune_id' => $commune60['id'], 'name' => 'Pedregal Alto']);
+      District::create(['commune_id' => $commune60['id'], 'name' => 'Pedregal Bajo']);
+      District::create(['commune_id' => $commune60['id'], 'name' => 'Pajarito']);
+      District::create(['commune_id' => $commune60['id'], 'name' => 'El Picacho']);
+      District::create(['commune_id' => $commune60['id'], 'name' => 'El Carmelo']);
+      District::create(['commune_id' => $commune60['id'], 'name' => 'Yolombó']);
+      District::create(['commune_id' => $commune60['id'], 'name' => 'San José de la Montaña']);
+      District::create(['commune_id' => $commune60['id'], 'name' => 'Boquerón']);
+      District::create(['commune_id' => $commune60['id'], 'name' => 'La loma Oriental']);
+      District::create(['commune_id' => $commune60['id'], 'name' => 'Suburbio La Loma']);
+      District::create(['commune_id' => $commune60['id'], 'name' => 'Suburbio Palma Patio']);
+      District::create(['commune_id' => $commune60['id'], 'name' => 'Suburbio La Cuchilla']);
+      District::create(['commune_id' => $commune60['id'], 'name' => 'Suburbio Travesías']);
+      District::create(['commune_id' => $commune60['id'], 'name' => 'Suburbio El Llano']);
+      District::create(['commune_id' => $commune60['id'], 'name' => 'Suburbio Pedregal Alto']);
+      District::create(['commune_id' => $commune60['id'], 'name' => 'Zona de Expansión Eduardo Santos']);
+      District::create(['commune_id' => $commune60['id'], 'name' => 'Zona de Expansión Altos de Calazans']);
+      District::create(['commune_id' => $commune60['id'], 'name' => 'Zona de Expansión Pajarito']);
+
+
 
       District::create(['commune_id' => $commune70['id'], 'name' => 'Área de Expansión Altavista']);
       
