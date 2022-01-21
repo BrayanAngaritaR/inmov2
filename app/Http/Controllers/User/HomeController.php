@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Property\Action;
+use App\Models\Property\Commune;
 use App\Models\Property\Destination;
 use App\Models\Property\District;
 use App\Models\Property\FloorUse;
@@ -28,7 +29,8 @@ class HomeController extends Controller
    */
    public function index()
    {
-      return view($this->template.'user.home');
+      $communes = Commune::whereHas('properties')->orderBy('code')->get();
+      return view($this->template.'user.home', compact('communes'));
    }
 
    /**

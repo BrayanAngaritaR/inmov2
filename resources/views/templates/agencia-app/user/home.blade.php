@@ -34,32 +34,17 @@
                               </div>
 
                               <div class="main-search-input-item">
-                                 <select data-placeholder="¿En dónde?" class="chosen-select no-search-select">
-                                    <option>Todas las comunas</option>
-                                    <option value="19">Altavista</option>
-                                    <option value="4">Aranjuez</option>
-                                    <option value="16">Belén</option>
-                                    <option value="9">Buenos Aires</option>
-                                    <option value="5">Castilla</option>
-                                    <option value="6">Doce de octubre</option>
-                                    <option value="15">Guayabal</option>
-                                    <option value="12">La América</option>
-                                    <option value="10">La Candelaria</option>
-                                    <option value="11">Laureles Estadio</option>
-                                    <option value="3">Manrique</option>
-                                    <option value="17">Palmitas</option>
-                                    <option value="14">Poblado</option>
-                                    <option value="1">Popular</option>
-                                    <option value="7">Robledo</option>
-                                    <option value="20">San Antonio de Prado</option>
-                                    <option value="18">San Cristóbal</option>
-                                    <option value="13">San Javier</option>
-                                    <option value="2">Santa Cruz</option>
-                                    <option value="21">Santa Elena</option>
-                                    <option value="8">Villa Hermosa</option>
+                                 <select data-placeholder="¿En dónde?" class="chosen-select no-search-select" id="commune_id">
+                                    <option value="all">Todas las comunas</option>
+                                    @foreach($communes as $commune)
+                                    <option value="{{ $commune->id }}">
+                                       {{ $commune->code }} - 
+                                       {{ $commune->name }}
+                                    </option>
+                                    @endforeach
                                  </select>
                               </div>
-                              <button class="main-search-button color-bg" onclick="window.location.href='{{ route('user.properties.index') }}'">Buscar <i class="far fa-search"></i></button>
+                              <button class="main-search-button color-bg" onclick="searchByCommune();">Buscar <i class="far fa-search"></i></button>
                            </div>
                         </div>
                         <div class="hero-notifer fl-wrap">¿Y si mejor exploramos? <a href="{{ route('user.properties.index') }}">Explorar inmuebles</a></div>
@@ -366,3 +351,13 @@
 <!-- content end -->
 
 @include('templates.agencia-app.includes.footer.footer') @stop
+
+@push('scripts')
+<script type="text/javascript">
+   function searchByCommune(){
+      let commune_id = $('#commune_id').val();
+      const url = '{{route('user.properties.index') }}';
+      window.location.href = url + '?commune_id=' + commune_id;
+   }
+</script>
+@endpush

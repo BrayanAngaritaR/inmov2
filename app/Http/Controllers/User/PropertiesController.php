@@ -35,6 +35,14 @@ class PropertiesController extends Controller
          ->with(['images', 'district'])
          ->latest()
          ->get();
+
+      if (request()->has('commune_id')) {
+         $commune_id = request('commune_id');
+         if ($commune_id != 'all') {
+            $properties = $properties->where('commune_id', request('commune_id'))
+            ->where('status', 'Published');
+         }
+      } 
       
       return view($this->template.'properties.index', compact(['actions', 'macroprojects', 'districts', 'properties', 'destinations', 'instruments', 'floor_uses']));
    }
