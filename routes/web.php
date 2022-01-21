@@ -107,3 +107,7 @@ Route::delete('/panel/properties/{property}/destroy', [App\Http\Controllers\Pane
 */
 
 Route::get('/panel/requests', [App\Http\Controllers\Panel\Info\InfoRequestController::class, 'index'])->name('panel.requests.index');
+
+//Peticiones dinámicas mediante AJAX
+
+Route::get('/panel/actions/{opportunity_id}', [App\Http\Controllers\Panel\Utils\ActionController::class, 'index'])->name('panel.actions.get.index');

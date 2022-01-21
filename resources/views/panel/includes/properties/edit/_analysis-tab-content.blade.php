@@ -43,6 +43,17 @@
 
       <div class="col-sm-12 col-lg-4">
          <div class="form-group">
+            <label class="form-label" for="action_id">
+               Acción
+            </label>
+            <select class="form-control" name="action_id" id="action_id">
+               <option>-- Sin seleccionar</option>
+            </select>
+         </div>
+      </div>
+
+      <div class="col-sm-12 col-lg-4">
+         <div class="form-group">
             <label class="form-label" for="prioritization_level">
                Nivel de priorización
             </label>
@@ -50,25 +61,6 @@
                <option @if($property->priorization_level == 'Alta') selected @endif value="Alta">Alta</option>
                <option @if($property->priorization_level == 'Media') selected @endif value="Media">Media</option>
                <option @if($property->priorization_level == 'Baja') selected @endif value="Baja">Baja</option>
-            </select>
-         </div>
-      </div>
-
-      <div class="col-sm-12 col-lg-4">
-         <div class="form-group">
-            <label class="form-label" for="action_id">
-               Acción
-            </label>
-            <select class="form-control" name="action_id" id="action_id">
-               @foreach($actions as $action)
-                  <option 
-                     @if($property->action_id == $action->id) 
-                     selected 
-                     @endif 
-                     value="{{ $action->id }}">
-                     {{ $action->title }}
-                  </option>
-               @endforeach
             </select>
          </div>
       </div>

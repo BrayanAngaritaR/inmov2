@@ -16,6 +16,8 @@ class CreateActionsTable extends Migration
       Schema::create('actions', function (Blueprint $table) {
          $table->id();
          $table->string('title');
+         $table->unsignedBigInteger('opportunity_id')->nullable();
+         $table->foreign('opportunity_id')->references('id')->on('opportunities');
          $table->timestamps();
       });
    }

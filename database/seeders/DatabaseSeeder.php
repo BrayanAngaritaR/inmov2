@@ -7,8 +7,6 @@ use App\Models\User;
 use App\Models\Property\PropertyType;
 
 //Seeders
-use Database\Seeders\ActionSeeder;
-use Database\Seeders\CommuneSeeder;
 use Database\Seeders\DestinationSeeder;
 use Database\Seeders\DistrictSeeder;
 use Database\Seeders\FloorClasificationSeeder;
@@ -50,11 +48,9 @@ class DatabaseSeeder extends Seeder
          ThreatSeeder::class,
          ThirdLevelInstrumentSeeder::class,
          DestinationSeeder::class,
-         CommuneSeeder::class,
          DistrictSeeder::class,
          FloorUseSeeder::class,
          OpportunitySeeder::class,
-         ActionSeeder::class,
       ]);
 
       PropertyType::create(['title' => 'Público']);
