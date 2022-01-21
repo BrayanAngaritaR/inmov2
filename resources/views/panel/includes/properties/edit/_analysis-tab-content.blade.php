@@ -10,7 +10,11 @@
             </label>
             <select class="form-control" name="destination_id" id="destination_id">
                @foreach($destinations as $destination)
-                  <option value="{{ $destination->id }}">
+                  <option 
+                     @if($property->destination_id == $destination->id) 
+                     selected 
+                     @endif 
+                     value="{{ $destination->id }}">
                      {{ $destination->title }}
                   </option>
                @endforeach
@@ -25,7 +29,11 @@
             </label>
             <select class="form-control" name="opportunity_id" id="opportunity_id">
                @foreach($opportunities as $opportunity)
-                  <option value="{{ $opportunity->id }}">
+                  <option 
+                     @if($property->opportunity_id == $opportunity->id) 
+                     selected 
+                     @endif 
+                     value="{{ $opportunity->id }}">
                      {{ $opportunity->title }}
                   </option>
                @endforeach
@@ -39,9 +47,9 @@
                Nivel de priorización
             </label>
             <select class="form-control" name="prioritization_level" id="prioritization_level">
-               <option value="Alta">Alta</option>
-               <option value="Media">Media</option>
-               <option value="Baja">Baja</option>
+               <option @if($property->priorization_level == 'Alta') selected @endif value="Alta">Alta</option>
+               <option @if($property->priorization_level == 'Media') selected @endif value="Media">Media</option>
+               <option @if($property->priorization_level == 'Baja') selected @endif value="Baja">Baja</option>
             </select>
          </div>
       </div>
@@ -53,7 +61,11 @@
             </label>
             <select class="form-control" name="action_id" id="action_id">
                @foreach($actions as $action)
-                  <option value="{{ $action->id }}">
+                  <option 
+                     @if($property->action_id == $action->id) 
+                     selected 
+                     @endif 
+                     value="{{ $action->id }}">
                      {{ $action->title }}
                   </option>
                @endforeach
@@ -163,8 +175,11 @@
             <select class="form-control" name="responsable_id" id="responsable_id">
                @foreach($users as $user)
                <option 
+                  @if($property->user_id == $user->id) 
+                  selected 
+                  @endif 
                   value="{{ $user->id }}">
-                     {{ $user->name }}
+                  {{ $user->name }}
                </option>
                @endforeach
             </select>

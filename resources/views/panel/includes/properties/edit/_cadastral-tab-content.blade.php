@@ -28,12 +28,28 @@
             </label>
             <select class="form-control" name="units" id="units">
                <option
-                  @if($property->units == $notary->id) selected @endif
+                  @if($property->units == 'Varas') selected @endif
                   value="m2">
                   m²
                </option>
-               <option value="pies2">ft² (Pies²)</option>
-               <option value="Varas">varas</option>
+
+               <option
+                  @if($property->units == 'm2') selected @endif
+                  value="m2">
+                  m²
+               </option>
+
+               <option
+                  @if($property->units == 'pies2') selected @endif
+                  value="pies2">
+                  ft² (Pies²)
+               </option>
+
+               <option
+                  @if($property->units == 'varas') selected @endif
+                  value="Varas">
+                  Varas
+               </option>
             </select>
             <span class="text-danger error-text units_err"></span>
          </div>
@@ -161,12 +177,12 @@
 
             <div class="form-control-wrap">
                <div class="input-group">
-                  <div class="input-group-prepend">
+                  <input type="text" name="property_valuation" class="form-control" id="property_valuation" value="{{ $property->property_valuation }}" placeholder="Ej: 60,000,000" required />
+                  <div class="input-group-append">
                      <span class="input-group-text">$</span>
                   </div>
-                  <input type="text" value="{{ $property->property_valuation }}" name="property_valuation" id="property_valuation" placeholder="Ej: 60,000,000" class="form-control" />
-                  <span class="text-danger error-text property_valuation_err"></span>
                </div>
+               <span class="text-danger error-text property_valuation_err"></span>
             </div>
          </div>
       </div>

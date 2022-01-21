@@ -227,7 +227,6 @@
             <div class="form-group">
                <label class="form-label" for="conservation_level">Nivel de conservación del BIC</label>
                <select class="form-control" name="conservation_level" id="conservation_level">
-
                   <option 
                      @if($property->conservation_level == "Integral") 
                         selected 
