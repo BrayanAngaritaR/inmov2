@@ -27,7 +27,11 @@
                Unidades
             </label>
             <select class="form-control" name="units" id="units">
-               <option value="m2">m²</option>
+               <option
+                  @if($property->units == $notary->id) selected @endif
+                  value="m2">
+                  m²
+               </option>
                <option value="pies2">ft² (Pies²)</option>
                <option value="Varas">varas</option>
             </select>

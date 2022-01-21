@@ -37,55 +37,67 @@ class SecretaryshipSeeder extends Seeder
 
       SecretaryshipAssetCode::create([
          'code' => 'CUZ',
-         'description' => 'CORVIDE - Bienes Fiscales',
+         'description' => 'Secretaría de Cultura Ciudadana',
       ]);
 
       SecretaryshipAssetCode::create([
          'code' => 'DZ',
+         'description' => 'Secretaría de Desarrollo Social'
       ]);
 
       SecretaryshipAssetCode::create([
          'code' => 'ZDE',
+         'description' => 'Secretaría de Desarrollo Económico'
       ]);
 
       SecretaryshipAssetCode::create([
          'code' => 'EDZ',
+         'description' => 'Secretaria de Educación'
       ]);
 
       SecretaryshipAssetCode::create([
          'code' => 'EQZ',
+         'description' => 'Equipamiento Recreativo'
       ]);
 
       SecretaryshipAssetCode::create([
          'code' => 'FLZ',
+         'description' => 'Fondo Local de Salud - Secretaría de Salud'
       ]);
 
       SecretaryshipAssetCode::create([
          'code' => 'GEZ',
+         'description' => 'Secretaría General'
       ]);
 
       SecretaryshipAssetCode::create([
          'code' => 'GOZ',
+         'description' => 'Secretaría de Gobierno'
       ]);
 
       SecretaryshipAssetCode::create([
          'code' => 'MZ',
+         'description' => 'Secretaría de Medio Ambiente'
       ]);
 
       SecretaryshipAssetCode::create([
          'code' => 'OZ',
+         'description' => 'Secretaría de Obras Públicas - Infraestructura Física'
       ]);
 
       SecretaryshipAssetCode::create([
          'code' => 'SZ',
+         'description' => 'Secretaría de Servicios Administrativos - Suministros y Servicios'
       ]);
 
       SecretaryshipAssetCode::create([
          'code' => 'SMZ',
+         'description' => 'Secretaría de la Mujer'
       ]);
 
       SecretaryshipAssetCode::create([
          'code' => 'TZ',
+         'description' => 'Secretaría de Transito - Movilidad'
       ]);
 
       Secretaryship::create(['title' => 'Secretaría de hacienda']);
