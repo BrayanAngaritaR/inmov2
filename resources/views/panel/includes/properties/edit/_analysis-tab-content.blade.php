@@ -47,7 +47,7 @@
                Acción
             </label>
             <select class="form-control" name="action_id" id="action_id">
-               <option>-- Sin seleccionar</option>
+               <option value="{{ $property->action_id }}">{{ $property->action->title }}</option>
             </select>
          </div>
       </div>

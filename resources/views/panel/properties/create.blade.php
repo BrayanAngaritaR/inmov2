@@ -297,9 +297,6 @@
                            <div class="form-group">
                               <label class="form-label" for="district_id">Barrio*</label>
                               <select class="form-control" id="district_id" name="district_id">
-                                 @foreach($districts as $district)
-                                 <option value="{{ $district->id }}">{{ $district->name }}</option>
-                                 @endforeach
                               </select>
                            </div>
                         </div>
@@ -546,4 +543,5 @@
       // });
    });
 </script>
+@include('panel.includes.properties.scripts._get-dynamic-content')
 @endpush

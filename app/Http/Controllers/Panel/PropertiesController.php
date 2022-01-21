@@ -59,9 +59,8 @@ class PropertiesController extends Controller
       $asset_secretaryships = SecretaryshipAssetCode::all();
       $notaries = Notary::all();
       $communes = Commune::get();
-      $districts = District::orderBy('name', 'ASC')->get();
 
-      return view('panel.properties.create', compact(['secretaryships', 'propertytypes', 'asset_secretaryships', 'notaries', 'communes', 'districts']));
+      return view('panel.properties.create', compact(['secretaryships', 'propertytypes', 'asset_secretaryships', 'notaries', 'communes']));
    }
 
    /**
@@ -236,7 +235,6 @@ class PropertiesController extends Controller
       $asset_secretaryships = SecretaryshipAssetCode::all();
       $notaries = Notary::all();
       $communes = Commune::orderBy('name', 'ASC')->get();
-      $districts = District::orderBy('name', 'ASC')->get();
       $floor_classifications = FloorClassification::orderBy('title', 'ASC')->get();
       $macroprojects = Macroproject::orderBy('name', 'ASC')->get();
       $treatments = Treatment::orderBy('title', 'ASC')->get();
@@ -246,7 +244,6 @@ class PropertiesController extends Controller
       $threats = Threat::orderBy('title', 'ASC')->get();
       $destinations = Destination::orderBy('title', 'ASC')->get();
       $opportunities = Opportunity::orderBy('title', 'ASC')->get();
-      $actions = Action::orderBy('title', 'ASC')->get();
       $users = User::orderBy('name', 'ASC')->get();
 
       return view(
@@ -257,7 +254,6 @@ class PropertiesController extends Controller
             'asset_secretaryships',
             'notaries',
             'communes',
-            'districts',
             'property',
             'floor_classifications',
             'macroprojects',
@@ -268,7 +264,6 @@ class PropertiesController extends Controller
             'threats',
             'destinations',
             'opportunities',
-            'actions',
             'users',
          ])
       );

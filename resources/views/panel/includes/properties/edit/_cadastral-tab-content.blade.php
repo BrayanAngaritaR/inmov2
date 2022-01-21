@@ -117,9 +117,7 @@
          <div class="form-group">
             <label class="form-label" for="district_id">Barrio*</label>
             <select class="form-control" id="district_id" name="district_id">
-               @foreach($districts as $district)
-               <option @if($property->district_id == $district->id) selected @endif value="{{ $district->id }}">{{ $district->name }}</option>
-               @endforeach
+               <option value="{{ $property->district_id }}">{{ $property->district->name }}</option>
             </select>
             <span class="text-danger error-text district_id_err"></span>
          </div>

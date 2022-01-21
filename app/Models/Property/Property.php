@@ -112,77 +112,92 @@ class Property extends Model implements Auditable
       'responsable_id',
    ];
 
+   protected $with = ['district', 'commune', 'action'];
+
    public function getRouteKeyName()
    {
       return 'code';
    }
 
-   //Relaciones
+   //Destinación actual
    public function destination()
    {
       return $this->belongsTo(Destination::class);
    }
 
+   //Tipo de bien. Fiscal o Público
    public function propertyType()
    {
       return $this->belongsTo(PropertyType::class, 'property_type');
    }
 
-   public function district()
-   {
-      return $this->belongsTo(District::class);
-   }
-
+   //Comuna
    public function commune()
    {
       return $this->belongsTo(Commune::class);
    }
 
+   //Barrio
+   public function district()
+   {
+      return $this->belongsTo(District::class);
+   }
+
+   //Fotografías adjuntas
    public function images()
    {
       return $this->hasMany(Image::class);
    }
 
+   //Secretaría a la que se encuentra adscrita
    public function secretaryship()
    {
       return $this->belongsTo(Secretaryship::class);
    }
 
+   //Clasificación del suelo
    public function floorClassification()
    {
       return $this->belongsTo(FloorClassification::class, 'floor_classification_id');
    }
 
+   //Macroproyecto
    public function macroproject()
    {
       return $this->belongsTo(Macroproject::class);
    }
 
+   //Tratamiento
    public function treatment()
    {
       return $this->belongsTo(Treatment::class);
    }
 
+   //Polígono
    public function polygon()
    {
       return $this->belongsTo(Polygon::class);
    }
 
+   //Clasificación del suelo
    public function floorUse()
    {
       return $this->belongsTo(FloorUse::class);
    }
 
+   //Tratamiento de tercel nivel
    public function thirdLevelInstrument()
    {
       return $this->belongsTo(ThirdLevelInstrument::class, 'third_level_instrument_id');
    }
 
+   //Oportunidad
    public function opportunity()
    {
       return $this->belongsTo(Opportunity::class);
    }
 
+   //Acción
    public function action()
    {
       return $this->belongsTo(Action::class);

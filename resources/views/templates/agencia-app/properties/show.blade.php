@@ -187,7 +187,7 @@
                               <ul>
                                  <li><span>Código:</span>{{ $property->code }}</li>
                                  <li><span>Matrícula:</span>{{ $property->plate }}</li>
-                                 <li><span>Área total:</span>
+                                 <li><span>Área total del lote:</span>
                                     {{ $property->cadastral_area }} {{ $property->units }}
                                  </li>
                                  <li><span>Área construida:</span>{{ $property->construction_area }} {{ $property->units }}</li>
@@ -290,8 +290,7 @@
                               <h3>Ubicación</h3>
                            </div>
 
-                           <p><b>Dirección</b>: {{ $property->sss_address }}</p>
-                           <p><b>Dirección catastral</b>: {{ $property->cadastral_address }}</p>
+                           <p><b>Dirección</b>: {{ $property->cadastral_address }}</p>
                            <div class="map-container mapC_vis mapC_vis2">
                               <div id="singleMap" data-latitude="{{ $property->map_latitude }}" data-longitude="{{ $property->map_longitude }}" data-mapTitle="Our Location" data-infotitle="House in Financial Distric" data-infotext="70 Bright St New York, USA"></div>
                               <div class="scrollContorl"></div>

@@ -382,7 +382,7 @@
        //   locations ------------------
         var locations = [
         @foreach($properties as $property)
-            [locationData("{{ route('user.properties.show', $property) }}", 'Lote', '{{ asset('/templates/agencia-app/images/logo.png') }}', '{{ $property->sss_description }}', "{{ $property->cadastral_area }} {{ $property->units }}",  "{{ $property->commercial_appraisal }}" , "{{ $property->action->title }}"), {{ $property->map_latitude }}, {{ $property->map_longitude }}, 0, markerIcon],
+            [locationData("{{ route('user.properties.show', $property) }}", 'Lote', '{{ asset('/templates/agencia-app/images/logo.png') }}', '{{ $property->sss_description }}', "{{ $property->cadastral_area }} {{ $property->units }}",  "{{ number_format($property->property_valuation) }}" , "{{ $property->action->title }}"), {{ $property->map_latitude }}, {{ $property->map_longitude }}, 0, markerIcon],
         @endforeach
         ];
        //   Map Infoboxes end ------------------

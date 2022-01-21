@@ -111,3 +111,5 @@ Route::get('/panel/requests', [App\Http\Controllers\Panel\Info\InfoRequestContro
 //Peticiones dinámicas mediante AJAX
 
 Route::get('/panel/actions/{opportunity_id}', [App\Http\Controllers\Panel\Utils\ActionController::class, 'index'])->name('panel.actions.get.index');
+
+Route::get('/panel/districts/{commune_id}', [App\Http\Controllers\Panel\Utils\DistrictController::class, 'index'])->name('panel.districts.get.index');

@@ -461,35 +461,7 @@
       $("#cadastral_area").focus(function () {
          $("#cadastral_address_container").fadeOut(1000);
       });
-   });
-
-   $(document).ready(function() {
-      $('#opportunity_id').on('change', function() {
-         var opportunity_id = $(this).val();
-         if(opportunity_id) {
-            $.ajax({
-               url: '/panel/actions/' + opportunity_id,
-               type: "GET",
-               data : {"_token":"{{ csrf_token() }}"},
-               dataType: "json",
-               success:function(data)
-               {
-                  if(data){
-                     console.log(data);
-                     $('#action_id').empty();
-                     $('#action_id').append('<option hidden>Seleccionar opción</option>'); 
-                     $.each(data, function(key, action){
-                        $('select[name="action_id"]').append('<option value="'+ key +'">' + action.title+ '</option>');
-                     });
-                  } else {
-                     $('#action_id').append('<option hidden>Ha ocurrido un error al importar la información</option>');
-                  }
-               }
-             });
-         }else{
-            $('#action_id').empty();
-         }
-      });
-   });
+   });  
 </script>
+@include('panel.includes.properties.scripts._get-dynamic-content')
 @endpush
