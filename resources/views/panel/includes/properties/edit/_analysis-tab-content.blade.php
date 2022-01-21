@@ -47,7 +47,9 @@
                Acción
             </label>
             <select class="form-control" name="action_id" id="action_id">
+               @if($property->action_id)
                <option value="{{ $property->action_id }}">{{ $property->action->title }}</option>
+               @endif
             </select>
          </div>
       </div>
