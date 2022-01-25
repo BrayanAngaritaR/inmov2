@@ -18,8 +18,8 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/dashboard', function () {
-    return redirect()->route('panel.properties.index');
-    //return view('dashboard');
+    return redirect()->route('user.index');
+    //return redirect()->route('panel.properties.index');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';

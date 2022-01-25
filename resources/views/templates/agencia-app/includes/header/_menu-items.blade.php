@@ -8,8 +8,8 @@
          <a href="#">Propiedades <i class="fa fa-caret-down"></i></a>
          <!--second level -->
          <ul>
-            <li><a href="#">En venta</a></li>
-            <li><a href="#">En arriendo</a></li>
+            <li><a href="{{ route('user.properties.index') }}">En venta</a></li>
+            <li><a href="{{ route('user.properties.index') }}">En arriendo</a></li>
          </ul>
          <!--second level end-->
       </li>
@@ -54,14 +54,19 @@
 
       @auth
       <li>
-         <a href="#">Mi cuenta <i class="fa fa-caret-down"></i></a>
+         <a href="#">{{ Auth::user()->name }} <i class="fa fa-caret-down"></i></a>
          <!--second level -->
          <ul>
-            <li><a href="{{ route('dashboard') }}">Panel</a></li>
+            <li><a href="{{ route('panel.properties.index') }}">Panel</a></li>
             <li><a href="{{ route('user.soon.index') }}">Mi perfil</a></li>
             <li><a href="{{ route('user.soon.index') }}">Configuración</a></li>
             <li><a href="{{ route('user.soon.index') }}">Suscripción</a></li>
-            <li><a href="{{ route('user.soon.index') }}">Salir</a></li>
+            <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Salir</a></li>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+               @csrf
+            </form>
+
          </ul>
          <!--second level end-->
       </li>
