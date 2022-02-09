@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Revisar para comprimir los archivos:
+
+//https://stackoverflow.com/questions/60987289/ghostscript-pdf-file-compression-using-phps-exec-laravel-on-docker
+
+//Encontrar lugares cerca:
+
+//https://www.tutsmake.com/laravel-8-find-nearest-location-by-latitude-and-longitude
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });

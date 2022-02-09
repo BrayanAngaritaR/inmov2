@@ -223,25 +223,12 @@
          <div id="rph_properties"></div>
       </div>
 
-      <div class="col-sm-12 col-lg-6">
-         <div id="property_destinations"></div>
-      </div>
-
       <div class="col-sm-12">
          <div id="secretarship_properties"></div>
       </div>
 
-      <div class="col-sm-12 col-lg-6">
-         <div id="opportunity_properties"></div>
-      </div>
 
-      <div class="col-sm-12 col-lg-6">
-         <div id="for_sale_properties"></div>
-      </div>
 
-      <div class="col-sm-12">
-         <div id="commune_properties"></div>
-      </div>
 
       <div class="col-sm-12 col-lg-6">
          <div class="card card-bordered h-100">
@@ -395,6 +382,300 @@
          <!-- .card -->
       </div>
       <!-- .col -->
+
+      {{-- <div class="col-sm-12 col-md-6 my-auto">
+         <div class="row">
+            <div class="text-center">
+               <h6 class="title ml-2 mb-4">Cantidad de bienes desagregados</h6>
+            </div>
+
+            <div class="col-sm-12">
+               <div class="card card-bordered card-full">
+                  <div class="card-inner">
+                     <div class="card-title-group align-start mb-3">
+                        <div class="card-title">
+                           <h6 class="title">Destinación actual</h6>
+                        </div>
+                     </div>
+                     <div class="user-activity-group g-4">
+                        <div class="user-activity">
+                           <em class="icon lni lni-apartment"></em>
+                           <div class="info">
+                              <span class="amount">6,293</span>
+                              <span class="title">Inmuebles</span>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="col-sm-12 mt-2">
+               <div class="card card-bordered card-full">
+                  <div class="card-inner">
+                     <div class="card-title-group align-start mb-3">
+                        <div class="card-title">
+                           <h6 class="title">Acción</h6>
+                        </div>
+                     </div>
+                     <div class="user-activity-group g-4">
+                        <div class="user-activity">
+                           <em class="icon lni lni-investment"></em>
+                           <div class="info">
+                              <span class="amount">5,526</span>
+                              <span class="title">Inmuebles</span>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="col-sm-12 mt-2">
+               <div class="card card-bordered card-full">
+                  <div class="card-inner">
+                     <div class="card-title-group align-start mb-3">
+                        <div class="card-title">
+                           <h6 class="title">Para la venta</h6>
+                        </div>
+                     </div>
+                     <div class="user-activity-group g-4">
+                        <div class="user-activity">
+                           <em class="icon lni lni-handshake"></em>
+                           <div class="info">
+                              <span class="amount">1,153</span>
+                              <span class="title">Inmuebles</span>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- .card -->
+      </div> --}}
+
+      {{--
+      <div class="col-sm-12 col-md-6">
+         <div class="card h-100">
+            <div class="card-inner h-100 stretch flex-column">
+               <div class="device-status my-auto">
+                  <div class="device-status-ck">
+                     <canvas class="analytics-doughnut chartjs-render-monitor" id="TrafficChannelDoughnutData"></canvas>
+                  </div>
+
+                  <div class="text-center mt-5">
+                     <h5 class="title">Actualmente hay <b>12972</b> bienes fiscales.</h5>
+                     <p>Última actualización: {{ \Carbon\Carbon::now() }}</p>
+                  </div>
+                  <div class="device-status-group">
+                     <div class="device-status-data">
+                        <em data-color="#0e6351" class="icon lni lni-checkmark"></em>
+                        <div class="text-muted">8,924 analizados</div>
+                        <div class="amount">68.9%</div>
+                     </div>
+                     <div class="device-status-data">
+                        <em data-color="#d14555" class="icon lni lni-reload"></em>
+                        <div class="text-muted">4,048 por analizar</div>
+                        <div class="amount">31.1%</div>
+                     </div>
+                  </div>
+                  <!-- .device-status-group -->
+               </div>
+               <!-- .device-status -->
+            </div>
+         </div>
+         <!-- .card -->
+      </div>
+      <!-- .col -->
+      --}}
+
+      {{-- <div class="col-lg-8">
+         <div class="card card-bordered h-100">
+            <div class="card-inner">
+               <div class="card-title-group align-start mb-3">
+                  <div class="card-title">
+                     <h6 class="title">Bienes inmuebles</h6>
+                  </div>
+               </div>
+               <!-- .card-title-group -->
+               <div class="nk-order-ovwg">
+                  <div class="row g-4 align-end">
+                     <div class="col-xxl-8">
+                        <div class="nk-order-ovwg-ck">
+                           <canvas class="order-overview-chart" id="orderOverview"></canvas>
+                        </div>
+                     </div>
+                     <!-- .col -->
+                     <div class="col-xxl-4">
+                        <div class="row g-4">
+                           <div class="col-sm-6 col-xxl-12">
+                              <div class="nk-order-ovwg-data buy">
+                                 <div class="amount">
+                                    <small class="currenct currency-cop">
+                                       $12,954,630,890
+                                    </small>
+                                 </div>
+                                 <div class="info">Monto <strong>total</strong> de los bienes inmuebles (en pesos colombianos) disponibles para la venta.</div>
+                                 
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- .col -->
+                  </div>
+               </div>
+               <!-- .nk-order-ovwg -->
+            </div>
+            <!-- .card-inner -->
+         </div>
+         <!-- .card -->
+      </div>
+      <!-- .col -->
+      <div class="col-lg-4">
+         <div class="card card-bordered h-100">
+            <div class="card-inner-group">
+               <div class="card-inner card-inner-md">
+                  <div class="card-title-group">
+                     <div class="card-title">
+                        <h6 class="title">Accesos rápidos</h6>
+                     </div>
+                  </div>
+               </div>
+               <!-- .card-inner -->
+               <div class="card-inner">
+                  <div class="nk-wg-action">
+                     <div class="nk-wg-action-content">
+                        <em class="icon ni ni-home"></em>
+                        <div class="title">Bienes inmuebles</div>
+                        <p>Podrás agregar nuevos <strong>bienes inmuebles</strong> y enviarlos para revisión.</p>
+                     </div>
+                     <a href="{{ route('panel.properties.create') }}" class="btn btn-icon btn-trigger mr-n2"><em class="icon ni ni-forward-ios"></em></a>
+                  </div>
+               </div>
+               <!-- .card-inner -->
+               <div class="card-inner">
+                  <div class="nk-wg-action">
+                     <div class="nk-wg-action-content">
+                        <em class="icon ni ni-help-fill"></em>
+                        <div class="title">Soporte técnico</div>
+                        <p>Si tienes problemas con la plataforma, contáctame al correo electrónico <strong>brayan.angarita@app.gov.co</strong>.</p>
+                     </div>
+                     <a href="mailto:brayan.angarita@app.gov.co" target="_blank" class="btn btn-icon btn-trigger mr-n2"><em class="icon ni ni-forward-ios"></em></a>
+                  </div>
+               </div>
+               <!-- .card-inner -->
+               <div class="card-inner">
+                  <div class="nk-wg-action">
+                     <div class="nk-wg-action-content">
+                        <em class="icon ni ni-users"></em>
+                        <div class="title">Invitar usuario</div>
+                        <p>Envía un correo electrónico a un usuario para que haga uso de la plataforma.</p>
+                     </div>
+                     <a href="#" class="btn btn-icon btn-trigger mr-n2"><em class="icon ni ni-forward-ios"></em></a>
+                  </div>
+               </div>
+               <!-- .card-inner -->
+            </div>
+            <!-- .card-inner-group -->
+         </div>
+         <!-- .card -->
+      </div>
+      <!-- .col -->
+      <div class="col-xl-7 col-xxl-8">
+         <div class="card card-bordered card-full">
+            <div class="card-inner">
+               <div class="card-title-group">
+                  <div class="card-title">
+                     <h6 class="title"><span class="mr-2">Bienes más populares</span> <a href="#" class="link d-none d-sm-inline">Ver toda la lista</a></h6>
+                  </div>
+               </div>
+            </div>
+            <!-- .card-inner -->
+            <div class="card-inner p-0 border-top">
+               <div class="nk-tb-list nk-tb-orders">
+                  <div class="nk-tb-item nk-tb-head">
+                     <div class="nk-tb-col nk-tb-orders-type"><span>ID</span></div>
+                     <div class="nk-tb-col"><span>Matrícula</span></div>
+                     <div class="nk-tb-col tb-col-sm"><span>Visitas</span></div>
+                     <div class="nk-tb-col tb-col-xxl"><span>Ver</span></div>
+                  </div>
+                  <!-- .nk-tb-item -->
+                  <div class="nk-tb-item">
+                     <div class="nk-tb-col">
+                        <span class="tb-lead">434</span>
+                     </div>
+                     <div class="nk-tb-col">
+                        <span class="tb-lead">Comuna 24, Comuneros</span>
+                     </div>
+                     <div class="nk-tb-col tb-col-sm">
+                        <span class="tb-sub">454</span>
+                     </div>
+                     <div class="nk-tb-col tb-col-xxl">
+                        <span class="tb-sub text-primary">Ver</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- .card -->
+      </div>
+      <!-- .col -->
+      <div class="col-xl-5 col-xxl-4">
+         <div class="row g-gs">
+            <!-- .col -->
+            <div class="col-md-6 col-lg-12">
+               <div class="card card-bordered card-full">
+                  <div class="card-inner">
+                     <div class="card-title-group align-start mb-3">
+                        <div class="card-title">
+                           <h6 class="title">Usuarios</h6>
+                           <p>12 en los últimos 30 días <em class="icon ni ni-info" data-toggle="tooltip" data-placement="right" title="Usuarios registrados hace 30 días"></em></p>
+                        </div>
+                        <div class="card-tools mt-n1 mr-n1">
+                           <div class="drodown">
+                              <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                              <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                                 <ul class="link-list-opt no-bdr">
+                                    <li>
+                                       <a href="#"><span>15 días</span></a>
+                                    </li>
+                                    <li>
+                                       <a href="#" class="active"><span>30 días</span></a>
+                                    </li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="user-activity-group g-4">
+                        <div class="user-activity">
+                           <em class="icon ni ni-users"></em>
+                           <div class="info">
+                              <span class="amount">345</span>
+                              <span class="title">Usuarios</span>
+                           </div>
+                        </div>
+                        <div class="user-activity">
+                           <em class="icon ni ni-users"></em>
+                           <div class="info">
+                              <span class="amount">49</span>
+                              <span class="title">Colaboradores</span>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="user-activity-ck">
+                     <canvas class="usera-activity-chart" id="userActivity"></canvas>
+                  </div>
+               </div>
+               <!-- .card -->
+            </div>
+            <!-- .col -->
+         </div>
+         <!-- .row -->
+      </div> --}}
+      <!-- .col -->
    </div>
    <!-- .row -->
 </div>
@@ -432,7 +713,7 @@
   chart: {
     style: {
       fontFamily: 'sans-serif',
-      color: '#000'
+      color: '#fff'
     }
   }
 }); 
@@ -440,35 +721,42 @@
 $('#secretarship_properties').highcharts({
   chart: {
     type: 'column',
-    //backgroundColor: '#36394B'
+    backgroundColor: '#36394B'
   },
   title: {
-    text: 'Bienes por secretaría adscrita',
+    text: 'Web Skills People are Envious Of',
     style: {  
-     color: '#000'
+     color: '#fff'
     }
   },
   xAxis: {
     tickWidth: 0,
     labels: {
      style: {
-       color: '#000',
+       color: '#fff',
        }
      },
     categories: [
-      @foreach($secretaryships as $secretaryship)
-         '{{ $secretaryship->title }}',
-      @endforeach
+      'Management', 
+      'Marketing', 
+      'Law', 
+      'Back End', 
+      'Front End', 
+      'Audio/Video', 
+      'Database',
+      'Servers',
+      'Writing',
+      'Design'
     ]
   },
   yAxis: {
     gridLineWidth: .5,
     gridLineDashStyle: 'dash',
-    //gridLineColor: 'black',
+    gridLineColor: 'black',
     title: {
       text: '',
       style: {
-       color: '#000'
+       color: '#fff'
        }
     },
     labels: {
@@ -497,243 +785,21 @@ $('#secretarship_properties').highcharts({
     } 
   },
   series: [{
-    name: 'Cantidad',
+    name: 'People',
     data: [
-      @foreach($secretaryships as $secretaryship)
-         {{ $secretaryship->properties_count }},
-      @endforeach
+      690, 
+      938, 
+      612, 
+      4250, 
+      2852, 
+      1002, 
+      728,
+      1156,
+      956,
+      4487
     ]
   }]
 });
 
-//Número de bienes por destinación actual
-
-Highcharts.chart('property_destinations', {
-  chart: {
-    type: 'pie'
-  },
-  title: {
-    text: 'Destinación actual'
-  },
-  series: [{
-    data: [
-
-    @foreach($destinations as $destination)
-    {
-      name: '{{ $destination->title }}',
-      y: {{ $destination->properties_count }}
-    },
-    @endforeach
-    ]
-  }]
-});
-
-
-// $(function () {
-//     Highcharts.setOptions({
-//         chart: {
-//             style:{
-//                     fontFamily:'Arial, Helvetica, sans-serif', 
-//                     fontSize: '2em',
-//                     color:'#f00'
-//                 }
-//         }
-//     });
-//         $('#property_destinations').highcharts({
-//             chart: {
-//                 type: 'pie'
-//             },
-//             colors: [
-//                '#ED5565',
-//                '#5D9CEC', 
-//                '#A0D468', 
-//                '#FFCE54',  
-//                '#48CFAD', 
-//                '#AC92EC',
-//                '#AAB2BD', 
-//                '#D770AD', 
-//                '#c42525', 
-//                '#a6c96a'
-//             ],
-//             title: {
-//                 text: 'Destinación actual',
-//                 style: {
-//                   color: '#555'
-//                 }
-//             },
-//             legend: {
-//                 layout: 'horizontal',
-//                 align: 'center',
-//                 verticalAlign: 'bottom',
-//                 borderWidth: 0,
-//                 backgroundColor: '#FFFFFF'
-//             },
-//             xAxis: {
-//                 categories: [
-//                     '2006',
-//                     '2007',
-//                     '2008',
-//                     '2009',
-//                     '2010',
-//                     '2011'
-//                 ]
-//             },
-//             yAxis: {
-//                 title: {
-//                     text: ''
-//                 }
-//             },
-//             tooltip: {
-//                 shared: false,
-//                 valueSuffix: 'points'
-//             },
-//             credits: {
-//                 enabled: false
-//             },
-//             plotOptions: {
-//                 areaspline: {
-//                     fillOpacity: 0.1
-//                 },
-//             series: {
-//                 groupPadding: .15
-//             }
-//             },
-//             series: [{
-//             type: 'pie',
-//             name: 'Browser share',
-//             data: [
-
-//                [@foreach($destinations as $destination)
-//                   '{{ $destination->title }}', {{ $destination->properties_count }},
-//                @endforeach],
-//             ]
-//             }]
-//         });
-//     });
-    
-
-//]]> 
-
-
-
-
-//Número de bienes por comuna
-$('#commune_properties').highcharts({
-  chart: {
-    type: 'column',
-    //backgroundColor: '#36394B'
-  },
-  title: {
-    text: 'Bienes por comuna',
-    style: {  
-     color: '#000'
-    }
-  },
-  xAxis: {
-    tickWidth: 0,
-    labels: {
-     style: {
-       color: '#000',
-       }
-     },
-    categories: [
-      @foreach($communes as $commune)
-         '{{ $commune->name }}',
-      @endforeach
-    ]
-  },
-  yAxis: {
-    gridLineWidth: .5,
-    gridLineDashStyle: 'dash',
-    //gridLineColor: 'black',
-    title: {
-      text: '',
-      style: {
-       color: '#000'
-       }
-    },
-    labels: {
-      formatter: function() {
-        return Highcharts.numberFormat(this.value, 0, '', ',');
-      },
-      style: {
-        color: '#fff',
-      }
-    }
-  },
-  legend: {
-    enabled: false,
-  },
-  credits: {
-    enabled: false
-  },
-  tooltip: {
-    valuePrefix: ''
-  },
-  plotOptions: {
-    column: {
-      borderRadius: 0,
-      pointPadding: 0,
-      groupPadding: 0.05
-    } 
-  },
-  series: [{
-    name: 'Cantidad',
-    data: [
-      @foreach($communes as $commune)
-         {{ $commune->properties_count }},
-      @endforeach
-    ]
-  }]
-});
-
-//Numero de Bienes de Oportunidad
-Highcharts.chart('opportunity_properties', {
-  chart: {
-    type: 'pie'
-  },
-  title: {
-    text: 'Bienes en oportunidad'
-  },
-  series: [{
-    data: [
-
-    {
-      name: 'Bienes en oportunidad',
-      y: {{ $opportunity_properties }}
-    },
-    {
-      name: 'Cantidad de bienes',
-      y: {{ $properties_count }}
-    },
-    ]
-  }]
-});
-
-//Numero de Bienes de Ventas
-Highcharts.chart('for_sale_properties', {
-  chart: {
-    type: 'pie'
-  },
-  title: {
-    text: 'Bienes para venta'
-  },
-  series: [{
-    data: [
-
-    {
-      name: 'Bienes para venta',
-      y: {{ $for_sale_properties }}
-    },
-    {
-      name: 'Cantidad de bienes',
-      y: {{ $properties_count }}
-    },
-    ]
-  }]
-});
-
-
-//
 </script>
 @endpush
