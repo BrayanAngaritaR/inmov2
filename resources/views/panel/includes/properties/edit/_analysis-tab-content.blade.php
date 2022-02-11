@@ -85,7 +85,19 @@
    <span class="preview-title-lg overline-title mt-5 mb-4">Disponibilidad </span>
 
    <div class="row gy-4 align-center">
-      <div class="col-sm-12 col-lg-6">
+
+      <div class="col-sm-12">
+         <div class="form-group">
+            <p class="form-label">¿Analizadas por Secretaría de Suministros y Servicios?*</p>
+
+            <div class="custom-control custom-checkbox">
+               <input type="checkbox" class="custom-control-input" id="analysed" @if($property->date_of_analysis_by_sss) checked @endif/>
+               <label class="custom-control-label" for="analysed">Sí / No</label>
+            </div>
+         </div>
+      </div>
+
+      <div class="col-sm-12 col-lg-6" id="date_of_analysis_by_sss_container">
          <div class="form-group">
             <label class="form-label" for="date_of_analysis_by_sss">
                Fecha de análisis por Secretaría de Suministros y Servicios

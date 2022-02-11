@@ -87,6 +87,7 @@ class CreatePropertiesTable extends Migration
          $table->string('units')->default('m2'); //Unidades (M2, Varas, Pies2)
          $table->date('writing_date'); //Fecha de escritura
          $table->unsignedBigInteger('notary_id')->nullable(); //Notaría municipal 
+         $table->string('which_notary_container')->nullable(); //Qué notaría
 
          ###################################
          #  Información catastral             

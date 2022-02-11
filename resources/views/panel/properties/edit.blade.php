@@ -462,6 +462,18 @@
          $("#cadastral_address_container").fadeOut(1000);
       });
    });  
+
+
+   $(document).ready(function () {
+      $('#analysed').click(function () {
+         if ($("#analysed").is(":checked")) {
+            $("#date_of_analysis_by_sss_container").fadeIn(1000);
+         } else {
+            $("#date_of_analysis_by_sss_container").fadeOut(1000);
+         }
+      });
+   });  
+
 </script>
 @include('panel.includes.properties.scripts._get-dynamic-content')
 @endpush

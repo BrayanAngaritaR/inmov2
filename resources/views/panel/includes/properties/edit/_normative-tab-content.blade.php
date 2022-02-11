@@ -99,24 +99,6 @@
 
       <div class="col-sm-12 col-lg-4">
          <div class="form-group">
-            <label class="form-label" for="floor_use_id">Uso del suelo</label>
-            <select class="form-control" name="floor_use_id" id="floor_use_id">
-               @foreach($floor_uses as $floor_use)
-                  <option 
-                     @if($property->floor_use_id == $floor_use->id) 
-                     selected 
-                     @endif 
-                     value="{{ $floor_use->id }}">
-                     {{ $floor_use->title }}
-                  </option>
-               @endforeach
-            </select>
-            <span class="text-danger error-text floor_use_id_err"></span>
-         </div>
-      </div>
-
-      <div class="col-sm-12 col-lg-4">
-         <div class="form-group">
             <label class="form-label" for="third_level_instrument_id">Instrumento de tercer nivel</label>
             <select class="form-control" name="third_level_instrument_id" id="third_level_instrument_id">
                @foreach($third_level_instruments as $third_level_instrument)
@@ -130,6 +112,24 @@
                @endforeach
             </select>
             <span class="text-danger error-text third_level_instrument_id_err"></span>
+         </div>
+      </div>
+
+      <div class="col-sm-12 col-lg-4">
+         <div class="form-group">
+            <label class="form-label" for="floor_use_id">Uso del suelo</label>
+            <select class="form-control" name="floor_use_id" id="floor_use_id">
+               @foreach($floor_uses as $floor_use)
+                  <option 
+                     @if($property->floor_use_id == $floor_use->id) 
+                     selected 
+                     @endif 
+                     value="{{ $floor_use->id }}">
+                     {{ $floor_use->title }}
+                  </option>
+               @endforeach
+            </select>
+            <span class="text-danger error-text floor_use_id_err"></span>
          </div>
       </div>
    </div>
