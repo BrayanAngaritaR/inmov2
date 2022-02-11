@@ -80,6 +80,12 @@ Route::post('propiedad/{property}/solicitar-informacion', [App\Http\Controllers\
 
 Route::get('/panel/statistics', [App\Http\Controllers\Panel\StatisticsController::class, 'index'])->name('panel.statistics.index');
 
+/*
+|--------------------------------------------------------------------------
+| Estadísticas - Propiedades
+|--------------------------------------------------------------------------
+*/
+
 Route::get('/panel/properties/pending', [App\Http\Controllers\Panel\PendingPropertiesController::class, 'index'])->name('panel.properties.pending.index');
 
 Route::get('/panel/properties', [App\Http\Controllers\Panel\PropertiesController::class, 'index'])->name('panel.properties.index');
@@ -91,6 +97,17 @@ Route::get('/panel/properties/create-old', [App\Http\Controllers\Panel\Propertie
 Route::post('/panel/properties/create', [App\Http\Controllers\Panel\PropertiesController::class, 'store'])->name('panel.properties.store');
 
 Route::get('/panel/properties/{property}/edit', [App\Http\Controllers\Panel\PropertiesController::class, 'edit'])->name('panel.properties.edit');
+
+
+#Imágenes
+Route::get('/panel/properties/images/{property}', [App\Http\Controllers\Panel\Properties\ImagesController::class, 'index'])->name('panel.properties.images.index');
+
+Route::post('/panel/properties/images/{property}', [App\Http\Controllers\Panel\Properties\ImagesController::class, 'store'])->name('panel.properties.images.store');
+
+#Archivos
+Route::get('/panel/properties/files/{property}', [App\Http\Controllers\Panel\Properties\FilesController::class, 'index'])->name('panel.properties.files.index');
+
+Route::post('/panel/properties/files/{property}', [App\Http\Controllers\Panel\Properties\FilesController::class, 'store'])->name('panel.properties.files.store');
 
 //Actualizar la información de los TABS
 Route::post('/panel/properties/{property}/update-identification', [App\Http\Controllers\Panel\PropertiesController::class, 'update_identification'])->name('panel.properties.update.identification');

@@ -2,13 +2,14 @@
 
 namespace App\Models\Property;
 
+use App\Models\Base\File;
+use App\Models\Base\Image;
 use App\Models\Property\Action;
 use App\Models\Property\Commune;
 use App\Models\Property\Destination;
 use App\Models\Property\District;
 use App\Models\Property\FloorClassification;
 use App\Models\Property\FloorUse;
-use App\Models\Property\Image;
 use App\Models\Property\Inst_3nivel;
 use App\Models\Property\Macroproject;
 use App\Models\Property\Opportunity;
@@ -145,9 +146,15 @@ class Property extends Model implements Auditable
    }
 
    //Fotografías adjuntas
-   public function images()
+   public function image()
    {
-      return $this->hasMany(Image::class);
+      return $this->morphOne(Image::class, 'imageable');
+   }
+
+   //Documentos adjuntos
+   public function file()
+   {
+      return $this->morphOne(File::class, 'fileable');
    }
 
    //Secretaría a la que se encuentra adscrita

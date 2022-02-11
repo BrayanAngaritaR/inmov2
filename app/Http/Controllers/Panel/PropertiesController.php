@@ -244,7 +244,7 @@ class PropertiesController extends Controller
       $threats = Threat::orderBy('title', 'ASC')->get();
       $destinations = Destination::orderBy('title', 'ASC')->get();
       $opportunities = Opportunity::orderBy('title', 'ASC')->get();
-      $users = User::orderBy('name', 'ASC')->get();
+      $users = User::role('Collaborator')->orderBy('name', 'ASC')->get();
 
       return view(
          'panel.properties.edit',

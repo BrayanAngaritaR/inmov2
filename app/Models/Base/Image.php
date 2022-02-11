@@ -5,13 +5,13 @@ namespace App\Models\Base;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class File extends Model
+class Image extends Model
 {
    use HasFactory;
 
-   protected $fillable = ['url'];
+   protected $fillable = ['thumbnail', 'url'];
 
-   public function fileable(): \Illuminate\Database\Eloquent\Relations\MorphTo
+   public function imageable(): \Illuminate\Database\Eloquent\Relations\MorphTo
    {
       return $this->morphTo();
    }

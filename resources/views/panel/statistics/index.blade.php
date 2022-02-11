@@ -29,7 +29,7 @@
 @stop @section('content')
 <div class="nk-block">
    <div class="row g-gs">
-      <div class="col-sm-12 col-lg-4">
+      <div class="col-sm-12 col-lg-4 not-yet">
          <div class="card card-full">
             <div class="card-inner">
                <div class="card-title-group align-start mb-3">
@@ -50,7 +50,7 @@
          </div>
       </div>
 
-      <div class="col-sm-12 col-lg-4">
+      <div class="col-sm-12 col-lg-4 not-yet">
          <div class="card card-full">
             <div class="card-inner">
                <div class="card-title-group align-start mb-3">
@@ -71,7 +71,7 @@
          </div>
       </div>
 
-      <div class="col-sm-12 col-lg-4">
+      <div class="col-sm-12 col-lg-4 not-yet">
          <div class="card card-full">
             <div class="card-inner">
                <div class="card-title-group align-start mb-3">
@@ -155,7 +155,7 @@
          </div>
       </div>
 
-      <div class="col-sm-12 col-lg-4">
+      <div class="col-sm-12 col-lg-4 not-yet">
          <div class="card card-full">
             <div class="card-inner">
                <div class="card-title-group align-start mb-3">
@@ -176,7 +176,7 @@
          </div>
       </div>
 
-      <div class="col-sm-12 col-lg-4">
+      <div class="col-sm-12 col-lg-4 not-yet">
          <div class="card card-full">
             <div class="card-inner">
                <div class="card-title-group align-start mb-3">
@@ -197,7 +197,7 @@
          </div>
       </div>
 
-      <div class="col-sm-12 col-lg-4">
+      <div class="col-sm-12 col-lg-4 not-yet">
          <div class="card card-full">
             <div class="card-inner">
                <div class="card-title-group align-start mb-3">
@@ -219,12 +219,16 @@
       </div>
 
 
-      <div class="col-sm-12 col-lg-6">
+      <div class="col-sm-12 col-lg-6 not-yet">
          <div id="rph_properties"></div>
       </div>
 
-      <div class="col-sm-12 col-lg-6">
+      <div class="col-sm-12">
          <div id="property_destinations"></div>
+      </div>
+
+      <div class="col-sm-12">
+         <div id="commune_properties"></div>
       </div>
 
       <div class="col-sm-12">
@@ -239,9 +243,7 @@
          <div id="for_sale_properties"></div>
       </div>
 
-      <div class="col-sm-12">
-         <div id="commune_properties"></div>
-      </div>
+      
 
       <div class="col-sm-12 col-lg-6">
          <div class="card card-bordered h-100">
@@ -510,20 +512,32 @@ $('#secretarship_properties').highcharts({
 
 Highcharts.chart('property_destinations', {
   chart: {
-    type: 'pie'
+    type: 'column'
   },
   title: {
     text: 'Destinación actual'
   },
-  series: [{
-    data: [
 
-    @foreach($destinations as $destination)
-    {
-      name: '{{ $destination->title }}',
-      y: {{ $destination->properties_count }}
-    },
-    @endforeach
+  xAxis: {
+    tickWidth: 0,
+    labels: {
+     style: {
+       color: '#000',
+       }
+     },
+    categories: [
+      @foreach($destinations as $destination)
+         '{{ $destination->title }}',
+      @endforeach
+    ]
+  },
+
+  series: [{
+    name: 'Cantidad',
+    data: [
+      @foreach($destinations as $destination)
+         {{ $destination->properties_count }},
+      @endforeach
     ]
   }]
 });
