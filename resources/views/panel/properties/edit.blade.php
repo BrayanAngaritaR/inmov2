@@ -371,6 +371,7 @@
       let destination_id = $("#destination_id").val();
       let opportunity_id = $("#opportunity_id").val();
       let prioritization_level = $("#prioritization_level").val();
+      let opportunity_id_description = $("#opportunity_id_description").val();
       let action_id = $("#action_id").val();
       let project_managed = $("#project_managed").val();
       let observations = $("#observations").val();
@@ -384,6 +385,7 @@
          destination_id,
          opportunity_id,
          prioritization_level,
+         opportunity_id_description,
          action_id,
          project_managed,
          observations,

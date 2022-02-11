@@ -188,7 +188,7 @@
             <select class="form-control" name="responsable_id" id="responsable_id">
                @foreach($users as $user)
                <option 
-                  @if($property->user_id == $user->id) 
+                  @if($property->responsable_id == $user->id) 
                   selected 
                   @endif 
                   value="{{ $user->id }}">
