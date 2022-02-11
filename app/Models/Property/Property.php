@@ -105,6 +105,7 @@ class Property extends Model implements Auditable
       'prioritization_level',
       'action_id',
       'project_managed',
+      'opportunity_id_description',
       'observations',
       'date_of_analysis_by_sss',
       'revised',

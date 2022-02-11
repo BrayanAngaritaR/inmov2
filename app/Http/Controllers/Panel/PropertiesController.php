@@ -461,6 +461,7 @@ class PropertiesController extends Controller
          'prioritization_level' => $request->prioritization_level,
          'action_id' => $request->action_id,
          'project_managed' => $request->project_managed,
+         'opportunity_id_description' => $request->opportunity_id_description,
          'observations' => $request->observations,
          'date_of_analysis_by_sss' => $request->date_of_analysis_by_sss,
          'revised' => $request->revised,

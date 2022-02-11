@@ -85,7 +85,7 @@ class CreatePropertiesTable extends Migration
          $table->string('plate_number'); //No. Escritura
          $table->double('property_deed'); //Superferficie Jurídica (Escritura)
          $table->string('units')->default('m2'); //Unidades (M2, Varas, Pies2)
-         $table->date('writing_date'); //Fecha de escritura
+         $table->date('writing_date')->nullable(); //Fecha de escritura
          $table->unsignedBigInteger('notary_id')->nullable(); //Notaría municipal 
          $table->string('which_notary_container')->nullable(); //Qué notaría
 
@@ -272,6 +272,9 @@ class CreatePropertiesTable extends Migration
 
          //Proyecto gestionado es el nombre del proyecto que se gestionó. Ej: Estación de Bomberos Libertadores
          $table->string('project_managed')->nullable(); 
+
+         //ID de oportunidad
+         $table->string('opportunity_id_description')->nullable(); 
          
          //Tarea pendiente: Ventana de oportunidad 
 

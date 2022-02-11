@@ -76,6 +76,13 @@
 
       <div class="col-sm-12">
          <div class="form-group">
+            <label class="form-label" for="opportunity_id_description">ID de oportunidad</label>
+            <input type="text" name="opportunity_id_description" placeholder="Ej: Oportunidad predios: " class="form-control" value="{{ $property->opportunity_id_description }}" id="opportunity_id_description" />
+         </div>
+      </div>
+
+      <div class="col-sm-12">
+         <div class="form-group">
             <label class="form-label" for="observations">Observaciones</label>
             <textarea name="observations" class="form-control" id="observations">{{ $property->observations }}</textarea>
          </div>
