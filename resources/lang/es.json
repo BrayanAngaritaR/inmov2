@@ -31,5 +31,8 @@
 	"click here to request another": "pulsa aquí para que te enviemos otro",
 	"All rights reserved.":  "Todos los derechos reservados.",
 	"Pending": "Pendiente",
-	"Published": "Publicado"
+	"Published": "Publicado",
+	"Active": "Activo",
+	"Suspended": "Suspendido",
+	"Inactive": "Inactivo"
 }

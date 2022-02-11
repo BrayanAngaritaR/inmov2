@@ -121,3 +121,13 @@ Route::get('/panel/requests', [App\Http\Controllers\Panel\Info\InfoRequestContro
 Route::get('/panel/actions/{opportunity_id}', [App\Http\Controllers\Panel\Utils\ActionController::class, 'index'])->name('panel.actions.get.index');
 
 Route::get('/panel/districts/{commune_id}', [App\Http\Controllers\Panel\Utils\DistrictController::class, 'index'])->name('panel.districts.get.index');
+
+/*
+|--------------------------------------------------------------------------
+| Usuarios - Panel
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/panel/users', [App\Http\Controllers\Panel\Users\UserController::class, 'index'])->name('panel.users.index');
+
+Route::get('/panel/collaborators', [App\Http\Controllers\Panel\Users\CollaboratorsController::class, 'index'])->name('panel.users.collaborators.index');
