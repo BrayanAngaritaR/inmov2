@@ -104,10 +104,16 @@ Route::get('/panel/properties/images/{property}', [App\Http\Controllers\Panel\Pr
 
 Route::post('/panel/properties/images/{property}', [App\Http\Controllers\Panel\Properties\ImagesController::class, 'store'])->name('panel.properties.images.store');
 
+Route::post('/panel/images/featured', [App\Http\Controllers\Panel\Properties\ImagesController::class, 'update'])->name('panel.images.featured.update');
+
+Route::post('/panel/images/featured/delete', [App\Http\Controllers\Panel\Properties\ImagesController::class, 'destroy'])->name('panel.images.featured.destroy');
+
 #Archivos
 Route::get('/panel/properties/files/{property}', [App\Http\Controllers\Panel\Properties\FilesController::class, 'index'])->name('panel.properties.files.index');
 
 Route::post('/panel/properties/files/{property}', [App\Http\Controllers\Panel\Properties\FilesController::class, 'store'])->name('panel.properties.files.store');
+
+Route::post('/panel/file/delete', [App\Http\Controllers\Panel\Properties\FilesController::class, 'destroy'])->name('panel.file.destroy');
 
 //Actualizar la información de los TABS
 Route::post('/panel/properties/{property}/update-identification', [App\Http\Controllers\Panel\PropertiesController::class, 'update_identification'])->name('panel.properties.update.identification');

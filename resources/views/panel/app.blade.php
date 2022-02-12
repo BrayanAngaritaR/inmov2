@@ -219,6 +219,49 @@
       </script>
       @endif
 
+      <script type="text/javascript">
+         //Enviar peticiones POST dinámicamente
+         function sendDynamicInfo(info, url_type, url){
+
+            //Configurar el token CSRF en la petición
+            $.ajaxSetup({
+               headers: {
+                  "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+               },
+            });
+
+            //Retornar la respuesta del controlador
+            return $.ajax({
+               type: url_type,
+               url: url,
+               data: info,
+               success: function (data) {
+                  return data;
+               },
+            });
+         }
+
+         //Mostrar mensajes de alerta o de error
+         function showToast(timer, icon, title){
+            const Toast = Swal.mixin({
+               toast: true,
+               position: 'top-end',
+               showConfirmButton: false,
+               timer: timer,
+               timerProgressBar: true,
+               didOpen: (toast) => {
+                  toast.addEventListener('mouseenter', Swal.stopTimer)
+                  toast.addEventListener('mouseleave', Swal.resumeTimer)
+               }
+            });
+
+            Toast.fire({
+               icon: icon,
+               title: title
+            });
+         }
+      </script>
+
       @stack('scripts')
    </body>
 </html>

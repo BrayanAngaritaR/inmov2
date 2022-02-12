@@ -17,6 +17,7 @@ class CreateImagesTable extends Migration
          $table->id();
          $table->string('url');
          $table->string('thumbnail')->nullable();
+         $table->boolean('featured')->default(false);
          $table->morphs('imageable');
          $table->timestamps();
       });
