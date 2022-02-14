@@ -29,6 +29,218 @@
 @stop @section('content')
 <div class="nk-block">
    <div class="row g-gs">
+      <div class="col-lg-6 col-xl-8">
+         <div class="card card-bordered card-full">
+            <div class="card-inner">
+               <div class="nk-cov-wg1">
+                  <div class="card-title">
+                     <h5 class="title">Análisis de los bienes</h5>
+                  </div>
+                  <div class="nk-cov-data">
+                     <h6 class="overline-title">Total de bienes inmuebles</h6>
+                     <div class="amount">12,972</div>
+                  </div>
+                  <div class="nk-cov-wg1-progress">
+                     <div class="progress progress-reverse progress-md progress-pill progress-bordered">
+                        <div class="progress-bar bg-danger" data-progress="75" data-toggle="tooltip" title="Pendientes: 75%"></div>
+                        <div class="progress-bar bg-success" data-progress="10" data-toggle="tooltip" title="Publicados: 10%"></div>
+                        <div class="progress-bar bg-purple" data-progress="15" data-toggle="tooltip" title="Subidos a la plataforma: 15%"></div>
+                     </div>
+                  </div>
+                  <ul class="nk-cov-wg1-data">
+                     <li>
+                        <div class="title">
+                           <div class="dot dot-lg sq bg-purple"></div>
+                           <span>Subidos a la plataforma</span>
+                        </div>
+                        <div class="count">{{ $properties_count }}</div>
+                     </li>
+                     <li>
+                        <div class="title">
+                           <div class="dot dot-lg sq bg-success"></div>
+                           <span>Publicados</span>
+                        </div>
+                        <div class="count">{{ $published_properties_count }}</div>
+                     </li>
+                     <li>
+                        <div class="title">
+                           <div class="dot dot-lg sq bg-danger"></div>
+                           <span>Pendientes</span>
+                        </div>
+                        <div class="count">13,390</div>
+                     </li>
+                  </ul>
+                  <div class="nk-cov-wg-note">
+                     Última actualización: Hace 2 días
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- .col -->
+
+      <div class="col-lg-6 col-xl-4">
+         <div class="card card-bordered card-full">
+            <div class="card-inner">
+               <div class="nk-cov-wg2">
+                  <div class="card-title">
+                     <h5 class="title">Usuarios</h5>
+                  </div>
+                  <div class="nk-cov-group">
+                     <div class="nk-cov-data">
+                        <h6 class="overline-title">Total</h6>
+                        <div class="amount amount-sm">48</div>
+                     </div>
+                     <div class="nk-cov-data">
+                        <h6 class="overline-title">Suscriptores</h6>
+                        <div class="amount amount-sm text-success">15</div>
+                     </div>
+                     <div class="nk-cov-data">
+                        <h6 class="overline-title">Colaboradores</h6>
+                        <div class="amount amount-sm text-info">5</div>
+                     </div>
+                  </div>
+                  <div class="nk-cov-wg-note">Actualizado en tiempo real</div>
+                  <div class="nk-cov-wg2-group">
+                     <div class="nk-cov-data">
+                        <h6 class="sub-text">
+                           Bienes siendo analizados
+                        </h6>
+                        <div class="amount amount-xs">28</div>
+                     </div>
+                     <ul class="nk-cov-wg2-data">
+                        <li>
+                           <div class="title">
+                              <div class="dot dot-lg sq bg-purple"></div>
+                              <span>Asignados</span>
+                           </div>
+                           <div class="count">27</div>
+                        </li>
+                        <li>
+                           <div class="title">
+                              <div class="dot dot-lg sq bg-danger"></div>
+                              <span>Sin completar información</span>
+                           </div>
+                           <div class="count">01</div>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- .col -->
+
+      <!-- Bienes georreferenciados -->
+      <div class="col-md-4">
+         <div class="card card-preview">
+            <div class="card-inner">
+               <div class="card-head text-center">
+                  <h6 class="title">Bienes georreferenciados</h6>
+               </div>
+               <div class="nk-ck-sm">
+                  <canvas class="polar-chart" id="georeferencedProperties"></canvas>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- /Bienes georreferenciados -->
+
+      <!-- Destinación actual -->
+      <div class="col-md-8">
+         <div class="card card-preview">
+            <div class="card-inner">
+               <div class="card-head">
+                  <h6 class="title">Destinación actual</h6>
+               </div>
+               <div class="nk-ck-sm">
+                  <canvas class="bar-chart" id="actualDestination"></canvas>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- /Destinación actual -->
+
+      <!-- Pendiente - Bienes analizados -->
+      <div class="col-sm-12">
+         <div class="nk-block">
+            <div class="nk-block-head">
+               <div class="nk-block-head-content">
+                  <h4 class="nk-block-title">Bienes analizados</h4>
+                  <div class="nk-block-des">
+                     <p>Esta es la lista de bienes inmuebles analizados por cada mes del año actual <b>{{ date('Y') }}</b></p>
+                  </div>
+               </div>
+            </div>
+            <div class="card card-preview">
+               <div class="card-inner">
+                  <div class="nk-ck">
+                     <canvas class="line-chart" id="monthlyInfo"></canvas>
+                  </div>
+               </div>
+            </div>
+            <!-- .card-preview -->
+         </div>
+      </div>
+      <!-- /Pendiente - Bienes analizados -->
+
+      <div class="col-md-4">
+         <div class="card card-preview">
+            <div class="card-inner">
+               <div class="card-head text-center mb-5">
+                  <h6 class="title">Bienes en oportunidad</h6>
+               </div>
+               <div class="nk-ck-sm">
+                  <canvas class="doughnut-chart" id="doughnutChartData"></canvas>
+               </div>
+            </div>
+         </div>
+         <!-- .card-preview -->
+      </div>
+
+      <div class="col-md-4">
+         <div class="card card-preview">
+            <div class="card-inner">
+               <div class="card-head text-center mb-5">
+                  <h6 class="title">Bienes para venta</h6>
+               </div>
+               <div class="nk-ck-sm">
+                  <canvas class="pie-chart" id="pieChartData"></canvas>
+               </div>
+            </div>
+         </div>
+         <!-- .card-preview -->
+      </div>
+
+      <div class="col-md-4">
+         <div class="card card-bordered h-100">
+            <div class="card-inner">
+               <div class="traffic-channel">
+                  <div class="traffic-channel-doughnut-ck">
+                     <canvas class="analytics-doughnut" id="TrafficChannelDoughnutData"></canvas>
+                  </div>
+                  <div class="traffic-channel-group g-2">
+                     <div class="traffic-channel-data">
+                        <div class="title"><span class="dot dot-lg sq" data-bg="#9cabff"></span><span>Con RPH</span></div>
+                        <div class="amount">{{ $properties_count - $rph_properties_count }} <small>58.63%</small></div>
+                     </div>
+                     <div class="traffic-channel-data">
+                        <div class="title"><span class="dot dot-lg sq" data-bg="#b8acff"></span><span>Sin RPH</span></div>
+                        <div class="amount">{{ $rph_properties_count }} <small>23.94%</small></div>
+                     </div>
+                  </div>
+                  <!-- .traffic-channel-group -->
+               </div>
+               <!-- .traffic-channel -->
+            </div>
+         </div>
+         <!-- .card -->
+      </div>
+      <!-- .col -->
+
+      <!-- Estadísticas pendientes -->
+
+      {{-- La que quiere Santiago: https://codepen.io/fjsuarez/pen/obpaao | https://codepen.io/dcavins/pen/mqygQy --}} {{--
       <div class="col-sm-12 col-lg-4 not-yet">
          <div class="card card-full">
             <div class="card-inner">
@@ -217,34 +429,23 @@
             </div>
          </div>
       </div>
-
-
-      <div class="col-sm-12 col-lg-6 not-yet">
-         <div id="rph_properties"></div>
-      </div>
-
-      <div class="col-sm-12">
-         <div id="property_destinations"></div>
-      </div>
+      --}}
+      <!-- /Estadísticas pendientes -->
 
       <div class="col-sm-12">
          <div id="commune_properties"></div>
       </div>
 
       <div class="col-sm-12">
+         <div id="action_properties"></div>
+      </div>
+
+      <div class="col-sm-12">
          <div id="secretarship_properties"></div>
       </div>
 
-      <div class="col-sm-12 col-lg-6">
-         <div id="opportunity_properties"></div>
-      </div>
-
-      <div class="col-sm-12 col-lg-6">
-         <div id="for_sale_properties"></div>
-      </div>
-
-      
-
+      <!-- Estadísticas pendientes -->
+      {{--
       <div class="col-sm-12 col-lg-6">
          <div class="card card-bordered h-100">
             <div class="card-inner">
@@ -396,7 +597,8 @@
          </div>
          <!-- .card -->
       </div>
-      <!-- .col -->
+      --}}
+      <!-- /Estadísticas pendientes -->
    </div>
    <!-- .row -->
 </div>
@@ -404,350 +606,189 @@
 <script src="{{ asset('assets/js/charts/chart-analytics.js?ver=2.4.0')}}"></script>
 <script src="https://code.highcharts.com/5.0.0/highcharts.js"></script>
 
-
-
 <script type="text/javascript">
-   // Bienes con reglamento de propiedad horizontal    
-   Highcharts.chart('rph_properties', {
-  chart: {
-    type: 'pie'
-  },
-  title: {
-    text: 'RPH'
-  },
-  series: [{
-    data: [{
-      name: 'Bienes con RPH',
-      y: 40
-    }, {
-      name: 'Bienes sin RPH',
-      y: 60
-    }]
-  }]
-});
+         //Número de bienes por secretaría adscrita
 
+         Highcharts.setOptions({
+        colors: ['#67BCE6', '#423434'],
+        chart: {
+          style: {
+            fontFamily: 'sans-serif',
+            color: '#000'
+          }
+        }
+      });
 
-   //Número de bienes por secretaría adscrita
-
-   Highcharts.setOptions({
-  colors: ['#67BCE6'],
-  chart: {
-    style: {
-      fontFamily: 'sans-serif',
-      color: '#000'
-    }
-  }
-}); 
-
-$('#secretarship_properties').highcharts({
-  chart: {
-    type: 'column',
-    //backgroundColor: '#36394B'
-  },
-  title: {
-    text: 'Bienes por secretaría adscrita',
-    style: {  
-     color: '#000'
-    }
-  },
-  xAxis: {
-    tickWidth: 0,
-    labels: {
-     style: {
-       color: '#000',
-       }
-     },
-    categories: [
-      @foreach($secretaryships as $secretaryship)
-         '{{ $secretaryship->title }}',
-      @endforeach
-    ]
-  },
-  yAxis: {
-    gridLineWidth: .5,
-    gridLineDashStyle: 'dash',
-    //gridLineColor: 'black',
-    title: {
-      text: '',
-      style: {
-       color: '#000'
-       }
-    },
-    labels: {
-      formatter: function() {
-        return Highcharts.numberFormat(this.value, 0, '', ',');
-      },
-      style: {
-        color: '#fff',
-      }
-    }
-  },
-  legend: {
-    enabled: false,
-  },
-  credits: {
-    enabled: false
-  },
-  tooltip: {
-    valuePrefix: ''
-  },
-  plotOptions: {
-    column: {
-      borderRadius: 0,
-      pointPadding: 0,
-      groupPadding: 0.05
-    } 
-  },
-  series: [{
-    name: 'Cantidad',
-    data: [
-      @foreach($secretaryships as $secretaryship)
-         {{ $secretaryship->properties_count }},
-      @endforeach
-    ]
-  }]
-});
-
-//Número de bienes por destinación actual
-
-Highcharts.chart('property_destinations', {
-  chart: {
-    type: 'column'
-  },
-  title: {
-    text: 'Destinación actual'
-  },
-
-  xAxis: {
-    tickWidth: 0,
-    labels: {
-     style: {
-       color: '#000',
-       }
-     },
-    categories: [
-      @foreach($destinations as $destination)
-         '{{ $destination->title }}',
-      @endforeach
-    ]
-  },
-
-  series: [{
-    name: 'Cantidad',
-    data: [
-      @foreach($destinations as $destination)
-         {{ $destination->properties_count }},
-      @endforeach
-    ]
-  }]
-});
-
-
-// $(function () {
-//     Highcharts.setOptions({
-//         chart: {
-//             style:{
-//                     fontFamily:'Arial, Helvetica, sans-serif', 
-//                     fontSize: '2em',
-//                     color:'#f00'
-//                 }
-//         }
-//     });
-//         $('#property_destinations').highcharts({
-//             chart: {
-//                 type: 'pie'
-//             },
-//             colors: [
-//                '#ED5565',
-//                '#5D9CEC', 
-//                '#A0D468', 
-//                '#FFCE54',  
-//                '#48CFAD', 
-//                '#AC92EC',
-//                '#AAB2BD', 
-//                '#D770AD', 
-//                '#c42525', 
-//                '#a6c96a'
-//             ],
-//             title: {
-//                 text: 'Destinación actual',
-//                 style: {
-//                   color: '#555'
-//                 }
-//             },
-//             legend: {
-//                 layout: 'horizontal',
-//                 align: 'center',
-//                 verticalAlign: 'bottom',
-//                 borderWidth: 0,
-//                 backgroundColor: '#FFFFFF'
-//             },
-//             xAxis: {
-//                 categories: [
-//                     '2006',
-//                     '2007',
-//                     '2008',
-//                     '2009',
-//                     '2010',
-//                     '2011'
-//                 ]
-//             },
-//             yAxis: {
-//                 title: {
-//                     text: ''
-//                 }
-//             },
-//             tooltip: {
-//                 shared: false,
-//                 valueSuffix: 'points'
-//             },
-//             credits: {
-//                 enabled: false
-//             },
-//             plotOptions: {
-//                 areaspline: {
-//                     fillOpacity: 0.1
-//                 },
-//             series: {
-//                 groupPadding: .15
-//             }
-//             },
-//             series: [{
-//             type: 'pie',
-//             name: 'Browser share',
-//             data: [
-
-//                [@foreach($destinations as $destination)
-//                   '{{ $destination->title }}', {{ $destination->properties_count }},
-//                @endforeach],
-//             ]
-//             }]
-//         });
-//     });
-    
-
-//]]> 
+      $('#secretarship_properties').highcharts({
+        chart: {
+          type: 'column',
+          //backgroundColor: '#36394B'
+        },
+        title: {
+          text: 'Bienes por secretaría adscrita',
+          style: {
+           color: '#000'
+          }
+        },
+        xAxis: {
+          tickWidth: 0,
+          labels: {
+           style: {
+             color: '#000',
+             }
+           },
+          categories: [
+            @foreach($secretaryships as $secretaryship)
+               '{{ $secretaryship->title }}',
+            @endforeach
+          ]
+        },
+        yAxis: {
+          gridLineWidth: .5,
+          gridLineDashStyle: 'dash',
+          //gridLineColor: 'black',
+          title: {
+            text: '',
+            style: {
+             color: '#000'
+             }
+          },
+          labels: {
+            formatter: function() {
+              return Highcharts.numberFormat(this.value, 0, '', ',');
+            },
+            style: {
+              color: '#fff',
+            }
+          }
+        },
+        legend: {
+          enabled: false,
+        },
+        credits: {
+          enabled: false
+        },
+        tooltip: {
+          valuePrefix: ''
+        },
+        plotOptions: {
+          column: {
+            borderRadius: 0,
+            pointPadding: 0,
+            groupPadding: 0.05
+          }
+        },
+        series: [{
+          name: 'Cantidad',
+          data: [
+            @foreach($secretaryships as $secretaryship)
+               {{ $secretaryship->properties_count }},
+            @endforeach
+          ]
+        }]
+      });
 
 
 
 
-//Número de bienes por comuna
-$('#commune_properties').highcharts({
-  chart: {
-    type: 'column',
-    //backgroundColor: '#36394B'
-  },
-  title: {
-    text: 'Bienes por comuna',
-    style: {  
-     color: '#000'
-    }
-  },
-  xAxis: {
-    tickWidth: 0,
-    labels: {
-     style: {
-       color: '#000',
-       }
-     },
-    categories: [
-      @foreach($communes as $commune)
-         '{{ $commune->name }}',
-      @endforeach
-    ]
-  },
-  yAxis: {
-    gridLineWidth: .5,
-    gridLineDashStyle: 'dash',
-    //gridLineColor: 'black',
-    title: {
-      text: '',
-      style: {
-       color: '#000'
-       }
-    },
-    labels: {
-      formatter: function() {
-        return Highcharts.numberFormat(this.value, 0, '', ',');
-      },
-      style: {
-        color: '#fff',
-      }
-    }
-  },
-  legend: {
-    enabled: false,
-  },
-  credits: {
-    enabled: false
-  },
-  tooltip: {
-    valuePrefix: ''
-  },
-  plotOptions: {
-    column: {
-      borderRadius: 0,
-      pointPadding: 0,
-      groupPadding: 0.05
-    } 
-  },
-  series: [{
-    name: 'Cantidad',
-    data: [
-      @foreach($communes as $commune)
-         {{ $commune->properties_count }},
-      @endforeach
-    ]
-  }]
-});
+      // $(function () {
+      //     Highcharts.setOptions({
+      //         chart: {
+      //             style:{
+      //                     fontFamily:'Arial, Helvetica, sans-serif',
+      //                     fontSize: '2em',
+      //                     color:'#f00'
+      //                 }
+      //         }
+      //     });
+      //         $('#property_destinations').highcharts({
+      //             chart: {
+      //                 type: 'pie'
+      //             },
+      //             colors: [
+      //                '#ED5565',
+      //                '#5D9CEC',
+      //                '#A0D468',
+      //                '#FFCE54',
+      //                '#48CFAD',
+      //                '#AC92EC',
+      //                '#AAB2BD',
+      //                '#D770AD',
+      //                '#c42525',
+      //                '#a6c96a'
+      //             ],
+      //             title: {
+      //                 text: 'Destinación actual',
+      //                 style: {
+      //                   color: '#555'
+      //                 }
+      //             },
+      //             legend: {
+      //                 layout: 'horizontal',
+      //                 align: 'center',
+      //                 verticalAlign: 'bottom',
+      //                 borderWidth: 0,
+      //                 backgroundColor: '#FFFFFF'
+      //             },
+      //             xAxis: {
+      //                 categories: [
+      //                     '2006',
+      //                     '2007',
+      //                     '2008',
+      //                     '2009',
+      //                     '2010',
+      //                     '2011'
+      //                 ]
+      //             },
+      //             yAxis: {
+      //                 title: {
+      //                     text: ''
+      //                 }
+      //             },
+      //             tooltip: {
+      //                 shared: false,
+      //                 valueSuffix: 'points'
+      //             },
+      //             credits: {
+      //                 enabled: false
+      //             },
+      //             plotOptions: {
+      //                 areaspline: {
+      //                     fillOpacity: 0.1
+      //                 },
+      //             series: {
+      //                 groupPadding: .15
+      //             }
+      //             },
+      //             series: [{
+      //             type: 'pie',
+      //             name: 'Browser share',
+      //             data: [
 
-//Numero de Bienes de Oportunidad
-Highcharts.chart('opportunity_properties', {
-  chart: {
-    type: 'pie'
-  },
-  title: {
-    text: 'Bienes en oportunidad'
-  },
-  series: [{
-    data: [
-
-    {
-      name: 'Bienes en oportunidad',
-      y: {{ $opportunity_properties }}
-    },
-    {
-      name: 'Cantidad de bienes',
-      y: {{ $properties_count }}
-    },
-    ]
-  }]
-});
-
-//Numero de Bienes de Ventas
-Highcharts.chart('for_sale_properties', {
-  chart: {
-    type: 'pie'
-  },
-  title: {
-    text: 'Bienes para venta'
-  },
-  series: [{
-    data: [
-
-    {
-      name: 'Bienes para venta',
-      y: {{ $for_sale_properties }}
-    },
-    {
-      name: 'Cantidad de bienes',
-      y: {{ $properties_count }}
-    },
-    ]
-  }]
-});
+      //                [@foreach($destinations as $destination)
+      //                   '{{ $destination->title }}', {{ $destination->properties_count }},
+      //                @endforeach],
+      //             ]
+      //             }]
+      //         });
+      //     });
 
 
-//
+      //]]>
+
+
+
+
+
 </script>
+
+<script type="text/javascript" src="{{ asset('assets/js/charts/gd-default.js') }}"></script>
+{{--
+<script type="text/javascript" src="{{ asset('assets/js/charts/chart-analytics.js') }}"></script>
+--}}
+<script type="text/javascript" src="{{ asset('assets/js/charts/new.js') }}"></script>
+{{--
+<script type="text/javascript" src="{{ asset('assets/js/charts/polar.js') }}"></script>
+--}} @include('panel.includes.charts._dashboard')
+<script type="text/javascript" src="{{ asset('assets/js/charts/other.js') }}"></script>
 @endpush

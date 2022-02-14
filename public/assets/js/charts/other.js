@@ -241,8 +241,8 @@
     }]
   };
   var TrafficChannelDoughnutData = {
-    labels: ["Sin RPH", "Con RPH"],
-    dataUnit: 'People',
+    labels: ["Con RPH", "Sin RPH"],
+    dataUnit: 'bienes',
     legend: false,
     datasets: [{
       borderColor: "#fff",
