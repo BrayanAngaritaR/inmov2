@@ -34,7 +34,7 @@ class PropertiesController extends Controller
       $floor_uses = FloorUse::orderBy('title', 'ASC')->get(); 
 
       $properties = Property::where('status', 'Published')
-         ->with(['images', 'district'])
+         ->with('district')
          ->latest()
          ->get();
 

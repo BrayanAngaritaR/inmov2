@@ -300,7 +300,7 @@
                      <span><i class="fal fa-random"></i></span>
                   </a> --}}
                   <div class="geodir-category-listing_media-list">
-                     <span><i class="fas fa-camera"></i> {{ $property->images->count() }}</span>
+                     <span><i class="fas fa-camera"></i> {{-- {{ $property->images->count() ? : 0 }} --}}0</span>
                   </div>
                </div>
                <div class="geodir-category-content fl-wrap">
