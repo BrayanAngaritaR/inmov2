@@ -3,7 +3,13 @@
 <div class="content">
    <section class="hidden-section single-hero-section" data-scrollax-parent="true" id="sec1">
       <div class="bg-wrap bg-parallax-wrap-gradien">
+         @forelse($images as $image)
+            @if($image->featured)
+            <div class="bg par-elem" data-bg="{{ asset('storage/images') }}/{{$property->code}}/{{ $image->url }}" data-scrollax="properties: { translateY: '10%' }"></div>
+            @endif
+         @empty
          <div class="bg par-elem" data-bg="https://homeradar.kwst.net/images/bg/1.jpg" data-scrollax="properties: { translateY: '30%' }"></div>
+         @endforelse
       </div>
 
       <div class="container">
@@ -292,7 +298,7 @@
 
                            <p><b>Dirección</b>: {{ $property->cadastral_address }}</p>
                            <div class="map-container mapC_vis mapC_vis2">
-                              <div id="singleMap" data-latitude="{{ $property->map_latitude }}" data-longitude="{{ $property->map_longitude }}" data-mapTitle="Our Location" data-infotitle="House in Financial Distric" data-infotext="70 Bright St New York, USA"></div>
+                              <div id="singleMap" data-latitude="{{ $property->map_latitude }}" data-longitude="{{ $property->map_longitude }}" data-mapTitle="Our Location" data-infotitle="{{ $property->sss_description }}" data-infotext="{{ $property->cadastral_address }}"></div>
                               <div class="scrollContorl"></div>
                            </div>
                            <input id="pac-input" class="controls fl-wrap controls-mapwn" autocomplete="on" type="text" placeholder="¿Quieres buscar lugares cerca? " value="" />

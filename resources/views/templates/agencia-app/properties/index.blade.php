@@ -280,12 +280,17 @@
             <article class="geodir-category-listing fl-wrap">
                <div class="geodir-category-img fl-wrap">
                   <a href="{{ route('user.properties.show', $property) }}" class="geodir-category-img_item">
-                     {{-- https://fakeimg.pl/350x200/ff0000%2C10/112%2C252/?text=AGENCIA%20APP --}}
-                     <img src="{{ asset('templates/agencia-app/images/default.png') }}" alt="" />
+                     
+                     @if($property->featured_image())
+                        <img src="{{ asset('storage/images') }}/{{$property->code}}/{{ $property->featured_image()->url }}" alt="" />
+                     @else
+                        <img src="{{ asset('templates/agencia-app/images/default.png') }}" alt="" />
+                     @endif
+                     
                      <div class="overlay"></div>
                   </a>
                   <div class="geodir-category-location">
-                     <a href="#1" class="map-item tolt" data-microtip-position="top-left" data-tooltip="On the map"><i class="fas fa-map-marker-alt"></i> 
+                     <a href="#1" class="map-item tolt" data-microtip-position="top-left" data-tooltip="On the map"><i class="fas fa-map-marker-alt"></i>
                         {{ $property->cadastral_address }}
                      </a>
                   </div>

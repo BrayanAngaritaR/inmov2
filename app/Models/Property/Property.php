@@ -151,6 +151,16 @@ class Property extends Model implements Auditable
       return $this->morphOne(Image::class, 'imageable');
    }
 
+   //Fotografías destacada
+   public function featured_image()
+   {
+      $image = Image::where('imageable_id', $this->id)
+         ->where('imageable_type', 'App\Models\Property\Property')
+         ->where('featured', 1)
+         ->first();
+      return $image;
+   }
+
    //Documentos adjuntos
    public function file()
    {

@@ -64,7 +64,7 @@
                         <option value="Ficha castastral">Ficha castastral</option>
                         <option value="Ficha resumen">Ficha resumen</option>
                         <option value="Estado jurídico del inmueble">Estado jurídico del inmueble</option>
-                        <option value="Certificado de tradición y libertad">Certificado de tradición y libertad</option>
+                        <option value="Datos básicos jurídicos">Datos básicos jurídicos</option>
                         <option value="Escrituras">Escrituras</option>
                      </select>
                      {{-- <input type="text" name="title" class="form-control"> --}}
