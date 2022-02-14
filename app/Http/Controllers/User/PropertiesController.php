@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Base\File;
+use App\Models\Base\Image;
 use App\Models\Property\Action;
 use App\Models\Property\Destination;
 use App\Models\Property\District;
@@ -77,7 +79,18 @@ class PropertiesController extends Controller
    public function show(Property $property)
    {
       if ($property->status == 'Published') {
-         return view($this->template.'properties.show', compact('property'));
+
+         //Imágenes del inmueble
+         $images = Image::where('imageable_id', $property->id)
+         ->where('imageable_type', 'App\Models\Property\Property')
+         ->get();
+
+         //Archivos del inmueble
+         $files = File::where('fileable_id', $property->id)
+         ->where('fileable_type', 'App\Models\Property\Property')
+         ->get();
+
+         return view($this->template.'properties.show', compact(['property', 'images', 'files']));
       }
 
       return view($this->template.'errors.no-property-available');

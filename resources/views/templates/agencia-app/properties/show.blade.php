@@ -104,6 +104,16 @@
                      <!-- gallery-items   -->
                      <div class="gallery-items grid-small-pad list-single-gallery three-coulms lightgallery">
                         <!-- 1 -->
+                        @forelse($images as $image)
+                           <div class="gallery-item">
+                              <div class="grid-item-holder">
+                                 <div class="box-item">
+                                    <img src="{{ asset('storage/images') }}/{{$property->code}}/{{ $image->url }}" alt="" />
+                                    <a href="{{ asset('storage/images') }}/{{$property->code}}/{{ $image->url }}" class="gal-link popup-image"><i class="fa fa-search"></i></a>
+                                 </div>
+                              </div>
+                           </div>
+                        @empty
                         <div class="gallery-item">
                            <div class="grid-item-holder">
                               <div class="box-item">
@@ -112,17 +122,7 @@
                               </div>
                            </div>
                         </div>
-                        <!-- 1 end -->
-                        <!-- 2 -->
-                        <div class="gallery-item">
-                           <div class="grid-item-holder">
-                              <div class="box-item">
-                                 <img src="{{ asset('templates/agencia-app/images/default.png') }}" alt="" />
-                                 <a href="{{ asset('templates/agencia-app/images/default.png') }}" class="gal-link popup-image"><i class="fa fa-search"></i></a>
-                              </div>
-                           </div>
-                        </div>
-                        <!-- 2 end -->
+                        @endforelse
                      </div>
                      <!-- end gallery items -->
                   </div>
@@ -395,15 +395,13 @@
                   <div class="box-widget-title fl-wrap">Documentos del inmueble</div>
                   <div class="box-widget-content fl-wrap">
                      <div class="bwc_download-list">
-                        <a href="#" download>
-                           <span><i class="fal fa-file-pdf"></i></span>Ficha catrastral
+                        @forelse($files as $file)
+                        <a href="{{ asset('storage/files') }}/{{$property->code}}/{{ $file->url }}" target="_blank">
+                           <span><i class="fal fa-file-pdf"></i></span>{{ $file->title }}
                         </a>
-                        <a href="#" download>
-                           <span><i class="fal fa-file-word"></i></span>VUR
-                        </a>
-                        <a href="#" download>
-                           <span><i class="fal fa-file-pdf"></i></span>Planos
-                        </a>
+                        @empty
+                        <p>No hay archivos</p>
+                        @endforelse
                      </div>
                   </div>
                </div>
