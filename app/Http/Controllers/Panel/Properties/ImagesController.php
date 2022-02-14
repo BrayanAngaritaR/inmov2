@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Panel\Properties;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 use App\Models\Base\Image;
 use App\Models\Property\Property;
 use Illuminate\Http\Request;
 use Storage;
+
 use Str;
 
 class ImagesController extends Controller
@@ -31,10 +33,12 @@ class ImagesController extends Controller
             $property->image()->updateOrCreate(['thumbnail' => $name, 'url' => $name]);
          }
 
-         return "Todo bien";
+         Session::flash('info', ['success', __('Fotos actualizadas correctamente')]);
+         return back();
       }
 
-      return "No images bien";
+      Session::flash('info', ['error', __('Ha ocurrido un error')]);
+      return back();
    }
 
    public function update(Request $request)

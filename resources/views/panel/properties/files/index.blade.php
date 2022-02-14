@@ -59,7 +59,15 @@
 
                   <div class="form-group">
                      <label class="form-label" for="propertyPhotosLabel">Nombre del archivo</label>
-                     <input type="text" name="title" class="form-control">
+                     <select class="form-control" name="title" required>
+                        <option disabled selected>Selecciona un título de archivo</option>
+                        <option value="Ficha castastral">Ficha castastral</option>
+                        <option value="Ficha resumen">Ficha resumen</option>
+                        <option value="Estado jurídico del inmueble">Estado jurídico del inmueble</option>
+                        <option value="Certificado de tradición y libertad">Certificado de tradición y libertad</option>
+                        <option value="Escrituras">Escrituras</option>
+                     </select>
+                     {{-- <input type="text" name="title" class="form-control"> --}}
                   </div>
                   <div class="form-group">
                      <label class="form-label" for="propertyPhotosLabel">Subir archivo</label>
