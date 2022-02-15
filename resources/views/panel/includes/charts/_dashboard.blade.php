@@ -6,18 +6,21 @@
 
   var actualDestination = {
     labels: [
-    	@foreach($destinations as $destination)
-            '{{ Str::limit($destination->title, 10) }}',
-         @endforeach
+         //foreach($destinations as $destination)
+         //'Str::limit($destination->title, 10) }}',
+         //endforeach
+         'EBS', 'EBC', 'Equipamientos de Infraestructuras',  'Equipamientos de Seguridad y Convivencia ESC', 'Equipamientos Institucionales', 'Espacio público', 'Comercial', 'Industrial', 'Residencial', 'Servicios', 'Sin uso'
       ],
+
     stacked: true,
     dataUnit: 'bienes',
     datasets: [{
       label: "Destinación actual",
-      color: "#b695ff",
-      data: [@foreach($destinations as $destination)
-            {{ $destination->properties_count }},
-         @endforeach]
+      color: ["#b695ff", "#222"],
+      // data: [@foreach($destinations as $destination)
+      //       {{ $destination->properties_count }},
+      //    @endforeach]
+      data: [1009, 207, 43, 51, 23, 770, 597, 1, 6094, 111, 2016]
     }
 
     // , {
@@ -381,11 +384,46 @@
     legend: false,
     datasets: [{
       borderColor: "#fff",
-      background: ["#b695ff", "#8feac5"],
-      data: [{{ $properties_count }}, {{ $opportunity_properties }}]
+      background: ["#8feac5", "#b695ff"],
+      data: [12972, 124]
     }]
   };
 
+  var georeferencedProperties = {
+    labels: ["Total de bienes", "Bienes georreferenciados"],
+    dataUnit: 'bienes',
+    legend: false,
+    datasets: [{
+      borderColor: "#fff",
+      background: ["#8feac5", "#b695ff"],
+      data: [12972, 1664]
+    }]
+  };
+
+
+  var forSaleProperties = {
+    labels: ["Total de bienes", "Bienes para la venta"],
+    dataUnit: 'bienes',
+    legend: false,
+    datasets: [{
+      borderColor: "#fff",
+      background: ["#8feac5", "#b695ff"],
+      data: [12972, 147]
+    }]
+  };
+
+  var rphProperties = {
+    labels: ["Sin RPH", "Con RPH"],
+    dataUnit: 'bienes',
+    legend: false,
+    datasets: [{
+      borderColor: "#fff",
+      background: ["#8feac5", "#b695ff"],
+      data: [12314, 658]
+    }]
+  };
+
+  
   function doughnutChart(selector, set_data) {
     var $selector = selector ? $(selector) : $('.doughnut-chart');
     $selector.each(function () {
@@ -544,16 +582,17 @@
   });
 
 
-  var georeferencedProperties = {
-    labels: ["Total", "Georreferenciados"],
-    dataUnit: 'bienes',
-    legend: true,
-    datasets: [{
-      borderColor: "#fff",
-      background: [NioApp.hexRGB("#f4aaa4", .8), NioApp.hexRGB("#b695ff", .8)],
-      data: [{{ $georeferenced_properties_count }}, {{ $properties_count }}]
-    }]
-  };
+  // var georeferencedProperties = {
+  //   labels: ["Total", "Georreferenciados"],
+  //   dataUnit: 'bienes',
+  //   legend: true,
+  //   datasets: [{
+  //     borderColor: "#fff",
+  //     background: [NioApp.hexRGB("#f4aaa4", .8), NioApp.hexRGB("#b695ff", .8)],
+  //     //data: [{{ $georeferenced_properties_count }}, {{ $properties_count }}]
+  //     data: [1664, {{ $properties_count }}]
+  //   }]
+  // };
 
   function polarAreaChart(selector, set_data) {
     var $selector = selector ? $(selector) : $('.polar-chart');
@@ -692,12 +731,172 @@
             }
          },
          series: [
-            @foreach($communes as $commune)
             {
-               name: '{{ $commune->name }}',
-               data: [{{ $commune->properties_count }}]
+               name: 'Popular',
+               data: [3193]
+            }, 
+
+            {
+               name: 'Santa Cruz',
+               data: [1294]
+            }, 
+
+            {
+               name: 'Manrique',
+               data: [442]
+            }, 
+
+            {
+               name: 'Aranjuez',
+               data: [361]
+            }, 
+
+            {
+               name: 'Castilla',
+               data: [313]
             },
-            @endforeach
+
+            {
+               name: 'Doce de octubre',
+               data: [466]
+            }, 
+
+            {
+               name: 'Robledo',
+               data: [526]
+            }, 
+
+            {
+               name: 'Villa Hermosa',
+               data: [984]
+            }, 
+
+            {
+               name: 'Buenos Aires',
+               data: [200]
+            }, 
+
+            {
+               name: 'La Candelaria',
+               data: [332]
+            }, 
+
+            {
+               name: 'Laureles',
+               data: [108]
+            }, 
+
+            {
+               name: 'La América',
+               data: [156]
+            },
+
+            {
+               name: 'San Javier',
+               data: [1186]
+            }, 
+
+            {
+               name: 'Poblado',
+               data: [89]
+            }, 
+
+            {
+               name: 'Belén',
+               data: [138]
+            }, 
+
+            {
+               name: 'Guayabal',
+               data: [378]
+            }, 
+
+            //foreach($communes as $commune)
+            // {
+            //    name: '$commune->name }}',
+            //    data: [$commune->properties_count }}]
+            // },
+            //endforeach
+            ]
+         }
+      );
+
+      //Bienes por corregimiento
+      $('#territory_properties').highcharts({
+         chart: {
+            type: 'column'
+         },
+         title: {
+            text: 'Bienes por corregimiento'
+         },
+         colors: [
+            '#816bff',
+            '#f4aaa5',
+            '#b7acff',
+            '#8feac4'
+         ],
+         legend: {
+            layout: 'horizontal',
+            align: 'center',
+            verticalAlign: 'bottom',
+            borderWidth: 0,
+            backgroundColor: '#FFFFFF'
+         },
+         xAxis: {
+            categories: [
+               'Por comuna'
+            ]
+         },
+         yAxis: {
+            title: {
+               text: 'Cantidad por corregimiento',
+               style: {
+                  fontSize: 'small'
+               }
+            }
+         },
+         tooltip: {
+            shared: false,
+            valueSuffix: ' bienes'
+         },
+         credits: {
+            enabled: false
+         },
+         plotOptions: {
+            areaspline: {
+               fillOpacity: 0.1
+            },
+            series: {
+               groupPadding: .15
+            }
+         },
+         series: [
+            {
+               name: 'Palmitas',
+               data: [56]
+            },
+
+            {
+               name: 'San Cristóbal',
+               data: [274]
+            },
+
+            {
+               name: 'Altavista',
+               data: [95]
+            },
+
+            {
+               name: 'San Antonio de Prado',
+               data: [235]
+            },
+
+            {
+               name: 'Santa Elena',
+               data: [107]
+            },
+
+
             ]
          }
       );

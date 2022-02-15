@@ -5,7 +5,7 @@
 <div class="content mt-5 pt-5 mb-5 pb-5">
    <div class="row container">
       <div class="col-sm-12 col-lg-6 my-auto text-start">
-         <img src="{{ asset('templates/agencia-app/images/big-logo.png') }}" height="120"/>
+         <img src="{{ asset('templates/agencia-app/images/logo.svg') }}" height="120"/>
       </div>
       <div class="col-sm-12 col-lg-6 my-auto">
          

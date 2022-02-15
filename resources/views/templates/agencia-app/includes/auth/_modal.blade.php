@@ -5,7 +5,7 @@
       <div class="main-register-wrapper modal_main fl-wrap">
          <div class="main-register-header color-bg">
             <div class="main-register-logo fl-wrap">
-               <img src="templates/agencia-app/images/logo.png" style="height: 120px !important;" alt="" />
+               <img src="{{ asset('templates/agencia-app/images/logo-white.svg')}}" style="height: 40% !important;" alt="" />
             </div>
             <div class="main-register-bg">
                <div class="mrb_pin"></div>

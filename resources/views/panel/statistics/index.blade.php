@@ -27,7 +27,7 @@
    </div>
 </div>
 @stop @section('content')
-<div class="nk-block">
+<div class="container-fluid">
    <div class="row g-gs">
       <div class="col-lg-6 col-xl-8">
          <div class="card card-bordered card-full">
@@ -67,7 +67,7 @@
                            <div class="dot dot-lg sq bg-danger"></div>
                            <span>Pendientes</span>
                         </div>
-                        <div class="count">13,390</div>
+                        <div class="count">{{ 12972 - $properties_count }}</div>
                      </li>
                   </ul>
                   <div class="nk-cov-wg-note">
@@ -93,11 +93,11 @@
                      </div>
                      <div class="nk-cov-data">
                         <h6 class="overline-title">Suscriptores</h6>
-                        <div class="amount amount-sm text-success">15</div>
+                        <div class="amount amount-sm text-success">0</div>
                      </div>
                      <div class="nk-cov-data">
                         <h6 class="overline-title">Colaboradores</h6>
-                        <div class="amount amount-sm text-info">5</div>
+                        <div class="amount amount-sm text-info">4</div>
                      </div>
                   </div>
                   <div class="nk-cov-wg-note">Actualizado en tiempo real</div>
@@ -132,59 +132,22 @@
       <!-- .col -->
 
       <!-- Bienes georreferenciados -->
-      <div class="col-md-4">
+      <div class="col-md-4 col-lg-6 col-xl-3 my-auto">
          <div class="card card-preview">
             <div class="card-inner">
-               <div class="card-head text-center">
+               <div class="card-head text-center mb-5">
                   <h6 class="title">Bienes georreferenciados</h6>
                </div>
                <div class="nk-ck-sm">
-                  <canvas class="polar-chart" id="georeferencedProperties"></canvas>
+                  {{-- <canvas class="polar-chart" id="georeferencedProperties"></canvas> --}}
+                  <canvas class="doughnut-chart" id="georeferencedProperties"></canvas>
                </div>
             </div>
          </div>
       </div>
       <!-- /Bienes georreferenciados -->
 
-      <!-- Destinación actual -->
-      <div class="col-md-8">
-         <div class="card card-preview">
-            <div class="card-inner">
-               <div class="card-head">
-                  <h6 class="title">Destinación actual</h6>
-               </div>
-               <div class="nk-ck-sm">
-                  <canvas class="bar-chart" id="actualDestination"></canvas>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- /Destinación actual -->
-
-      <!-- Pendiente - Bienes analizados -->
-      <div class="col-sm-12">
-         <div class="nk-block">
-            <div class="nk-block-head">
-               <div class="nk-block-head-content">
-                  <h4 class="nk-block-title">Bienes analizados</h4>
-                  <div class="nk-block-des">
-                     <p>Esta es la lista de bienes inmuebles analizados por cada mes del año actual <b>{{ date('Y') }}</b></p>
-                  </div>
-               </div>
-            </div>
-            <div class="card card-preview">
-               <div class="card-inner">
-                  <div class="nk-ck">
-                     <canvas class="line-chart" id="monthlyInfo"></canvas>
-                  </div>
-               </div>
-            </div>
-            <!-- .card-preview -->
-         </div>
-      </div>
-      <!-- /Pendiente - Bienes analizados -->
-
-      <div class="col-md-4">
+      <div class="col-md-4 col-lg-6 col-xl-3 my-auto">
          <div class="card card-preview">
             <div class="card-inner">
                <div class="card-head text-center mb-5">
@@ -198,7 +161,35 @@
          <!-- .card-preview -->
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-4 col-lg-6 col-xl-3 my-auto">
+         <div class="card card-preview">
+            <div class="card-inner">
+               <div class="card-head text-center mb-5">
+                  <h6 class="title">Bienes para venta</h6>
+               </div>
+               <div class="nk-ck-sm">
+                  <canvas class="doughnut-chart" id="forSaleProperties"></canvas>
+               </div>
+            </div>
+         </div>
+         <!-- .card-preview -->
+      </div>
+
+      <div class="col-md-4 col-lg-6 col-xl-3 my-auto">
+         <div class="card card-preview">
+            <div class="card-inner">
+               <div class="card-head text-center mb-5">
+                  <h6 class="title">RPH</h6>
+               </div>
+               <div class="nk-ck-sm">
+                  <canvas class="doughnut-chart" id="rphProperties"></canvas>
+               </div>
+            </div>
+         </div>
+         <!-- .card-preview -->
+      </div>
+
+      {{-- <div class="col-md-4 col-lg-6 col-xl-3 my-auto">
          <div class="card card-preview">
             <div class="card-inner">
                <div class="card-head text-center mb-5">
@@ -210,9 +201,9 @@
             </div>
          </div>
          <!-- .card-preview -->
-      </div>
+      </div> --}}
 
-      <div class="col-md-4">
+      {{-- <div class="col-md-4 col-lg-6 col-xl-3 my-auto">
          <div class="card card-bordered h-100">
             <div class="card-inner">
                <div class="traffic-channel">
@@ -235,7 +226,49 @@
             </div>
          </div>
          <!-- .card -->
+      </div> --}}
+
+      <!-- Destinación actual -->
+      <div class="col-md-12">
+         <div class="card card-preview">
+            <div class="card-inner">
+               <div class="card-head">
+                  <h6 class="title">Destinación actual</h6>
+               </div>
+               <div class="nk-ck-sm">
+                  <canvas class="bar-chart" id="actualDestination"></canvas>
+               </div>
+            </div>
+         </div>
       </div>
+      <!-- /Destinación actual -->
+
+      
+
+      <!-- Pendiente - Bienes analizados -->
+      <div class="col-sm-12 mt-4">
+         <div class="nk-block">
+            <div class="nk-block-head">
+               <div class="nk-block-head-content">
+                  <h4 class="nk-block-title">Bienes analizados</h4>
+                  <div class="nk-block-des">
+                     <p>Esta es la lista de bienes inmuebles analizados por cada mes del año actual <b>{{ date('Y') }}</b></p>
+                  </div>
+               </div>
+            </div>
+            <div class="card card-preview">
+               <div class="card-inner">
+                  <div class="nk-ck">
+                     <canvas class="line-chart" id="monthlyInfo"></canvas>
+                  </div>
+               </div>
+            </div>
+            <!-- .card-preview -->
+         </div>
+      </div>
+      <!-- /Pendiente - Bienes analizados -->
+
+      
       <!-- .col -->
 
       <!-- Estadísticas pendientes -->
@@ -434,6 +467,10 @@
 
       <div class="col-sm-12">
          <div id="commune_properties"></div>
+      </div>
+
+      <div class="col-sm-12">
+         <div id="territory_properties"></div>
       </div>
 
       <div class="col-sm-12">

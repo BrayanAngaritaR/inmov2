@@ -8,7 +8,7 @@
          <div class="hero-slider carousel">
             <!-- hero-slider-item -->
             <div class="hero-slider-item hero-slider-item_first fl-wrap">
-               <div class="bg" data-bg="{{ asset('templates/agencia-app/images/bg/banner.jpeg') }}"></div>
+               <div class="bg" data-bg="{{ asset('assets/images/hagamoslo.png') }}"></div>
                <div class="overlay"></div>
                <div class="container">
                   <div class="row">
@@ -61,7 +61,7 @@
             <!--  hero-slider-item end  -->
             <!-- hero-slider-item -->
             <div class="hero-slider-item fl-wrap">
-               <div class="bg" data-bg="{{ asset('templates/agencia-app/images/bg/banner.jpeg') }}"></div>
+               <div class="bg" data-bg="{{ asset('assets/images/hagamoslo.png') }}"></div>
                <div class="overlay"></div>
                <div class="hero-listing-item">
                   <div class="container">
