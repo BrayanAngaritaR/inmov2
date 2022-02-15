@@ -93,9 +93,9 @@
             <!-- listsearch-input-item -->
          </div>
       </div>
-      <div class="more-opt_btn mor-opt-btn_act">
+      {{-- <div class="more-opt_btn mor-opt-btn_act">
          Más filtros<span><i class="fas fa-caret-down"></i></span>
-      </div>
+      </div> --}}
       <!-- more-search-opt-wrap -->
       <div class="more-search-opt-wrap more-hidden_wrap">
          <div class="msotw_title fl-wrap"><i class="far fa-sliders-h"></i>Más filtros</div>

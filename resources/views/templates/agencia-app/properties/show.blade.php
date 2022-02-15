@@ -8,7 +8,7 @@
             <div class="bg par-elem" data-bg="{{ asset('storage/images') }}/{{$property->code}}/{{ $image->url }}" data-scrollax="properties: { translateY: '10%' }"></div>
             @endif
          @empty
-         <div class="bg par-elem" data-bg="https://homeradar.kwst.net/images/bg/1.jpg" data-scrollax="properties: { translateY: '30%' }"></div>
+         <div class="bg par-elem" data-bg="{{ asset('assets/images/hagamoslo.png') }}" data-scrollax="properties: { translateY: '30%' }"></div>
          @endforelse
       </div>
 
