@@ -65,7 +65,7 @@ Route::view('/calculadora', 'templates.agencia-app.soon')
 |--------------------------------------------------------------------------
 */
 
-Route::get('/propiedades', [App\Http\Controllers\User\PropertiesController::class, 'index'])->name('user.properties.index');
+Route::get('/propiedades/{orderBy?}/{district?}/{area?}/{action?}', [App\Http\Controllers\User\PropertiesController::class, 'index'])->name('user.properties.index');
 
 Route::get('/{property}', [App\Http\Controllers\User\PropertiesController::class, 'show'])->name('user.properties.show');
 

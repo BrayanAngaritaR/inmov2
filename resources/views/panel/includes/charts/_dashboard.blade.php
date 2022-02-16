@@ -154,7 +154,7 @@
       background: 'transparent',
       data: [{{ $january_properties }}, {{ $february_properties }}, {{ $march_properties }}, {{ $april_properties }}, {{ $may_properties }}, {{ $june_properties }}, {{ $july_properties }}, {{ $august_properties }}, {{ $september_properties }}, {{ $october_properties }}, {{ $november_properties }}, {{ $december_properties }}]
     }, {
-      label: "Visibles",
+      label: "Bienes analizados",
       color: "#9d72ff",
       background: 'transparent',
       data: [{{ $january_properties_published }}, {{ $february_properties_published }}, {{ $march_properties_published }}, {{ $april_properties_published }}, {{ $may_properties_published }}, {{ $june_properties_published }}, {{ $july_properties_published }}, {{ $august_properties_published }}, {{ $september_properties_published }}, {{ $october_properties_published }}, {{ $november_properties_published }}, {{ $december_properties_published }}]
@@ -1009,9 +1009,10 @@
                }
             },
             categories: [
-               @foreach($actions as $action)
-                  "{{ $action->title }}",
-               @endforeach
+               //foreach($actions as $action)
+                  //"$action->title }}",
+               //endforeach
+               'Venta', 'Venta o arriendo', 'Desenglobe', 'Englobe', 'Cesión', 'Revisión', 'Oportunidad inmobiliaria', 'Sin acción'
             ]
          },
          yAxis: {
@@ -1036,9 +1037,10 @@
             {
                "type": "bar",
                "data": [
-                  @foreach($actions as $action)
-                  {{ $action->properties_count }},
-                  @endforeach
+                  //foreach($actions as $action)
+                  //$action->properties_count }},
+                  //endforeach
+                  98, 406, 67, 422, 24, 2394, 124, 1075
                ]
             }
          ]

@@ -356,8 +356,20 @@
 <script type="text/javascript">
    function searchByCommune(){
       let commune_id = $('#commune_id').val();
+      let orderBy = 'null';
+      let district = 'null';
+      let area = 'null';
+      let action = 'null';
       const url = '{{route('user.properties.index') }}';
-      window.location.href = url + '?commune_id=' + commune_id;
+
+      window.location.href = url + '?orderBy=' + orderBy 
+                                 + '?district=' + district
+                                 + '?area=' + area
+                                 + '?action=' + action
+                                 + '?commune=' + commune_id;
+
+
+      //window.location.href = url + '?commune_id=' + commune_id; 
    }
 </script>
 @endpush

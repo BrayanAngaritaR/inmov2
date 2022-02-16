@@ -54,7 +54,7 @@
    </div>
    <!-- Map end -->
    <!-- top-search-content -->
-   <div class="top-search-content">
+   {{-- <div class="top-search-content">
       <div class="top-search-dec color-bg"><i class="far fa-sliders-h"></i></div>
       <div class="top-search-content-title">Avanzada:</div>
       <div class="close_sb-filter"><i class="fal fa-times"></i></div>
@@ -93,9 +93,9 @@
             <!-- listsearch-input-item -->
          </div>
       </div>
-      {{-- <div class="more-opt_btn mor-opt-btn_act">
+      <!--<div class="more-opt_btn mor-opt-btn_act">
          Más filtros<span><i class="fas fa-caret-down"></i></span>
-      </div> --}}
+      </div> -->
       <!-- more-search-opt-wrap -->
       <div class="more-search-opt-wrap more-hidden_wrap">
          <div class="msotw_title fl-wrap"><i class="far fa-sliders-h"></i>Más filtros</div>
@@ -183,7 +183,7 @@
                      <input id="check-d" type="checkbox" name="check" />
                      <label for="check-d">Área de baja mixtura</label>
                   </li>
-                  {{-- <li>
+                  <!-- <li>
                      <input id="check-d2" type="checkbox" name="check" checked />
                      <label for="check-d2">Parking</label>
                   </li>
@@ -214,7 +214,7 @@
                   <li>
                      <input id="check-d9" type="checkbox" name="check" />
                      <label for="check-d9">Window Covering</label>
-                  </li> --}}
+                  </li> -->
                </ul>
             </div>
          </div>
@@ -225,6 +225,68 @@
          </div>
       </div>
       <!-- more-search-opt-wrap end -->
+   </div> --}}
+
+   <div class="top-search-content mt-2">
+      <div class="top-search-dec color-bg"><i class="far fa-sliders-h"></i></div>
+         <div class="custom-form fl-wrap">
+            <div class="row">
+               <div class="col-sm-4 col-lg-2">
+                  <div class="listsearch-input-item">
+                     <select data-placeholder="Últimos" class="chosen-select on-radius no-search-select" id="orderBy">
+                        <option disabled selected>Ordenar por</option>
+                        <option value="latest">Últimos añadidos</option>
+                        <option value="newest">Primeros añadidos</option>
+                     </select>
+                  </div>
+               </div>
+
+               <div class="col-sm-4 col-lg-2">
+                  <div class="listsearch-input-item">
+                     <select data-placeholder="Barrio" class="chosen-select on-radius no-search-select" id="district">
+                        <option disabled selected>Barrio</option>
+                        @foreach($districts as $district)
+                           <option value="{{ $district->id }}">
+                              {{ $district->name }}
+                           </option>
+                        @endforeach
+                     </select>
+                  </div>
+               </div>
+
+               <div class="col-sm-4 col-lg-2">
+                  <div class="listsearch-input-item">
+                     <select data-placeholder="Status" class="chosen-select on-radius no-search-select" id="area">
+                        <option disabled selected>Área</option>
+                        <option value="less">Menor a mayor área</option>
+                        <option value="higher">Mayor a menor área</option>
+                     </select>
+                  </div>
+               </div>
+
+               <div class="col-sm-4 col-lg-2">
+                  <div class="listsearch-input-item">
+                     <select data-placeholder="Status" class="chosen-select on-radius no-search-select" id="action">
+                        <option disabled selected>Acción</option>
+                        @foreach($actions as $action)
+                           <option value="{{ $action->id }}">
+                              {{ $action->title }}
+                           </option>
+                        @endforeach
+                     </select>
+                  </div>
+               </div>
+
+               <div class="col-sm-4 col-lg-2">
+                  <div class="listsearch-input-item">
+                     <button onclick="applyFilters();" class="btn float-btn color-bg small-btn mt-0">
+                        Aplicar filtros
+                     </button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
    </div>
    <!-- top-search-content end -->
    <!-- col-list-wrap -->
@@ -559,5 +621,20 @@
         google.maps.event.addDomListener(window, 'load', mainMap);
     }
 })(this.jQuery);
+</script>
+
+<script type="text/javascript">
+   function applyFilters(){
+      let orderBy = $('#orderBy').val();
+      let district = $('#district').val();
+      let area = $('#area').val();
+      let action = $('#action').val();
+
+      const url = '{{route('user.properties.index') }}';
+      window.location.href = url + '?orderBy=' + orderBy 
+                                 + '?district=' + district
+                                 + '?area=' + area
+                                 + '?action=' + action;
+   }
 </script>
 @endpush

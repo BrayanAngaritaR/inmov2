@@ -13,6 +13,7 @@ use App\Models\Property\Macroproject;
 use App\Models\Property\Property;
 use App\Models\Property\ThirdLevelInstrument;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PropertiesController extends Controller
 {
@@ -23,11 +24,13 @@ class PropertiesController extends Controller
       $this->template = env('TEMPLATE');
    }
 
-   public function index()
+   public function index(Request $request)
    {
-      $actions = Action::orderBy('title', 'ASC')->get();
-      $destinations = Destination::orderBy('title', 'ASC')->get();
-      $districts = District::orderBy('name', 'ASC')->get();
+      $currentURL = url()->full();
+
+      $actions = Action::orderBy('title', 'ASC')->whereHas('properties')->get();
+      $destinations = Destination::orderBy('title', 'ASC')->whereHas('properties')->get();
+      $districts = District::orderBy('name', 'ASC')->whereHas('properties')->get();
       $macroprojects = Macroproject::orderBy('name', 'ASC')->get();
       //Instrumento de tercer nivel
       $instruments = ThirdLevelInstrument::orderBy('title', 'ASC')->get(); 
@@ -38,13 +41,80 @@ class PropertiesController extends Controller
          ->latest()
          ->get();
 
-      if (request()->has('commune_id')) {
-         $commune_id = request('commune_id');
-         if ($commune_id != 'all') {
-            $properties = $properties->where('commune_id', request('commune_id'))
+      $orderBy = Str::between($currentURL, '?orderBy=', '%3Fdistrict%3D');
+      $district = Str::between($currentURL, '%3Fdistrict%3D', '%3Farea');
+      $area = Str::between($currentURL, '%3Farea%3D', '%3Faction');
+      $action = Str::between($currentURL, '%3Faction%3D', '%3Fcommune');
+      $commune = Str::after($currentURL, '%3Fcommune%3D');
+
+      if ($orderBy != 'latest') {
+         $properties = Property::where('status', 'Published')
+         ->with('district')
+         ->get();
+      }
+
+      if ($district != 'null') {
+         $properties = $properties->where('district_id', $district)
             ->where('status', 'Published');
+      }
+
+      if ($action != 'null') {
+         $properties = $properties->where('action_id', $action)
+            ->where('status', 'Published');
+      }
+
+      if ($area != 'null') {
+         if ($area == 'higher') {
+            $properties = $properties->sortByDesc('cadastral_area');
+         } else {
+            $properties = $properties->sortBy('cadastral_area');
          }
-      } 
+      }
+
+      // if ($commune != 'all') {
+      //    $properties = $properties->where('commune_id', $commune)
+      //    ->where('status', 'Published');
+      // }
+
+
+      //Verificar si se están filtrando los resultados por:
+
+      //Comuna
+
+
+      //Más reciente | Más antiguo
+      // if ($request->has('orderBy')) {
+      //    $orderBy = request('orderBy');
+      //    //dd("dddddd");
+      // } 
+
+      // if (request()->has('orderBy')) {
+         
+
+      //    if ($orderBy =! 'latest') {
+      //       $properties = Property::where('status', 'Published')
+      //          ->with('district')
+      //          ->get();
+      //    }
+      // } 
+
+      //Barrio
+      // if (request()->has('district')) {
+      //    $district = request('district');
+      //    if ($district != 'all') {
+      //       $properties = $properties->where('district_id', request('district'))
+      //       ->where('status', 'Published');
+      //    }
+      // } 
+
+      //Área
+
+      //Acción
+      // if (request()->has('action')) {
+      //    $action = request('action');
+      //    $properties = $properties->where('action_id', request('action'))
+      //    ->where('status', 'Published');
+      // } 
       
       return view($this->template.'properties.index', compact(['actions', 'macroprojects', 'districts', 'properties', 'destinations', 'instruments', 'floor_uses']));
    }

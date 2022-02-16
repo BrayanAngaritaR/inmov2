@@ -29,16 +29,20 @@ class StatisticsController extends Controller
          ->get();
 
       //Obtener la lista de destinaciones actuales y la cantidad de inmuebles vinculadas a cada una de ellas
-      $destinations = Destination::with('properties')
-         ->whereHas('properties')
-         ->withCount('properties')
-         ->orderBy('properties_count','DESC')->get();
+      $destinations = []; 
+
+      // Destination::with('properties')
+      //    ->whereHas('properties')
+      //    ->withCount('properties')
+      //    ->orderBy('properties_count','DESC')->get();
 
       //Obtener la lista de destinaciones actuales y la cantidad de inmuebles vinculadas a cada una de ellas
-      $communes = Commune::with('properties')
-         ->whereHas('properties')
-         ->withCount('properties')
-         ->orderBy('properties_count','DESC')->get();
+      $communes = []; 
+
+      // Commune::with('properties')
+      //    ->whereHas('properties')
+      //    ->withCount('properties')
+      //    ->orderBy('properties_count','DESC')->get();
 
       /*
          ------------------------------------------
@@ -148,74 +152,74 @@ class StatisticsController extends Controller
             ->count();
 
       //Total de bienes publicados
-         $january_properties_published = Property::whereYear('created_at', '=', $current_year)
-            ->whereMonth('created_at', '=', '01')
+         $january_properties_published = Property::whereYear('updated_at', '=', $current_year)
+            ->whereMonth('updated_at', '=', '01')
             ->where('status', 'Published')
             ->get()
             ->count();
 
-         $february_properties_published = Property::whereYear('created_at', '=', $current_year)
-            ->whereMonth('created_at', '=', '02')
+         $february_properties_published = Property::whereYear('updated_at', '=', $current_year)
+            ->whereMonth('updated_at', '=', '02')
             ->where('status', 'Published')
             ->get()
             ->count();
 
-         $march_properties_published = Property::whereYear('created_at', '=', $current_year)
-            ->whereMonth('created_at', '=', '03')
+         $march_properties_published = Property::whereYear('updated_at', '=', $current_year)
+            ->whereMonth('updated_at', '=', '03')
             ->where('status', 'Published')
             ->get()
             ->count();
 
-         $april_properties_published = Property::whereYear('created_at', '=', $current_year)
-            ->whereMonth('created_at', '=', '04')
+         $april_properties_published = Property::whereYear('updated_at', '=', $current_year)
+            ->whereMonth('updated_at', '=', '04')
             ->where('status', 'Published')
             ->get()
             ->count();
 
-         $may_properties_published = Property::whereYear('created_at', '=', $current_year)
-            ->whereMonth('created_at', '=', '05')
+         $may_properties_published = Property::whereYear('updated_at', '=', $current_year)
+            ->whereMonth('updated_at', '=', '05')
             ->where('status', 'Published')
             ->get()
             ->count();
 
-         $june_properties_published = Property::whereYear('created_at', '=', $current_year)
-            ->whereMonth('created_at', '=', '06')
+         $june_properties_published = Property::whereYear('updated_at', '=', $current_year)
+            ->whereMonth('updated_at', '=', '06')
             ->where('status', 'Published')
             ->get()
             ->count();
 
-         $july_properties_published = Property::whereYear('created_at', '=', $current_year)
-            ->whereMonth('created_at', '=', '07')
+         $july_properties_published = Property::whereYear('updated_at', '=', $current_year)
+            ->whereMonth('updated_at', '=', '07')
             ->where('status', 'Published')
             ->get()
             ->count();
 
-         $august_properties_published = Property::whereYear('created_at', '=', $current_year)
-            ->whereMonth('created_at', '=', '08')
+         $august_properties_published = Property::whereYear('updated_at', '=', $current_year)
+            ->whereMonth('updated_at', '=', '08')
             ->where('status', 'Published')
             ->get()
             ->count();
 
-         $september_properties_published = Property::whereYear('created_at', '=', $current_year)
-            ->whereMonth('created_at', '=', '09')
+         $september_properties_published = Property::whereYear('updated_at', '=', $current_year)
+            ->whereMonth('updated_at', '=', '09')
             ->where('status', 'Published')
             ->get()
             ->count();
 
-         $october_properties_published = Property::whereYear('created_at', '=', $current_year)
-            ->whereMonth('created_at', '=', '10')
+         $october_properties_published = Property::whereYear('updated_at', '=', $current_year)
+            ->whereMonth('updated_at', '=', '10')
             ->where('status', 'Published')
             ->get()
             ->count();
 
-         $november_properties_published = Property::whereYear('created_at', '=', $current_year)
-            ->whereMonth('created_at', '=', '11')
+         $november_properties_published = Property::whereYear('updated_at', '=', $current_year)
+            ->whereMonth('updated_at', '=', '11')
             ->where('status', 'Published')
             ->get()
             ->count();
 
-         $december_properties_published = Property::whereYear('created_at', '=', $current_year)
-            ->whereMonth('created_at', '=', '12')
+         $december_properties_published = Property::whereYear('updated_at', '=', $current_year)
+            ->whereMonth('updated_at', '=', '12')
             ->where('status', 'Published')
             ->get()
             ->count();
