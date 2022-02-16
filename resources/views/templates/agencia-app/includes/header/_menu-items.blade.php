@@ -8,8 +8,8 @@
          <a href="#">Propiedades <i class="fa fa-caret-down"></i></a>
          <!--second level -->
          <ul>
-            <li><a href="{{ route('user.properties.index') }}">En venta</a></li>
-            <li><a href="{{ route('user.properties.index') }}">En arriendo</a></li>
+            <li><a href="{{ route('user.properties.index') }}?orderBy=null?district=null?area=null?action=null">En venta</a></li>
+            <li><a href="{{ route('user.properties.index') }}?orderBy=null?district=null?area=null?action=null">En arriendo</a></li>
          </ul>
          <!--second level end-->
       </li>
