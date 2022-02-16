@@ -234,9 +234,11 @@
                <div class="col-sm-4 col-lg-2">
                   <div class="listsearch-input-item">
                      <select data-placeholder="Últimos" class="chosen-select on-radius no-search-select" id="orderBy">
-                        <option disabled selected>Ordenar por</option>
-                        <option value="latest">Últimos añadidos</option>
-                        <option value="newest">Primeros añadidos</option>
+                        <option disabled selected>Ordenar por {{ request()->input('orderBy') }}</option>
+                        {{-- {{ request()->get('orderBy') == "newest" ? 'selected' : '' }} --}}
+
+                        <option value="latest" @if($filter_orderBy == 'latest') selected @endif>Últimos añadidos</option>
+                        <option value="newest" @if($filter_orderBy == 'newest') selected @endif>Primeros añadidos</option>
                      </select>
                   </div>
                </div>
@@ -246,7 +248,7 @@
                      <select data-placeholder="Barrio" class="chosen-select on-radius no-search-select" id="district">
                         <option disabled selected>Barrio</option>
                         @foreach($districts as $district)
-                           <option value="{{ $district->id }}">
+                           <option @if($filter_district == $district->id) selected @endif value="{{ $district->id }}">
                               {{ $district->name }}
                            </option>
                         @endforeach
@@ -258,8 +260,8 @@
                   <div class="listsearch-input-item">
                      <select data-placeholder="Status" class="chosen-select on-radius no-search-select" id="area">
                         <option disabled selected>Área</option>
-                        <option value="less">Menor a mayor área</option>
-                        <option value="higher">Mayor a menor área</option>
+                        <option value="less" @if($filter_area == 'less') selected @endif>Menor a mayor área</option>
+                        <option value="higher" @if($filter_area == 'higher') selected @endif>Mayor a menor área</option>
                      </select>
                   </div>
                </div>
@@ -269,7 +271,7 @@
                      <select data-placeholder="Status" class="chosen-select on-radius no-search-select" id="action">
                         <option disabled selected>Acción</option>
                         @foreach($actions as $action)
-                           <option value="{{ $action->id }}">
+                           <option @if($filter_action == $action->id) selected @endif value="{{ $action->id }}">
                               {{ $action->title }}
                            </option>
                         @endforeach

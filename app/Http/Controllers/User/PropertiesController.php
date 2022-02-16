@@ -41,30 +41,30 @@ class PropertiesController extends Controller
          ->latest()
          ->get();
 
-      $orderBy = Str::between($currentURL, '?orderBy=', '%3Fdistrict%3D');
-      $district = Str::between($currentURL, '%3Fdistrict%3D', '%3Farea');
-      $area = Str::between($currentURL, '%3Farea%3D', '%3Faction');
-      $action = Str::between($currentURL, '%3Faction%3D', '%3Fcommune');
-      $commune = Str::after($currentURL, '%3Fcommune%3D');
+      $filter_orderBy = Str::between($currentURL, '?orderBy=', '%3Fdistrict%3D');
+      $filter_district = Str::between($currentURL, '%3Fdistrict%3D', '%3Farea');
+      $filter_area = Str::between($currentURL, '%3Farea%3D', '%3Faction');
+      $filter_action = Str::between($currentURL, '%3Faction%3D', '%3Fcommune');
+      $filter_commune = Str::after($currentURL, '%3Fcommune%3D');
 
-      if ($orderBy != 'latest') {
+      if ($filter_orderBy != 'latest') {
          $properties = Property::where('status', 'Published')
          ->with('district')
          ->get();
       }
 
-      if ($district != 'null') {
-         $properties = $properties->where('district_id', $district)
+      if ($filter_district != 'null') {
+         $properties = $properties->where('district_id', $filter_district)
             ->where('status', 'Published');
       }
 
-      if ($action != 'null') {
-         $properties = $properties->where('action_id', $action)
+      if ($filter_action != 'null') {
+         $properties = $properties->where('action_id', $filter_action)
             ->where('status', 'Published');
       }
 
-      if ($area != 'null') {
-         if ($area == 'higher') {
+      if ($filter_area != 'null') {
+         if ($filter_area == 'higher') {
             $properties = $properties->sortByDesc('cadastral_area');
          } else {
             $properties = $properties->sortBy('cadastral_area');
@@ -116,7 +116,10 @@ class PropertiesController extends Controller
       //    ->where('status', 'Published');
       // } 
       
-      return view($this->template.'properties.index', compact(['actions', 'macroprojects', 'districts', 'properties', 'destinations', 'instruments', 'floor_uses']));
+      return view($this->template.'properties.index', compact([
+         'actions', 'macroprojects', 'districts', 'properties', 'destinations', 
+         'instruments', 'floor_uses', 'filter_orderBy', 'filter_district', 'filter_area', 'filter_action', 'filter_commune'
+      ]));
    }
 
    /**
