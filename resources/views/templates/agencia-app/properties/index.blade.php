@@ -234,7 +234,7 @@
                <div class="col-sm-4 col-lg-2">
                   <div class="listsearch-input-item">
                      <select data-placeholder="Últimos" class="chosen-select on-radius no-search-select" id="orderBy">
-                        <option disabled selected>Ordenar por {{ request()->input('orderBy') }}</option>
+                        <option disabled selected>Ordenar por</option>
                         {{-- {{ request()->get('orderBy') == "newest" ? 'selected' : '' }} --}}
 
                         <option value="latest" @if($filter_orderBy == 'latest') selected @endif>Últimos añadidos</option>
