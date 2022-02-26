@@ -22,9 +22,68 @@ class PropertiesController extends Controller
    public function __construct()
    {
       $this->template = env('TEMPLATE');
+      $this->url = $currentURL = url()->full();
    }
 
    public function index(Request $request)
+   {
+      $actions = Action::orderBy('title', 'ASC')->whereHas('properties')->get();
+      $destinations = Destination::orderBy('title', 'ASC')->whereHas('properties')->get();
+      $districts = District::orderBy('name', 'ASC')->whereHas('properties')->get();
+      $macroprojects = Macroproject::orderBy('name', 'ASC')->get();
+      //Instrumento de tercer nivel
+      $instruments = ThirdLevelInstrument::orderBy('title', 'ASC')->get(); 
+      $floor_uses = FloorUse::orderBy('title', 'ASC')->get();
+
+      //Verificar si se están aplicando los filtros
+      $filter_orderBy = Str::between($this->url, '?orderBy=', '%3Fdistrict%3D');
+      $filter_district = Str::between($this->url, '%3Fdistrict%3D', '%3Farea');
+      $filter_area = Str::between($this->url, '%3Farea%3D', '%3Faction');
+      $filter_action = Str::between($this->url, '%3Faction%3D', '%3Fcommune');
+      $filter_commune = Str::after($this->url, '%3Fcommune%3D');
+
+      $properties = Property::query();
+
+      $properties->where('status', 'Published')
+         ->with('district');
+
+      if (strpos($this->url, 'commune')) {
+         if ($filter_commune != 'null') {
+            $properties->where('commune_id', $filter_commune)
+            ->with('district');
+         }
+      }
+
+      if ($filter_orderBy != 'latest') {
+         $properties = $properties->latest();
+      }
+
+      if ($filter_district != 'null') {
+         $properties = $properties->where('district_id', $filter_district);
+      }
+
+      if ($filter_action != 'null') {
+         $properties = $properties->where('action_id', $filter_action);
+      }
+
+      // if ($filter_area != 'null') {
+      //    //$properties->get();
+      //    if ($filter_area == 'higher') {
+      //       $properties = $properties->sortByDesc('cadastral_area');
+      //    } else {
+      //       //$properties = $properties->sortBy('cadastral_area');
+      //    }
+      // }
+
+      $properties = $properties->paginate(20)->appends(request()->query());
+
+      return view($this->template.'properties.index', compact([
+         'actions', 'macroprojects', 'districts', 'properties', 'destinations', 
+         'instruments', 'floor_uses', 'filter_orderBy', 'filter_district', 'filter_area', 'filter_action', 'filter_commune'
+      ]));
+   }
+
+   public function filter(Request $request)
    {
       $currentURL = url()->full();
 
@@ -36,21 +95,24 @@ class PropertiesController extends Controller
       $instruments = ThirdLevelInstrument::orderBy('title', 'ASC')->get(); 
       $floor_uses = FloorUse::orderBy('title', 'ASC')->get(); 
 
-      $properties = Property::where('status', 'Published')
-         ->with('district')
-         ->latest()
-         ->get();
+      //Obtener todas las propiedades publicadas
+      $properties = Property::query();
 
-      $filter_orderBy = Str::between($currentURL, '?orderBy=', '%3Fdistrict%3D');
-      $filter_district = Str::between($currentURL, '%3Fdistrict%3D', '%3Farea');
-      $filter_area = Str::between($currentURL, '%3Farea%3D', '%3Faction');
-      $filter_action = Str::between($currentURL, '%3Faction%3D', '%3Fcommune');
-      $filter_commune = Str::after($currentURL, '%3Fcommune%3D');
+      $properties->where('status', 'Published')
+         ->with('district');
+
+      dd($properties);
+
+      //Verificar si se están aplicando los filtros
+      $filter_orderBy = Str::between($this->url, '?orderBy=', '%3Fdistrict%3D');
+      $filter_district = Str::between($this->url, '%3Fdistrict%3D', '%3Farea');
+      $filter_area = Str::between($this->url, '%3Farea%3D', '%3Faction');
+      $filter_action = Str::between($this->url, '%3Faction%3D', '%3Fcommune');
+      $filter_commune = Str::after($this->url, '%3Fcommune%3D');
 
       if ($filter_orderBy != 'latest') {
          $properties = Property::where('status', 'Published')
-         ->with('district')
-         ->get();
+         ->with('district');
       }
 
       if ($filter_district != 'null') {
@@ -64,91 +126,24 @@ class PropertiesController extends Controller
       }
 
       if ($filter_area != 'null') {
+         //$properties->get();
          if ($filter_area == 'higher') {
-            $properties = $properties->sortByDesc('cadastral_area');
+            //$properties = $properties->sortByDesc('cadastral_area');
          } else {
-            $properties = $properties->sortBy('cadastral_area');
+            //$properties = $properties->sortBy('cadastral_area');
          }
       }
-
-      // if ($commune != 'all') {
-      //    $properties = $properties->where('commune_id', $commune)
-      //    ->where('status', 'Published');
-      // }
-
-
-      //Verificar si se están filtrando los resultados por:
-
-      //Comuna
-
-
-      //Más reciente | Más antiguo
-      // if ($request->has('orderBy')) {
-      //    $orderBy = request('orderBy');
-      //    //dd("dddddd");
-      // } 
-
-      // if (request()->has('orderBy')) {
-         
-
-      //    if ($orderBy =! 'latest') {
-      //       $properties = Property::where('status', 'Published')
-      //          ->with('district')
-      //          ->get();
-      //    }
-      // } 
-
-      //Barrio
-      // if (request()->has('district')) {
-      //    $district = request('district');
-      //    if ($district != 'all') {
-      //       $properties = $properties->where('district_id', request('district'))
-      //       ->where('status', 'Published');
-      //    }
-      // } 
-
-      //Área
-
-      //Acción
-      // if (request()->has('action')) {
-      //    $action = request('action');
-      //    $properties = $properties->where('action_id', request('action'))
-      //    ->where('status', 'Published');
-      // } 
       
+      $properties = $properties->paginate(20)->appends(request()->query());
+
+      dd($properties);
+
       return view($this->template.'properties.index', compact([
          'actions', 'macroprojects', 'districts', 'properties', 'destinations', 
          'instruments', 'floor_uses', 'filter_orderBy', 'filter_district', 'filter_area', 'filter_action', 'filter_commune'
       ]));
    }
 
-   /**
-   * Show the form for creating a new resource.
-   *
-   * @return \Illuminate\Http\Response
-   */
-   public function create()
-   {
-   //
-   }
-
-   /**
-   * Store a newly created resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @return \Illuminate\Http\Response
-   */
-   public function store(Request $request)
-   {
-   //
-   }
-
-   /**
-   * Display the specified resource.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
    public function show(Property $property)
    {
       if ($property->status == 'Published') {
@@ -167,46 +162,5 @@ class PropertiesController extends Controller
       }
 
       return view($this->template.'errors.no-property-available');
-      //$titles = [1 => 'CESION DE FAJAS-EQUIPAMIENTO-EPQ1', 2 =>'JAC SAN FRANCISCO DE PAULA', 3 => 'BODEGA DE ACOPIO MUNICIPAL No.2', 4 =>'LAVADERO DE CARROS LOVAINA', 5 =>'LOTE PARA EQUIPAMIENTO'];
-
-      // $array_random_title = array_rand($titles);
-
-      // $random_title = $titles[$array_random_title];
-
-      
-   }
-
-   /**
-   * Show the form for editing the specified resource.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-   public function edit($id)
-   {
-   //
-   }
-
-   /**
-   * Update the specified resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-   public function update(Request $request, $id)
-   {
-   //
-   }
-
-   /**
-   * Remove the specified resource from storage.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-   public function destroy($id)
-   {
-   //
    }
 }

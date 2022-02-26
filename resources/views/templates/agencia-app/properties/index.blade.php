@@ -407,18 +407,7 @@
          @endforeach
       </div>
 
-      <div class="listing-item-container">
-         <!-- pagination-->
-         <div class="pagination ml-5">
-            <a href="#" class="prevposts-link"><i class="fa fa-caret-left"></i></a>
-            <a href="#">1</a>
-            <a href="#" class="current-page">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#" class="nextposts-link"><i class="fa fa-caret-right"></i></a>
-         </div>
-         <!-- pagination end-->
-      </div>
+      {{ $properties->links() }}
 
       <!-- listing-item-wrap end-->
       
@@ -632,7 +621,7 @@
       let area = $('#area').val();
       let action = $('#action').val();
 
-      const url = '{{route('user.properties.index') }}';
+      const url = '{{route('user.properties.filter.index') }}';
       window.location.href = url + '?orderBy=' + orderBy 
                                  + '?district=' + district
                                  + '?area=' + area

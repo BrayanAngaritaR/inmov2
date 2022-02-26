@@ -19,3 +19,25 @@
 .geodir-category-content{
 	min-height: 300px;
 }
+
+.pagination span{
+	display: inline-block;
+    width: 44px;
+    height: 44px;
+    line-height: 44px;
+    border-radius: 50px;
+    border: 1px solid #eff1f9;
+    box-sizing: border-box;
+    position: relative;
+    font-size: 13px;
+    color: #eff1f9;
+    background: #fff;
+    letter-spacing: 1px;
+    margin: 0px 5px;
+}
+
+.pagination a{
+    border-radius: 50px;
+    margin: 0px 5px;
+}
+	
