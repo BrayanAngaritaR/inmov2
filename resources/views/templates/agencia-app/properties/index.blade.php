@@ -256,7 +256,7 @@
                   </div>
                </div>
 
-               <div class="col-sm-4 col-lg-2">
+               {{-- <div class="col-sm-4 col-lg-2">
                   <div class="listsearch-input-item">
                      <select data-placeholder="Status" class="chosen-select on-radius no-search-select" id="area">
                         <option disabled selected>Área</option>
@@ -264,7 +264,7 @@
                         <option value="higher" @if($filter_area == 'higher') selected @endif>Mayor a menor área</option>
                      </select>
                   </div>
-               </div>
+               </div> --}}
 
                <div class="col-sm-4 col-lg-2">
                   <div class="listsearch-input-item">
@@ -338,50 +338,53 @@
       <!-- list-main-wrap-header end-->
       <!-- listing-item-wrap-->
       <div class="listing-item-container fl-wrap">
-         @foreach($properties as $property)
-         <!-- listing-item -->
+
+         @forelse($properties as $property)
          <div class="listing-item">
             <article class="geodir-category-listing fl-wrap">
                <div class="geodir-category-img fl-wrap">
                   <a href="{{ route('user.properties.show', $property) }}" class="geodir-category-img_item">
-                     
                      @if($property->featured_image())
                         <img src="{{ asset('storage/images') }}/{{$property->code}}/{{ $property->featured_image()->url }}" alt="" />
                      @else
                         <img src="{{ asset('templates/agencia-app/images/default.png') }}" alt="" />
                      @endif
-                     
                      <div class="overlay"></div>
                   </a>
+
                   <div class="geodir-category-location">
-                     <a href="#1" class="map-item tolt" data-microtip-position="top-left" data-tooltip="On the map"><i class="fas fa-map-marker-alt"></i>
-                        {{ $property->cadastral_address }}
-                     </a>
+                     <a href="{{ route('user.properties.show', $property) }}" class="map-item tolt" data-microtip-position="top-left" data-tooltip="Ubicar en el mapa"><i class="fas fa-map-marker-alt"></i>
+                        {{ $property->cadastral_address }} - {{ $property->district->name }}
+                     </a>                     
                   </div>
+                  
                   <ul class="list-single-opt_header_cat">
-                     <li><a href="#" class="cat-opt blue-bg">{{$property->action->title}}</a></li>
-                     <li><a href="#" class="cat-opt color-bg">Lote</a></li>
+                     <li><a href="{{ route('user.properties.show', $property) }}" class="cat-opt blue-bg">{{$property->action->title}}</a></li>
+                     <li><a href="{{ route('user.properties.show', $property) }}" class="cat-opt color-bg">Lote</a></li>
                   </ul>
+
                   <a href="#" class="geodir_save-btn tolt" data-microtip-position="left" data-tooltip="Guardar">
                      <span><i class="fal fa-heart"></i></span>
                   </a>
-                  {{-- <a href="#" class="compare-btn tolt" data-microtip-position="left" data-tooltip="Compare">
+                  <!-- <a href="#" class="compare-btn tolt" data-microtip-position="left" data-tooltip="Compare">
                      <span><i class="fal fa-random"></i></span>
-                  </a> --}}
+                  </a> -->
                   <div class="geodir-category-listing_media-list">
-                     <span><i class="fas fa-camera"></i> {{-- {{ $property->images->count() ? : 0 }} --}}0</span>
+                     <span><i class="fas fa-camera"></i> <!--  $property->images->count() ? : 0 -->0</span>
                   </div>
                </div>
                <div class="geodir-category-content fl-wrap">
-                  <h3>
+
+                  <div class="geodir-category-content_price">${{ number_format($property->property_valuation) }}</div>
+
+                  <h3 class="mt-3">
                      <a href="{{ route('user.properties.show', $property) }}">
                         {{ Str::limit($property->sss_description, 50) }}
                      </a>
                   </h3>
-                  <div class="geodir-category-content_price">${{ number_format($property->property_valuation) }}</div>
 
-                  <p class="mt-3">
-                     Este inmueble está ubicado en <b>{{ $property->district->name }}</b> en la comuna  
+                  <p class="mt-4">
+                     Este inmueble cuenta con la matrícula <b>{{ $property->plate }}</b> y su código es <b>{{ $property->code }}</b>
                   </p>
 
                   <div class="geodir-category-content-details">
@@ -396,15 +399,17 @@
                         </li>
                      </ul>
                   </div>
-                  <div class="geodir-category-footer fl-wrap">
+                  {{-- <div class="geodir-category-footer fl-wrap">
                      <a href="#" class="gcf-company"><img src="{{ asset('/templates/agencia-app/images/logo.png') }}" alt="" /><span>Por AGENCIA APP</span></a>
                      <div class="listing-rating card-popup-rainingvis tolt" data-microtip-position="top" data-tooltip="Good" data-starrating2="4"></div>
-                  </div>
+                  </div> --}}
                </div>
             </article>
          </div>
-         <!-- listing-item end-->
-         @endforeach
+         @empty
+         <img src="{{ asset('templates/agencia-app/images/404.svg') }}" width="40%" class="img-fluid">
+         <h5 class="mt-4">No se encontraron resultados para tu búsqueda, prueba con otros filtros.</h5>
+         @endforelse
       </div>
 
       {{ $properties->links() }}
