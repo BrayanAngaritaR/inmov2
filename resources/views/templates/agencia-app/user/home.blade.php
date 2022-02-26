@@ -47,7 +47,7 @@
                               <button class="main-search-button color-bg" onclick="searchByCommune();">Buscar <i class="far fa-search"></i></button>
                            </div>
                         </div>
-                        <div class="hero-notifer fl-wrap">¿Y si mejor exploramos? <a href="{{ route('user.properties.index') }}">Explorar inmuebles</a></div>
+                        <div class="hero-notifer fl-wrap">¿Y si mejor exploramos? <a href="{{ route('user.properties.index') }}?orderBy=null?district=null?area=null?action=null">Explorar inmuebles</a></div>
                      </div>
                   </div>
                   <div class="scroll-down-wrap">
