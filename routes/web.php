@@ -156,3 +156,19 @@ Route::get('/panel/districts/{commune_id}', [App\Http\Controllers\Panel\Utils\Di
 Route::get('/panel/users', [App\Http\Controllers\Panel\Users\UserController::class, 'index'])->name('panel.users.index');
 
 Route::get('/panel/collaborators', [App\Http\Controllers\Panel\Users\CollaboratorsController::class, 'index'])->name('panel.users.collaborators.index');
+
+/*
+|--------------------------------------------------------------------------
+| Roles - Panel
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/panel/roles', [App\Http\Controllers\Panel\Users\RoleController::class, 'index'])->name('panel.roles.index');
+
+Route::post('/panel/roles/create', [App\Http\Controllers\Panel\Users\RoleController::class, 'store'])->name('panel.roles.store');
+
+Route::get('/panel/roles/{role}/users', [App\Http\Controllers\Panel\Users\RoleController::class, 'show'])->name('panel.roles.users.show');
+
+Route::get('/panel/roles/{role}/users/edit', [App\Http\Controllers\Panel\Users\RoleController::class, 'edit'])->name('panel.roles.users.edit');
+
+Route::post('/panel/roles/{role}/users/edit', [App\Http\Controllers\Panel\Users\RoleController::class, 'update'])->name('panel.roles.users.update');

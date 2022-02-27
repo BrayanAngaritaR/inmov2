@@ -1,7 +1,40 @@
-@extends('panel.app') @section('content') @section('title', 'Lista de usuarios') @section('subtitle', 'esta es la lista de todos los usuarios.')
+@extends('panel.app') @section('content') @section('title', 'Agregar rol a los usuarios') @section('subtitle', 'Aquí podrás agregar los roles a los usuarios.')
 
 <div class="nk-block">
    <div class="card shadow-sm border-0 card-preview">
+      <div class="row g-gs">
+         <div class="col-sm-12">
+         	<form class="p-5" action="{{ route('panel.roles.users.update', $role) }}" method="POST">
+         		@csrf
+
+         		<div class="form-group">
+         			<label>Usuario</label>
+         			<select name="user_id" class="form-control" name="user_id">
+         				@foreach($users as $user)
+         					<option value="{{ $user->id }}">
+         						{{ $user->name }} ({{ $user->email }})
+         					</option>
+         				@endforeach
+         			</select>
+         		</div>
+
+         		<div class="form-group text-right">
+         			<button type="submit" class="btn btn-primary">
+         				Actualizar
+         			</button>
+         		</div>
+         	</form>
+         </div>
+      </div>
+   </div>
+</div>
+
+<div class="nk-block">
+
+	<h5 class="mb-4">Usuarios que ya tienen este rol</h5>
+
+   <div class="card shadow-sm border-0 card-preview">
+
       <div class="row g-gs">
          <div class="table-responsive">
             <!-- Headline -->
@@ -22,7 +55,7 @@
                      </div>
                   </div>
 
-                  @foreach($users as $user)
+                  @foreach($role_users as $user)
                   <div class="nk-tb-item">
                      <div class="nk-tb-col">
                         <a href="#">
@@ -59,13 +92,7 @@
                                           <a href="#"><em class="icon ni ni-mail"></em><span>Enviar mensaje</span></a>
                                        </li>
                                        <li>
-                                          <a href="#"><em class="icon ni ni-shield-star"></em><span>Agregar permisos</span></a>
-                                       </li>
-                                       <li>
-                                          <a href="#"><em class="icon ni ni-na"></em><span>Suspender</span></a>
-                                       </li>
-                                       <li>
-                                          <a href="#"><em class="icon ni ni-trash"></em><span>Bloquear acceso</span></a>
+                                          <a href="#"><em class="icon ni ni-shield-star"></em><span>Quitar rol</span></a>
                                        </li>
                                     </ul>
                                  </div>

@@ -19,7 +19,6 @@
                   <li class="nk-menu-heading">
                      <h6 class="overline-title text-primary-alt">Estadísticas</h6>
                   </li>
-                  <!-- .nk-menu-item -->
                   <li class="nk-menu-item">
                      <a href="{{ route('panel.statistics.index') }}" class="nk-menu-link">
                         <span class="nk-menu-icon"><em class="icon ni ni-growth"></em></span>
@@ -27,7 +26,6 @@
                         <span class="nk-menu-badge badge-danger">Nuevo</span>
                      </a>
                   </li>
-                  <!-- .nk-menu-item -->
                   <li class="nk-menu-heading">
                      <h6 class="overline-title text-primary-alt">Contenido</h6>
                   </li>
@@ -50,7 +48,6 @@
                      </ul>
                      <!-- .nk-menu-sub -->
                   </li>
-                  <!-- .nk-menu-item -->
                   <li class="nk-menu-item has-sub">
                      <a href="#" class="nk-menu-link nk-menu-toggle">
                         <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
@@ -66,19 +63,23 @@
                      </ul>
                      <!-- .nk-menu-sub -->
                   </li>
-                  <!-- .nk-menu-item -->
 
                   <li class="nk-menu-heading">
                      <h6 class="overline-title text-primary-alt">Solicitudes</h6>
                   </li>
-                  <!-- .nk-menu-item -->
                   <li class="nk-menu-item">
                      <a href="{{ route('panel.requests.index') }}" class="nk-menu-link">
                         <span class="nk-menu-icon"><em class="icon ni ni-question"></em></span>
                         <span class="nk-menu-text">Lista de solicitudes</span>
                      </a>
                   </li>
-                  <!-- .nk-menu-item -->
+
+                  <li class="nk-menu-item">
+                     <a href="{{ route('panel.roles.index') }}" class="nk-menu-link">
+                        <span class="nk-menu-icon"><em class="icon ni ni-check-circle-cut"></em></span>
+                        <span class="nk-menu-text">Roles</span>
+                     </a>
+                  </li>
                </ul>
             <!-- .nk-menu -->
          </div>

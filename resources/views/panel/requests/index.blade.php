@@ -1,7 +1,7 @@
 @extends('panel.app') @section('content') @section('title', 'Lista de solicitudes') @section('subtitle', 'esta es la lista de solicitudes de más información y/o de contacto.')
 
 <div class="nk-block">
-   <div class="card shadow-sm card-preview">
+   <div class="card shadow-sm border-0 card-preview">
       <div class="row g-gs">
          <div class="table-responsive">
             <!-- Headline -->
