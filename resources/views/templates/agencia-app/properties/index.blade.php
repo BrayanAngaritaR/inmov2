@@ -91,7 +91,11 @@
                         <select data-placeholder="Barrio" class="form-select" name="district_id" id="district_id">
                            <option value="all">Todos los barrios</option>
                            @foreach($districts as $district)
-                           <option value="{{ $district->id }}">
+                           <option 
+                              @if($filter_district == $district->id) 
+                              selected 
+                              @endif 
+                              value="{{ $district->id }}">
                            	{{ $district->name }}
                            </option>
                            @endforeach
@@ -105,7 +109,11 @@
                         <select data-placeholder="Destinación actual" class="form-select" id="destination_id">
                            <option value="all">Todas las destinaciones</option>
                            @foreach($destinations as $destination)
-                           <option value="{{ $destination->id }}">
+                           <option 
+                              @if($filter_destination == $destination->id) 
+                              selected 
+                              @endif
+                              value="{{ $destination->id }}">
                            	{{ $destination->title }}
                            </option>
                            @endforeach
@@ -118,8 +126,16 @@
                         <label>Oportunidad</label>
                         <select data-placeholder="Oportunidad" class="form-select" id="opportunity_id">
                            <option value="all">Todas</option>
-	                        <option value="1">Oportunidad Inmobiliaria</option>
-	                        <option value="2">Gestión comercial</option>
+	                        <option 
+                              @if($filter_opportunity == 1) 
+                              selected 
+                              @endif
+                              value="1">Oportunidad Inmobiliaria</option>
+	                        <option 
+                              @if($filter_opportunity == 2) 
+                              selected 
+                              @endif
+                              value="2">Gestión comercial</option>
                         </select>
                      </div>
                      <!-- /Filter by opportunity -->
@@ -130,7 +146,11 @@
                         <select data-placeholder="Acción" class="form-select" id="action_id">
                            <option value="all">Todas las acciones</option>
                            @foreach($actions as $action)
-                           <option value="{{ $action->id }}">
+                           <option 
+                              @if($filter_action == $action->id) 
+                              selected 
+                              @endif
+                              value="{{ $action->id }}">
                            	{{ $action->title }}
                            </option>
                            @endforeach
@@ -169,7 +189,7 @@
 								         Filtros avanzados
 								      </button>
 								   </h4>
-								   <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#advancedFilters">
+								   <div id="collapseTwo" class="accordion-collapse collapse {{ $show_collapse }}" aria-labelledby="headingTwo" data-bs-parent="#advancedFilters">
 								      <div class="accordion-body">
 								         <!-- Filter by macroproject -->
 								         <div class="listsearch-input-item">
@@ -177,7 +197,11 @@
 								            <select data-placeholder="Macroproyecto" class="form-select" id="macroproject_id">
 								               <option value="all">Todos los macroproyectos</option>
 								               @foreach($macroprojects as $macroproject)
-								               <option value="{{ $macroproject->id }}">
+								               <option 
+                                          @if($filter_macroproject == $macroproject->id) 
+                                          selected 
+                                          @endif
+                                          value="{{ $macroproject->id }}">
 								                  {{ $macroproject->name }}
 								               </option>
 								               @endforeach
@@ -191,7 +215,11 @@
 								            <select data-placeholder="Tratamiento" class="form-select" id="treatment_id">
 								               <option value="all">Todos los tratamientos</option>
 								               @foreach($treatments as $treatment)
-								               <option value="{{ $treatment->id }}">
+								               <option 
+                                          @if($filter_treatment == $treatment->id) 
+                                          selected 
+                                          @endif
+                                          value="{{ $treatment->id }}">
 								                  {{ $treatment->title }}
 								               </option>
 								               @endforeach
@@ -205,7 +233,11 @@
 								            <select data-placeholder="Instrumento de tercer nivel" class="form-select" id="instrument_id">
 								               <option value="all">Todos</option>
 								               @foreach($instruments as $instrument)
-								               <option value="{{ $instrument->id }}">
+								               <option 
+                                          @if($filter_instrument == $instrument->id) 
+                                          selected 
+                                          @endif
+                                          value="{{ $instrument->id }}">
 								                  {{ $instrument->title }}
 								               </option>
 								               @endforeach
@@ -219,7 +251,11 @@
 								            <select data-placeholder="Uso del suelo" id="floor_use_id" class="form-select">
 								               <option value="all">Todos los usos</option>
 								               @foreach($floor_uses as $floor_use)
-								               <option value="{{ $floor_use->id }}">
+								               <option 
+                                          @if($filter_floor_use == $floor_use->id) 
+                                          selected 
+                                          @endif
+                                          value="{{ $floor_use->id }}">
 								                  {{ $floor_use->title }}
 								               </option>
 								               @endforeach
@@ -233,20 +269,20 @@
 								            <div class="fl-wrap filter-tags">
 								               <ul class="no-list-style">
 								                  <li>
-								                     <input id="check-aa" type="checkbox" name="rph" />
-								                     <label for="check-aa">RPH</label>
+								                     <input @if($filter_rph == 1) checked @endif type="checkbox" id="rph" />
+								                     <label for="rph">RPH</label>
 								                  </li>
 								                  <li>
-								                     <input id="check-b" type="checkbox" name="comodate" />
-								                     <label for="check-b"> Comodato</label>
+								                     <input @if($filter_loan == 1) checked @endif type="checkbox" id="loan" />
+								                     <label for="loan"> Comodato</label>
 								                  </li>
 								                  <li>
-								                     <input id="check-c" type="checkbox" name="bic" />
-								                     <label for="check-c">BIC</label>
+								                     <input @if($filter_bic == 1) checked @endif type="checkbox" id="bic" />
+								                     <label for="bic">BIC</label>
 								                  </li>
 								                  <li>
-								                     <input id="check-d" type="checkbox" name="management" />
-								                     <label for="check-d">Gestión</label>
+								                     <input @if($filter_management == 1) checked @endif type="checkbox" id="management" />
+								                     <label for="management">Gestión</label>
 								                  </li>
 								               </ul>
 								            </div>
@@ -666,7 +702,26 @@
       let instrument = $('#instrument_id').val();
       let floor_use = $('#floor_use_id').val();
 
-      //RPH, comodate, management
+      let rph = 0;
+      let loan = 0;
+      let management = 0;
+      let bic = 0;
+
+      if ($("#rph").is(":checked")) {
+         rph = 1;
+      }
+
+      if ($("#loan").is(":checked")) {
+         loan = 1;
+      }
+
+      if ($("#bic").is(":checked")) {
+         bic = 1;
+      }
+
+      if ($("#management").is(":checked")) {
+         management = 1;
+      }
 
       const url = '{{route('user.properties.index') }}';
       window.location.href = url 
@@ -680,7 +735,12 @@
                            + '?macroproject=' + macroproject
                            + '?treatment=' + treatment
                            + '?instrument=' + instrument
-                           + '?floor_use=' + floor_use;
+                           + '?floor_use=' + floor_use
+                           + '?rph=' + rph
+                           + '?loan=' + loan
+                           + '?bic=' + bic
+                           + '?management=' + management
+                           ;
    }
 </script>
 @endpush

@@ -41,6 +41,7 @@ class PropertiesController extends Controller
       $treatments = Treatment::orderBy('title', 'ASC')->get();
 
       //Verificar si se están aplicando los filtros
+      $show_collapse = ''; //Clase para mostrar filtros avanzados
       $filter_orderBy = '';
       $filter_commune = Str::between($this->url, 'commune=', '%3Fdistrict%3D');
       $filter_district = Str::between($this->url, '%3Fdistrict%3D', '%3Fdestination%3D');
@@ -51,7 +52,11 @@ class PropertiesController extends Controller
       $filter_macroproject = Str::between($this->url, '%3Fmacroproject%3D', '%3Ftreatment%3D');
       $filter_treatment = Str::between($this->url, '%3Ftreatment%3D', '%3Finstrument%3D');
       $filter_instrument = Str::between($this->url, '%3Finstrument%3D', '%3Ffloor_use%3D');
-      $filter_floor_use = Str::after($this->url, '%3Ffloor_use%3D');
+      $filter_floor_use = Str::between($this->url, '%3Ffloor_use%3D', '%3Frph%3D');
+      $filter_rph = Str::between($this->url, '%3Frph%3D', '%3Floan%3D');
+      $filter_loan = Str::between($this->url, '%3Floan%3D', '%3Fbic%3D');
+      $filter_bic = Str::between($this->url, '%3Fbic%3D', '%3Fmanagement%3D');
+      $filter_management = Str::after($this->url, '%3Fmanagement%3D');
 
       // dd(
       //    "Communa: " . $filter_commune 
@@ -63,6 +68,11 @@ class PropertiesController extends Controller
       //    . " | Tratamiento: " . $filter_treatment
       //    . " | Instrumento: " . $filter_instrument
       //    . " | Uso del suelo: " . $filter_floor_use
+      //    . " | Macroproyecto: " . $filter_macroproject
+      //    . " | RPH: " . $filter_rph
+      //    . " | Comodato: " . $filter_loan
+      //    . " | BIC: " . $filter_bic
+      //    . " | Proyecto gestionado: " . $filter_management
       // );
 
       $properties = Property::query();
@@ -88,41 +98,121 @@ class PropertiesController extends Controller
          }
       }
 
-      // if (strpos($this->url, 'opportunity')) {
-      //    if ($filter_opportunity != 'null') {
-      //       $properties->where('opportunity_id', $filter_opportunity)
-      //       ->with('district');
+      //Filtrar por destinación
+      if (strpos($this->url, 'destination')) {
+         if ($filter_destination != 'all') {
+            $properties->where('destination_id', $filter_destination);
+         }
+      }
+
+      //Filtrar por oportunidad
+      if (strpos($this->url, 'opportunity')) {
+         if ($filter_opportunity != 'all') {
+            $properties->where('opportunity_id', $filter_opportunity);
+         }
+      }
+
+      //Filtrar por área
+      // if (strpos($this->url, 'area')) {
+      //    if ($filter_area != 'all') {
+      //       $properties->where('cadastral_area', $filter_area);
       //    }
       // }
 
-      // if ($filter_orderBy != 'latest') {
-      //    $properties = $properties->latest();
-      // }
+      //Filtrar por acción
+      if (strpos($this->url, 'action')) {
+         if ($filter_action != 'all') {
+            $properties->where('action_id', $filter_action);
+         }
+      }
 
-      // if ($filter_district != 'null') {
-      //    $properties = $properties->where('district_id', $filter_district);
-      // }
+      //Filtrar por tratamiento
+      if (strpos($this->url, 'treatment')) {
+         if ($filter_treatment != 'all') {
+            $properties->where('treatment_id', $filter_treatment);
+         }
+      }
 
-      // if ($filter_action != 'null') {
-      //    $properties = $properties->where('action_id', $filter_action);
-      // }
+      //Filtrar por macroproyecto
+      if (strpos($this->url, 'macroproject')) {
+         if ($filter_macroproject != 'all') {
+            $properties->where('macroproject_id', $filter_macroproject);
+            $show_collapse = 'show';
+         }
+      }
 
-      // if ($filter_area != 'null') {
-      //    //$properties->get();
-      //    if ($filter_area == 'higher') {
-      //       $properties = $properties->sortByDesc('cadastral_area');
-      //    } else {
-      //       //$properties = $properties->sortBy('cadastral_area');
-      //    }
-      // }
+      //Filtrar por instrumento de tercer nivel
+      if (strpos($this->url, 'instrument')) {
+         if ($filter_instrument != 'all') {
+            $properties->where('third_level_instrument_id', $filter_instrument);
+            $show_collapse = 'show';
+         }
+      }
 
+      //Filtrar por uso del suelo
+      if (strpos($this->url, 'floor_use')) {
+         if ($filter_floor_use != 'all') {
+            $properties->where('floor_use_id', $filter_floor_use);
+            $show_collapse = 'show';
+         }
+      }
+
+      //Filtrar por bienes con RPH
+      if (strpos($this->url, 'rph')) {
+         if ($filter_rph != 0) {
+            $properties->where('is_rph', $filter_rph);
+            $show_collapse = 'show';
+         }
+      }
+
+      //Filtrar por bienes con comodato
+      if (strpos($this->url, 'loan')) {
+         if ($filter_loan != 0) {
+            $properties->where('loan', $filter_loan);
+            $show_collapse = 'show';
+         }
+      }
+
+      //Filtrar por bienes de interés cultural
+      if (strpos($this->url, 'bic')) {
+         if ($filter_bic != 0) {
+            $properties->where('bic', $filter_bic);
+            $show_collapse = 'show';
+         }
+      }
+
+      //Filtrar por bienes con RPH
+      if (strpos($this->url, 'management')) {
+         if ($filter_management != 0) {
+            $properties->where('project_managed', '!=', null);
+            $show_collapse = 'show';
+         }
+      }
+
+      //Paginar los resultados por cada 20
       $properties = $properties->paginate(20)->appends(request()->query());
 
       return view($this->template.'properties.index', compact([
          //Filters
          'communes', 'districts', 'destinations', 'actions', 'macroprojects', 'properties', 'destinations', 'instruments', 'floor_uses', 'treatments',
          //Applied filters
-         'filter_orderBy', 'filter_district', 'filter_area', 'filter_action', 'filter_commune'
+         'filter_commune',
+         'filter_district',
+         'filter_destination',
+         'filter_opportunity',
+         'filter_area',
+         'filter_action',
+         'filter_treatment',
+         'filter_instrument',
+         'filter_floor_use',
+         'filter_macroproject',
+         'filter_rph',
+         'filter_loan',
+         'filter_bic',
+         'filter_management',
+         'show_collapse',
+         //
+         'filter_orderBy' 
       ]));
    }
 
