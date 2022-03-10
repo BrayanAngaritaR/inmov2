@@ -1,4 +1,4 @@
-<div class="header-search-wrapper novis_search">
+{{-- <div class="header-search-wrapper novis_search">
    <div class="header-serach-menu">
       <div class="custom-switcher fl-wrap">
          <div class="fieldset fl-wrap">
@@ -53,4 +53,4 @@
          <button type="submit" class="btn float-btn color-bg"><i class="fal fa-search"></i> Buscar</button>
       </form>
    </div>
-</div>
+</div> --}}

@@ -8,10 +8,10 @@
    </div>
    <!-- nav-button-wrap end-->
    <!-- header-search button  -->
-   <div class="header-search-button">
+   {{-- <div class="header-search-button">
       <i class="fal fa-search"></i>
       <span>Buscar...</span>
-   </div>
+   </div> --}}
    <!-- header-search button end  -->
    <!--  add new  btn -->
    {{-- <div class="add-list_wrap">

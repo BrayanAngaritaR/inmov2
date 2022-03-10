@@ -8,10 +8,23 @@
          <a href="#">Propiedades <i class="fa fa-caret-down"></i></a>
          <!--second level -->
          <ul>
-            <li><a href="{{ route('user.properties.index') }}?orderBy=null?district=null?area=null?action=null">En venta</a></li>
-            <li><a href="{{ route('user.properties.index') }}?orderBy=null?district=null?area=null?action=null">En arriendo</a></li>
+            {{-- <li><a href="{{ route('user.properties.index') }}?orderBy=null?district=null?area=null?action=null">En venta</a></li> --}}
+            <li><a href="{{ route('user.properties.index') }}?orderBy=null?district=null?area=null?action=null?commune=all?opportunity=1">Oportunidad inmobiliaria</a></li>
+            <li><a href="{{ route('user.properties.index') }}?orderBy=null?district=null?area=null?action=null?commune=all?opportunity=2">Gestión comercial</a></li>
          </ul>
          <!--second level end-->
+      </li>
+
+      <li>
+         <a href="{{ route('user.soon.index') }}" class="act-link">
+            <b>Plan rector</b>
+         </a>
+      </li>
+
+      <li>
+         <a href="{{ route('user.soon.index') }}" class="act-link">
+            <b>PIGP</b>
+         </a>
       </li>
 
       <li>
@@ -19,9 +32,12 @@
          <!--second level -->
          <ul>
             <li><a href="{{ route('user.soon.index') }}">Hotel y centro de negocios Plaza Mayor</a></li>
-            <li><a href="{{ route('user.soon.index') }}">Plan rector</a></li>
             <li><a href="{{ route('user.soon.index') }}">Zona Franca Medellín</a></li>
-            <li><a href="{{ route('user.soon.index') }}">Plan integral del barrio Prado</a></li>
+            <li><a href="{{ route('user.soon.index') }}">Villa deportiva</a></li>
+            <li><a href="{{ route('user.soon.index') }}">Unidad Hospitalaria Buenos Aires</a></li>
+            <li><a href="{{ route('user.soon.index') }}">Terraza CAM</a></li>
+            <li><a href="{{ route('user.soon.index') }}">Placita de Flórez</a></li>
+            <li><a href="{{ route('user.soon.index') }}">La Aurora</a></li>
          </ul>
          <!--second level end-->
       </li>

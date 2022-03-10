@@ -27,9 +27,11 @@
                            <div class="msiw-column_title">¿Una búsqueda rápida?</div>
                            <div class="main-search-input fl-wrap">
                               <div class="main-search-input-item">
-                                 <select data-placeholder="¿Comprar o rentar?" class="chosen-select no-search-select">
-                                    <option>Comprar</option>
-                                    <option>Rentar</option>
+                                 <select data-placeholder="Acción" class="chosen-select no-search-select" id="opportunity_id">
+
+                                    <option value="all">Todas</option>
+                                    <option value="1">Oportunidad Inmobiliaria</option>
+                                    <option value="2">Gestión comercial</option>
                                  </select>
                               </div>
 
@@ -355,7 +357,8 @@
 @push('scripts')
 <script type="text/javascript">
    function searchByCommune(){
-      let commune_id = $('#commune_id').val();
+      let commune_id  = $('#commune_id').val();
+      let opportunity_id = $('#opportunity_id').val();
       let orderBy = 'null';
       let district = 'null';
       let area = 'null';
@@ -366,7 +369,8 @@
                                  + '?district=' + district
                                  + '?area=' + area
                                  + '?action=' + action
-                                 + '?commune=' + commune_id;
+                                 + '?commune=' + commune_id
+                                 + '?opportunity=' + opportunity_id;
 
 
       //window.location.href = url + '?commune_id=' + commune_id; 
