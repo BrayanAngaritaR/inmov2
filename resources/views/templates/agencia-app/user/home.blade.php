@@ -49,7 +49,7 @@
                               <button class="main-search-button color-bg" onclick="searchByCommune();">Buscar <i class="far fa-search"></i></button>
                            </div>
                         </div>
-                        <div class="hero-notifer fl-wrap">¿Y si mejor exploramos? <a href="{{ route('user.properties.index') }}?orderBy=null?district=null?area=null?action=null">Explorar inmuebles</a></div>
+                        <div class="hero-notifer fl-wrap">¿Y si mejor exploramos? <a href="{{ route('user.properties.index') }}?commune=all?district=all?destination=all?opportunity=all?action=all?area=all?macroproject=all?treatment=all?instrument=all?floor_use=all?rph=0?loan=0?bic=0?management=0">Explorar inmuebles</a></div>
                      </div>
                   </div>
                   <div class="scroll-down-wrap">
@@ -357,23 +357,40 @@
 @push('scripts')
 <script type="text/javascript">
    function searchByCommune(){
-      let commune_id  = $('#commune_id').val();
-      let opportunity_id = $('#opportunity_id').val();
-      let orderBy = 'null';
-      let district = 'null';
-      let area = 'null';
-      let action = 'null';
+
+      let commune = $('#commune_id').val();
+      let opportunity = $('#opportunity_id').val();
+      let district = 'all';
+      let destination = 'all';
+      let area = 'all';
+      let action = 'all';
+      let macroproject = 'all';
+      let treatment = 'all';
+      let instrument = 'all';
+      let floor_use = 'all';
+      let rph = 0;
+      let loan = 0;
+      let management = 0;
+      let bic = 0;
+      
       const url = '{{route('user.properties.index') }}';
-
-      window.location.href = url + '?orderBy=' + orderBy 
-                                 + '?district=' + district
-                                 + '?area=' + area
-                                 + '?action=' + action
-                                 + '?commune=' + commune_id
-                                 + '?opportunity=' + opportunity_id;
-
-
-      //window.location.href = url + '?commune_id=' + commune_id; 
+      window.location.href = url 
+                           //+ '?orderBy=' + orderBy 
+                           + '?commune=' + commune
+                           + '?district=' + district
+                           + '?destination=' + destination
+                           + '?opportunity=' + opportunity
+                           + '?action=' + action
+                           + '?area=' + area
+                           + '?macroproject=' + macroproject
+                           + '?treatment=' + treatment
+                           + '?instrument=' + instrument
+                           + '?floor_use=' + floor_use
+                           + '?rph=' + rph
+                           + '?loan=' + loan
+                           + '?bic=' + bic
+                           + '?management=' + management
+                           ;
    }
 </script>
 @endpush

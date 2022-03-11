@@ -8,9 +8,9 @@
          <a href="#">Propiedades <i class="fa fa-caret-down"></i></a>
          <!--second level -->
          <ul>
-            {{-- <li><a href="{{ route('user.properties.index') }}?orderBy=null?district=null?area=null?action=null">En venta</a></li> --}}
-            <li><a href="{{ route('user.properties.index') }}?orderBy=null?district=null?area=null?action=null?commune=all?opportunity=1">Oportunidad inmobiliaria</a></li>
-            <li><a href="{{ route('user.properties.index') }}?orderBy=null?district=null?area=null?action=null?commune=all?opportunity=2">Gestión comercial</a></li>
+            <li><a href="{{ route('user.properties.index') }}?commune=all?district=all?destination=all?opportunity=1?action=all?area=all?macroproject=all?treatment=all?instrument=all?floor_use=all?rph=0?loan=0?bic=0?management=0">Oportunidad inmobiliaria</a></li>
+
+            <li><a href="{{ route('user.properties.index') }}?commune=all?district=all?destination=all?opportunity=2?action=all?area=all?macroproject=all?treatment=all?instrument=all?floor_use=all?rph=0?loan=0?bic=0?management=0">Gestión comercial</a></li>
          </ul>
          <!--second level end-->
       </li>
