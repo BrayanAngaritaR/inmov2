@@ -1,4 +1,4 @@
-footer -->
+<!-- footer -->
 <div class="log-separator fl-wrap"></div>
 <footer class="main-footer fl-wrap">
    <div class="footer-inner fl-wrap">
