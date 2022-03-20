@@ -1,7 +1,16 @@
-@extends('templates.agencia-app.app') @section('content')
+@extends('templates.agencia-app.app') 
+
+@push('styles')
+<style type="text/css">
+   .fw-map.big_map {
+      height: 350px !important;
+   }
+</style>
+@endpush
+@section('content')
 <div class="content">
    <!-- Map -->
-   <div class="map-container fw-map big_map">
+   <div class="map-container fw-map big_map scroll-to-fixed-fixed">
       <div id="map-main"></div>
       <ul class="mapnavigation no-list-style">
          <li>
@@ -419,8 +428,13 @@
                </div>
                <!-- listing-item-wrap end-->
                <!-- pagination-->
-               <div class="pagination st-center fl-wrap">
-                  {!! $properties->appends(request()->input())->links() !!}
+               <div class="pagination">
+                  <a href="#" class="prevposts-link"><i class="fa fa-caret-left"></i></a>
+                  <a href="#">1</a>
+                  <a href="#" class="current-page">2</a>
+                  <a href="#">3</a>
+                  <a href="#">4</a>
+                  <a href="#" class="nextposts-link"><i class="fa fa-caret-right"></i></a>
                </div>
                <!-- pagination end-->
             </div>

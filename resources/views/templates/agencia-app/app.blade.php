@@ -17,6 +17,7 @@
       <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
       <!--=============== favicons ===============-->
       <link rel="shortcut icon" href="{{ asset('templates/agencia-app/images/favicon.ico')}}" />
+      @stack('styles')
    </head>
    <body>
       <!--loader-->

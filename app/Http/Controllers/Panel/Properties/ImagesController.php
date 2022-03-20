@@ -13,6 +13,11 @@ use Str;
 
 class ImagesController extends Controller
 {
+   public function __construct()
+   {
+      $this->middleware('auth');
+   }
+   
    public function index(Property $property)
    {
       $images = Image::where('imageable_id', $property->id)

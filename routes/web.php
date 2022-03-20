@@ -67,6 +67,8 @@ Route::view('/calculadora', 'templates.agencia-app.soon')
 
 Route::get('/propiedades', [App\Http\Controllers\User\PropertiesController::class, 'index'])->name('user.properties.index');
 
+Route::get('/propiedades3', [App\Http\Controllers\User\PropertiesController::class, 'index3'])->name('user.properties.index3');
+
 Route::get('/propiedades/filtrar', [App\Http\Controllers\User\PropertiesController::class, 'filter'])->name('user.properties.filter.index');
 
 Route::get('/{property}', [App\Http\Controllers\User\PropertiesController::class, 'show'])->name('user.properties.show');
@@ -114,6 +116,13 @@ Route::post('/panel/images/featured/delete', [App\Http\Controllers\Panel\Propert
 Route::get('/panel/properties/files/{property}', [App\Http\Controllers\Panel\Properties\FilesController::class, 'index'])->name('panel.properties.files.index');
 
 Route::post('/panel/properties/files/{property}', [App\Http\Controllers\Panel\Properties\FilesController::class, 'store'])->name('panel.properties.files.store');
+
+Route::post('/panel/file/delete', [App\Http\Controllers\Panel\Properties\FilesController::class, 'destroy'])->name('panel.file.destroy');
+
+#Venta de oportunidad
+Route::get('/panel/properties/opportunity/{property}', [App\Http\Controllers\Panel\Properties\OpportunityController::class, 'index'])->name('panel.properties.opportunity.index');
+
+Route::post('/panel/properties/opportunity/{property}', [App\Http\Controllers\Panel\Properties\OpportunityController::class, 'store'])->name('panel.properties.opportunity.store');
 
 Route::post('/panel/file/delete', [App\Http\Controllers\Panel\Properties\FilesController::class, 'destroy'])->name('panel.file.destroy');
 

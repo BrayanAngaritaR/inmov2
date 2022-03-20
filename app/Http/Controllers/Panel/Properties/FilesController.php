@@ -12,6 +12,11 @@ use Str;
 
 class FilesController extends Controller
 {
+   public function __construct()
+   {
+      $this->middleware('auth');
+   }
+   
    public function index(Property $property)
    {
       $files = File::where('fileable_id', $property->id)
