@@ -22,6 +22,7 @@
 	<div class="card card-preview">
       <div class="card-inner">
       	<div class="preview-block">
+      		@if($property->sale)
       		<div class="row">
 
       			<div class="col-sm-12 mb-5 text-center">
@@ -135,6 +136,15 @@
 						<p>{{ $property->sale->for_sale_observations }}</p>
 			      </div>		      
 			   </div>
+			   @else
+			   <div class="row">
+			   	<div class="col-sm-12 mb-5 text-center">
+			      	<div class="alert alert-info">
+			      		No hay información de ventas
+			      	</div>
+			      </div>
+			   </div>
+			   @endif
 		   </div>
 		</div>
 	</div>
