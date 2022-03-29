@@ -15,7 +15,7 @@
 	      <div class="card-inner">
 	      	<div class="preview-block">
 	      		<div class="row">
-						<div class="col-sm-12 col-lg-3 mb-3">
+						<div class="col-sm-12 col-lg-4 mb-3">
 				         <div class="form-group">
 				            <label class="form-label" for="area_according_to_vur">Área del predio (VUR)</label>
 				            <input type="text" name="area_according_to_vur" class="form-control" id="area_according_to_vur" 
@@ -25,14 +25,14 @@
 				         </div>
 				      </div>
 
-				      <div class="col-sm-12 col-lg-3 mb-3">
+				      <div class="col-sm-12 col-lg-4 mb-3">
 				         <div class="form-group">
 				            <label class="form-label" for="cadastral_area">Área de lote catastral</label>
 				            <input type="text" name="cadastral_area" value="{{ $property->cadastral_area }}" disabled class="form-control" id="cadastral_area" />
 				         </div>
 				      </div>
 
-				      <div class="col-sm-12 col-lg-3 mb-3">
+				      <div class="col-sm-12 col-lg-4 mb-3">
 				         <div class="form-group">
 				            <label class="form-label" for="common_areas">Áreas comunes según FC</label>
 				            <input type="text" name="common_areas"class="form-control" id="common_areas" 
@@ -42,7 +42,7 @@
 				         </div>
 				      </div>
 
-				      <div class="col-sm-12 col-lg-3 mb-3">
+				      <div class="col-sm-12 col-lg-4 mb-3">
 				         <div class="form-group">
 				            <label class="form-label" for="property_valuation">Valor de ficha catrastal</label>
 				            <input type="text" disabled  value="{{ $property->property_valuation }}" class="form-control"/>
@@ -233,6 +233,15 @@
 				            </select>
 				         </div>
 				      </div>
+
+				      {{-- @if($property->has_appraise) --}}
+				      <div class="col-sm-12 col-lg-4 mb-3">
+				         <div class="form-group">
+				            <label class="form-label text-primary" for="for_sale">Valor del avalúo</label>
+				            <input type="number" name="appraise_value" class="form-control">
+				         </div>
+				      </div>
+				      {{-- @endif --}}
 
 				      <div class="col-sm-12 mb-3">
 				         <div class="form-group">

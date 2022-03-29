@@ -81,6 +81,23 @@
 
       <div class="col-sm-12 col-lg-6 col-xl-3">
          <div class="form-group">
+            <p class="form-label">¿Tiene avalúo?*</p>
+
+            <div class="custom-control custom-checkbox">
+               <input type="checkbox" class="custom-control-input" id="has_appraise" @if($property->has_appraise == 1) checked @endif/>
+               <label class="custom-control-label" for="has_appraise">Sí / No</label>
+            </div>
+         </div>
+      </div>
+
+      <!-- Información del comodato -->
+
+      <div class="col-sm-12">
+         <span class="preview-title-lg overline-title mt-3">Comodato</span>
+      </div>
+
+      <div class="col-sm-12 col-lg-6 col-xl-3">
+         <div class="form-group">
             <p class="form-label">¿Está en comodato?*</p>
 
             <div class="custom-control custom-checkbox">

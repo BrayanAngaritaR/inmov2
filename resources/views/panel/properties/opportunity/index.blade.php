@@ -75,6 +75,16 @@
 				    		${{ number_format($for_sale_property->geoeconomic_zone_value) }}
 				      </div>
 
+
+				      <div class="col-sm-12 col-lg-4 mb-3 mt-4">
+				      	<p class="text-primary"><b>Valor del avalúo</b></p>
+				      	@if($property->has_appraise)
+				    		${{ 0 }}
+				    		@else
+				    		Avalúo sin contratar
+				    		@endif
+				      </div>
+
 				      <div class="col-sm-12 col-lg-4 mb-3 mt-4">
 				      	<p><b>Destinación</b></p>
 				    		{{ $for_sale_property->for_sale_destination }}

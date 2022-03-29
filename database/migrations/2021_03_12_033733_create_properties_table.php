@@ -223,6 +223,9 @@ class CreatePropertiesTable extends Migration
          //Bien de Interés Cultural
          $table->boolean('bic')->default(false);  
 
+         //¿Tiene avalúo?
+         $table->boolean('has_appraise')->default(false);  
+         
          //Nombre del BIC
          $table->string('bic_name')->nullable(); 
 
