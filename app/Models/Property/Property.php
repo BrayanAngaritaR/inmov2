@@ -14,6 +14,7 @@ use App\Models\Property\Inst_3nivel;
 use App\Models\Property\Macroproject;
 use App\Models\Property\Opportunity;
 use App\Models\Property\Polygon;
+use App\Models\Property\PropertySale;
 use App\Models\Property\PropertyType;
 use App\Models\Property\Secretaryship;
 use App\Models\Property\ThirdLevelInstrument;
@@ -222,4 +223,10 @@ class Property extends Model implements Auditable
    }
 
    //$post = Post::with('audits')->first();  //Get the first post
+
+   //Oportunidad
+   public function sale()
+   {
+      return $this->belongsTo(PropertySale::class, 'property_id');
+   }
 }

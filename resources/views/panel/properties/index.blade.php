@@ -75,7 +75,7 @@
                                           <a href="{{ route('panel.properties.files.index', $property) }}"><em class="icon ni ni-file-plus"></em><span>Agregar documentos</span></a>
                                        </li>
                                        <li>
-                                          <a href="{{ route('panel.properties.opportunity.index', $property) }}"><em class="icon ni ni-edit"></em><span>Agregar info de venta</span></a>
+                                          <a href="{{ route('panel.properties.opportunity.index', $property) }}"><em class="icon ni ni-coin"></em><span>Info de venta</span></a>
                                        </li>
                                        <li>
                                           <a href="#"><em class="icon ni ni-na"></em><span>Ocultar</span></a>

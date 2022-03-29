@@ -1,7 +1,7 @@
 <nav>
    <ul class="no-list-style">
    	<li>
-         <a href="/" class="act-link">Inicio</a>
+         <a href="{{ route('user.index') }}" class="act-link">Inicio</a>
       </li>
 
       <li>
@@ -22,7 +22,7 @@
       </li>
 
       <li>
-         <a href="{{ route('user.soon.index') }}" class="act-link">
+         <a href="{{ route('user.projects.pigp.index') }}" class="act-link">
             <b>PIGP</b>
          </a>
       </li>

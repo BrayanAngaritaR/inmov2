@@ -1,1 +1,0 @@
-@extends(env('TEMPLATE'))

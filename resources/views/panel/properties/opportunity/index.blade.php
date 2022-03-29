@@ -3,8 +3,23 @@
 @section('title', 'Información para venta') 
 @section('parent', 'Inmuebles')
 
+@section('buttons')
+<div class="nk-block-head-content">
+   <div class="toggle-wrap nk-block-tools-toggle">
+      <div class="toggle-expand-content" data-content="pageMenu">
+         <ul class="nk-block-tools g-3">
+            <li class="nk-block-tools-opt">
+               <a href="{{ route('panel.properties.opportunity.edit', $property) }}" class="btn btn-primary">
+               	<em class="icon ni ni-edit"></em><span>Editar información</span>
+               </a>
+            </li>
+         </ul>
+      </div>
+   </div>
+</div>
+@endsection
 <div class="nk-block">
-   <div class="card card-preview">
+	<div class="card card-preview">
       <div class="card-inner">
       	<div class="preview-block">
       		<div class="row">
@@ -15,134 +30,113 @@
 			      	</div>
 			      </div>
 
-					<div class="col-sm-12 col-lg-3 mb-3">
-			         <div class="form-group">
-			            <label class="form-label" for="project_managed">Área del predio (VUR)</label>
-			            <input type="text" name="area_according_to_vur" class="form-control" id="area_according_to_vur" />
-			         </div>
-			      </div>
-
-			      <div class="col-sm-12 col-lg-3 mb-3">
-			         <div class="form-group">
-			            <label class="form-label" for="project_managed">Área de lote catastral</label>
-			            <input type="text" name="cadastral_area" value="{{ $property->cadastral_area }}" class="form-control" id="cadastral_area" />
-			         </div>
-			      </div>
-
-			      <div class="col-sm-12 col-lg-3 mb-3">
-			         <div class="form-group">
-			            <label class="form-label" for="project_managed">Áreas comunes según FC</label>
-			            <input type="text" name="common_areas"class="form-control" id="common_areas" />
-			         </div>
-			      </div>
-
-			      <div class="col-sm-12 col-lg-3 mb-3">
-			         <div class="form-group">
-			            <label class="form-label" for="project_managed">Valor de ficha catrastal</label>
-			            <input type="text" disabled  value="{{ $property->property_valuation }}" class="form-control"/>
-			         </div>
+					<div class="col-sm-12 col-lg-4 mb-3">
+						<p><b>Área del predio (VUR)</b></p>
+		            {{ $property->sale->area_according_to_vur }}
 			      </div>
 
 			      <div class="col-sm-12 col-lg-4 mb-3">
-			         <div class="form-group">
-			            <label class="form-label" for="project_managed">Área de construcción</label>
-			            <input type="text" disabled value="{{ $property->construction_area }}" class="form-control" id="construction_area" />
-			         </div>
+			      	<p><b>Área de lote catastral</b></p>
+			    		{{ $property->cadastral_area }}
 			      </div>
 
 			      <div class="col-sm-12 col-lg-4 mb-3">
-			         <div class="form-group">
-			            <label class="form-label" for="percentage_of_fc_ownership">% titularidad (RPH)</label>
-			            <input type="text" name="percentage_of_fc_ownership" class="form-control" id="percentage_of_fc_ownership" />
-			         </div>
+			      	<p><b>Áreas comunes según FC</b></p>
+		            {{ $property->sale->common_areas }}
 			      </div>
 
-			      <div class="col-sm-12 col-lg-4 mb-3">
-			         <div class="form-group">
-			            <label class="form-label" for="ownership_percentage_vur">% titularidad (VUR)</label>
-			            <input type="text" name="ownership_percentage_vur" class="form-control" id="ownership_percentage_vur" />
-			         </div>
+			      <div class="col-sm-12 col-lg-4 mb-3 mt-4">
+			      	<p><b>Valor de ficha catrastal</b></p>
+			    		${{ number_format($property->property_valuation) }}
 			      </div>
 
-			      <div class="col-sm-12 col-lg-4 mb-3">
-			         <div class="form-group">
-			            <label class="form-label" for="ownership_percentage_vur">Valor m² zona geoconómica</label>
-			            <input type="text" name="ownership_percentage_vur" class="form-control" id="ownership_percentage_vur" />
-			         </div>
+			      <div class="col-sm-12 col-lg-4 mb-3 mt-4">
+			      	<p><b>Área de construcción</b></p>
+			    		{{ $property->construction_area }}
 			      </div>
 
-			      
-
-			      <div class="col-sm-12 col-lg-4 mb-3">
-			         <div class="form-group">
-			            <label class="form-label">Destinación</label>
-			            <select class="form-select" name="for_sale">
-			            	<option>Apartamento</option>
-			            	<option>Cuarto útil</option>
-			            	<option>Garaje</option>
-			            	<option>Local</option>
-			            	<option>Sala múltiple</option>
-			            	<option>Oficina</option>
-			            	<option>Otro</option>
-			            </select>
-			         </div>
+			      <div class="col-sm-12 col-lg-4 mb-3 mt-4">
+			      	<p><b>% titularidad (RPH)</b></p>
+			    		{{ $property->sale->percentage_of_fc_ownership }}%
 			      </div>
 
-			      <div class="col-sm-12 col-lg-4 mb-3">
-			         <div class="form-group">
-			            <label class="form-label">Acción Agencia APP</label>
-			            <select class="form-select" name="for_sale">
-			            	<option>Venta</option>
-			            	<option>Arriendo</option>
-			            	<option>Dar de baja</option>
-			            	<option>Oportunidad</option>
-			            	<option>Sin acción</option>
-			            </select>
-			         </div>
+			      <div class="col-sm-12 col-lg-4 mb-3 mt-4">
+			      	<p><b>% titularidad (VUR)</b></p>
+			    		{{ $property->sale->ownership_percentage_vur }}%
 			      </div>
 
-			      <div class="col-sm-12 col-lg-4 mb-3">
-			         <div class="form-group">
-			            <label class="form-label">¿Para vender?</label>
-			            <select class="form-select" name="for_sale">
-			            	<option>Sí</option>
-			            	<option>No</option>
-			            </select>
-			         </div>
+			      <div class="col-sm-12 col-lg-4 mb-3 mt-4">
+			      	<p><b>Valor m² zona geoconómica</b></p>
+			    		${{ number_format($property->sale->geoeconomic_zone_value) }}
 			      </div>
 
-			      <div class="col-sm-12 mb-3">
-			         <div class="form-group">
-			            <label class="form-label">Observaciones</label>
-			            <textarea name="observations" class="form-control"></textarea>
-			         </div>
+			      <div class="col-sm-12 col-lg-4 mb-3 mt-4">
+			      	<p><b>Destinación</b></p>
+			    		{{ $property->sale->for_sale_destination }}
 			      </div>
 
-			      
+			      <div class="col-sm-12 col-lg-4 mb-3 mt-4">
+			      	<p><b>Acción Agencia APP</b></p>
+			    		{{ $property->sale->for_sale_action }}
+			      </div>
 
-			      <ul>
-			      	<li>Área construida menos áreas comunes extraida de Ficha Catastral</li>
-			      	<li>Coeficiente de titularidad del Municipio según el RPH</li>
-			      	<li>Área efectiva RPH</li>
-			      	<li>Área efectiva NPH</li>
-			      	<li>Porcentaje de titularidad del Municipio (¿REPETIDA?)</li>
-			      	<li>"Valor %Catastral Octubre 13 (modificación) (Área de lote)"</li>
-			      	<li>Vl M2 Catastral Octubre 13 (modificación)</li>
-			      	<li>Valor m² zona geoconómica</li>
-			      	<li>Valor total por zonas homogénea  Octubre 13 (modificación)</li>
-			      	<li>Valor de la titularidad del Municipio (% de propiedad) según zonas homogénea Octubre 13 (modificación)</li>
-			      	<li>Valor con el descuento 15% del FONPET Octubre 13 (modificación)</li>
-			      	<li>Valor sin el descuento 3% comisiòn de CISA y 15% del FONPET</li>
-	
-			      </ul>
+			      <div class="col-sm-12 col-lg-4 mb-3 mt-4">
+			      	<p><b>¿Para vender?</b></p>
+			    		@if($property->sale->for_sale == 1) Sí @else No @endif
+			      </div>
 
-			      
+			      <div class="col-sm-12 col-lg-4 mb-3 mt-4">
+			      	<p><b>Área construida - Áreas comúnes</b></p>
+			    		{{ $property->construction_area - $property->common_areas }}
+			      </div>
 
-			      
+			      <div class="col-sm-12 col-lg-4 mb-3 mt-4">
+			      	<p><b>Coeficiente de titularidad del Municipio según VUR</b></p>
+			    		{{ $property->sale->vur_coefficient() }}
+			      </div>
+
+			      <div class="col-sm-12 col-lg-4 mb-3 mt-4">
+			      	<p><b>Porcentaje de titularidad del Municipio según RPH</b></p>
+			    		{{ $property->sale->percentage_of_fc_ownership }}%
+			      </div>
+
+			      <div class="col-sm-12 col-lg-4 mb-3 mt-4">
+			      	<p><b>Área efectiva RPH</b></p>
+			    		{{ $property->sale->rph_effective_area() }}
+			      </div>
+
+			      <div class="col-sm-12 col-lg-4 mb-3 mt-4">
+			      	<p><b>Área efectiva NPH</b></p>
+			    		{{ $property->sale->nph_effective_area() }}
+			      </div>
+
+			      <div class="col-sm-12 col-lg-4 mb-3 mt-4">
+			      	<p><b>Área de titularidad del municipio</b></p>
+			    		{{ $property->sale->ownership_area() }}
+			      </div>
+
+			      <div class="col-sm-12 col-lg-4 mb-3 mt-4">
+			      	<p><b>Valor de la titularidad del Municipio</b></p>
+			    		${{ number_format($property->sale->ownership_value()) }}
+			      </div>
+
+			      <div class="col-sm-12 col-lg-4 mb-3 mt-4">
+			      	<p><b>Valor con el descuento 15% del FONPET</b></p>
+			    		${{ number_format($property->sale->fonpet_discount() )}}
+			      </div>
+
+			      <div class="col-sm-12 col-lg-4 mb-3 mt-4">
+			      	<p><b>Valor sin descuento CISA y 15% del FONPET</b></p>
+			    		${{ number_format($property->sale->cisa_discount() )}}
+			      </div>	
+
+			      <div class="col-sm-12 mb-3 mt-3">
+						<p><b>Observaciones</b></p>
+						<p>{{ $property->sale->for_sale_observations }}</p>
+			      </div>		      
 			   </div>
 		   </div>
 		</div>
 	</div>
 </div>
-
 @stop

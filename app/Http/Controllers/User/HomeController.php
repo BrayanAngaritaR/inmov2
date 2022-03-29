@@ -26,7 +26,13 @@ class HomeController extends Controller
    * Display a listing of the resource.
    *
    * @return \Illuminate\Http\Response
-   */
+   */ 
+
+   public function loader()
+   {
+      return view($this->template.'.loader');
+   }
+
    public function index()
    {
       $communes = Commune::whereHas('properties')->orderBy('code')->get();

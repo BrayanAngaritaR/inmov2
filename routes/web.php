@@ -41,7 +41,10 @@ require __DIR__.'/auth.php';
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', [App\Http\Controllers\User\HomeController::class, 'index'])
+Route::get('/', [App\Http\Controllers\User\HomeController::class, 'loader'])
+    ->name('loader');
+
+Route::get('/inicio', [App\Http\Controllers\User\HomeController::class, 'index'])
     ->name('user.index');
 
 Route::get('/nosotros', [App\Http\Controllers\User\AboutController::class, 'index'])
@@ -75,6 +78,15 @@ Route::get('/{property}', [App\Http\Controllers\User\PropertiesController::class
 
 Route::post('propiedad/{property}/solicitar-informacion', [App\Http\Controllers\User\InfoRequestController::class, 'store'])->name('user.request_info.store');
 
+/*
+|--------------------------------------------------------------------------
+| Proyectos - Usuario
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/proyectos/med-pigp', [App\Http\Controllers\User\Projects\PIGPController::class, 'loader'])->name('user.projects.pigp.loader');
+
+Route::get('/proyectos/pigp', [App\Http\Controllers\User\Projects\PIGPController::class, 'index'])->name('user.projects.pigp.index');
 
 /*
 |--------------------------------------------------------------------------
@@ -122,7 +134,10 @@ Route::post('/panel/file/delete', [App\Http\Controllers\Panel\Properties\FilesCo
 #Venta de oportunidad
 Route::get('/panel/properties/opportunity/{property}', [App\Http\Controllers\Panel\Properties\OpportunityController::class, 'index'])->name('panel.properties.opportunity.index');
 
-Route::post('/panel/properties/opportunity/{property}', [App\Http\Controllers\Panel\Properties\OpportunityController::class, 'store'])->name('panel.properties.opportunity.store');
+Route::get('/panel/properties/opportunity/{property}/edit', [App\Http\Controllers\Panel\Properties\OpportunityController::class, 'edit'])->name('panel.properties.opportunity.edit');
+
+Route::post('/panel/properties/opportunity/{property}/edit', [App\Http\Controllers\Panel\Properties\OpportunityController::class, 'update'])->name('panel.properties.opportunity.update');
+
 
 Route::post('/panel/file/delete', [App\Http\Controllers\Panel\Properties\FilesController::class, 'destroy'])->name('panel.file.destroy');
 
