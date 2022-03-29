@@ -18,12 +18,22 @@ class OpportunityController extends Controller
 
    public function index(Property $property)
    {
-      return view('panel.properties.opportunity.index', compact(['property']));
+      $can_sell = false;
+
+      //Verificar si la oportunidad es "Gestión comercial" y es diferente de "Arriendo"
+      if($property->opportunity_id == 2 AND $property->action_id != 6){
+         $can_sell = true;
+      }
+
+      $for_sale_property = PropertySale::where('property_id', $property->id)->first();
+      
+      return view('panel.properties.opportunity.index', compact(['can_sell', 'property', 'for_sale_property']));
    }
 
    public function edit(Property $property)
    {
-      return view('panel.properties.opportunity.edit', compact(['property']));
+      $for_sale_property = PropertySale::where('property_id', $property->id)->first();
+      return view('panel.properties.opportunity.edit', compact(['property', 'for_sale_property']));
    }
 
    public function update(Request $request, Property $property)
@@ -56,7 +66,7 @@ class OpportunityController extends Controller
             'geoeconomic_zone_value' => $request->geoeconomic_zone_value,
             'for_sale_destination' => $request->for_sale_destination,
             'for_sale_action' => $request->for_sale_action,
-            'for_sale' => $request->for_sale,
+            'for_sale' => 1,//$request->for_sale,
             'for_sale_observations' => $request->for_sale_observations,
             'property_id' => $property->id
          ]);

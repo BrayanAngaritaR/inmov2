@@ -19,8 +19,8 @@
 				         <div class="form-group">
 				            <label class="form-label" for="area_according_to_vur">Área del predio (VUR)</label>
 				            <input type="text" name="area_according_to_vur" class="form-control" id="area_according_to_vur" 
-				            @if($property->sale)
-				            value="{{ $property->sale->area_according_to_vur }}"
+				            @if($for_sale_property)
+				            value="{{ $for_sale_property->area_according_to_vur }}"
 				            @endif />
 				         </div>
 				      </div>
@@ -36,8 +36,8 @@
 				         <div class="form-group">
 				            <label class="form-label" for="common_areas">Áreas comunes según FC</label>
 				            <input type="text" name="common_areas"class="form-control" id="common_areas" 
-				            @if($property->sale)
-				            value="{{ $property->sale->common_areas }}"
+				            @if($for_sale_property)
+				            value="{{ $for_sale_property->common_areas }}"
 				            @endif />
 				         </div>
 				      </div>
@@ -60,8 +60,8 @@
 				         <div class="form-group">
 				            <label class="form-label" for="percentage_of_fc_ownership">% titularidad (RPH)</label>
 				            <input type="text" name="percentage_of_fc_ownership" class="form-control" 
-				            @if($property->sale)
-				            value="{{ $property->sale->percentage_of_fc_ownership }}"
+				            @if($for_sale_property)
+				            value="{{ $for_sale_property->percentage_of_fc_ownership }}"
 				            @endif id="percentage_of_fc_ownership" />
 				         </div>
 				      </div>
@@ -70,8 +70,8 @@
 				         <div class="form-group">
 				            <label class="form-label" for="ownership_percentage_vur">% titularidad (VUR)</label>
 				            <input type="text" name="ownership_percentage_vur" class="form-control" 
-				            @if($property->sale)
-				            value="{{ $property->sale->ownership_percentage_vur }}"
+				            @if($for_sale_property)
+				            value="{{ $for_sale_property->ownership_percentage_vur }}"
 				            @endif id="ownership_percentage_vur" />
 				         </div>
 				      </div>
@@ -80,8 +80,8 @@
 				         <div class="form-group">
 				            <label class="form-label" for="geoeconomic_zone_value">Valor m² zona geoconómica</label>
 				            <input type="text" name="geoeconomic_zone_value" class="form-control" 
-				            @if($property->sale)
-				            value="{{ $property->sale->geoeconomic_zone_value }}"
+				            @if($for_sale_property)
+				            value="{{ $for_sale_property->geoeconomic_zone_value }}"
 				            @endif id="geoeconomic_zone_value" />
 				         </div>
 				      </div>
@@ -91,51 +91,51 @@
 				            <label class="form-label" for="for_sale_destination">Destinación</label>
 				            <select class="form-select" id="for_sale_destination" name="for_sale_destination">
 
-				            	@if($property->sale)
+				            	@if($for_sale_property)
 				            	<option 
-				            		@if($property->sale->for_sale_destination == 'Apartamento') 
+				            		@if($for_sale_property->for_sale_destination == 'Apartamento') 
 				            		selected 
 				            		@endif 
 				            		value="Apartamento">Apartamento
 				            	</option>
 
 				            	<option 
-				            		@if($property->sale->for_sale_destination == 'Cuarto útil') 
+				            		@if($for_sale_property->for_sale_destination == 'Cuarto útil') 
 				            		selected 
 				            		@endif 
 				            		value="Cuarto útil">Cuarto útil
 				            	</option>
 
 				            	<option 
-				            		@if($property->sale->for_sale_destination == 'Garaje') 
+				            		@if($for_sale_property->for_sale_destination == 'Garaje') 
 				            		selected 
 				            		@endif 
 				            		value="Garaje">Garaje
 				            	</option>
 
 				            	<option 
-				            		@if($property->sale->for_sale_destination == 'Local') 
+				            		@if($for_sale_property->for_sale_destination == 'Local') 
 				            		selected 
 				            		@endif 
 				            		value="Local">Local
 				            	</option>
 
 				            	<option 
-				            		@if($property->sale->for_sale_destination == 'Sala múltiple') 
+				            		@if($for_sale_property->for_sale_destination == 'Sala múltiple') 
 				            		selected 
 				            		@endif 
 				            		value="Sala múltiple">Sala múltiple
 				            	</option>
 
 				            	<option 
-				            		@if($property->sale->for_sale_destination == 'Oficina') 
+				            		@if($for_sale_property->for_sale_destination == 'Oficina') 
 				            		selected 
 				            		@endif 
 				            		value="Oficina">Oficina
 				            	</option>
 
 				            	<option 
-				            		@if($property->sale->for_sale_destination == 'Otro') 
+				            		@if($for_sale_property->for_sale_destination == 'Otro') 
 				            		selected 
 				            		@endif 
 				            		value="Otro">Otro
@@ -161,37 +161,37 @@
 				            <label class="form-label" for="for_sale_action">Acción Agencia APP</label>
 				            <select class="form-select" name="for_sale_action" id="for_sale_action">
 
-				            	@if($property->sale)
+				            	@if($for_sale_property)
 				            	<option 
-				            		@if($property->sale->for_sale_action == 'Venta') 
+				            		@if($for_sale_property->for_sale_action == 'Venta') 
 				            		selected 
 				            		@endif 
 				            		value="Venta">Venta
 				            	</option>
 
 				            	<option 
-				            		@if($property->sale->for_sale_action == 'Arriendo') 
+				            		@if($for_sale_property->for_sale_action == 'Arriendo') 
 				            		selected 
 				            		@endif 
 				            		value="Arriendo">Arriendo
 				            	</option>
 
 				            	<option 
-				            		@if($property->sale->for_sale_action == 'Dar de baja') 
+				            		@if($for_sale_property->for_sale_action == 'Dar de baja') 
 				            		selected 
 				            		@endif 
 				            		value="Dar de baja">Dar de baja
 				            	</option>
 
 				            	<option 
-				            		@if($property->sale->for_sale_action == 'Oportunidad') 
+				            		@if($for_sale_property->for_sale_action == 'Oportunidad') 
 				            		selected 
 				            		@endif 
 				            		value="Oportunidad">Oportunidad
 				            	</option>
 
 				            	<option 
-				            		@if($property->sale->for_sale_action == 'Sin acción') 
+				            		@if($for_sale_property->for_sale_action == 'Sin acción') 
 				            		selected 
 				            		@endif 
 				            		value="Sin acción">Sin acción
@@ -212,23 +212,23 @@
 				         <div class="form-group">
 				            <label class="form-label" for="for_sale">¿Para vender?</label>
 				            <select class="form-select" id="for_sale" name="for_sale">
-				            	@if($property->sale)
+				            	@if($for_sale_property)
 				            	<option 
-				            		@if($property->sale->for_sale == 'Sí') 
+				            		@if($for_sale_property->for_sale == 1) 
 				            		selected 
 				            		@endif 
-				            		value="Sí">Sí
+				            		value="1">Sí
 				            	</option>
 
 				            	<option 
-				            		@if($property->sale->for_sale == 'No') 
+				            		@if($for_sale_property->for_sale == 0) 
 				            		selected 
 				            		@endif 
-				            		value="No">No
+				            		value="0">No
 				            	</option>
 				            	@else
-				            	<option value="Sí">Sí</option>
-				            	<option value="No">No</option>
+				            	<option value="1">Sí</option>
+				            	<option value="0">No</option>
 				            	@endif
 				            </select>
 				         </div>
@@ -236,8 +236,8 @@
 
 				      <div class="col-sm-12 mb-3">
 				         <div class="form-group">
-				            <label class="form-label" for="for_sale_observations">Observaciones</label>
-				            <textarea name="for_sale_observations" id="for_sale_observations" class="form-control">@if($property->sale){{ $property->sale->for_sale_observations }}@endif</textarea>
+				            <label class="form-label" for="for_sale_observations">Observaciones (Máximo 500 caracteres)</label>
+				            <textarea name="for_sale_observations" id="for_sale_observations" class="form-control">@if($for_sale_property){{ $for_sale_property->for_sale_observations }}@endif</textarea>
 				         </div>
 				      </div>
 

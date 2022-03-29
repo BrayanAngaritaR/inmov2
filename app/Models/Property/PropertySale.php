@@ -20,14 +20,19 @@ class PropertySale extends Model
       return ($this->ownership_percentage_vur / 100);
    }
 
-   //Coeficiente de titularidad del Municipio según FC
-   public function fc_coefficient(){
+   //Coeficiente de titularidad del Municipio según RPH
+   public function rph_coefficient(){
       return ($this->percentage_of_fc_ownership / 100);
    }
 
+   // //Coeficiente de titularidad del Municipio según FC
+   // public function rph_coefficient(){
+   //    return ($this->percentage_of_fc_ownership / 100);
+   // }
+
    //Área efectiva RPH
    public function rph_effective_area(){
-      return ($this->common_areas * $this->fc_coefficient());
+      return ($this->common_areas * $this->rph_coefficient());
    }
 
    //Área efectiva NPH
