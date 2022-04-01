@@ -266,5 +266,19 @@ p.font-medium{
    font-weight: 500 !important;
 }
 
+/* PIGP y Plan Rector details */
+
+.plan-details-map{
+   width: calc(100% - 850px) !important;
+   position: fixed;
+   overflow: hidden;
+   left: 0px !important;
+   top: 147px;
+}
+/* Tableau */
+
+#tab-dashboard-region{
+   background: red;
+}
 
 

@@ -85,6 +85,10 @@ Route::get('/proyectos/med-pigp', [App\Http\Controllers\User\Projects\PIGPContro
 
 Route::get('/proyectos/pigp', [App\Http\Controllers\User\Projects\PIGPController::class, 'index'])->name('user.projects.pigp.index');
 
+Route::get('/proyectos/plan-rector', [App\Http\Controllers\User\Projects\PlanRectorController::class, 'index'])->name('user.projects.rector.index');
+
+Route::get('/proyectos/plan-rector/proyectos', [App\Http\Controllers\User\Projects\PlanRectorController::class, 'show'])->name('user.projects.rector.show');
+
 /*
 |--------------------------------------------------------------------------
 | Estadísticas - Panel

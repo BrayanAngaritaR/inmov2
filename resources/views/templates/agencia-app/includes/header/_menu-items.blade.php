@@ -16,7 +16,7 @@
       </li>
 
       <li>
-         <a href="{{ route('user.soon.index') }}" class="act-link">
+         <a href="{{ route('user.projects.rector.index') }}" class="act-link">
             <b>Plan rector</b>
          </a>
       </li>

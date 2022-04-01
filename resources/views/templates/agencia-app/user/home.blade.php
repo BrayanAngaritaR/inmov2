@@ -31,6 +31,56 @@
             <div class="content">
                <!-- content -->
                <div class="content">
+
+                  <!-- section -->
+                  <section>
+                     <div class="container">
+                        <!--about-wrap -->
+                        <div class="about-wrap">
+                           <div class="row">
+                              <div class="col-md-5">
+                                 <div class="about-title ab-hero fl-wrap">
+                                    <h2>¿Por qué usar nuestra plataforma?</h2>
+                                    <h4>Gestionamos los bienes del Municipio de Medellín</h4>
+                                 </div>
+                                 <div class="services-opions fl-wrap">
+                                    <ul>
+                                       <li>
+                                          <i class="fal fa-headset"></i>
+                                          <h4>Disponibilidad de 24 horas</h4>
+                                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                       </li>
+                                       <li>
+                                          <i class="fal fa-users-cog"></i>
+                                          <h4>Filtros avanzados</h4>
+                                          <p>Nulla posuere sapien vitae lectus suscipit, et pulvinar nisi tincidunt. Curabitur convallis fringilla diam sed aliquam.</p>
+                                       </li>
+                                       <li>
+                                          <i class="fal fa-phone-laptop"></i>
+                                          <h4>Multiplataforma</h4>
+                                          <p>Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa.</p>
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </div>
+                              <div class="col-md-1"></div>
+                              <div class="col-md-6">
+                                 <div class="about-img fl-wrap">
+                                    <img src="{{ asset('templates/agencia-app/images/all/27.jpeg') }}" class="respimg" alt="" />
+                                    <div class="about-img-hotifer color-bg">
+                                       <p>InmoAPP es una plataforma que facilitará la gestión de bienes inmuebles.</p>
+                                       <h4>Rodrigo Foronda</h4>
+                                       <h5>Director General</h5>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- about-wrap end  -->
+                     </div>
+                  </section>
+                  <!-- section end-->
+
                   <!--  section  -->
                   <section class="no-padding-section">
                      <div class="hero-slider-wrap carousel-wrap fl-wrap">
@@ -115,54 +165,95 @@
                      </div>
                   </section>
                   <!--  section  end-->
+
                   <!-- section -->
-                  <section>
+                  <section class="gray-bg">
                      <div class="container">
-                        <!--about-wrap -->
-                        <div class="about-wrap">
-                           <div class="row">
-                              <div class="col-md-5">
-                                 <div class="about-title ab-hero fl-wrap">
-                                    <h2>¿Por qué usar nuestra plataforma?</h2>
-                                    <h4>Gestionamos los bienes del Municipio de Medellín</h4>
+                        <div class="section-title st-center fl-wrap">
+                           <h4>Testimonios</h4>
+                           <h2>Esto dicen nuestros aliados</h2>
+                        </div>
+                     </div>
+                     <div class="clearfix"></div>
+                     <div class="testimonials-slider-wrap">
+                        <div class="testimonials-slider">
+                           <!--slick-item -->
+                           <div class="slick-item">
+                              <div class="text-carousel-item fl-wrap">
+                                 <div class="text-carousel-item-header fl-wrap">
+                                    <div class="popup-avatar"><img src="{{ asset('templates/agencia-app/images/partners/epm.png') }}" alt="" /></div>
+                                    <div class="review-owner fl-wrap">INDER</div>
+                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>
                                  </div>
-                                 <div class="services-opions fl-wrap">
-                                    <ul>
-                                       <li>
-                                          <i class="fal fa-headset"></i>
-                                          <h4>Disponibilidad de 24 horas</h4>
-                                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                       </li>
-                                       <li>
-                                          <i class="fal fa-users-cog"></i>
-                                          <h4>Filtros avanzados</h4>
-                                          <p>Nulla posuere sapien vitae lectus suscipit, et pulvinar nisi tincidunt. Curabitur convallis fringilla diam sed aliquam.</p>
-                                       </li>
-                                       <li>
-                                          <i class="fal fa-phone-laptop"></i>
-                                          <h4>Multiplataforma</h4>
-                                          <p>Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa.</p>
-                                       </li>
-                                    </ul>
-                                 </div>
-                              </div>
-                              <div class="col-md-1"></div>
-                              <div class="col-md-6">
-                                 <div class="about-img fl-wrap">
-                                    <img src="{{ asset('templates/agencia-app/images/all/27.jpeg') }}" class="respimg" alt="" />
-                                    <div class="about-img-hotifer color-bg">
-                                       <p>InmoAPP es una plataforma que facilitará la gestión de bienes inmuebles.</p>
-                                       <h4>Rodrigo Foronda</h4>
-                                       <h5>Director General</h5>
-                                    </div>
+                                 <div class="text-carousel-content fl-wrap">
+                                    <p>
+                                       "In ut odio libero, at vulputate urna. Nulla tristique mi a massa convallis cursus. Nulla eu mi magna. Etiam suscipit commodo gravida. Lorem ipsum dolor sit amet, conse ctetuer adipiscing elit, sed diam nonu mmy nibh
+                                       euismod tincidunt ut laoreet dolore luptatum."
+                                    </p>
+                                    <a href="#" class="testim-link color-bg">Via Facebook</a>
                                  </div>
                               </div>
                            </div>
+                           <!--slick-item end -->
+                           <!--slick-item -->
+                           <div class="slick-item">
+                              <div class="text-carousel-item fl-wrap">
+                                 <div class="text-carousel-item-header fl-wrap">
+                                    <div class="popup-avatar"><img src="{{ asset('templates/agencia-app/images/partners/sura.png') }}" alt="" /></div>
+                                    <div class="review-owner fl-wrap">SURA</div>
+                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="4"></div>
+                                 </div>
+                                 <div class="text-carousel-content fl-wrap">
+                                    <p>
+                                       "Feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te odio dignissim qui blandit praesent blandit praesent luptatum zzril.Vulputate
+                                       urna. Nulla tristique mi a massa convallis."
+                                    </p>
+                                    <a href="#" class="testim-link color-bg">Via Twitter</a>
+                                 </div>
+                              </div>
+                           </div>
+                           <!--slick-item end -->
+                           <!--slick-item -->
+                           <div class="slick-item">
+                              <div class="text-carousel-item fl-wrap">
+                                 <div class="text-carousel-item-header fl-wrap">
+                                    <div class="popup-avatar"><img src="{{ asset('templates/agencia-app/images/partners/inder.jpeg') }}" alt="" /></div>
+                                    <div class="review-owner fl-wrap">INDER</div>
+                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="4"></div>
+                                 </div>
+                                 <div class="text-carousel-content fl-wrap">
+                                    <p>
+                                       "In ut odio libero, at vulputate urna. Nulla tristique mi a massa convallis cursus. Nulla eu mi magna. Etiam suscipit commodo gravida. Lorem ipsum dolor sit amet, conse ctetuer adipiscing elit, sed diam nonu mmy nibh
+                                       euismod tincidunt ut laoreet dolore luptatum."
+                                    </p>
+                                    <a href="#" class="testim-link color-bg">Via Facebook</a>
+                                 </div>
+                              </div>
+                           </div>
+                           <!--slick-item end -->
+                           <!--slick-item -->
+                           <div class="slick-item">
+                              <div class="text-carousel-item fl-wrap">
+                                 <div class="text-carousel-item-header fl-wrap">
+                                    <div class="popup-avatar"><img src="{{ asset('templates/agencia-app/images/partners/invima.jpeg') }}" alt="" /></div>
+                                    <div class="review-owner fl-wrap">Invima</div>
+                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>
+                                 </div>
+                                 <div class="text-carousel-content fl-wrap">
+                                    <p>
+                                       "Feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te odio dignissim qui blandit praesent blandit praesent luptatum zzril.Vulputate
+                                       urna. Nulla tristique mi a massa convallis."
+                                    </p>
+                                    <a href="#" class="testim-link color-bg">Via Twitter</a>
+                                 </div>
+                              </div>
+                           </div>
+                           <!--slick-item end -->
                         </div>
-                        <!-- about-wrap end  -->
                      </div>
                   </section>
                   <!-- section end-->
+                  
                   <!-- section -->
                   <section class="color-bg small-padding">
                      <div class="container">
@@ -291,93 +382,7 @@
                      </div>
                   </section>
                   <!-- section end-->
-                  <!-- section -->
-                  <section class="gray-bg">
-                     <div class="container">
-                        <div class="section-title st-center fl-wrap">
-                           <h4>Testimonios</h4>
-                           <h2>Esto dicen nuestros aliados</h2>
-                        </div>
-                     </div>
-                     <div class="clearfix"></div>
-                     <div class="testimonials-slider-wrap">
-                        <div class="testimonials-slider">
-                           <!--slick-item -->
-                           <div class="slick-item">
-                              <div class="text-carousel-item fl-wrap">
-                                 <div class="text-carousel-item-header fl-wrap">
-                                    <div class="popup-avatar"><img src="{{ asset('templates/agencia-app/images/partners/epm.png') }}" alt="" /></div>
-                                    <div class="review-owner fl-wrap">INDER</div>
-                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>
-                                 </div>
-                                 <div class="text-carousel-content fl-wrap">
-                                    <p>
-                                       "In ut odio libero, at vulputate urna. Nulla tristique mi a massa convallis cursus. Nulla eu mi magna. Etiam suscipit commodo gravida. Lorem ipsum dolor sit amet, conse ctetuer adipiscing elit, sed diam nonu mmy nibh
-                                       euismod tincidunt ut laoreet dolore luptatum."
-                                    </p>
-                                    <a href="#" class="testim-link color-bg">Via Facebook</a>
-                                 </div>
-                              </div>
-                           </div>
-                           <!--slick-item end -->
-                           <!--slick-item -->
-                           <div class="slick-item">
-                              <div class="text-carousel-item fl-wrap">
-                                 <div class="text-carousel-item-header fl-wrap">
-                                    <div class="popup-avatar"><img src="{{ asset('templates/agencia-app/images/partners/sura.png') }}" alt="" /></div>
-                                    <div class="review-owner fl-wrap">SURA</div>
-                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="4"></div>
-                                 </div>
-                                 <div class="text-carousel-content fl-wrap">
-                                    <p>
-                                       "Feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te odio dignissim qui blandit praesent blandit praesent luptatum zzril.Vulputate
-                                       urna. Nulla tristique mi a massa convallis."
-                                    </p>
-                                    <a href="#" class="testim-link color-bg">Via Twitter</a>
-                                 </div>
-                              </div>
-                           </div>
-                           <!--slick-item end -->
-                           <!--slick-item -->
-                           <div class="slick-item">
-                              <div class="text-carousel-item fl-wrap">
-                                 <div class="text-carousel-item-header fl-wrap">
-                                    <div class="popup-avatar"><img src="{{ asset('templates/agencia-app/images/partners/inder.jpeg') }}" alt="" /></div>
-                                    <div class="review-owner fl-wrap">INDER</div>
-                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="4"></div>
-                                 </div>
-                                 <div class="text-carousel-content fl-wrap">
-                                    <p>
-                                       "In ut odio libero, at vulputate urna. Nulla tristique mi a massa convallis cursus. Nulla eu mi magna. Etiam suscipit commodo gravida. Lorem ipsum dolor sit amet, conse ctetuer adipiscing elit, sed diam nonu mmy nibh
-                                       euismod tincidunt ut laoreet dolore luptatum."
-                                    </p>
-                                    <a href="#" class="testim-link color-bg">Via Facebook</a>
-                                 </div>
-                              </div>
-                           </div>
-                           <!--slick-item end -->
-                           <!--slick-item -->
-                           <div class="slick-item">
-                              <div class="text-carousel-item fl-wrap">
-                                 <div class="text-carousel-item-header fl-wrap">
-                                    <div class="popup-avatar"><img src="{{ asset('templates/agencia-app/images/partners/invima.jpeg') }}" alt="" /></div>
-                                    <div class="review-owner fl-wrap">Invima</div>
-                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>
-                                 </div>
-                                 <div class="text-carousel-content fl-wrap">
-                                    <p>
-                                       "Feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te odio dignissim qui blandit praesent blandit praesent luptatum zzril.Vulputate
-                                       urna. Nulla tristique mi a massa convallis."
-                                    </p>
-                                    <a href="#" class="testim-link color-bg">Via Twitter</a>
-                                 </div>
-                              </div>
-                           </div>
-                           <!--slick-item end -->
-                        </div>
-                     </div>
-                  </section>
-                  <!-- section end-->
+                  
                </div>
                <!-- content end -->
             </div>
