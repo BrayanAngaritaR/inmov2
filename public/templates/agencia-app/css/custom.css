@@ -167,7 +167,10 @@
 
 /* Other styles */
 .medellin {
-   background-color: #2d9bf0;
+   background-color: #3271fb;
+   background-image: url('/templates/agencia-app/images/medellin.svg');
+   background-position: bottom center;
+   background-repeat: no-repeat;
    color: #fff;
    perspective: 1000px; 
    display: flex;
@@ -178,6 +181,10 @@
    flex-direction: row;
    height: 100vh !important;
    margin: 0;
+}
+
+#wrapper{
+   padding-top: 0px;
 }
 
 .fixed {
