@@ -281,4 +281,9 @@ p.font-medium{
    background: red;
 }
 
+.max-300{
+   max-width: 300px !important;
+}
+
+
 

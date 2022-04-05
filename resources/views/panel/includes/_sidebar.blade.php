@@ -19,13 +19,30 @@
                   <li class="nk-menu-heading">
                      <h6 class="overline-title text-primary-alt">Estadísticas</h6>
                   </li>
-                  <li class="nk-menu-item">
-                     <a href="{{ route('panel.statistics.index') }}" class="nk-menu-link">
+
+                  <!-- .nk-menu-heading -->
+                  <li class="nk-menu-item has-sub">
+                     <a href="#" class="nk-menu-link nk-menu-toggle">
                         <span class="nk-menu-icon"><em class="icon ni ni-growth"></em></span>
                         <span class="nk-menu-text">Resumen</span>
-                        <span class="nk-menu-badge badge-danger">Nuevo</span>
                      </a>
+                     <ul class="nk-menu-sub">
+                        <li class="nk-menu-item">
+                           <a href="{{ route('panel.statistics.index') }}" class="nk-menu-link"><span class="nk-menu-text">Estadísticas 1</span></a>
+                           
+                        </li>
+                        <li class="nk-menu-item">
+                           <a href="{{ route('panel.statistics.index2') }}" class="nk-menu-link"><span class="nk-menu-text">Estadísticas 2</span></a>
+                           
+                        </li>
+                        <li class="nk-menu-item">
+                           <a href="{{ route('panel.statistics.index3') }}" class="nk-menu-link"><span class="nk-menu-text">Estadísticas 3</span></a>
+                           
+                        </li>
+                     </ul>
+                     <!-- .nk-menu-sub -->
                   </li>
+
                   <li class="nk-menu-heading">
                      <h6 class="overline-title text-primary-alt">Contenido</h6>
                   </li>

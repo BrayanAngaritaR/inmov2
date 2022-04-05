@@ -349,4 +349,14 @@ table.nk-tb-covid.dataTable.dtr-inline.collapsed > tbody > tr:not(.child) > td:f
 
 .code-block-clean .title { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #8094ae; font-weight: 500; margin-bottom: 0.45rem; display: block; }
 
+.max-300{
+   max-width: 300px !important;
+}
 
+.font-weight-300{
+   font-weight: 300 !important;
+}
+
+.bg-gray-light {
+   background-color: #f5f5f5 !important;
+}

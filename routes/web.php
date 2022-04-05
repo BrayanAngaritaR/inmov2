@@ -97,6 +97,10 @@ Route::get('/proyectos/plan-rector/proyectos', [App\Http\Controllers\User\Projec
 
 Route::get('/panel/statistics', [App\Http\Controllers\Panel\StatisticsController::class, 'index'])->name('panel.statistics.index');
 
+Route::get('/panel/statistics/2', [App\Http\Controllers\Panel\StatisticsController::class, 'index2'])->name('panel.statistics.index2');
+
+Route::get('/panel/statistics/3', [App\Http\Controllers\Panel\StatisticsController::class, 'index3'])->name('panel.statistics.index3');
+
 /*
 |--------------------------------------------------------------------------
 | Estadísticas - Propiedades

@@ -160,17 +160,50 @@
       data: [{{ $january_properties_published }}, {{ $february_properties_published }}, {{ $march_properties_published }}, {{ $april_properties_published }}, {{ $may_properties_published }}, {{ $june_properties_published }}, {{ $july_properties_published }}, {{ $august_properties_published }}, {{ $september_properties_published }}, {{ $october_properties_published }}, {{ $november_properties_published }}, {{ $december_properties_published }}]
     }]
   };
-  var filledLineChart = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    dataUnit: 'BTC',
+
+  var propertiesQty = {
+    labels: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+    dataUnit: 'bienes',
     lineTension: .4,
+    legend: true,
     datasets: [{
-      label: "Total Received",
+      label: "Cantidad de bienes",
       color: "#9d72ff",
       background: NioApp.hexRGB('#9d72ff', .4),
-      data: [110, 80, 125, 65, 95, 75, 90, 110, 80, 125, 70, 95]
+      data: [{{ $january_properties }}, {{ $february_properties }}, {{ $march_properties }}, {{ $april_properties }}, {{ $may_properties }}, {{ $june_properties }}, {{ $july_properties }}, {{ $august_properties }}, {{ $september_properties }}, {{ $october_properties }}, {{ $november_properties }}, {{ $december_properties }}]
     }]
   };
+
+  var totalEarnings = {
+    labels: ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"],
+    dataUnit: 'bienes',
+    lineTension: .4,
+    datasets: [{
+      label: "Total de ventas por mes",
+      color: "#5ce0aa",
+      background: 'transparent',
+      data: [10000, 12000, 9000, 30000, 15000, 12000, 8400]
+    }, {
+      label: "Total de ventas esta semana",
+      color: "#9d72ff",
+      background: 'transparent',
+      data: [1000, 9800, 6000, 2400, 1500, 7100, 2900]
+    }]
+  };
+
+  // var propertiesQty = {
+  //   labels: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+  //   dataUnit: 'bienes',
+  //   lineTension: .4,
+  //   legend: true,
+  //   datasets: [{
+  //     label: "Cantidad de bienes",
+  //     color: "#9d72ff",
+  //     background: NioApp.hexRGB('#9d72ff', .4),
+  //     data: [{{ $january_properties }}, {{ $february_properties }}, {{ $march_properties }}, {{ $april_properties }}, {{ $may_properties }}, {{ $june_properties }}, {{ $july_properties }}, {{ $august_properties }}, {{ $september_properties }}, {{ $october_properties }}, {{ $november_properties }}, {{ $december_properties }}]
+  //   }]
+  // };
+
   var straightLineChart = {
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
     dataUnit: 'BTC',
@@ -493,6 +526,115 @@
 
 
   doughnutChart();
+
+  var trafficSources = {
+        labels : ["Alta", "Media", "Baja"],
+        dataUnit : 'bienes en oportunidad',
+        legend: false,
+        datasets : [{
+            borderColor : "#fff",
+            background : ["#3271fb","#44cddb", "#bc96ff"],
+            data: [305, 159, 82]
+        }]
+    };
+
+    var forSalePropertiesValentina = {
+        labels : ["Total de bienes", "Bienes para la venta"],
+        dataUnit : 'bienes venta',
+        legend: false,
+        datasets : [{
+            borderColor : "#fff",
+            background : ["#3271fb","#44cddb"],
+            data: [12972, 147]
+        }]
+    };
+
+    var georeferencedPropertiesValentina = {
+        labels : ["Total de bienes", "Bienes georreferenciados"],
+        dataUnit : 'bienes venta',
+        legend: false,
+        datasets : [{
+            borderColor : "#fff",
+            background : ["#3271fb","#44cddb"],
+            data: [12972, 147]
+        }]
+    };
+
+    var rphPropertiesValentina = {
+        labels : ["Bienes con RPH", "Bienes sin RPH"],
+        dataUnit : 'bienes venta',
+        legend: false,
+        datasets : [{
+            borderColor : "#fff",
+            background : ["#3271fb","#44cddb"],
+            data: [12972, 147]
+        }]
+    };
+
+    function ecommerceDoughnutS1(selector, set_data){
+        var $selector = (selector) ? $(selector) : $('.ecommerce-doughnut-s1');
+        $selector.each(function(){
+            var $self = $(this), _self_id = $self.attr('id'), _get_data = (typeof set_data === 'undefined') ? eval(_self_id) : set_data;
+            var selectCanvas = document.getElementById(_self_id).getContext("2d");
+
+            var chart_data = [];
+            for (var i = 0; i < _get_data.datasets.length; i++) {
+                chart_data.push({
+                    backgroundColor: _get_data.datasets[i].background,
+                    borderWidth:2,
+                    borderColor: _get_data.datasets[i].borderColor,
+                    hoverBorderColor: _get_data.datasets[i].borderColor,
+                    data: _get_data.datasets[i].data,
+                });
+            } 
+            var chart = new Chart(selectCanvas, {
+                type: 'doughnut',
+                data: {
+                    labels: _get_data.labels,
+                    datasets: chart_data,
+                },
+                options: {
+                    legend: {
+                        display: (_get_data.legend) ? _get_data.legend : false,
+                        rtl: NioApp.State.isRTL,
+                        labels: {
+                            boxWidth:12,
+                            padding:20,
+                            fontColor: '#6783b8',
+                        }
+                    },
+                    rotation: -1.5,
+                    cutoutPercentage:70,
+                    maintainAspectRatio: false,
+                    tooltips: {
+                        enabled: true,
+                        rtl: NioApp.State.isRTL,
+                        callbacks: {
+                            title: function(tooltipItem, data) {
+                                return data['labels'][tooltipItem[0]['index']];
+                            },
+                            label: function(tooltipItem, data) {
+                                return data.datasets[tooltipItem.datasetIndex]['data'][tooltipItem['index']] + ' ' + _get_data.dataUnit;
+                            }
+                        },
+                        backgroundColor: '#1c2b46',
+                        titleFontSize: 13,
+                        titleFontColor: '#fff',
+                        titleMarginBottom: 6,
+                        bodyFontColor: '#fff',
+                        bodyFontSize: 12,
+                        bodySpacing:4,
+                        yPadding: 10,
+                        xPadding: 10,
+                        footerMarginTop: 0,
+                        displayColors: false
+                    },
+                }
+            });
+        })
+    }
+
+    NioApp.coms.docReady.push(function(){ ecommerceDoughnutS1(); });  
 
 
 

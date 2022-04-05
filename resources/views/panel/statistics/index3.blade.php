@@ -154,7 +154,7 @@
                <div class="card-inner">
                   <div class="card-title">
 
-                     <div class="row text-center bg-gray-light pt-3 pb-3">
+                     <div class="row text-center">
                         <div class="col-sm-12 col-lg-6">
                            <div class="nk-cov-data">
                               Semana actual
