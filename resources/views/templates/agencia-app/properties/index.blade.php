@@ -26,7 +26,7 @@
    <!-- Map end -->
    <!-- breadcrumbs-->
    <div class="breadcrumbs fw-breadcrumbs smpar fl-wrap">
-      <div class="container">
+      <div class="container-fluid">
          <div class="breadcrumbs-list">
          	<a href="#">Inicio</a>
          	<span>Propiedades</span>
@@ -59,253 +59,295 @@
    <!-- breadcrumbs end -->
    <!-- section -->
    <section class="gray-bg small-padding">
-      <div class="container">
+
+      
+
+      <div class="container-fluid">
          <div class="row">
             <div class="mob-nav-content-btn color-bg show-list-wrap-search ntm fl-wrap">Mostrar filtros</div>
             <!-- search sidebar-->
-            <div class="col-md-4">
-               <div class="fl-wrap lws_mobile">
-                  <div class="list-searh-input-wrap-title fl-wrap"><i class="far fa-sliders-h"></i><span>Filtros de búsqueda</span></div>
-                  <div class="block-box fl-wrap search-sb" id="filters-column">
-                     <!-- Filter by commune -->
-                     <div class="listsearch-input-item">
-                        <label>Comuna</label>
-                        <select data-placeholder="Comuna" class="form-select" id="commune_id" onchange="getDistricts();">
-                           <option value="all">Todas las comunas</option>
-                           @foreach($communes as $commune)
-                           <option 
-                              @if($filter_commune == $commune->id) 
-                              selected 
-                              @endif 
-                              value="{{ $commune->id }}">
-                           	({{ $commune->code }}) - {{ $commune->name }}
-                           </option>
-                           @endforeach
-                        </select>
-                     </div>
-                     <!-- /Filter by commune -->
+            <div class="col-sm-12 col-md-2">
 
-                     <!-- Filter by district -->
-                     <div class="listsearch-input-item">
-                        <label>Barrio</label>
-                        <select data-placeholder="Barrio" class="form-select" name="district_id" id="district_id">
-                           <option value="all">Todos los barrios</option>
-                           @foreach($districts as $district)
-                           <option 
-                              @if($filter_district == $district->id) 
-                              selected 
-                              @endif 
-                              value="{{ $district->id }}">
-                           	{{ $district->name }}
-                           </option>
-                           @endforeach
-                        </select>
-                     </div>
-                     <!-- /Filter by district -->
+               <div class="filter-elements scroll-to-fixed-fixed">
+                  <a class="sidebar-links-btn fl-wrap" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                     <i class="far fa-sliders-h"></i>
+                     <span>Filtros</span>
+                  </a>
 
-                     <!-- Filter by destination -->
-                     <div class="listsearch-input-item">
-                        <label>Destinación actual</label>
-                        <select data-placeholder="Destinación actual" class="form-select" id="destination_id">
-                           <option value="all">Todas las destinaciones</option>
-                           @foreach($destinations as $destination)
-                           <option 
-                              @if($filter_destination == $destination->id) 
-                              selected 
-                              @endif
-                              value="{{ $destination->id }}">
-                           	{{ $destination->title }}
-                           </option>
-                           @endforeach
-                        </select>
-                     </div>
-                     <!-- /Filter by destination -->
+                  <a class="sidebar-links-btn fl-wrap">
+                     <i class="fal fa-home"></i>
+                     <span>Residencial</span>
+                  </a>
 
-                     <!-- Filter by opportunity -->
-                     <div class="listsearch-input-item">
-                        <label>Oportunidad</label>
-                        <select data-placeholder="Oportunidad" class="form-select" id="opportunity_id">
-                           <option value="all">Todas</option>
-	                        <option 
-                              @if($filter_opportunity == 1) 
-                              selected 
-                              @endif
-                              value="1">Oportunidad Inmobiliaria</option>
-	                        <option 
-                              @if($filter_opportunity == 2) 
-                              selected 
-                              @endif
-                              value="2">Gestión comercial</option>
-                        </select>
-                     </div>
-                     <!-- /Filter by opportunity -->
+                  <a class="sidebar-links-btn fl-wrap">
+                     <i class="fal fa-hotel"></i>
+                     <span>Dotacional</span>
+                  </a>
 
-                     <!-- Filter by action -->
-                     <div class="listsearch-input-item">
-                        <label>Acción</label>
-                        <select data-placeholder="Acción" class="form-select" id="action_id">
-                           <option value="all">Todas las acciones</option>
-                           @foreach($actions as $action)
-                           <option 
-                              @if($filter_action == $action->id) 
-                              selected 
-                              @endif
-                              value="{{ $action->id }}">
-                           	{{ $action->title }}
-                           </option>
-                           @endforeach
-                        </select>
-                     </div>
-                     <!-- /Filter by action -->
+                  <a class="sidebar-links-btn fl-wrap">
+                     <i class="fal fa-warehouse-alt"></i>
+                     <span>Lotes</span>
+                  </a>
 
-     						<!-- Filter by area -->
-                     <div class="listsearch-input-item">
-                        <label>Área</label>
-                        <select data-placeholder="Área" class="form-select" id="area">
-                           <option value="all">Cualquiera</option>
-	                        <option value="500">0 - 500 m2/ft2</option>
-	                        <option value="1500">500 - 1500 m2/ft2</option>
-	                        <option value="5000">1500 - 5000 m2/ft2</option>
-	                        <option value="5001">+5000 m2/ft2</option>
-                        </select>
-                     </div>
-                     <!-- /Filter by area -->
-  
-                     <!-- Filter by area -->
-                     {{-- <div class="listsearch-input-item">
-                        <div class="price-rage-item fl-wrap">
-                           <span class="pr_title">Área:</span>
-                           <input type="text" class="price-range-double" data-min="1" data-max="1000" name="price-range2" data-step="1" value="1" data-prefix="" />
-                        </div>
-                     </div>
-                     <small class="text-muted">Los valores se representan en m2 o ft2</small> --}}
-                     <!-- /Filter by area -->
-
-                     <!-- Advanced filters -->
-                     <div class="accordion" id="advancedFilters">
-                     	<div class="accordion-item border-0 mt-4 mb-4">
-								   <h4 class="accordion-header" id="headingTwo">
-								      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-								         Filtros avanzados
-								      </button>
-								   </h4>
-								   <div id="collapseTwo" class="accordion-collapse collapse {{ $show_collapse }}" aria-labelledby="headingTwo" data-bs-parent="#advancedFilters">
-								      <div class="accordion-body">
-								         <!-- Filter by macroproject -->
-								         <div class="listsearch-input-item">
-								            <label>Macroproyecto</label>
-								            <select data-placeholder="Macroproyecto" class="form-select" id="macroproject_id">
-								               <option value="all">Todos los macroproyectos</option>
-								               @foreach($macroprojects as $macroproject)
-								               <option 
-                                          @if($filter_macroproject == $macroproject->id) 
-                                          selected 
-                                          @endif
-                                          value="{{ $macroproject->id }}">
-								                  {{ $macroproject->name }}
-								               </option>
-								               @endforeach
-								            </select>
-								         </div>
-								         <!-- /Filter by macroproject -->
-
-								         <!-- Filter by treatment -->
-								         <div class="listsearch-input-item">
-								            <label>Tratamiento</label>
-								            <select data-placeholder="Tratamiento" class="form-select" id="treatment_id">
-								               <option value="all">Todos los tratamientos</option>
-								               @foreach($treatments as $treatment)
-								               <option 
-                                          @if($filter_treatment == $treatment->id) 
-                                          selected 
-                                          @endif
-                                          value="{{ $treatment->id }}">
-								                  {{ $treatment->title }}
-								               </option>
-								               @endforeach
-								            </select>
-								         </div>
-								         <!-- /Filter by treatment -->
-
-								         <!-- Filter by instrument -->
-								         <div class="listsearch-input-item">
-								            <label>Instrumento de tercer nivel</label>
-								            <select data-placeholder="Instrumento de tercer nivel" class="form-select" id="instrument_id">
-								               <option value="all">Todos</option>
-								               @foreach($instruments as $instrument)
-								               <option 
-                                          @if($filter_instrument == $instrument->id) 
-                                          selected 
-                                          @endif
-                                          value="{{ $instrument->id }}">
-								                  {{ $instrument->title }}
-								               </option>
-								               @endforeach
-								            </select>
-								         </div>
-								         <!-- /Filter by instrument -->
-
-								         <!-- Filter by floor_use -->
-								         <div class="listsearch-input-item">
-								            <label>Uso del suelo</label>
-								            <select data-placeholder="Uso del suelo" id="floor_use_id" class="form-select">
-								               <option value="all">Todos los usos</option>
-								               @foreach($floor_uses as $floor_use)
-								               <option 
-                                          @if($filter_floor_use == $floor_use->id) 
-                                          selected 
-                                          @endif
-                                          value="{{ $floor_use->id }}">
-								                  {{ $floor_use->title }}
-								               </option>
-								               @endforeach
-								            </select>
-								         </div>
-								         <!-- /Filter by floor_use -->
-
-								         <!-- listsearch-input-item-->
-								         <div class="listsearch-input-item pt-4">
-								            <label>Que contenga</label>
-								            <div class="fl-wrap filter-tags">
-								               <ul class="no-list-style">
-								                  <li>
-								                     <input @if($filter_rph == 1) checked @endif type="checkbox" id="rph" />
-								                     <label for="rph">RPH</label>
-								                  </li>
-								                  <li>
-								                     <input @if($filter_loan == 1) checked @endif type="checkbox" id="loan" />
-								                     <label for="loan"> Comodato</label>
-								                  </li>
-								                  <li>
-								                     <input @if($filter_bic == 1) checked @endif type="checkbox" id="bic" />
-								                     <label for="bic">BIC</label>
-								                  </li>
-								                  <li>
-								                     <input @if($filter_management == 1) checked @endif type="checkbox" id="management" />
-								                     <label for="management">Gestión</label>
-								                  </li>
-								               </ul>
-								            </div>
-								         </div>
-								      </div>
-								   </div>
-								</div>
-							</div>
-                     <!-- /Advanced filters -->
-
-							<!-- listsearch-input-item end-->
-                     <div class="msotw_footer">
-                     	<button class="btn small-btn float-btn color-bg" onclick="applyFilters();">
-                     		Aplicar filtros
-                     	</button>
-                        <div class="reset-form reset-btn"><i class="far fa-sync-alt"></i> Borrar filtros</div>
-                     </div>
-                  </div>
-                  <a class="back-tofilters color-bg custom-scroll-link fl-wrap scroll-to-fixed-fixed" href="#filters-column">Subir a los filtros <i class="fas fa-caret-up"></i></a>
+                  <a class="sidebar-links-btn fl-wrap">
+                     <i class="fal fa-car-building"></i>
+                     <span>Servicios</span>
+                  </a>
                </div>
+
+               <!-- Filters section -->
+               <div class="offcanvas offcanvas-start pt-5 mt-5" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+                  <div class="offcanvas-header">
+                     <div class="list-searh-input-wrap-title fl-wrap my-auto">
+                        <i class="far fa-sliders-h"></i>
+                        <span>Filtros de búsqueda</span>
+                     </div>
+                     <button type="button" class="btn-close text-reset my-auto" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                  </div>
+                  <div class="offcanvas-body">
+                     <!-- Filters -->
+                     <div class="fl-wrap lws_mobile">
+                        <div class="block-box fl-wrap search-sb" id="filters-column">
+                           <!-- Filter by commune -->
+                           <div class="listsearch-input-item">
+                              <label>Comuna</label>
+                              <select data-placeholder="Comuna" class="form-select" id="commune_id" onchange="getDistricts();">
+                                 <option value="all">Todas las comunas</option>
+                                 @foreach($communes as $commune)
+                                 <option 
+                                    @if($filter_commune == $commune->id) 
+                                    selected 
+                                    @endif 
+                                    value="{{ $commune->id }}">
+                                    ({{ $commune->code }}) - {{ $commune->name }}
+                                 </option>
+                                 @endforeach
+                              </select>
+                           </div>
+                           <!-- /Filter by commune -->
+
+                           <!-- Filter by district -->
+                           <div class="listsearch-input-item">
+                              <label>Barrio</label>
+                              <select data-placeholder="Barrio" class="form-select" name="district_id" id="district_id">
+                                 <option value="all">Todos los barrios</option>
+                                 @foreach($districts as $district)
+                                 <option 
+                                    @if($filter_district == $district->id) 
+                                    selected 
+                                    @endif 
+                                    value="{{ $district->id }}">
+                                    {{ $district->name }}
+                                 </option>
+                                 @endforeach
+                              </select>
+                           </div>
+                           <!-- /Filter by district -->
+
+                           <!-- Filter by destination -->
+                           <div class="listsearch-input-item">
+                              <label>Destinación actual</label>
+                              <select data-placeholder="Destinación actual" class="form-select" id="destination_id">
+                                 <option value="all">Todas las destinaciones</option>
+                                 @foreach($destinations as $destination)
+                                 <option 
+                                    @if($filter_destination == $destination->id) 
+                                    selected 
+                                    @endif
+                                    value="{{ $destination->id }}">
+                                    {{ $destination->title }}
+                                 </option>
+                                 @endforeach
+                              </select>
+                           </div>
+                           <!-- /Filter by destination -->
+
+                           <!-- Filter by opportunity -->
+                           <div class="listsearch-input-item">
+                              <label>Oportunidad</label>
+                              <select data-placeholder="Oportunidad" class="form-select" id="opportunity_id">
+                                 <option value="all">Todas</option>
+                                 <option 
+                                    @if($filter_opportunity == 1) 
+                                    selected 
+                                    @endif
+                                    value="1">Oportunidad Inmobiliaria</option>
+                                 <option 
+                                    @if($filter_opportunity == 2) 
+                                    selected 
+                                    @endif
+                                    value="2">Gestión comercial</option>
+                              </select>
+                           </div>
+                           <!-- /Filter by opportunity -->
+
+                           <!-- Filter by action -->
+                           <div class="listsearch-input-item">
+                              <label>Acción</label>
+                              <select data-placeholder="Acción" class="form-select" id="action_id">
+                                 <option value="all">Todas las acciones</option>
+                                 @foreach($actions as $action)
+                                 <option 
+                                    @if($filter_action == $action->id) 
+                                    selected 
+                                    @endif
+                                    value="{{ $action->id }}">
+                                    {{ $action->title }}
+                                 </option>
+                                 @endforeach
+                              </select>
+                           </div>
+                           <!-- /Filter by action -->
+
+                           <!-- Filter by area -->
+                           <div class="listsearch-input-item">
+                              <label>Área</label>
+                              <select data-placeholder="Área" class="form-select" id="area">
+                                 <option value="all">Cualquiera</option>
+                                 <option value="500">0 - 500 m2/ft2</option>
+                                 <option value="1500">500 - 1500 m2/ft2</option>
+                                 <option value="5000">1500 - 5000 m2/ft2</option>
+                                 <option value="5001">+5000 m2/ft2</option>
+                              </select>
+                           </div>
+                           <!-- /Filter by area -->
+
+                           <!-- Advanced filters -->
+                           <div class="accordion" id="advancedFilters">
+                              <div class="accordion-item border-0 mt-4 mb-4">
+                                 <h4 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                       Filtros avanzados
+                                    </button>
+                                 </h4>
+                                 <div id="collapseTwo" class="accordion-collapse collapse {{ $show_collapse }}" aria-labelledby="headingTwo" data-bs-parent="#advancedFilters">
+                                    <div class="accordion-body">
+                                       <!-- Filter by macroproject -->
+                                       <div class="listsearch-input-item">
+                                          <label>Macroproyecto</label>
+                                          <select data-placeholder="Macroproyecto" class="form-select" id="macroproject_id">
+                                             <option value="all">Todos los macroproyectos</option>
+                                             @foreach($macroprojects as $macroproject)
+                                             <option 
+                                                @if($filter_macroproject == $macroproject->id) 
+                                                selected 
+                                                @endif
+                                                value="{{ $macroproject->id }}">
+                                                {{ $macroproject->name }}
+                                             </option>
+                                             @endforeach
+                                          </select>
+                                       </div>
+                                       <!-- /Filter by macroproject -->
+
+                                       <!-- Filter by treatment -->
+                                       <div class="listsearch-input-item">
+                                          <label>Tratamiento</label>
+                                          <select data-placeholder="Tratamiento" class="form-select" id="treatment_id">
+                                             <option value="all">Todos los tratamientos</option>
+                                             @foreach($treatments as $treatment)
+                                             <option 
+                                                @if($filter_treatment == $treatment->id) 
+                                                selected 
+                                                @endif
+                                                value="{{ $treatment->id }}">
+                                                {{ $treatment->title }}
+                                             </option>
+                                             @endforeach
+                                          </select>
+                                       </div>
+                                       <!-- /Filter by treatment -->
+
+                                       <!-- Filter by instrument -->
+                                       <div class="listsearch-input-item">
+                                          <label>Instrumento de tercer nivel</label>
+                                          <select data-placeholder="Instrumento de tercer nivel" class="form-select" id="instrument_id">
+                                             <option value="all">Todos</option>
+                                             @foreach($instruments as $instrument)
+                                             <option 
+                                                @if($filter_instrument == $instrument->id) 
+                                                selected 
+                                                @endif
+                                                value="{{ $instrument->id }}">
+                                                {{ $instrument->title }}
+                                             </option>
+                                             @endforeach
+                                          </select>
+                                       </div>
+                                       <!-- /Filter by instrument -->
+
+                                       <!-- Filter by floor_use -->
+                                       <div class="listsearch-input-item">
+                                          <label>Uso del suelo</label>
+                                          <select data-placeholder="Uso del suelo" id="floor_use_id" class="form-select">
+                                             <option value="all">Todos los usos</option>
+                                             @foreach($floor_uses as $floor_use)
+                                             <option 
+                                                @if($filter_floor_use == $floor_use->id) 
+                                                selected 
+                                                @endif
+                                                value="{{ $floor_use->id }}">
+                                                {{ $floor_use->title }}
+                                             </option>
+                                             @endforeach
+                                          </select>
+                                       </div>
+                                       <!-- /Filter by floor_use -->
+
+                                       <!-- listsearch-input-item-->
+                                       <div class="listsearch-input-item pt-4">
+                                          <label>Que contenga</label>
+                                          <div class="fl-wrap filter-tags">
+                                             <ul class="no-list-style">
+                                                <li>
+                                                   <input @if($filter_rph == 1) checked @endif type="checkbox" id="rph" />
+                                                   <label for="rph">RPH</label>
+                                                </li>
+                                                <li>
+                                                   <input @if($filter_loan == 1) checked @endif type="checkbox" id="loan" />
+                                                   <label for="loan"> Comodato</label>
+                                                </li>
+                                                <li>
+                                                   <input @if($filter_bic == 1) checked @endif type="checkbox" id="bic" />
+                                                   <label for="bic">BIC</label>
+                                                </li>
+                                                <li>
+                                                   <input @if($filter_management == 1) checked @endif type="checkbox" id="management" />
+                                                   <label for="management">Gestión</label>
+                                                </li>
+                                             </ul>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- /Advanced filters -->
+
+                           <!-- listsearch-input-item end-->
+                           <div class="msotw_footer">
+                              <button class="btn small-btn float-btn color-bg" onclick="applyFilters();">
+                                 Aplicar filtros
+                              </button>
+                              <div class="reset-form reset-btn">
+                                 <a href="{{ route('user.properties.index') }}?commune=all?district=all?destination=all?opportunity=1?action=all?area=all?macroproject=all?treatment=all?instrument=all?floor_use=all?rph=0?loan=0?bic=0?management=0">
+                                    <i class="far fa-sync-alt"></i> Borrar filtros
+                                 </a>
+                              </div>
+                           </div>
+                        </div>
+                        <!--<a class="back-tofilters color-bg custom-scroll-link fl-wrap scroll-to-fixed-fixed" href="#filters-column">Subir a los filtros <i class="fas fa-caret-up"></i></a>-->
+                     </div>
+                     <!-- /Filters -->
+                  </div>
+               </div>
+               <!-- /Filters section -->
+
+
+               
             </div>
             <!-- search sidebar end-->
-            <div class="col-md-8">
+            <div class="col-sm-12 col-md-10">
                <!-- list-main-wrap-header-->
                <div class="list-main-wrap-header box-list-header fl-wrap">
                   <!-- list-main-wrap-title-->
@@ -418,13 +460,16 @@
 			         @endforelse
                </div>
                <!-- listing-item-wrap end-->
+            </div>
+            <!-- col-md 8 end -->
+
+            <div class="col-12">
                <!-- pagination-->
-               <div class="pagination st-center fl-wrap">
+               <div class="pagination d-flex justify-content-center">
                   {!! $properties->appends(request()->input())->links() !!}
                </div>
                <!-- pagination end-->
             </div>
-            <!-- col-md 8 end -->
          </div>
       </div>
    </section>

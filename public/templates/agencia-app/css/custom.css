@@ -285,5 +285,36 @@ p.font-medium{
    max-width: 300px !important;
 }
 
+.listing-item {
+   float:left;
+   width:25%;
+   padding:0 8px;
+   margin-bottom:12px;
+}
+
+/* New filters section  */
+
+.sidebar-links-btn{
+   text-align: left;
+   color: #5f636d;
+   font-size: 15px;
+   margin-bottom: 15px;
+   padding: 5px 15px;
+}
+
+.sidebar-links-btn > span {
+   padding-left: 10px;
+}
+
+.sidebar-links-btn:hover{
+   color: white;
+   background: #3271fb;
+   border-radius: 5px;
+}
+
+.has_one_column > article > div.geodir-category-img > a.geodir-category-img_item > img {
+   width: 60%;
+}
+
 
 

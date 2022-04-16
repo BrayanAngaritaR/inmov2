@@ -173,28 +173,26 @@
             <div class="col-sm-12 mt-2">
                <div class="card card-preview border-0">
                   <div class="p-3">
-
-
-
                      <div class="card-inner mb-n2">
-                                                    <div class="card-title-group mt-n1">
-                                                            <div class="card-title">
-                                                                <h6 class="title font-weight-300">Localización por comuna</h6>
-                                                            </div>
-                                                            <div class="card-tools mr-n1">
-                                                                <div class="dropdown">
-                                                                    <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                                    <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                                                                        <ul class="link-list-opt no-bdr">
-                                                                            <li><a href="#" class="active"><span>15 Days</span></a></li>
-                                                                            <li><a href="#"><span>30 Days</span></a></li>
-                                                                            <li><a href="#"><span>3 Months</span></a></li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                </div>
+                        <div class="card-title-group mt-n1">
+                           <div class="card-title">
+                              <h6 class="title font-weight-300">Localización por comuna</h6>
+                           </div>
+
+                           <div class="card-tools mr-n1">
+                              <div class="dropdown">
+                                 <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                 <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                                    <ul class="link-list-opt no-bdr">
+                                       <li><a href="#" class="active"><span>15 Days</span></a></li>
+                                       <li><a href="#"><span>30 Days</span></a></li>
+                                       <li><a href="#"><span>3 Months</span></a></li>
+                                    </ul>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
 
                      <div class="text-center mt-3">
                         <img src="{{ asset('templates/agencia-app/images/statistics/map1.png')}}">
