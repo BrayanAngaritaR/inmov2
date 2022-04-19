@@ -35,42 +35,23 @@
 
       <!-- Bienes de oportunidad -->
       <div class="col-md-4 col-lg-6 col-xl-3 my-auto">
-         <div class="card card-full overflow-hidden">
+         <div class="card card-full overflow-hidden min-heigh-400">
             <div class="nk-ecwg nk-ecwg4 h-100">
                <div class="card-inner flex-grow-1">
                   <div class="card-title-group mb-4">
                      <div class="card-title">
-                        <h6 class="title text-uppercase font-weight-300">Bienes de oportunidad</h6>
+                        <h6 class="title font-weight-300">Bienes por revisión</h6>
                      </div>
                   </div>
                   <div class="data-group text-center">
                      <div class="nk-ecwg4-ck">
-                        <canvas class="ecommerce-doughnut-s1" id="trafficSources"></canvas>
+                        <canvas class="sales-bar-chart" id="salesRevenue"></canvas>
                      </div>
                   </div>
-                  <ul class="nk-ecwg4-legends" style="display: flex;">
-                        <li>
-                           <div class="title">
-                              <span class="dot dot-lg sq" data-bg="#3271fb"></span>
-                              <span>Alta</span>
-                           </div>
-                           {{-- <div class="amount amount-xs">305</div> --}}
-                        </li>
-                        <li>
-                           <div class="title ml-3">
-                              <span class="dot dot-lg sq" data-bg="#44cddb"></span>
-                              <span>Media</span>
-                           </div>
-                           {{-- <div class="amount amount-xs">159</div> --}}
-                        </li>
-                        <li>
-                           <div class="title ml-3">
-                              <span class="dot dot-lg sq" data-bg="#bc96ff"></span>
-                              <span>Baja</span>
-                           </div>
-                           {{-- <div class="amount amount-xs">82</div> --}}
-                        </li>
-                     </ul>
+               </div>
+               
+               <div class="nk-cov-data text-center">
+                  <div class="amount">2,394</div>
                </div>
             </div>
          </div>
@@ -81,12 +62,12 @@
 
       <!-- Bienes para venta -->
       <div class="col-md-4 col-lg-6 col-xl-3 my-auto">
-         <div class="card card-full overflow-hidden">
+         <div class="card card-full overflow-hidden min-heigh-400">
             <div class="nk-ecwg nk-ecwg4 h-100">
                <div class="card-inner flex-grow-1">
                   <div class="card-title-group mb-4">
                      <div class="card-title">
-                        <h6 class="title text-uppercase font-weight-300">Bienes para venta</h6>
+                        <h6 class="title font-weight-300">Bienes por equipamiento</h6>
                      </div>
                   </div>
                   <div class="data-group text-center">
@@ -94,49 +75,26 @@
                         <canvas class="ecommerce-doughnut-s1" id="forSalePropertiesValentina"></canvas>
                      </div>
                   </div>
-                  <ul class="nk-ecwg4-legends" style="display: flex;">
-                        <li>
-                           <div class="title">
-                              <span class="dot dot-lg sq" data-bg="#3271fb"></span>
-                              <span>Total</span>
-                           </div>
-                           {{-- <div class="amount amount-xs">305</div> --}}
-                        </li>
-                        <li>
-                           <div class="title ml-3">
-                              <span class="dot dot-lg sq" data-bg="#44cddb"></span>
-                              <span>Para venta</span>
-                           </div>
-                           {{-- <div class="amount amount-xs">159</div> --}}
-                        </li>
-                     </ul>
                </div>
             </div>
          </div>
          <!-- .card -->
       </div>
-
-      {{-- <div class="col-md-4 col-lg-6 col-xl-3 my-auto">
-         <div class="card card-preview border-0">
-            <div class="card-inner">
-               <div class="card-head text-center mb-5">
-                  <h6 class="title">Bienes para venta</h6>
-               </div>
-               <div class="nk-ck-sm">
-                  <canvas class="doughnut-chart" id="forSaleProperties"></canvas>
-               </div>
-            </div>
-         </div>
-         <!-- .card-preview -->
-      </div> --}}
       <!-- /Bienes para venta -->
 
       <div class="col-sm-12 col-xl-6">
          <div class="nk-block">
-            <div class="card card-preview border-0">
-               <div class="card-inner">
-                  <div class="nk-ck">
-                     <canvas class="line-chart" id="propertiesQty"></canvas>
+            <div class="card card-preview border-0 min-heigh-400">
+               <div class="card-inner flex-grow-1">
+                  <div class="card-title-group mb-4">
+                     <div class="card-title">
+                        <h6 class="title font-weight-300">Destinación actual</h6>
+                     </div>
+                  </div>
+                  <div class="card-inner">
+                     <div class="nk-ck">
+                        <canvas class="sales-bar-chart" id="salesRevenue2"></canvas>
+                     </div>
                   </div>
                </div>
             </div>
@@ -144,154 +102,214 @@
          </div>
       </div>
 
-
-
-
       <!-- Recaudo por venta -->
-      <div class="col-lg-6 col-xl-8 mt-4">
-         <div class="nk-block">
-            <div class="card card-preview border-0">
-               <div class="card-inner">
-                  <div class="card-title">
-
-                     <div class="row text-center">
-                        <div class="col-sm-12 col-lg-6">
-                           <div class="nk-cov-data">
-                              Semana actual
-                              <div class="amount">$58,254</div>
-                           </div>
-                        </div>
-
-                        <div class="col-sm-12 col-lg-6">
-                           <div class="nk-cov-data">
-                              Semana anterior
-                              <div class="amount">$69,524</div>
-                           </div>
+      <div class="col-sm-12 col-lg-6 col-xl-8">
+         <div class="card card-full overflow-hidden min-heigh-600">
+            <div class="row">
+               <div class="col-sm-12">
+                  <div class="card-inner">
+                     <div class="card-title-group mb-4">
+                        <div class="card-title">
+                           <h6 class="title font-weight-300">Bienes por secretaría adscrita</h6>
                         </div>
                      </div>
-
-                     <h5 class="title mt-5">Ganancias hoy: $12,972</h5>
-                     <p class="max-300 mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                     <div class="data-group text-center">
+                        <canvas class="sales-bar-chart" id="salesRevenue3"></canvas>
+                     </div>
                   </div>
+               </div>
 
-                  <div class="nk-ck">
-                     <canvas class="line-chart" id="totalEarnings"></canvas>
+               <div class="col-sm-12 mb-3">
+                  <div class="d-flex justify-content-around mt-3">
+                     <div class="data text-center">
+                        <div class="data-group">
+                           <div class="info my-auto">
+                              <div class="nk-knob">
+                                 <input type="text" class="knob" value="75" data-fgColor="#8bc34a" data-bgColor="#d9e5f7" data-thickness=".07" data-width="80" data-height="80">
+                              </div>
+                           </div>
+                        </div>
+                        Venta
+                     </div>
+
+                     <div class="data text-center">
+                        <div class="data-group">
+                           <div class="info my-auto">
+                              <div class="nk-knob">
+                                 <input type="text" class="knob" value="25" data-fgColor="#816bff" data-bgColor="#d9e5f7" data-thickness=".07" data-width="80" data-height="80">
+                              </div>
+                           </div>
+                        </div>
+                        Venta / Arriendo
+                     </div>
+
+                     <div class="data text-center">
+                        <div class="data-group">
+                           <div class="info my-auto">
+                              <div class="nk-knob">
+                                 <input type="text" class="knob" value="50" data-fgColor="#816bff" data-bgColor="#d9e5f7" data-thickness=".07" data-width="80" data-height="80">
+                              </div>
+                           </div>
+                        </div>
+                        Desenglobe
+                     </div>
+
+                     <div class="data text-center">
+                        <div class="data-group">
+                           <div class="info my-auto">
+                              <div class="nk-knob">
+                                 <input type="text" class="knob" value="60" data-fgColor="#816bff" data-bgColor="#d9e5f7" data-thickness=".07" data-width="80" data-height="80">
+                              </div>
+                           </div>
+                        </div>
+                        Englobe
+                     </div>
+
+                     <div class="data text-center">
+                        <div class="data-group">
+                           <div class="info my-auto">
+                              <div class="nk-knob">
+                                 <input type="text" class="knob" value="75" data-fgColor="#816bff" data-bgColor="#d9e5f7" data-thickness=".07" data-width="80" data-height="80">
+                              </div>
+                           </div>
+                        </div>
+                        O. inmobiliaria
+                     </div>
+
+                     <div class="data text-center">
+                        <div class="data-group">
+                           <div class="info my-auto">
+                              <div class="nk-knob">
+                                 <input type="text" class="knob" value="25" data-fgColor="#8bc34a" data-bgColor="#d9e5f7" data-thickness=".07" data-width="80" data-height="80">
+                              </div>
+                           </div>
+                        </div>
+                        Cesión
+                     </div>
+
+                     <div class="data text-center">
+                        <div class="data-group">
+                           <div class="info my-auto">
+                              <div class="nk-knob">
+                                 <input type="text" class="knob" value="50" data-fgColor="#000" data-bgColor="#d9e5f7" data-thickness=".07" data-width="80" data-height="80">
+                              </div>
+                           </div>
+                        </div>
+                        Sin acción
+                     </div>
                   </div>
                </div>
             </div>
-            <!-- .card-preview -->
          </div>
       </div>
       <!-- /Recaudo por venta -->
 
 
-      <div class="col-lg-6 col-xl-4 mt-4">
+      <div class="col-lg-6 col-xl-4">
          <div class="row">
-            <div class="col-sm-12">
-               <div class="card card-preview border-0">
-                  <div class="p-3">
-                     <div class="card-title-group">
-                        <div class="card-title">
-                           <h6 class="title text-uppercase">Bienes analizados</h6>
-                        </div>
-                     </div>
 
-                     <div class="data">
-                        <div class="data-group d-flex justify-content-between mt-2">
-                           <div class="nk-cov-data my-auto">
-                              <div class="amount">2,106</div>
+            <div class="col-sm-12 mb-3">
+               <div class="card card-preview border-0 min-heigh-600">
+                  <div class="p-3">
+                     <div class="card-inner mb-n2">
+                        <div class="card-title-group mt-n1">
+                           <div class="card-title">
+                              <h6 class="title font-weight-300">Localización por comuna</h6>
                            </div>
-                           <div class="info text-right my-auto">
-                              <div class="nk-knob text-center">
-                                 <input type="text" class="knob" value="65" data-fgColor="#816bff" data-bgColor="#d9e5f7" data-thickness=".07" data-width="80" data-height="80">
+
+                           <div class="card-tools mr-n1">
+                              <div class="dropdown">
+                                 <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                 <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                                    <ul class="link-list-opt no-bdr">
+                                       <li><a href="#" class="active"><span>Popular</span></a></li>
+                                       <li><a href="#"><span>Santa Cruz</span></a></li>
+                                       <li><a href="#"><span>Manrique</span></a></li>
+                                       <li><a href="#"><span>Robledo</span></a></li>
+                                    </ul>
+                                 </div>
                               </div>
                            </div>
                         </div>
                      </div>
 
-                  </div>
-                  <div class="text-center">
-                     <small>60%</small>
-                  </div>
-                  <div class="progress progress-sm">
-                     <div class="progress-bar progress-bar-striped progress-bar-animated" data-progress="75">
+                     <div class="text-center mt-3">
+                        <img src="{{ asset('templates/agencia-app/images/statistics/map1.png')}}">
                      </div>
+
+                     <!-- Popular -->
+                     <div class="mt-3">
+                        <div class="d-flex justify-content-between">
+                           <small>Popular</small>
+                           <small>720</small>
+                        </div>
+                        <div class="progress progress-sm">
+                           <div class="progress-bar progress-bar-striped progress-bar-animated" data-progress="75">
+                           </div>
+                        </div>
+                     </div>
+                     <!-- /Popular -->
+
+                     <!-- Candelaria -->
+                     <div class="mt-3">
+                        <div class="d-flex justify-content-between">
+                           <small>Candelaria</small>
+                           <small>320</small>
+                        </div>
+                        <div class="progress progress-sm">
+                           <div class="progress-bar progress-bar-striped progress-bar-animated" data-progress="55">
+                           </div>
+                        </div>
+                     </div>
+                     <!-- /Candelaria -->
+
+                     <!-- Buenos aires -->
+                     <div class="mt-3">
+                        <div class="d-flex justify-content-between">
+                           <small>Buenos aires</small>
+                           <small>70</small>
+                        </div>
+                        <div class="progress progress-sm">
+                           <div class="progress-bar progress-bar-striped progress-bar-animated" data-progress="30">
+                           </div>
+                        </div>
+                     </div>
+                     <!-- /Buenos aires -->
+
+                     <!-- Santa Cruz -->
+                     <div class="mt-3">
+                        <div class="d-flex justify-content-between">
+                           <small>Santa Cruz</small>
+                           <small>20</small>
+                        </div>
+                        <div class="progress progress-sm">
+                           <div class="progress-bar progress-bar-striped progress-bar-animated" data-progress="20">
+                           </div>
+                        </div>
+                     </div>
+                     <!-- /Santa Cruz -->
+
+                     <!-- Villa hermosa -->
+                     <div class="mt-3">
+                        <div class="d-flex justify-content-between">
+                           <small>Villa hermosa</small>
+                           <small>10</small>
+                        </div>
+                        <div class="progress progress-sm">
+                           <div class="progress-bar progress-bar-striped progress-bar-animated" data-progress="10">
+                           </div>
+                        </div>
+                     </div>
+                     <!-- /Villa hermosa -->
                   </div>
+                  
 
 
                </div>
             </div>
 
-            <div class="col-sm-12 mt-2">
-               <div class="card card-preview border-0">
-                  <div class="p-3">
-                     <div class="card-title-group">
-                        <div class="card-title">
-                           <h6 class="title text-uppercase">Bienes en comodato</h6>
-                        </div>
-                     </div>
+            
 
-                     <div class="data">
-                        <div class="data-group d-flex justify-content-between mt-2">
-                           <div class="nk-cov-data my-auto">
-                              <div class="amount">1,387</div>
-                           </div>
-                           <div class="info text-right my-auto">
-                              <div class="nk-knob text-center">
-                                 <input type="text" class="knob" value="50" data-fgColor="#816bff" data-bgColor="#d9e5f7" data-thickness=".07" data-width="80" data-height="80">
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-
-                  </div>
-                  <div class="text-center">
-                     <small>60%</small>
-                  </div>
-                  <div class="progress progress-sm">
-                     <div class="progress-bar progress-bar-striped progress-bar-animated" data-progress="75">
-                     </div>
-                  </div>
-
-
-               </div>
-            </div>
-
-            <div class="col-sm-12 mt-2">
-               <div class="card card-preview border-0">
-                  <div class="p-3">
-                     <div class="card-title-group">
-                        <div class="card-title">
-                           <h6 class="title text-uppercase">Bienes de interés cultural</h6>
-                        </div>
-                     </div>
-
-                     <div class="data">
-                        <div class="data-group d-flex justify-content-between mt-2">
-                           <div class="nk-cov-data my-auto">
-                              <div class="amount">456</div>
-                           </div>
-                           <div class="info text-right my-auto">
-                              <div class="nk-knob text-center">
-                                 <input type="text" class="knob" value="25" data-fgColor="#816bff" data-bgColor="#d9e5f7" data-thickness=".07" data-width="80" data-height="80">
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-
-                  </div>
-                  <div class="text-center">
-                     <small>60%</small>
-                  </div>
-                  <div class="progress progress-sm">
-                     <div class="progress-bar progress-bar-striped progress-bar-animated" data-progress="75">
-                     </div>
-                  </div>
-
-
-               </div>
-            </div>
          </div>
       </div>
 

@@ -358,5 +358,15 @@ table.nk-tb-covid.dataTable.dtr-inline.collapsed > tbody > tr:not(.child) > td:f
 }
 
 .bg-gray-light {
-   background-color: #f5f5f5 !important;
+   background-color: #fafafa !important;
+}
+
+
+.min-heigh-400{
+   min-height: 400px;
+}
+
+
+.min-heigh-600{
+   min-height: 600px;
 }

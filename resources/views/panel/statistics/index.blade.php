@@ -35,12 +35,12 @@
 
       <!-- Bienes de oportunidad -->
       <div class="col-md-4 col-lg-6 col-xl-3 my-auto">
-         <div class="card card-full overflow-hidden">
+         <div class="card card-full overflow-hidden min-heigh-400">
             <div class="nk-ecwg nk-ecwg4 h-100">
                <div class="card-inner flex-grow-1">
                   <div class="card-title-group mb-4">
                      <div class="card-title">
-                        <h6 class="title text-uppercase font-weight-300">Bienes de oportunidad</h6>
+                        <h6 class="title font-weight-300">Bienes de oportunidad</h6>
                      </div>
                   </div>
                   <div class="data-group text-center">
@@ -81,12 +81,12 @@
 
       <!-- Bienes para venta -->
       <div class="col-md-4 col-lg-6 col-xl-3 my-auto">
-         <div class="card card-full overflow-hidden">
+         <div class="card card-full overflow-hidden min-heigh-400">
             <div class="nk-ecwg nk-ecwg4 h-100">
                <div class="card-inner flex-grow-1">
                   <div class="card-title-group mb-4">
                      <div class="card-title">
-                        <h6 class="title text-uppercase font-weight-300">Bienes para venta</h6>
+                        <h6 class="title font-weight-300">Bienes para venta</h6>
                      </div>
                   </div>
                   <div class="data-group text-center">
@@ -133,10 +133,11 @@
 
       <div class="col-sm-12 col-xl-6">
          <div class="nk-block">
-            <div class="card card-preview border-0">
+            <div class="card card-preview border-0 min-heigh-400">
                <div class="card-inner">
                   <div class="nk-ck">
                      <canvas class="line-chart" id="propertiesQty"></canvas>
+                     {{-- <canvas class="sales-overview-chart" id="salesOverview"></canvas> --}}
                   </div>
                </div>
             </div>
@@ -144,13 +145,10 @@
          </div>
       </div>
 
-
-
-
       <!-- Recaudo por venta -->
       <div class="col-lg-6 col-xl-8 mt-4">
          <div class="nk-block">
-            <div class="card card-preview border-0">
+            <div class="card card-preview border-0 min-heigh-600">
                <div class="card-inner">
                   <div class="card-title">
 
@@ -171,11 +169,11 @@
                      </div>
 
                      <h5 class="title mt-5">Ganancias hoy: $12,972</h5>
-                     <p class="max-300 mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                     {{-- <p class="max-300">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p> --}}
                   </div>
 
-                  <div class="nk-ck">
+                  <div class="nk-ck mt-5">
                      <canvas class="line-chart" id="totalEarnings"></canvas>
                   </div>
                </div>
@@ -185,15 +183,14 @@
       </div>
       <!-- /Recaudo por venta -->
 
-
       <div class="col-lg-6 col-xl-4 mt-4">
-         <div class="row">
+         <div class="row min-heigh-600">
             <div class="col-sm-12">
                <div class="card card-preview border-0">
                   <div class="p-3">
                      <div class="card-title-group">
                         <div class="card-title">
-                           <h6 class="title text-uppercase">Bienes analizados</h6>
+                           <h6 class="title">Bienes analizados</h6>
                         </div>
                      </div>
 
@@ -212,7 +209,7 @@
 
                   </div>
                   <div class="text-center">
-                     <small>60%</small>
+                     <small>65%</small>
                   </div>
                   <div class="progress progress-sm">
                      <div class="progress-bar progress-bar-striped progress-bar-animated" data-progress="75">
@@ -228,7 +225,7 @@
                   <div class="p-3">
                      <div class="card-title-group">
                         <div class="card-title">
-                           <h6 class="title text-uppercase">Bienes en comodato</h6>
+                           <h6 class="title">Bienes en comodato</h6>
                         </div>
                      </div>
 
@@ -247,7 +244,7 @@
 
                   </div>
                   <div class="text-center">
-                     <small>60%</small>
+                     <small>50%</small>
                   </div>
                   <div class="progress progress-sm">
                      <div class="progress-bar progress-bar-striped progress-bar-animated" data-progress="75">
@@ -263,7 +260,7 @@
                   <div class="p-3">
                      <div class="card-title-group">
                         <div class="card-title">
-                           <h6 class="title text-uppercase">Bienes de interés cultural</h6>
+                           <h6 class="title">Bienes de interés cultural</h6>
                         </div>
                      </div>
 
@@ -282,7 +279,7 @@
 
                   </div>
                   <div class="text-center">
-                     <small>60%</small>
+                     <small>25%</small>
                   </div>
                   <div class="progress progress-sm">
                      <div class="progress-bar progress-bar-striped progress-bar-animated" data-progress="75">

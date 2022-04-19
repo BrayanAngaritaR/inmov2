@@ -34,7 +34,7 @@
    <div class="row g-gs">
       <!-- Bienes Georreferenciados -->
       <div class="col-md-4 col-lg-6 col-xl-3">
-         <div class="card card-full overflow-hidden">
+         <div class="card card-full overflow-hidden min-heigh-400">
             <div class="nk-ecwg nk-ecwg4 h-100">
                <div class="card-inner flex-grow-1">
                   <div class="card-title-group mb-4">
@@ -73,7 +73,7 @@
 
       <!-- Bienes con RPH -->
       <div class="col-md-4 col-lg-6 col-xl-3">
-         <div class="card card-full overflow-hidden">
+         <div class="card card-full overflow-hidden min-heigh-400">
             <div class="nk-ecwg nk-ecwg4 h-100">
                <div class="card-inner flex-grow-1">
                   <div class="card-title-group mb-4">
@@ -110,7 +110,7 @@
 
       <!-- /Bienes con RPH -->
       <div class="col-lg-6">
-         <div class="card card-preview border-0">
+         <div class="card card-preview border-0 min-heigh-400">
              <div class="card-inner">
                  <div class="card-head">
                      <h6 class="title font-weight-300 mb-5">Bienes por comuna</h6>
@@ -122,13 +122,10 @@
          </div><!-- .card-preview -->
       </div>
 
-
-
-
       <!-- Recaudo por venta -->
       <div class="col-lg-6 col-xl-8 mt-4">
          <div class="nk-block">
-            <div class="card card-preview border-0">
+            <div class="card card-preview border-0 min-heigh-600">
                <div class="card-inner">
                   <div class="card-title">
 
@@ -170,8 +167,8 @@
       <div class="col-lg-6 col-xl-4 mt-4">
          <div class="row">
 
-            <div class="col-sm-12 mt-2">
-               <div class="card card-preview border-0">
+            <div class="col-sm-12">
+               <div class="card card-preview border-0 min-heigh-600">
                   <div class="p-3">
                      <div class="card-inner mb-n2">
                         <div class="card-title-group mt-n1">
@@ -184,9 +181,10 @@
                                  <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                  <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
                                     <ul class="link-list-opt no-bdr">
-                                       <li><a href="#" class="active"><span>15 Days</span></a></li>
-                                       <li><a href="#"><span>30 Days</span></a></li>
-                                       <li><a href="#"><span>3 Months</span></a></li>
+                                       <li><a href="#" class="active"><span>Popular</span></a></li>
+                                       <li><a href="#"><span>Santa Cruz</span></a></li>
+                                       <li><a href="#"><span>Manrique</span></a></li>
+                                       <li><a href="#"><span>Robledo</span></a></li>
                                     </ul>
                                  </div>
                               </div>
@@ -250,6 +248,18 @@
                      </div>
                      <!-- /Santa Cruz -->
 
+                     <!-- Villa hermosa -->
+                     <div class="mt-3">
+                        <div class="d-flex justify-content-between">
+                           <small>Villa hermosa</small>
+                           <small>10</small>
+                        </div>
+                        <div class="progress progress-sm">
+                           <div class="progress-bar progress-bar-striped progress-bar-animated" data-progress="10">
+                           </div>
+                        </div>
+                     </div>
+                     <!-- /Villa hermosa -->
                   </div>
                   
 
