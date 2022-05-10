@@ -199,6 +199,7 @@
          </div>
       </div>
 
+      @if(Auth::user()->hasRole(['Admin']))
       <div class="col-sm-12 col-lg-4">
          <div class="form-group">
             <label class="form-label" for="publish_now">
@@ -221,6 +222,7 @@
             </select>
          </div>
       </div>
+      @endif
    </div>
 
    <div class="col-sm-12 text-right mt-5 mr-0">

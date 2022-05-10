@@ -5,6 +5,7 @@
 </a>
 
 <div class="nk-block mt-3">
+   @if(Auth::user()->hasRole(['Admin', 'Supervisor', 'Editor']))
    <div class="card card-preview">
       <div class="card-inner">
          <div class="preview-block">
@@ -89,6 +90,20 @@
          </div>
       </div>
    </div>
+
+   @else
+   <div class="card card-preview">
+      <div class="card-inner">
+         <div class="preview-block">
+            <div class="col-sm-12">
+               <div class="text-center">
+                  No tienes permisos suficientes para ver esta sección
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   @endif
 </div>
 @stop
 

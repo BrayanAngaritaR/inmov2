@@ -31,7 +31,8 @@ class PropertiesController extends Controller
 {
    public function __construct()
    {
-      $this->middleware(['auth', 'role:Admin|role:Collaborator']);
+      // $this->middleware(['auth', 'role:Admin|Collaborator']);
+      $this->middleware(['auth']);
 
    }
 

@@ -30,11 +30,17 @@
                   </li>
                </ul>
                <div class="tab-content">
+                  @if(Auth::user()->hasRole(['Admin', 'Auditor', 'Supervisor']))
                   @include('panel.includes.properties.edit._identification-tab-content')
                   @include('panel.includes.properties.edit._cadastral-tab-content')
                   @include('panel.includes.properties.edit._normative-tab-content')
                   @include('panel.includes.properties.edit._documental-tab-content')
                   @include('panel.includes.properties.edit._analysis-tab-content')
+                  @else
+                  <div class="text-center">
+                     No tienes permisos suficientes para ver esta sección
+                  </div>
+                  @endif
                </div>
             </div>
          </div>

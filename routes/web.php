@@ -201,3 +201,14 @@ Route::get('/panel/roles/{role}/users', [App\Http\Controllers\Panel\Users\RoleCo
 Route::get('/panel/roles/{role}/users/edit', [App\Http\Controllers\Panel\Users\RoleController::class, 'edit'])->name('panel.roles.users.edit');
 
 Route::post('/panel/roles/{role}/users/edit', [App\Http\Controllers\Panel\Users\RoleController::class, 'update'])->name('panel.roles.users.update');
+
+Route::get('/panel/roles/{role}/permissions', [App\Http\Controllers\Panel\Users\PermissionsController::class, 'index'])->name('panel.role.permissions.index');
+
+
+/*
+|--------------------------------------------------------------------------
+| Auditaciones - Panel
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/panel/audits', [App\Http\Controllers\Panel\Base\AuditsController::class, 'index'])->name('panel.audits.index');

@@ -9,7 +9,7 @@
                <ul></ul>
             </div>
 
-
+            @if(Auth::user()->hasRole(['Admin', 'Supervisor']))
             <div class="col-12">
                <ul class="nav nav-tabs nav-tabs-s2">
                   <li class="nav-item">
@@ -393,6 +393,11 @@
                   </div>
                </div>
             </div>
+            @else
+            <div class="text-center">
+               No tienes permisos suficientes para ver esta sección
+            </div>
+            @endif
          </div>
       </div>
    </div>

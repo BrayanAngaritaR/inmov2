@@ -93,6 +93,10 @@
                                        <li>
                                           <a href="{{ route('panel.roles.users.edit', $role) }}"><em class="icon ni ni-plus"></em><span>Agregar usuarios</span></a>
                                        </li>
+
+                                       <li>
+                                          <a href="{{ route('panel.role.permissions.index', $role) }}"><em class="icon ni ni-unlock"></em><span>Agregar permisos</span></a>
+                                       </li>
                                     </ul>
                                  </div>
                               </div>
