@@ -32,55 +32,6 @@
                <!-- content -->
                <div class="content">
 
-                  <!-- section -->
-                  <section>
-                     <div class="container">
-                        <!--about-wrap -->
-                        <div class="about-wrap">
-                           <div class="row">
-                              <div class="col-md-5">
-                                 <div class="about-title ab-hero fl-wrap">
-                                    <h2>¿Por qué usar nuestra plataforma?</h2>
-                                    <h4>Gestionamos los bienes del Municipio de Medellín</h4>
-                                 </div>
-                                 <div class="services-opions fl-wrap">
-                                    <ul>
-                                       <li>
-                                          <i class="fal fa-headset"></i>
-                                          <h4>Disponibilidad de 24 horas</h4>
-                                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                       </li>
-                                       <li>
-                                          <i class="fal fa-users-cog"></i>
-                                          <h4>Filtros avanzados</h4>
-                                          <p>Nulla posuere sapien vitae lectus suscipit, et pulvinar nisi tincidunt. Curabitur convallis fringilla diam sed aliquam.</p>
-                                       </li>
-                                       <li>
-                                          <i class="fal fa-phone-laptop"></i>
-                                          <h4>Multiplataforma</h4>
-                                          <p>Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa.</p>
-                                       </li>
-                                    </ul>
-                                 </div>
-                              </div>
-                              <div class="col-md-1"></div>
-                              <div class="col-md-6">
-                                 <div class="about-img fl-wrap">
-                                    <img src="{{ asset('templates/agencia-app/images/all/27.jpeg') }}" class="respimg" alt="" />
-                                    <div class="about-img-hotifer color-bg">
-                                       <p>InmoAPP es una plataforma que facilitará la gestión de bienes inmuebles.</p>
-                                       <h4>Rodrigo Foronda</h4>
-                                       <h5>Director General</h5>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <!-- about-wrap end  -->
-                     </div>
-                  </section>
-                  <!-- section end-->
-
                   <!--  section  -->
                   <section class="no-padding-section">
                      <div class="hero-slider-wrap carousel-wrap fl-wrap">
@@ -165,6 +116,57 @@
                      </div>
                   </section>
                   <!--  section  end-->
+
+                  <!-- section -->
+                  <section>
+                     <div class="container">
+                        <!--about-wrap -->
+                        <div class="about-wrap">
+                           <div class="row">
+                              <div class="col-md-5">
+                                 <div class="about-title ab-hero fl-wrap">
+                                    <h2>¿Por qué usar nuestra plataforma?</h2>
+                                    <h4>Gestionamos los bienes del Municipio de Medellín</h4>
+                                 </div>
+                                 <div class="services-opions fl-wrap">
+                                    <ul>
+                                       <li>
+                                          <i class="fal fa-headset"></i>
+                                          <h4>Disponibilidad de 24 horas</h4>
+                                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                       </li>
+                                       <li>
+                                          <i class="fal fa-users-cog"></i>
+                                          <h4>Filtros avanzados</h4>
+                                          <p>Nulla posuere sapien vitae lectus suscipit, et pulvinar nisi tincidunt. Curabitur convallis fringilla diam sed aliquam.</p>
+                                       </li>
+                                       <li>
+                                          <i class="fal fa-phone-laptop"></i>
+                                          <h4>Multiplataforma</h4>
+                                          <p>Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa.</p>
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </div>
+                              <div class="col-md-1"></div>
+                              <div class="col-md-6">
+                                 <div class="about-img fl-wrap">
+                                    <img src="{{ asset('templates/agencia-app/images/all/27.jpeg') }}" class="respimg" alt="" />
+                                    <div class="about-img-hotifer color-bg">
+                                       <p>InmoAPP es una plataforma que facilitará la gestión de bienes inmuebles.</p>
+                                       <h4>Rodrigo Foronda</h4>
+                                       <h5>Director General</h5>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- about-wrap end  -->
+                     </div>
+                  </section>
+                  <!-- section end-->
+
+                  
 
                   <!-- section -->
                   <section class="gray-bg">

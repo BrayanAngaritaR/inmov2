@@ -186,78 +186,150 @@
                      <!-- list-single-main-item -->
                      <div class="list-single-main-item fl-wrap">
                         <div class="list-single-main-item-title">
-                           <h3>Detalles</h3>
+                           <h3>Detalles de identificación</h3>
                         </div>
                         <div class="list-single-main-item_content fl-wrap">
-                           <div class="details-list">
-                              <ul>
-                                 <li><span>Código:</span>{{ $property->code }}</li>
-                                 <li><span>Matrícula:</span>{{ $property->plate }}</li>
-                                 <li><span>Área total del lote:</span>
-                                    {{ $property->cadastral_area }} {{ $property->units }}
-                                 </li>
-                                 <li><span>Área construida:</span>{{ $property->construction_area }} {{ $property->units }}</li>
-
-                                 <li><span>Avalúo catastral:</span>${{ number_format($property->property_valuation) }}</li>
-                              </ul>
+                           {{-- <div class="details-list"> --}}
+                           <div class="extra-info text-justify">
+                              @auth
+                              <p><b>Matrícula</b>: {{ $property->plate }}</p>
+                              <p><b>Secretaría a la que se encuentra adscrito el bien inmueble</b>: {{ $property->secretaryship->title }}</p>
+                              {{-- <p><b>Activo fijo</b>: {{ $property->fixed_asset }}</p>
+                              <p><b>Avalúo comercial</b>: {{ $property->commercial_appraisal }}</p>
+                              <p><b>Dirección</b>: {{ $property->sss_address }}</p>
+                              <p><b>Barrio o urbanización</b>: {{ $property->urbanization_or_neighborhood }}</p> --}}
+                              @else
+                              <p><b>Matrícula</b>: {{ $property->plate }}</p>
+                              @endauth
                            </div>
                         </div>
+                     </div>
 
-                        <div class="list-single-main-item-title mt-5">
-                           <h3>Información adicional</h3>
+                     <div class="list-single-main-item fl-wrap">
+                        <div class="list-single-main-item-title">
+                           <h3>Información catastral</h3>
                         </div>
-
-                        <div class="extra-info">
-                           <p class="text-justify">
-                              <b>Act. fijo que contienen lotes</b>: {{ $property->fixed_asset }}
-                           </p>
-
-                           <p class="text-justify">
-                              <b>No. Escritura</b>: {{ $property->plate_number }}
-                           </p>
-
-                           <p class="text-justify">
-                              <b>CBML</b>: {{ $property->cbml }}
-                           </p>
-
-                           <p class="text-justify">
-                              <b>Clasificación del suelo</b>: {{ $property->floorClassification->title }}
-                           </p>
-
-                           <p class="text-justify">
-                              <b>Macroproyecto</b>: {{ $property->macroproject->name }}
-                           </p>
-
-                           <p class="text-justify">
-                              <b>Tratamiento</b>: {{ $property->treatment->title }}
-                           </p>
-
-                           <p class="text-justify">
-                              <b>Polígono</b>: {{ $property->polygon->title }}
-                           </p>
-
-                           <p class="text-justify">
-                              <b>Instrumento de tercer nivel</b>: {{ $property->thirdLevelInstrument->title }}
-                           </p>
-
-                           <p class="text-justify">
-                              <b>Destinación actual</b>: {{ $property->destination->title }}
-                           </p>
-
-                           <p class="text-justify">
-                              <b>Uso del suelo</b>: {{ $property->floorUse->title }}
-                           </p>
-
-                           <p class="text-justify">
-                              <b>Acción</b>: {{ $property->action->title }}
-                           </p>
+                        <div class="list-single-main-item_content fl-wrap">
+                           <div class="extra-info text-justify">
+                              @auth
+                              <p><b>No. de escritura</b>: {{ $property->property_deed }} {{ $property->units }}</p>
+                              <p><b>Superferficie jurídica (Área)</b>: {{ $property->secretaryship->title }}</p>
+                              <p><b>Fecha de escritura</b>: {{ $property->writing_date }}</p>
+                              <p><b>Notaría</b>: {{ $property->notary->title }}</p>
+                              <p><b>CBML</b>: {{ $property->cbml }}</p>
+                              <p><b>Comuna (corregimiento)</b>: {{ $property->commune->name }}</p>
+                              <p><b>Barrio</b>: {{ $property->district->name }}</p>
+                              <p><b>Dirección de catastro</b>: {{ $property->cadastral_address }}</p>
+                              @else
+                              <div class="alert alert-warning">
+                                 <p>Debes <a href="{{ route('register') }}" target="_blank">registrarte</a> o <a href="{{ route('login') }}" target="_blank">iniciar sesión</a> para ver toda la información.</p>
+                              </div>
+                              @endauth
+                           </div>
                         </div>
                      </div>
+
+                     <div class="list-single-main-item fl-wrap">
+                        <div class="list-single-main-item-title">
+                           <h3>Información normativa</h3>
+                        </div>
+                        <div class="list-single-main-item_content fl-wrap">
+                           <div class="extra-info text-justify">
+                              @auth
+                              <p><b>Clasificación del suelo</b>: {{ $property->floorClassification->title }}</p>
+                              <p><b>Macroproyecto</b>: {{ $property->macroproject->name }}</p>
+                              <p><b>Tratamiento</b>: {{ $property->treatment->title }}</p>
+                              <p><b>Polígono</b>: {{ $property->polygon->title }}</p>
+                              <p><b>Instrumento de tercer nivel</b>: {{ $property->thirdLevelInstrument->title }}</p>
+                              <p><b>Uso del suelo</b>: {{ $property->floorUse->title }}</p>
+                              <p><b>Amenaza avenidas torrenciales</b>: {{ $property->threat_torrential_avenue->title }}</p>
+                              <p><b>Amenaza de inundaciones</b>: {{ $property->threat_flood->title }}</p>
+                              <p><b>Amenaza de movimientos en masa</b>: {{ $property->threat_mass_movement->title }}</p>
+                              <p><b>Otras categorías de protección</b>: {{ $property->other_protection->title }}</p>
+                              @else
+                              <div class="alert alert-warning">
+                                 <p>Debes <a href="{{ route('register') }}" target="_blank">registrarte</a> o <a href="{{ route('login') }}" target="_blank">iniciar sesión</a> para ver toda la información.</p>
+                              </div>
+                              @endauth
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="list-single-main-item fl-wrap">
+                        <div class="list-single-main-item-title">
+                           <h3>Información adicional</h3>
+                        </div>
+                        <div class="list-single-main-item_content fl-wrap">
+                           <div class="extra-info text-justify">
+                              @auth
+                              <p>
+                                 <b>Act. fijo que contienen lotes</b>: {{ $property->fixed_asset }}
+                              </p>
+
+                              <p>
+                                 <b>No. Escritura</b>: {{ $property->plate_number }}
+                              </p>
+
+                              <p>
+                                 <b>CBML</b>: {{ $property->cbml }}
+                              </p>
+
+                              <p>
+                                 <b>Clasificación del suelo</b>: {{ $property->floorClassification->title }}
+                              </p>
+
+                              <p>
+                                 <b>Macroproyecto</b>: {{ $property->macroproject->name }}
+                              </p>
+
+                              <p>
+                                 <b>Tratamiento</b>: {{ $property->treatment->title }}
+                              </p>
+
+                              <p>
+                                 <b>Polígono</b>: {{ $property->polygon->title }}
+                              </p>
+
+                              <p>
+                                 <b>Instrumento de tercer nivel</b>: {{ $property->thirdLevelInstrument->title }}
+                              </p>
+
+                              <p>
+                                 <b>Uso del suelo</b>: {{ $property->floorUse->title }}
+                              </p>
+
+                              @else
+
+                              <p>
+                                 <b>Destinación actual</b>: {{ $property->destination->title }}
+                              </p>
+
+                              <p>
+                                 <b>Acción</b>: {{ $property->action->title }}
+                              </p>
+
+                              <p>
+                                 <b>Oportunidad</b>: {{ $property->opportunity->title }}
+                              </p>
+
+                              <p>
+                                 <b>Observaciones</b>: {{ $property->observations }}
+                              </p>
+
+                              <div class="alert alert-warning">
+                                 <p>Debes <a href="{{ route('register') }}" target="_blank">registrarte</a> o <a href="{{ route('login') }}" target="_blank">iniciar sesión</a> para ver toda la información.</p>
+                              </div>
+                              @endauth
+                           </div>
+                        </div>
+                     </div>
+
                      <div class="list-single-main-item fl-wrap">
                         <div class="list-single-main-item-title">
                            <h3>Características adicionales</h3>
                         </div>
                         <div class="list-single-main-item_content fl-wrap">
+                           @auth
                            <div class="listing-features">
                               <ul>
                                  <li>
@@ -286,6 +358,12 @@
                                  </li>
                               </ul>
                            </div>
+                           @else
+
+                           <div class="alert alert-warning">
+                              <p>Debes <a href="{{ route('register') }}" target="_blank">registrarte</a> o <a href="{{ route('login') }}" target="_blank">iniciar sesión</a> para ver toda la información.</p>
+                           </div>
+                           @endauth
                         </div>
                      </div>
                      <!-- list-single-main-item end -->
@@ -296,12 +374,19 @@
                               <h3>Ubicación</h3>
                            </div>
 
+                           @auth
                            <p><b>Dirección</b>: {{ $property->cadastral_address }}</p>
                            <div class="map-container mapC_vis mapC_vis2">
                               <div id="singleMap" data-latitude="{{ $property->map_latitude }}" data-longitude="{{ $property->map_longitude }}" data-mapTitle="Our Location" data-infotitle="{{ $property->sss_description }}" data-infotext="{{ $property->cadastral_address }}"></div>
                               <div class="scrollContorl"></div>
                            </div>
                            <input id="pac-input" class="controls fl-wrap controls-mapwn" autocomplete="on" type="text" placeholder="¿Quieres buscar lugares cerca? " value="" />
+                           @else
+
+                           <div class="alert alert-warning">
+                              <p>Debes <a href="{{ route('register') }}" target="_blank">registrarte</a> o <a href="{{ route('login') }}" target="_blank">iniciar sesión</a> para ver toda la información.</p>
+                           </div>
+                           @endauth
                         </div>
                      </div>
                      <!-- list-single-main-item end -->
@@ -400,6 +485,7 @@
                <div class="box-widget fl-wrap">
                   <div class="box-widget-title fl-wrap">Documentos del inmueble</div>
                   <div class="box-widget-content fl-wrap">
+                     @auth
                      <div class="bwc_download-list">
                         @forelse($files as $file)
                         <a href="{{ asset('storage/files') }}/{{$property->code}}/{{ $file->url }}" target="_blank">
@@ -409,6 +495,9 @@
                         <p>No hay archivos</p>
                         @endforelse
                      </div>
+                     @else
+                        <p>No se pueden ver los archivos sin iniciar sesión</p>
+                        @endauth
                   </div>
                </div>
                <!--box-widget end -->

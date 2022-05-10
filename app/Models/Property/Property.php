@@ -12,12 +12,14 @@ use App\Models\Property\FloorClassification;
 use App\Models\Property\FloorUse;
 use App\Models\Property\Inst_3nivel;
 use App\Models\Property\Macroproject;
+use App\Models\Property\Notary;
 use App\Models\Property\Opportunity;
 use App\Models\Property\Polygon;
 use App\Models\Property\PropertySale;
 use App\Models\Property\PropertyType;
 use App\Models\Property\Secretaryship;
 use App\Models\Property\ThirdLevelInstrument;
+use App\Models\Property\Threat;
 use App\Models\Property\Treatment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -146,6 +148,12 @@ class Property extends Model implements Auditable
       return $this->belongsTo(District::class);
    }
 
+   //Notaría
+   public function notary()
+   {
+      return $this->belongsTo(Notary::class);
+   }
+
    //Fotografías adjuntas
    public function image()
    {
@@ -160,6 +168,16 @@ class Property extends Model implements Auditable
          ->where('featured', 1)
          ->first();
       return $image;
+   }
+
+   //Obtener la imagen destacada si tiene o no
+   public function property_image()
+   {
+      if($this->featured_image()){
+         return 'storage/images/'.$this->code.'/'.$this->featured_image()->url;
+      }
+
+      return 'templates/agencia-app/images/default.png';
    }
 
    //Documentos adjuntos
@@ -228,5 +246,31 @@ class Property extends Model implements Auditable
    public function sale()
    {
       return $this->belongsTo(PropertySale::class, 'property_id');
+   }
+
+   //Amenanas
+
+   #Amenaza avenidas torrenciales
+   public function threat_torrential_avenue()
+   {
+      return $this->belongsTo(Threat::class, 'threat_torrential_avenues_id');
+   }
+
+   #Amenaza de inundaciones
+   public function threat_flood()
+   {
+      return $this->belongsTo(Threat::class, 'threat_floods_id');
+   }
+
+   #Amenaza de movimientos en masa
+   public function threat_mass_movement()
+   {
+      return $this->belongsTo(Threat::class, 'threat_mass_movements_id');
+   }
+
+   #Otras categorías de protección
+   public function other_protection()
+   {
+      return $this->belongsTo(Threat::class, 'other_protection_categories_id');
    }
 }
