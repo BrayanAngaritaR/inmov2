@@ -16,7 +16,7 @@ class AuditsController extends Controller
    {
       $audits = \DB::table('audits')->get();
 
-      // dd($audits);
+      dd($audits);
 
       // +"id": 1
       // +"user_type": "App\Models\User"
