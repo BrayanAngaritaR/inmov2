@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Panel\Base;
+namespace App\Http\Controllers\Panel\Users;
 
 use App\Http\Controllers\Controller;
-use App\Models\Base\Audit;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -14,10 +13,10 @@ class AuditsController extends Controller
       $this->middleware(['auth', 'role:Admin']);
    }
 
-   public function index(User $user)
+   public function index()
    {
-      $audits = Audit::where('user_id', $user->id)->latest()->get();
-      return view('panel.audits.index', compact(['audits', 'user']));
+      $users = User::with('auditables')->latest()->get();
+      return view('panel.users.audits.index', compact('users'));
    }
 
    /**

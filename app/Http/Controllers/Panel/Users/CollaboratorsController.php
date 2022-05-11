@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 
 class CollaboratorsController extends Controller
 {
-   /**
-   * Display a listing of the resource.
-   *
-   * @return \Illuminate\Http\Response
-   */
+   public function __construct()
+   {
+      $this->middleware(['auth', 'role:Admin']);
+   }
+   
    public function index()
    {
       $users = User::role('Collaborator')->get();

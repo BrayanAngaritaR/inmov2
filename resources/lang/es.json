@@ -34,5 +34,7 @@
 	"Published": "Publicado",
 	"Active": "Activo",
 	"Suspended": "Suspendido",
-	"Inactive": "Inactivo"
+	"Inactive": "Inactivo",
+	"created": "creación",
+	"updated": "actualización"
 }

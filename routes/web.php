@@ -207,8 +207,10 @@ Route::get('/panel/roles/{role}/permissions', [App\Http\Controllers\Panel\Users\
 
 /*
 |--------------------------------------------------------------------------
-| Auditaciones - Panel
+| Auditorías - Panel
 |--------------------------------------------------------------------------
 */
 
-Route::get('/panel/audits', [App\Http\Controllers\Panel\Base\AuditsController::class, 'index'])->name('panel.audits.index');
+Route::get('/panel/audits', [App\Http\Controllers\Panel\Users\AuditsController::class, 'index'])->name('panel.users.audits.index');
+
+Route::get('/panel/audits/{user}', [App\Http\Controllers\Panel\Base\AuditsController::class, 'index'])->name('panel.audits.index');
