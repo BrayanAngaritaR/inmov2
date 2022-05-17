@@ -79,7 +79,8 @@
                <div class="nk-tb-list is-separate mb-3">
                   <div class="nk-tb-item nk-tb-head">
                      <div class="nk-tb-col tb-col-mb"><span class="sub-text">Título</span></div>
-                     <div class="nk-tb-col tb-col-lg"><span class="sub-text">Usuarios</span></div>
+                     <div class="nk-tb-col tb-col-lg text-center"><span class="sub-text">Usuarios</span></div>
+                     <div class="nk-tb-col tb-col-lg text-center"><span class="sub-text">Permisos</span></div>
                      <div class="nk-tb-col tb-col-md"><span class="sub-text">Fecha de creación</span></div>
                      <div class="nk-tb-col nk-tb-col-tools">
                         <ul class="nk-tb-actions gx-1 my-n1">
@@ -98,8 +99,12 @@
                         <span class="tb-amount">{{ $role->name }}</span>
                      </div>
 
-                     <div class="nk-tb-col tb-col-mb">
+                     <div class="nk-tb-col tb-col-mb text-center">
                         <span class="tb-amount">{{ $role->users->count() }}</span>
+                     </div>
+
+                     <div class="nk-tb-col tb-col-mb text-center">
+                        <span class="tb-amount">{{ $role->permissions->count() }}</span>
                      </div>
 
                      <div class="nk-tb-col tb-col-mb">
