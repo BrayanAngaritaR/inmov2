@@ -1,6 +1,6 @@
-@extends('panel.app') @section('content') @section('title', 'Agregar permisos al rol ' . __($role->name)) @section('subtitle', 'Aquí podrás agregar los permisos al rol')
+@extends('panel.app') @section('content') @section('title', 'Rol ' . __($role->name)) @section('subtitle', 'Aquí podrás actualizar los permisos del rol')
 
-<div class="nk-block">
+{{-- <div class="nk-block">
    <div class="card shadow-sm border-0 card-preview">
       <div class="row g-gs">
          <div class="col-sm-12">
@@ -27,72 +27,45 @@
          </div>
       </div>
    </div>
-</div>
+</div> --}}
 
 <div class="nk-block">
 
-   <h5 class="mb-4">Permisos que ya tienen este rol</h5>
+   <h5 class="mb-4">Permisos</h5>
 
-   <div class="card shadow-sm border-0 card-preview">
+   <form action="{{ route('panel.role.permissions.store', $role) }}" method="POST">
+      @csrf
 
-      <div class="row g-gs">
-         <div class="table-responsive">
-            <!-- Headline -->
-            <div class="add-listing-headline">
-               <div class="nk-tb-list is-separate mb-3">
-                  <div class="nk-tb-item nk-tb-head">
-                     <div class="nk-tb-col"><span class="sub-text">ID</span></div>
-                     <div class="nk-tb-col tb-col-mb"><span class="sub-text">Nombre</span></div>
-                     <div class="nk-tb-col tb-col-md"><span class="sub-text">Fecha de registro</span></div>
-                     <div class="nk-tb-col nk-tb-col-tools">
-                        <ul class="nk-tb-actions gx-1 my-n1">
-                           <li>
-                              <em class="icon ni ni-more-h"></em>
-                           </li>
-                        </ul>
-                     </div>
+      <div class="card shadow-sm border-0 card-preview">
+         <div class="p-4">
+            <div class="row">
+               @foreach($permissions as $permission)
+               <div class="col-sm-12 col-lg-4">
+                  <div class="form-check">
+                     <input 
+                        name="permissions[]" 
+                        class="form-check-input" 
+                        type="checkbox" 
+                        value="{{ $permission->id }}" 
+                        id="permission_{{ $permission->id }}" 
+
+                        @if(in_array($permission->id, $role_permissions)) checked 
+                        @endif>
+                     <label class="form-check-label" for="permission_{{ $permission->id }}">
+                     {{ $permission->name }}
+                     </label>
                   </div>
-
-                  @foreach($role->permissions as $user)
-                  <div class="nk-tb-item">
-                     <div class="nk-tb-col">
-                        <a href="#">
-                           <div class="user-card">
-                              <div class="user-avatar bg-primary"><span>{{ $user->id }}</span></div>
-                           </div>
-                        </a>
-                     </div>
-
-                     <div class="nk-tb-col tb-col-mb">
-                        <span class="tb-amount">{{ $user->name }}</span>
-                     </div>
-
-                     <div class="nk-tb-col tb-col-mb">
-                        <span class="tb-amount">{{ $user->created_at->diffForHumans() }}</span>
-                     </div>
-
-                     <div class="nk-tb-col nk-tb-col-tools">
-                        <ul class="nk-tb-actions gx-1">
-                           <li>
-                              <div class="drodown">
-                                 <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown" aria-expanded="false"><em class="icon ni ni-more-h"></em></a>
-                                 <div class="dropdown-menu dropdown-menu-right" style="">
-                                    <ul class="link-list-opt no-bdr">
-                                       <li>
-                                          <a href="#"><em class="icon ni ni-shield-star"></em><span>Quitar permiso</span></a>
-                                       </li>
-                                    </ul>
-                                 </div>
-                              </div>
-                           </li>
-                        </ul>
-                     </div>
-                  </div>
-                  @endforeach
                </div>
+               @endforeach
             </div>
          </div>
       </div>
-   </div>
+   
+      <div class="form-group text-right mt-4">
+         <button type="submit" class="btn btn-primary">
+            Actualizar
+         </button>
+      </div>
+   </form>
 </div>
 @stop

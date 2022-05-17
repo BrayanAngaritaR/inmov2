@@ -18,7 +18,11 @@ class RolePermissionsController extends Controller
    public function index(Role $role)
    {
       $permissions = Permission::orderBy('name')->get();
-      return view('panel.roles.permissions.index', compact('role', 'permissions'));
+      $role_permissions = $role->permissions->pluck('id')->toArray();
+
+      return view('panel.roles.permissions.index', compact([
+         'role', 'permissions', 'role_permissions'
+      ]));
    }
 
    /**
@@ -39,22 +43,26 @@ class RolePermissionsController extends Controller
    */
    public function store(Request $request, Role $role)
    {
-      $permission_id = $request->permission_id;
+      $permissions = $request->permissions;
 
-      $check_role_permission = \DB::table('role_has_permissions')
-         ->where('permission_id', $permission_id)
-         ->where('role_id', $role->id)
-         ->first();
+      //dd($permissions);
 
-      if ($check_role_permission) {
-         Session::flash('info', ['error', __('El rol ya tenía el permiso')]);
-         return back();
-      } else {
-         $permission = Permission::whereId($permission_id)->first();
-         $role->givePermissionTo($permission);
-      }
+      $role->syncPermissions($permissions);
 
-      Session::flash('info', ['success', __('Permiso agregado correctamente')]);
+      // $check_role_permission = \DB::table('role_has_permissions')
+      //    ->where('permission_id', $permission_id)
+      //    ->where('role_id', $role->id)
+      //    ->first();
+
+      // if ($check_role_permission) {
+      //    Session::flash('info', ['error', __('El rol ya tenía el permiso')]);
+      //    return back();
+      // } else {
+      //    $permission = Permission::whereId($permission_id)->first();
+      //    $role->givePermissionTo($permission);
+      // }
+
+      Session::flash('info', ['success', __('Información actualizada correctamente')]);
       return back();
 
    }
