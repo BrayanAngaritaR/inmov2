@@ -11,6 +11,33 @@
             <li class="nk-block-tools-opt">
 
                <!-- Modal Trigger Code -->
+               <button type="button" class="btn btn-primary-outline mr-2" data-toggle="modal" data-target="#addPermissions"><em class="icon ni ni-plus"></em><span>Agregar permiso</span></button>
+               <!-- Modal Content Code -->
+               <div class="modal fade" tabindex="-1" id="addPermissions">
+                  <div class="modal-dialog" role="document">
+                     <div class="modal-content">
+                        <a href="#" class="close" data-dismiss="modal" aria-label="Close"> <em class="icon ni ni-cross"></em> </a>
+                        <div class="modal-header"><h5 class="modal-title">Agregar permiso</h5></div>
+                        <form action="{{ route('panel.permissions.store') }}" method="POST">
+                           @csrf   
+                           <div class="modal-body">
+                              <div class="form-group">
+                                 <label>Nombre del permiso</label>
+                                 <input type="text" name="name" class="form-control">
+                              </div>
+
+                              <div class="form-group text-right">
+                                 <button type="submit" class="btn btn-primary">
+                                    Agregar
+                                 </button>
+                              </div>
+                           </div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+
+               <!-- Modal Trigger Code -->
                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalDefault"><em class="icon ni ni-plus"></em><span>Agregar rol</span></button>
                <!-- Modal Content Code -->
                <div class="modal fade" tabindex="-1" id="modalDefault">

@@ -87,7 +87,7 @@
                                     <div class="dropdown-inner">
                                        <ul class="link-list">
                                           <li>
-                                             <a href="#"><em class="icon ni ni-user-alt"></em><span>Ver perfil</span></a>
+                                             <a href="{{ route('panel.users.show', Auth::user()) }}"><em class="icon ni ni-user-alt"></em><span>Ver perfil</span></a>
                                           </li>
                                           <li>
                                              <a href="#"><em class="icon ni ni-setting-alt"></em><span>Configurar mi cuenta</span></a>

@@ -99,6 +99,13 @@
                   </li>
 
                   <li class="nk-menu-item">
+                     <a href="{{ route('panel.permissions.index') }}" class="nk-menu-link">
+                        <span class="nk-menu-icon"><em class="icon ni ni-unlock"></em></span>
+                        <span class="nk-menu-text">Permisos</span>
+                     </a>
+                  </li>
+
+                  <li class="nk-menu-item">
                      <a href="{{ route('panel.users.audits.index') }}" class="nk-menu-link">
                         <span class="nk-menu-icon"><em class="icon ni ni-focus"></em></span>
                         <span class="nk-menu-text">Auditorías</span>

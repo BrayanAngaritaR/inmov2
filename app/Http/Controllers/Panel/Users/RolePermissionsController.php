@@ -3,20 +3,22 @@
 namespace App\Http\Controllers\Panel\Users;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\Session;
 
-class UserController extends Controller
+class RolePermissionsController extends Controller
 {
-   public function __construct()
+   /**
+   * Display a listing of the resource.
+   *
+   * @return \Illuminate\Http\Response
+   */
+   public function index(Role $role)
    {
-      $this->middleware(['auth', 'role:Admin']);
-   }
-   
-   public function index()
-   {
-      $users = User::latest()->get();
-      return view('panel.users.index', compact('users'));
+      $permissions = Permission::orderBy('name')->get();
+      return view('panel.roles.permissions.index', compact('role', 'permissions'));
    }
 
    /**
@@ -26,7 +28,7 @@ class UserController extends Controller
    */
    public function create()
    {
-   // 
+   //
    }
 
    /**
@@ -35,9 +37,26 @@ class UserController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-   public function store(Request $request)
+   public function store(Request $request, Role $role)
    {
-   //
+      $permission_id = $request->permission_id;
+
+      $check_role_permission = \DB::table('role_has_permissions')
+         ->where('permission_id', $permission_id)
+         ->where('role_id', $role->id)
+         ->first();
+
+      if ($check_role_permission) {
+         Session::flash('info', ['error', __('El rol ya tenía el permiso')]);
+         return back();
+      } else {
+         $permission = Permission::whereId($permission_id)->first();
+         $role->givePermissionTo($permission);
+      }
+
+      Session::flash('info', ['success', __('Permiso agregado correctamente')]);
+      return back();
+
    }
 
    /**
@@ -46,9 +65,9 @@ class UserController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-   public function show(User $user)
+   public function show($id)
    {
-      return view('panel.users.show', compact('user'));
+   //
    }
 
    /**

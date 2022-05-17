@@ -28,7 +28,7 @@
                      </div>
 
                      <div class="nk-tb-col tb-col-lg">
-                        <span class="tb-amount">{{ __($audit->event) }}</span>
+                        <span class="tb-amount text-capitalize">{{ __($audit->event) }}</span>
                      </div>
 
                      <div class="nk-tb-col tb-col-lg">

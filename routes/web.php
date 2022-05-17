@@ -184,6 +184,8 @@ Route::get('/panel/districts/{commune_id}', [App\Http\Controllers\Panel\Utils\Di
 
 Route::get('/panel/users', [App\Http\Controllers\Panel\Users\UserController::class, 'index'])->name('panel.users.index');
 
+Route::get('/panel/users/{user}', [App\Http\Controllers\Panel\Users\UserController::class, 'show'])->name('panel.users.show');
+
 Route::get('/panel/collaborators', [App\Http\Controllers\Panel\Users\CollaboratorsController::class, 'index'])->name('panel.users.collaborators.index');
 
 /*
@@ -202,7 +204,34 @@ Route::get('/panel/roles/{role}/users/edit', [App\Http\Controllers\Panel\Users\R
 
 Route::post('/panel/roles/{role}/users/edit', [App\Http\Controllers\Panel\Users\RoleController::class, 'update'])->name('panel.roles.users.update');
 
-Route::get('/panel/roles/{role}/permissions', [App\Http\Controllers\Panel\Users\PermissionsController::class, 'index'])->name('panel.role.permissions.index');
+/*
+|--------------------------------------------------------------------------
+| Permisos - Panel
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/panel/permissions', [App\Http\Controllers\Panel\Users\PermissionsController::class, 'index'])->name('panel.permissions.index');
+
+Route::post('/panel/permissions/create', [App\Http\Controllers\Panel\Users\PermissionsController::class, 'store'])->name('panel.permissions.store');
+
+// Route::get('/panel/permissions/{role}/users', [App\Http\Controllers\Panel\Users\PermissionsController::class, 'show'])->name('panel.permissions.users.show');
+
+// Route::get('/panel/permissions/{role}/users/edit', [App\Http\Controllers\Panel\Users\PermissionsController::class, 'edit'])->name('panel.permissions.users.edit');
+
+// Route::post('/panel/permissions/{role}/users/edit', [App\Http\Controllers\Panel\Users\PermissionsController::class, 'update'])->name('panel.permissions.users.update');
+
+/*
+|--------------------------------------------------------------------------
+| Roles + Permisos - Panel
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/panel/roles/{role}/permissions', [App\Http\Controllers\Panel\Users\RolePermissionsController::class, 'index'])->name('panel.role.permissions.index');
+
+Route::post('/panel/roles/{role}/permissions', [App\Http\Controllers\Panel\Users\RolePermissionsController::class, 'store'])->name('panel.role.permissions.store');
+
+
+
 
 
 /*
