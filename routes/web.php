@@ -184,6 +184,8 @@ Route::get('/panel/districts/{commune_id}', [App\Http\Controllers\Panel\Utils\Di
 
 Route::get('/panel/users', [App\Http\Controllers\Panel\Users\UserController::class, 'index'])->name('panel.users.index');
 
+Route::post('/panel/users', [App\Http\Controllers\Panel\Users\UserController::class, 'update'])->name('panel.users.update');
+
 Route::get('/panel/users/{user}', [App\Http\Controllers\Panel\Users\UserController::class, 'show'])->name('panel.users.show');
 
 Route::get('/panel/collaborators', [App\Http\Controllers\Panel\Users\CollaboratorsController::class, 'index'])->name('panel.users.collaborators.index');

@@ -45,4 +45,12 @@ class User extends Authenticatable implements Auditable
    public function auditables(){
       return $this->hasMany(Audit::class);
    }
+
+   public function goverment(){
+      if(strpos($this->email, '.gov.co') == true){
+         return true;
+      } else {
+         return false;
+      }
+   }
 }
