@@ -12,7 +12,7 @@
       <!--loader end-->
       <!-- main -->
       <div id="main">
-         <div class="medellin" style="height: 100%;">
+         {{-- <div class="medellin" style="height: 100%;">
             <span>M</span>
             <span>E</span>
             <span>D</span>
@@ -21,7 +21,14 @@
             <span>L</span>
             <span>Í</span>
             <span>N</span>
+         </div> --}}
+
+         <div style="height: 100vh; padding: 0px; margin: 0px;">
+            <video id="homeVideo1" autoplay="" muted="" loop="">
+               <source src="{{ asset('templates/agencia-app/videos/home-video.mp4') }}" type="video/mp4">
+            </video>
          </div>
+
          <!-- header -->
          @include('templates.agencia-app.includes.header.header')
          <!-- header end  -->
