@@ -23,10 +23,11 @@
             <span>N</span>
          </div> --}}
 
-         <div style="height: 100vh; padding: 0px; margin: 0px;">
-            <video id="homeVideo1" autoplay="" muted="" loop="">
+         <div style="padding: 0px; margin: 0px;">
+            {{-- <video id="homeVideo1" autoplay="" muted="" loop="">
                <source src="{{ asset('templates/agencia-app/videos/home-video.mp4') }}" type="video/mp4">
-            </video>
+            </video> --}}
+            <img src="{{ asset('templates/agencia-app/images/home-video.gif') }}" width="100%">
          </div>
 
          <!-- header -->

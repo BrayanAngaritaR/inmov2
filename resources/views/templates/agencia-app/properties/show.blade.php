@@ -1,7 +1,7 @@
 @extends('templates.agencia-app.app') @section('content')
 
 <div class="content">
-   <section class="hidden-section single-hero-section" data-scrollax-parent="true" id="sec1">
+   {{-- <section class="hidden-section single-hero-section" data-scrollax-parent="true" id="sec1">
       <div class="bg-wrap bg-parallax-wrap-gradien">
          @forelse($images as $image)
             @if($image->featured)
@@ -54,7 +54,7 @@
             </div>
          </div>
       </div>
-   </section>
+   </section> --}}
 
    <div class="breadcrumbs fw-breadcrumbs smpar fl-wrap">
       <div class="container">
@@ -62,14 +62,34 @@
             <a href="#">Inicio</a>
             <a href="#">Bienes</a>
             <span>{{ $property->sss_description }}</span>
+            <span>{{ $property->sss_description }}</span>
+            
          </div>
          <div class="show-more-snopt smact"><i class="fal fa-ellipsis-v"></i></div>
          <div class="show-more-snopt-tooltip">
             <a href="#"> <i class="fas fa-exclamation-triangle"></i> Reportar </a>
          </div>
          <a class="print-btn tolt" href="javascript:window.print()" data-microtip-position="bottom" data-tooltip="Imprimir"><i class="fas fa-print"></i></a>
-         {{-- <a class="compare-top-btn tolt" data-microtip-position="bottom" data-tooltip="Compare" href="#"><i class="fas fa-random"></i></a> --}}
-         <div class="like-btn"><i class="fas fa-heart"></i> Guardar</div>
+         <div class="like-btn border-0 text-muted shadow-none"><i class="fas fa-heart text-muted"></i> Guardar</div>
+         <div class="like-btn border-0 text-muted shadow-none"><i class="fas fa-share text-muted"></i> Compartir</div>
+      </div>
+   </div>
+
+   <div class="breadcrumbs fw-breadcrumbs smpar fl-wrap">
+      <div class="container">
+         <div class="breadcrumbs-list">
+            <a href="#">Inicio</a>
+            <a href="#">Bienes</a>
+            <span>{{ $property->sss_description }}</span>
+            <span>{{ $property->sss_description }}</span>
+         </div>
+         <div class="show-more-snopt smact"><i class="fal fa-ellipsis-v"></i></div>
+         <div class="show-more-snopt-tooltip">
+            <a href="#"> <i class="fas fa-exclamation-triangle"></i> Reportar </a>
+         </div>
+         <a class="print-btn tolt" href="javascript:window.print()" data-microtip-position="bottom" data-tooltip="Imprimir"><i class="fas fa-print"></i></a>
+         <div class="like-btn border-0 text-muted shadow-none"><i class="fas fa-heart text-muted"></i> Guardar</div>
+         <div class="like-btn border-0 text-muted shadow-none"><i class="fas fa-share text-muted"></i> Compartir</div>
       </div>
    </div>
 

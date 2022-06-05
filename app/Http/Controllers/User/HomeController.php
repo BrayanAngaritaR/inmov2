@@ -19,7 +19,7 @@ class HomeController extends Controller
 
    public function __construct()
    {
-      $this->template = env('TEMPLATE');
+      $this->template = env('TEMPLATE') ? 'templates.agencia-app.' : 'templates.agencia-app.';
    }
    
    /**

@@ -322,4 +322,32 @@ p.font-medium{
    border-color: #f9f9f9;
 }
 
+.main-register-bg {
+   background:url(../images/medellin.svg);
+   background-repeat: no-repeat;
+}
 
+.font-16{
+   font-size: 16px;
+}
+
+.filter-border-primary {
+   color: #3271fb;
+   border: 1px solid #3271fb;
+   padding: 5px 30px;
+   margin-right: 15px;
+   border-radius: 5px;
+}
+
+.filter-border-primary:hover{
+   color: white;
+   background: #3271fb;
+}
+
+.border-blue{
+   border: 1px solid #3271fb;
+}
+
+.secondary-nav{
+   top: 70%;
+}

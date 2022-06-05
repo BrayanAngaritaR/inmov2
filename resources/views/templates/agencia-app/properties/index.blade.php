@@ -1,4 +1,5 @@
-@extends('templates.agencia-app.app') @section('content')
+@extends('templates.agencia-app.app') 
+@section('content')
 <div class="content">
    <!-- Map -->
    <div class="map-container fw-map big_map">
@@ -28,8 +29,8 @@
    <div class="breadcrumbs fw-breadcrumbs smpar fl-wrap">
       <div class="container-fluid">
          <div class="breadcrumbs-list">
-         	<a href="#">Inicio</a>
-         	<span>Propiedades</span>
+            <a href="#">Inicio</a>
+            <span>Propiedades</span>
          </div>
          <div class="share-holder sh_in2 hid-share">
             <a href="#" class="share-btn showshare sfcs"> <i class="fas fa-share-alt"></i> Compartir </a>
@@ -58,9 +59,7 @@
    </div>
    <!-- breadcrumbs end -->
    <!-- section -->
-   <section class="gray-bg small-padding">
-
-      
+   <section class="small-padding">
 
       <div class="container-fluid">
          <div class="row">
@@ -69,7 +68,7 @@
             <div class="col-sm-12 col-md-2">
 
                <div class="filter-elements scroll-to-fixed-fixed">
-                  <a class="sidebar-links-btn fl-wrap" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                  <!--<a class="sidebar-links-btn fl-wrap" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
                      <i class="far fa-sliders-h"></i>
                      <span>Filtros</span>
                   </a>
@@ -92,8 +91,73 @@
                   <a class="sidebar-links-btn fl-wrap">
                      <i class="fal fa-car-building"></i>
                      <span>Servicios</span>
-                  </a>
+                  </a>-->
+
+                  <nav class="scroll-nav scroll-init fixed-column_menu-init scroll-to-fixed-fixed">
+                     <ul class="no-list-style">
+                        <li>
+                           <a class="" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"><i class="far fa-sliders-h"></i></a><span>Filtros</span>
+                        </li>
+                        <li>
+                           <a href="#" class="">
+                              <i class="fal fa-home"></i>
+                           </a>
+                           <span>Residencial</span>
+                        </li>
+                        
+                        <li>
+                           <a href="#" class="">
+                              <i class="fal fa-hotel"></i>
+                           </a>
+                           <span>Dotacional</span>
+                        </li>
+
+                        <li>
+                           <a href="#" class="">
+                              <i class="fal fa-warehouse-alt"></i>
+                           </a>
+                           <span>Lotes</span>
+                        </li>
+
+                        <li>
+                           <a href="#" class="">
+                              <i class="fal fa-car-building"></i>
+                           </a>
+                           <span>Servicios</span>
+                        </li>
+                     </ul>
+                     <div class="progress-indicator">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 34 34">
+                           <circle cx="16" cy="16" r="15.9155" class="progress-bar__background"></circle>
+                           <circle cx="16" cy="16" r="15.9155" class="progress-bar__progress js-progress-bar" style="stroke-dashoffset: 64.7169px;"></circle>
+                        </svg>
+                     </div>
+                  </nav>
                </div>
+
+               <div class="secondary-nav vis_secnav">
+                  <ul>
+                     <li>
+                        <a data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" href="#" class="tolt" data-microtip-position="left" data-tooltip="Otros"> <i class="fal fa-truck-couch"></i></a>
+                     </li>
+                  </ul>
+               </div>
+
+               <div class="offcanvas offcanvas-end pt-5 mt-5" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                  <div class="offcanvas-header">
+                     <h5 id="offcanvasRightLabel">Otros filtros de la derecha</h5>
+                     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                  </div>
+                  <div class="offcanvas-body">
+                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                     consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                     proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  </div>
+               </div>
+
 
                <!-- Filters section -->
                <div class="offcanvas offcanvas-start pt-5 mt-5" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
@@ -336,14 +400,11 @@
                               </div>
                            </div>
                         </div>
-                        <!--<a class="back-tofilters color-bg custom-scroll-link fl-wrap scroll-to-fixed-fixed" href="#filters-column">Subir a los filtros <i class="fas fa-caret-up"></i></a>-->
                      </div>
                      <!-- /Filters -->
                   </div>
                </div>
                <!-- /Filters section -->
-
-
                
             </div>
             <!-- search sidebar end-->
@@ -352,7 +413,13 @@
                <div class="list-main-wrap-header box-list-header fl-wrap">
                   <!-- list-main-wrap-title-->
                   <div class="list-main-wrap-title">
-                     <h2>Resultados de búsqueda: <strong>{{ $properties->count() }}</strong></h2>
+                     <h2>{{ $properties->count() }} inmuebles encontrados</h2>
+
+                     <p class="mt-5 font-16 mb-2">Filtros sugeridos</p>
+
+                     <a href="#" class="filter-border-primary">Servicios</a>
+                     <a href="#" class="filter-border-primary">Comercial</a>
+                     <a href="#" class="filter-border-primary">En venta</a>
                   </div>
                   <!-- list-main-wrap-title end-->
                   <!-- list-main-wrap-opt-->
@@ -361,18 +428,18 @@
                      <div class="price-opt">
                         <span class="price-opt-title">Ordenar por:</span>
                         <div class="listsearch-input-item">
-                           <select data-placeholder="Popularity" class="chosen-select no-search-select" id="orderBy">
+                           <select data-placeholder="Popularity" class="chosen-select no-search-select border-blue" id="orderBy">
                               <option value="code">Código</option>
-		                        <option value="high_price">Precio más alto a más bajo</option>
-		                        <option value="low_price">Precio más bajo a más alto</option>
-		                        <option value="latest" @if($filter_orderBy == 'latest') selected @endif>Últimos añadidos</option>
-		                        <option value="newest" @if($filter_orderBy == 'newest') selected @endif>Primeros añadidos</option>
+                              <option value="high_price">Precio más alto a más bajo</option>
+                              <option value="low_price">Precio más bajo a más alto</option>
+                              <option value="latest" @if($filter_orderBy == 'latest') selected @endif>Últimos añadidos</option>
+                              <option value="newest" @if($filter_orderBy == 'newest') selected @endif>Primeros añadidos</option>
                            </select>
                         </div>
                      </div>
                      <!-- price-opt end-->
                      <!-- price-opt-->
-                     <div class="grid-opt">
+                     <div class="grid-opt border-0">
                         <ul class="no-list-style">
                            <li class="grid-opt_act">
                               <span class="two-col-grid act-grid-opt tolt" data-microtip-position="bottom" data-tooltip="Vista de cuadrícula"><i class="far fa-th"></i></span>
@@ -388,76 +455,75 @@
                </div>
                <!-- list-main-wrap-header end-->
                <!-- listing-item-wrap-->
-               <div class="listing-item-container box-list_ic fl-wrap">
+
+               <div class="row listing-item-container box-list_ic fl-wrap">
                   <!-- listing-item -->
                   @forelse($properties as $property)
-			         <div class="listing-item">
-			         	<article class="geodir-category-listing fl-wrap">
-			         		<div class="geodir-category-img fl-wrap">
-			         			<a href="{{ route('user.properties.show', $property) }}" class="geodir-category-img_item">
-			         				@if($property->featured_image())
-			                        <img src="{{ asset('storage/images') }}/{{$property->code}}/{{ $property->featured_image()->url }}" alt="" />
-			                     @else
-			                        <img src="{{ asset('templates/agencia-app/images/default.png') }}" alt="" />
-			                     @endif
-			         				<div class="overlay"></div>
-			         			</a>
+                  <div class="listing-item col-sm-12 col-md-4">
+                     <article class="geodir-category-listing fl-wrap">
+                        <div class="geodir-category-img fl-wrap">
+                           <a href="{{ route('user.properties.show', $property) }}" class="geodir-category-img_item">
+                              @if($property->featured_image())
+                                 <img src="{{ asset('storage/images') }}/{{$property->code}}/{{ $property->featured_image()->url }}" alt="" />
+                              @else
+                                 <img src="{{ asset('templates/agencia-app/images/default.png') }}" alt="" />
+                              @endif
+                              <div class="overlay"></div>
+                           </a>
 
-			         			<div class="geodir-category-location">
-			         				<a href="{{ route('user.properties.show', $property) }}" class="map-item scroll-top-map tolt" data-microtip-position="top-left" data-tooltip="On the map">
-			         					<i class="fas fa-map-marker-alt"></i>
-			         					{{ $property->cadastral_address }} - {{ $property->district->name }}
-			         				</a>
-			         			</div>
+                           <div class="geodir-category-location">
+                              <a href="{{ route('user.properties.show', $property) }}" class="map-item scroll-top-map tolt" data-microtip-position="top-left" data-tooltip="On the map">
+                                 <i class="fas fa-map-marker-alt"></i>
+                                 {{ $property->cadastral_address }} - {{ $property->district->name }}
+                              </a>
+                           </div>
 
-			         			<ul class="list-single-opt_header_cat">
-			         				<li><a href="{{ route('user.properties.show', $property) }}" class="cat-opt blue-bg">{{$property->action->title}}</a></li>
-			                     <li><a href="{{ route('user.properties.show', $property) }}" class="cat-opt color-bg">Lote</a></li>
-			         			</ul>
+                           <ul class="list-single-opt_header_cat">
+                              <li><a href="{{ route('user.properties.show', $property) }}" class="cat-opt blue-bg">{{$property->action->title}}</a></li>
+                              <li><a href="{{ route('user.properties.show', $property) }}" class="cat-opt color-bg">Lote</a></li>
+                           </ul>
 
-			         			<a href="#" class="geodir_save-btn tolt" data-microtip-position="left" data-tooltip="Guardar"><span><i class="fal fa-heart"></i></span></a>
+                           <a href="#" class="geodir_save-btn tolt" data-microtip-position="left" data-tooltip="Guardar"><span><i class="fal fa-heart"></i></span></a>
 
-			         			{{-- <a href="#" class="compare-btn tolt" data-microtip-position="left" data-tooltip="Compare"><span><i class="fal fa-random"></i></span></a> --}}
+                           <div class="geodir-category-listing_media-list">
+                              <span><i class="fas fa-camera"></i> 0</span>
+                           </div>
+                        </div>
 
-			         			<div class="geodir-category-listing_media-list">
-			         				<span><i class="fas fa-camera"></i> 0</span>
-			         			</div>
-			         		</div>
+                        <div class="geodir-category-content fl-wrap">
+                           <div class="geodir-category-content_price">
+                              <span class="text-dark">${{ number_format($property->property_valuation) }} <small>COP</small></span>
+                           </div>
 
-			         		<div class="geodir-category-content fl-wrap">
-			         			<div class="geodir-category-content_price">
-			         				${{ number_format($property->property_valuation) }}
-			         			</div>
+                           <h3 class="mt-3">
+                              <a href="{{ route('user.properties.show', $property) }}">
+                                 {{ Str::limit($property->sss_description, 50) }}
+                              </a>
+                           </h3>
 
-			         			<h3 class="mt-3">
-			                     <a href="{{ route('user.properties.show', $property) }}">
-			                        {{ Str::limit($property->sss_description, 50) }}
-			                     </a>
-			                  </h3>
+                           <p class="mt-4">
+                              Este inmueble cuenta con la matrícula <b>{{ $property->plate }}</b> y su código es <b>{{ $property->code }}</b>
+                           </p>
 
-			                  <p class="mt-4">
-			                     Este inmueble cuenta con la matrícula <b>{{ $property->plate }}</b> y su código es <b>{{ $property->code }}</b>
-			                  </p>
-
-			                  <div class="geodir-category-content-details">
-			                  	<ul>
-			                        <li>
-			                           <i class="fal fa-cube"></i>
-			                           <span>{{ $property->cadastral_area }} {{ $property->units }}</span>
-			                        </li>
-			                        <li>
-			                           <i class="fas fa-hard-hat"></i>
-			                           <span>{{ $property->construction_area }} {{ $property->units }}</span>
-			                        </li>
-			                     </ul>
-			                  </div>
-			               </div>
-			            </article>
-			         </div>
-			         @empty
-			         <img src="{{ asset('templates/agencia-app/images/404.svg') }}" width="40%" class="img-fluid">
-			         <h5 class="mt-4">No se encontraron resultados para tu búsqueda, prueba con otros filtros.</h5>
-			         @endforelse
+                           <div class="geodir-category-content-details">
+                              <ul>
+                                 <li>
+                                    <i class="fal fa-cube"></i>
+                                    <span>{{ $property->cadastral_area }} {{ $property->units }}</span>
+                                 </li>
+                                 <li>
+                                    <i class="fas fa-hard-hat"></i>
+                                    <span>{{ $property->construction_area }} {{ $property->units }}</span>
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                     </article>
+                  </div>
+                  @empty
+                  <img src="{{ asset('templates/agencia-app/images/404.svg') }}" width="40%" class="img-fluid">
+                  <h5 class="mt-4">No se encontraron resultados para tu búsqueda, prueba con otros filtros.</h5>
+                  @endforelse
                </div>
                <!-- listing-item-wrap end-->
             </div>
@@ -672,11 +738,11 @@
 </script>
 
 <script type="text/javascript">
-	function getDistricts(){
-		let commune_id = $('#commune_id').val();
-		//district
+   function getDistricts(){
+      let commune_id = $('#commune_id').val();
+      //district
 
-		let data = {
+      let data = {
          commune_id
       };
 
@@ -695,7 +761,7 @@
             success:function(data)
             {
                if(data){
-               	//alert("Info cargada");
+                  //alert("Info cargada");
                   //console.log(data);
                   $('#district_id').empty();
                   $('#district_id').append('<option hidden value="all">Seleccionar barrio</option>'); 
@@ -723,11 +789,11 @@
       //       }
       //    },
       // });
-	}
+   }
 
-	function orderBy(){
-		let orderBy = $('#orderBy').val();
-	}
+   function orderBy(){
+      let orderBy = $('#orderBy').val();
+   }
 
    function applyFilters(){
 
@@ -765,7 +831,7 @@
 
       const url = '{{route('user.properties.index') }}';
       window.location.href = url 
-									//+ '?orderBy=' + orderBy 
+                           //+ '?orderBy=' + orderBy 
                            + '?commune=' + commune
                            + '?district=' + district
                            + '?destination=' + destination
@@ -782,5 +848,48 @@
                            + '?management=' + management
                            ;
    }
+
+
+
+
+
+   document.addEventListener("DOMContentLoaded", function(event) {
+   
+const showNavbar = (toggleId, navId, bodyId, headerId) =>{
+const toggle = document.getElementById(toggleId),
+nav = document.getElementById(navId),
+bodypd = document.getElementById(bodyId),
+headerpd = document.getElementById(headerId)
+
+// Validate that all variables exist
+if(toggle && nav && bodypd && headerpd){
+toggle.addEventListener('click', ()=>{
+// show navbar
+nav.classList.toggle('show')
+// change icon
+toggle.classList.toggle('bx-x')
+// add padding to body
+bodypd.classList.toggle('body-pd')
+// add padding to header
+headerpd.classList.toggle('body-pd')
+})
+}
+}
+
+showNavbar('header-toggle','nav-bar','body-pd','header')
+
+/*===== LINK ACTIVE =====*/
+const linkColor = document.querySelectorAll('.nav_link')
+
+function colorLink(){
+if(linkColor){
+linkColor.forEach(l=> l.classList.remove('active'))
+this.classList.add('active')
+}
+}
+linkColor.forEach(l=> l.addEventListener('click', colorLink))
+
+ // Your code to run since DOM is loaded and ready
+});
 </script>
 @endpush

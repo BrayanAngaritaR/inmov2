@@ -388,14 +388,14 @@ function initHomeradar() {
         var c = $(window).scrollTop();
         var d = c / (a - b) * 100;
         progressBar.css("stroke-dashoffset", 100 - (d));
-        if ($(this).scrollTop() > 150) {
-            $(".to-top").fadeIn(500);
-            $(".secondary-nav").addClass("vis_secnav");
-        } else {
-            $(".to-top").fadeOut(500);
+        // if ($(this).scrollTop() > 150) {
+        //     $(".to-top").fadeIn(500);
+        //     $(".secondary-nav").addClass("vis_secnav");
+        // } else {
+        //     $(".to-top").fadeOut(500);
 
-            $(".secondary-nav").removeClass("vis_secnav");
-        }
+        //     $(".secondary-nav").removeClass("vis_secnav");
+        // }
     });
     //   scroll to------------------
     $(".custom-scroll-link").on("click", function () {
