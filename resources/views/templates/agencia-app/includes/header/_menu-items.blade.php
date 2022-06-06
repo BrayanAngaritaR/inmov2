@@ -5,14 +5,7 @@
       </li>
 
       <li>
-         <a href="#">Propiedades <i class="fa fa-caret-down"></i></a>
-         <!--second level -->
-         <ul>
-            <li><a href="{{ route('user.properties.index') }}?commune=all?district=all?destination=all?opportunity=1?action=all?area=all?macroproject=all?treatment=all?instrument=all?floor_use=all?rph=0?loan=0?bic=0?management=0">Oportunidad inmobiliaria</a></li>
-
-            <li><a href="{{ route('user.properties.index') }}?commune=all?district=all?destination=all?opportunity=2?action=all?area=all?macroproject=all?treatment=all?instrument=all?floor_use=all?rph=0?loan=0?bic=0?management=0">Gestión comercial</a></li>
-         </ul>
-         <!--second level end-->
+         <a href="{{ route('user.properties.index') }}?commune=all?district=all?destination=all?opportunity=1?action=all?area=all?macroproject=all?treatment=all?instrument=all?floor_use=all?rph=0?loan=0?bic=0?management=0">Gestión inmobiliaria<i class="fa fa-caret-down"></i></a>
       </li>
 
       <li>
@@ -23,7 +16,7 @@
 
       <li>
          <a href="{{ route('user.projects.pigp.index') }}" class="act-link">
-            <b>PIGP</b>
+            <b>Operación urbana de Prado</b>
          </a>
       </li>
 
@@ -43,18 +36,11 @@
       </li>
 
       <li>
-         <a href="#">Calculadora <i class="fa fa-caret-down"></i></a>
-         <!--second level -->
-         <ul>
-            <li><a href="{{ route('user.soon.index') }}">Oportunidades</a></li>
-            <li><a href="{{ route('user.soon.index') }}">Costos de estructuración</a></li>
-            <li><a href="{{ route('user.soon.index') }}">Cabida normativa</a></li>
-            <li><a href="{{ route('user.soon.index') }}">Producto inmobiliario</a></li>
-            <li><a href="{{ route('user.soon.index') }}">CAPEX</a></li>
-            <li><a href="{{ route('user.soon.index') }}">Rentabilidad</a></li>
-         </ul>
-         <!--second level end-->
+         <a href="#" class="act-link">
+            <b>Equipo APP</b>
+         </a>
       </li>
+
       <li>
          <a href="#">Más <i class="fa fa-caret-down"></i></a>
          <!--second level -->
