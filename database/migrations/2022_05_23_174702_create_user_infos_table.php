@@ -17,7 +17,7 @@ class CreateUserInfosTable extends Migration
          $table->id();
          $table->string('phone')->default('0');
          $table->string('position')->nullable();
-         $table->unsignedBigInteger('dependency_id')->nullable();//Responsable
+         $table->unsignedBigInteger('dependency_id')->default(1);
          $table->foreign('dependency_id')->references('id')->on('dependencies');
          $table->unsignedBigInteger('user_id')->nullable();//Responsable
          $table->foreign('user_id')->references('id')->on('users');

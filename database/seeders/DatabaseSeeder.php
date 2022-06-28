@@ -3,10 +3,9 @@
 namespace Database\Seeders;
 
 //Models
-use App\Models\User;
 use App\Models\Property\PropertyType;
-
-//Seeders
+use App\Models\User;
+use App\Models\User\Dependency;
 use Database\Seeders\DestinationSeeder;
 use Database\Seeders\DistrictSeeder;
 use Database\Seeders\FloorClasificationSeeder;
@@ -20,8 +19,8 @@ use Database\Seeders\ThirdLevelInstrumentSeeder;
 use Database\Seeders\ThreatSeeder;
 use Database\Seeders\TreatmentSeeder;
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -110,6 +109,22 @@ class DatabaseSeeder extends Seeder
          'email' => 'scastroh@unal.edu.co',
          'password' => '$2y$10$GPS1SvbLOb.tCcKUDUCdcOCEllnorcRG2geHkBcHJ/YWHMyZW9pPW',
          'created_at' => '2022-02-16 01:09:46'
+      ]);
+
+      /*
+      |--------------------------------------------------------------------------
+      | Dependencias
+      |--------------------------------------------------------------------------
+      */
+
+      $default_dependency = Dependency::create([
+         'title' => 'Sin dependencia',
+         'slug' => 'sin-dependencia'
+      ]);
+
+      Dependency::create([
+         'title' => 'AGENCIA APP',
+         'slug' => 'agencia-app'
       ]);
 
       /*

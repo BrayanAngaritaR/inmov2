@@ -71,6 +71,7 @@
                                        <li>
                                           <a href="{{ route('user.properties.show', $property) }}"><em class="icon ni ni-eye"></em><span>Ver inmueble</span></a>
                                        </li>
+                                       @if(Auth::user()->hasRole(['Admin', 'Collaborator', 'Editor']))
                                        <li>
                                           <a href="{{ route('panel.properties.edit', $property) }}"><em class="icon ni ni-edit"></em><span>Editar inmueble</span></a>
                                        </li>
@@ -86,6 +87,7 @@
                                        <li>
                                           <a href="{{ route('panel.audits.property.show', $property) }}"><em class="icon ni ni-focus"></em><span>Ver auditorías</span></a>
                                        </li>
+                                       @endif
                                     </ul>
                                  </div>
                               </div>

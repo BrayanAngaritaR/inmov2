@@ -67,7 +67,7 @@
                                           <em class="icon ni ni-user-alt"></em>
                                        </div>
                                        <div class="user-info d-none d-md-block">
-                                          <div class="user-status">Administrador</div>
+                                          <div class="user-status">{{ Auth::user()->user_info }}</div>
                                           <div class="user-name dropdown-indicator">{{ Auth::user()->name }}</div>
                                        </div>
                                     </div>
@@ -90,10 +90,10 @@
                                              <a href="{{ route('panel.users.show', Auth::user()) }}"><em class="icon ni ni-user-alt"></em><span>Ver perfil</span></a>
                                           </li>
                                           <li>
-                                             <a href="#"><em class="icon ni ni-setting-alt"></em><span>Configurar mi cuenta</span></a>
+                                             <a href="{{ route('panel.users.show', Auth::user()) }}"><em class="icon ni ni-setting-alt"></em><span>Configurar mi cuenta</span></a>
                                           </li>
                                           <li>
-                                             <a href="{{-- html/user-profile-activity.html --}}"><em class="icon ni ni-activity-alt"></em><span>Actividad de mi cuenta</span></a>
+                                             <a href="{{ route('panel.audits.activity.index') }}"><em class="icon ni ni-activity-alt"></em><span>Actividad de mi cuenta</span></a>
                                           </li>
                                        </ul>
                                     </div>

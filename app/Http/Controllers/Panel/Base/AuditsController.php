@@ -7,12 +7,13 @@ use App\Models\Base\Audit;
 use App\Models\Property\Property;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Auth;
 
 class AuditsController extends Controller
 {
    public function __construct()
    {
-      $this->middleware(['auth', 'role:Admin|Supervisor']);
+      $this->middleware(['auth', 'role:Admin|Supervisor'])->except('activity');
    }
 
    public function index(User $user)
@@ -20,13 +21,20 @@ class AuditsController extends Controller
       $audits = Audit::where('user_id', $user->id)->latest()->get();
       return view('panel.audits.index', compact(['audits', 'user']));
    }
-   
+
    public function show(Property $property)
    {
       $audits = Audit::where('auditable_type', 'App\Models\Property\Property')
          ->where('auditable_id', $property->id)
          ->latest()->get();
       return view('panel.audits.show.index', compact(['audits', 'property']));
+   }
+
+   public function activity()
+   {
+      $user = Auth::user();
+      $audits = Audit::where('user_id', $user->id)->latest()->get();
+      return view('panel.audits.index', compact(['audits', 'user']));
    }
 
    /**

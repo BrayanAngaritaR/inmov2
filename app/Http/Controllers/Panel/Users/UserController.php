@@ -14,7 +14,7 @@ class UserController extends Controller
 {
    public function __construct()
    {
-      $this->middleware(['auth', 'role:Admin']);
+      $this->middleware(['auth', 'role:Admin'])->except('show', 'update');
    }
    
    public function index()
@@ -52,9 +52,15 @@ class UserController extends Controller
    */
    public function show(User $user)
    {
-      $dependencies = Dependency::orderBy('title')->get();
-      $user_info = UserInfo::where('user_id', Auth::id())->first();
-      return view('panel.users.show', compact(['user', 'user_info', 'dependencies']));
+      if(Auth::id() == $user->id){
+         $dependencies = Dependency::orderBy('title')->get();
+         $user_info = UserInfo::where('user_id', Auth::id())->first();
+         return view('panel.users.show', compact(['user', 'user_info', 'dependencies']));
+      } else {
+         Session::flash('info', ['error', __('No puedes editar un perfil diferente')]);
+         return redirect('/');
+      }
+      
    }
 
    /**

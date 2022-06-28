@@ -43,6 +43,7 @@
                      <!-- .nk-menu-sub -->
                   </li>
 
+                  @if(Auth::user()->hasRole(['Admin', 'Collaborator', 'Editor']))
                   <li class="nk-menu-heading">
                      <h6 class="overline-title text-primary-alt">Contenido</h6>
                   </li>
@@ -104,13 +105,16 @@
                         <span class="nk-menu-text">Permisos</span>
                      </a>
                   </li>
+                  @endif
 
+                  @if(Auth::user()->hasRole(['Admin', 'Collaborator', 'Editor', 'Auditor']))
                   <li class="nk-menu-item">
                      <a href="{{ route('panel.users.audits.index') }}" class="nk-menu-link">
                         <span class="nk-menu-icon"><em class="icon ni ni-focus"></em></span>
                         <span class="nk-menu-text">Auditorías</span>
                      </a>
                   </li>
+                  @endif
                </ul>
             <!-- .nk-menu -->
          </div>

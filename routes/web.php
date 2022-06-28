@@ -247,3 +247,5 @@ Route::get('/panel/audits', [App\Http\Controllers\Panel\Users\AuditsController::
 Route::get('/panel/audits/property/{property}', [App\Http\Controllers\Panel\Base\AuditsController::class, 'show'])->name('panel.audits.property.show');
 
 Route::get('/panel/audits/{user}', [App\Http\Controllers\Panel\Base\AuditsController::class, 'index'])->name('panel.audits.index');
+
+Route::get('/panel/activity', [App\Http\Controllers\Panel\Base\AuditsController::class, 'activity'])->name('panel.audits.activity.index');
