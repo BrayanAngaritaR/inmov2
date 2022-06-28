@@ -5,7 +5,7 @@
       </li>
 
       <li>
-         <a href="{{ route('user.properties.index') }}?commune=all?district=all?destination=all?opportunity=1?action=all?area=all?macroproject=all?treatment=all?instrument=all?floor_use=all?rph=0?loan=0?bic=0?management=0">Gestión inmobiliaria<i class="fa fa-caret-down"></i></a>
+         <a href="{{ route('user.properties.index') }}?commune=all?district=all?destination=all?opportunity=1?action=all?area=all?macroproject=all?treatment=all?instrument=all?floor_use=all?rph=0?loan=0?bic=0?management=0">Gestión inmobiliaria</a>
       </li>
 
       <li>

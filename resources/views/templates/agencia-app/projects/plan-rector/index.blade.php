@@ -55,7 +55,7 @@ https://developers.arcgis.com/javascript/latest/sample-code/popup-custom-action/
    </nav>
 
    <!-- Map -->
-   <div class="map-container fw-map big_map" style="height: 90vh;">
+   {{-- <div class="map-container fw-map big_map" style="height: 100vh;">
       <div id="map-main"></div>
 
       <ul class="mapnavigation no-list-style">
@@ -77,10 +77,10 @@ https://developers.arcgis.com/javascript/latest/sample-code/popup-custom-action/
          <span><i class="fal fa-location"></i></span>
       </div>
       <div class="map-close"><i class="fas fa-times"></i></div>
-   </div>
+   </div> --}}
    <!-- Map end -->
 
-   <div class="row">
+   {{-- <div class="row">
       <div class="col-sm-12 col-lg-6">
          <label>Cambiar mapa</label>
          <select class="form-select" id="mapLayer">
@@ -98,10 +98,10 @@ https://developers.arcgis.com/javascript/latest/sample-code/popup-custom-action/
             <option value="streets-relief-vector">Ccalles en relieve</option>
          </select>
       </div>
-   </div>
+   </div> --}}
 
-   <div style="height: 90vh;">
-         <iframe src="https://agenciaapp.maps.arcgis.com/apps/mapviewer/index.html?webmap=4e88469a7ce343979ea30ee57647954a" width="100%" height="600"></iframe>
+   <div style="height: 100vh;">
+         <iframe src="https://agenciaapp.maps.arcgis.com/apps/mapviewer/index.html?webmap=0e8553dd1e8042c3a2583e354b394b99" width="100%" height="900"></iframe>
       </div>
 
    <div class="limit-box fl-wrap"></div>
@@ -202,7 +202,7 @@ https://developers.arcgis.com/javascript/latest/sample-code/popup-custom-action/
          var trailsRenderer = {
             type: "simple",
             symbol: {
-               color: "#BA55D3",
+               color: "#000",
                type: "simple-line",
                style: "solid"
             },
@@ -238,7 +238,7 @@ https://developers.arcgis.com/javascript/latest/sample-code/popup-custom-action/
 
             var simpleMarkerSymbol = {
                type: "simple-marker",
-               color: [226, 119, 40],  // Orange
+               color: [0, 0, 0],  // Orange
                outline: {
                   color: [255, 255, 255], // White
                   width: 1
