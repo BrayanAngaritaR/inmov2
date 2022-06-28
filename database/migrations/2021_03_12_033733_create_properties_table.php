@@ -53,8 +53,8 @@ class CreatePropertiesTable extends Migration
          $table->foreign('secretaryship_id')->references('id')->on('secretaryships');
 
          //Bien fiscal o de uso público
-         $table->unsignedBigInteger('property_id'); 
-         $table->foreign('property_id')->references('id')->on('property_types');
+         $table->unsignedBigInteger('property_type_id'); 
+         $table->foreign('property_type_id')->references('id')->on('property_types');
 
          #####################################################################
          #  Información de Secretaría de Suministros y Servicios             
@@ -300,11 +300,9 @@ class CreatePropertiesTable extends Migration
 
          //Disponible para analizar
          $table->enum('available', ['Asignada', 'Por asignar', 'Disponible', 'No disponible'])->default('Por asignar'); 
-         
-         $table->unsignedBigInteger('responsable_id')->nullable();//Responsable
-         $table->foreign('responsable_id')->references('id')->on('users');
 
          $table->string('status')->default('Pending');
+         $table->unsignedBigInteger('user_id')->nullable();//Último usuario que modificó algún dato
          $table->timestamps();
          $table->softDeletes();
       });

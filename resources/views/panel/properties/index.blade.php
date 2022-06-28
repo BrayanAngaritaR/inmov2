@@ -1,4 +1,4 @@
-@extends('panel.app') @section('content') @section('title', 'Lista de inmuebles') @section('subtitle', 'esta es la lista de inmuebles que están registrados.')
+@extends('panel.app') @section('content') @section('title', 'Lista de bienes') @section('subtitle', 'esta es la lista de bienes que están registrados.')
 
 <div class="nk-block">
    <div class="card shadow-sm card-preview">
@@ -48,7 +48,13 @@
                      </div>
 
                      <div class="nk-tb-col tb-col-mb">
-                        <span class="tb-amount">{{ $property->action->title }}</span>
+                        <span class="tb-amount">
+                           @if($property->status == "Published")
+                           {{ $property->action->title }}
+                           @else
+                           <span class="text-danger">Sin asignar</span>
+                           @endif
+                        </span>
                      </div>
 
                      <div class="nk-tb-col tb-col-mb">
@@ -78,7 +84,7 @@
                                           <a href="{{ route('panel.properties.opportunity.index', $property) }}"><em class="icon ni ni-coin"></em><span>Info de venta</span></a>
                                        </li>
                                        <li>
-                                          <a href="#"><em class="icon ni ni-na"></em><span>Ocultar</span></a>
+                                          <a href="{{ route('panel.audits.property.show', $property) }}"><em class="icon ni ni-focus"></em><span>Ver auditorías</span></a>
                                        </li>
                                     </ul>
                                  </div>
@@ -88,13 +94,16 @@
                      </div>
                   </div>
                   @endforeach
+
+                  {!! $properties->links() !!}
                </div>
             </div>
          </div>
       </div>
    </div>
 </div>
-@stop @push('scripts')
+@stop 
+{{-- @push('scripts')
 <script type="text/javascript">
    $(document).ready(function () {
       $('input[name="loan"]').click(function () {
@@ -107,3 +116,4 @@
    });
 </script>
 @endpush
+ --}}

@@ -15,12 +15,15 @@ use App\Models\Property\Macroproject;
 use App\Models\Property\Notary;
 use App\Models\Property\Opportunity;
 use App\Models\Property\Polygon;
+use App\Models\Property\PropertyResponsable;
 use App\Models\Property\PropertySale;
 use App\Models\Property\PropertyType;
 use App\Models\Property\Secretaryship;
 use App\Models\Property\ThirdLevelInstrument;
 use App\Models\Property\Threat;
 use App\Models\Property\Treatment;
+use App\Models\User;
+use Auth;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
@@ -31,6 +34,7 @@ class Property extends Model implements Auditable
    use HasFactory;
 
    protected $fillable = [
+      
       //Identificación
       'secure_code',
       'code',
@@ -40,11 +44,12 @@ class Property extends Model implements Auditable
       'repeated_concept',
       'discharged',
       'secretaryship_id',
-      'property_id',
+      'property_type_id',
       'fixed_asset_code_id',
       'fixed_asset',
       'sss_description',
       'commercial_appraisal',
+      'user_id',
 
       //Información catastral
       'plate_number',
@@ -114,7 +119,6 @@ class Property extends Model implements Auditable
       'date_of_analysis_by_sss',
       'revised',
       'available',
-      'responsable_id',
    ];
 
    protected $with = ['district', 'commune', 'action'];
@@ -272,5 +276,24 @@ class Property extends Model implements Auditable
    public function other_protection()
    {
       return $this->belongsTo(Threat::class, 'other_protection_categories_id');
+   }
+
+   #Asignar los responsables
+   public function save_responsables()
+   {
+      return $this->belongsToMany(PropertyResponsable::class, 'property_responsables', 'property_id', 'responsable_id');
+   }
+
+   #Ver los responsables
+   public function responsables()
+   {
+      $responsables = PropertyResponsable::where('property_id', $this->id)->pluck('responsable_id')->toArray();
+      return $responsables;
+   }
+
+   #Último usuario en modificar el bien
+   public function user()
+   {
+      return $this->belongsTo(User::class);
    }
 }

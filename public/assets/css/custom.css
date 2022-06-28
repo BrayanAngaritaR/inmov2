@@ -370,3 +370,16 @@ table.nk-tb-covid.dataTable.dtr-inline.collapsed > tbody > tr:not(.child) > td:f
 .min-heigh-600{
    min-height: 600px;
 }
+
+.pagination > a {
+   padding: 10px;
+   margin-right: 10px;
+   border: 1px solid #8450ff;
+   color: #8450ff;
+   border-radius: 0;
+}
+
+.pagination > a.current-page, .pagination > a:hover{
+  background-color: #8450ff;
+  color: #fff;
+}

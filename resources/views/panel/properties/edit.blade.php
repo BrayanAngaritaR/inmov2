@@ -7,6 +7,15 @@
    <div class="card card-preview">
       <div class="card-inner">
          <div class="preview-block">
+
+            @if($property->user_id)
+            <div class="col-12 text-center mb-4">
+               <div class="alert alert-warning">
+                  Este inmueble fue modificado por última vez {{ $property->updated_at->diffForHumans() }} ({{$property->updated_at}}) por {{ $property->user->name }} ({{ $property->user->email }}). <a class="text-dark" href="{{ route('panel.audits.property.show', $property) }}" target="_blank"><b>Ver auditorías</b></a>
+               </div>
+            </div>
+            @endif
+
             <div class="col-12">
                <ul class="nav nav-tabs nav-tabs-s2">
                   <li class="nav-item">

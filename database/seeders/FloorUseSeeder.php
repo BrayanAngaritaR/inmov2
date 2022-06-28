@@ -14,6 +14,7 @@ class FloorUseSeeder extends Seeder
    */
    public function run()
    {
+      //INSERT INTO `floor_uses`
       FloorUse::create(['title' => '-- Sin seleccionar']);
       FloorUse::create(['title' => 'Espacio Público Existente']);
       FloorUse::create(['title' => 'Espacio Público Proyectado']);

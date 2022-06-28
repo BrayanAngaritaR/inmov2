@@ -15,7 +15,7 @@ class PendingPropertiesController extends Controller
    
    public function index()
    {
-      $properties = Property::with(['district', 'commune'])->where('status', 'Pending')->latest()->get();
+      $properties = Property::with(['district', 'commune'])->where('status', 'Pending')->latest()->paginate(20);
       return view('panel.properties.index', compact(['properties']));
    }
 }

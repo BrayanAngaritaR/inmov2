@@ -14,6 +14,7 @@ class FloorClasificationSeeder extends Seeder
    */
    public function run()
    {
+      //INSERT INTO `floor_classifications`
       FloorClassification::create(['title' => '-- Sin seleccionar']);
       FloorClassification::create(['title' => 'Urbano']);
       FloorClassification::create(['title' => 'Rural']);

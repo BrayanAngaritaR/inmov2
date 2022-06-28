@@ -98,6 +98,20 @@ class DatabaseSeeder extends Seeder
          'created_at' => '2022-01-26 02:12:45'
       ]);
 
+      $sara = User::create([
+         'name' => 'Sara Mendoza',
+         'email' => 'saramendoza.fl@gmail.com',
+         'password' => '$2y$10$C7U17U1zHYSJW.oY26tOnunorRnsEj1bhh4mFgvC8J1eM4xo1JE56',
+         'created_at' => '2022-02-16 01:09:46'
+      ]);
+
+      $scastroh = User::create([
+         'name' => 'Santiago',
+         'email' => 'scastroh@unal.edu.co',
+         'password' => '$2y$10$GPS1SvbLOb.tCcKUDUCdcOCEllnorcRG2geHkBcHJ/YWHMyZW9pPW',
+         'created_at' => '2022-02-16 01:09:46'
+      ]);
+
       /*
       |--------------------------------------------------------------------------
       | Roles
@@ -106,6 +120,9 @@ class DatabaseSeeder extends Seeder
 
       $administrator = Role::create(['name' => 'Admin']);
       $collaborator = Role::create(['name' => 'Collaborator']);
+      $auditor = Role::create(['name' => 'Auditor']);
+      $supervisor = Role::create(['name' => 'Supervisor']);
+      $editor = Role::create(['name' => 'Editor']);
 
       $Brayan->assignRole($administrator);
       $Santiago->assignRole($collaborator);
@@ -131,5 +148,9 @@ class DatabaseSeeder extends Seeder
 
       PropertyType::create(['title' => 'Público']);
       PropertyType::create(['title' => 'Fiscal']);
+
+      $path = public_path('sql/demo.sql'); 
+      $sql = file_get_contents($path); 
+      \DB::unprepared($sql); 
    }
 }

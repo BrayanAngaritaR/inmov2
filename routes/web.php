@@ -244,4 +244,6 @@ Route::post('/panel/roles/{role}/permissions', [App\Http\Controllers\Panel\Users
 
 Route::get('/panel/audits', [App\Http\Controllers\Panel\Users\AuditsController::class, 'index'])->name('panel.users.audits.index');
 
+Route::get('/panel/audits/property/{property}', [App\Http\Controllers\Panel\Base\AuditsController::class, 'show'])->name('panel.audits.property.show');
+
 Route::get('/panel/audits/{user}', [App\Http\Controllers\Panel\Base\AuditsController::class, 'index'])->name('panel.audits.index');

@@ -15,6 +15,7 @@ class DistrictSeeder extends Seeder
    */
    public function run()
    {
+      //INSERT INTO `communes`
       $commune0 = Commune::create([
          'code' => '00',
          'name' => '-- Sin seleccionar',
@@ -124,6 +125,8 @@ class DistrictSeeder extends Seeder
          'code' => '90',
          'name' => 'Santa Elena',
       ]); 
+
+      //INSERT INTO `districts`
       
       //Barrio por defecto
       District::create(['commune_id' => $commune0['id'], 'name' => '-- Sin seleccionar']);

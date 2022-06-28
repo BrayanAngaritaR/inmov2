@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\Session;
 use Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Str;
+use Auth;
 
 class PropertiesController extends Controller
 {
@@ -36,24 +37,15 @@ class PropertiesController extends Controller
 
    }
 
-   /**
-    * Display a listing of the resource.
-    *
-    * @return \Illuminate\Http\Response
-    */
    public function index()
    {
       $properties = Property::with(['district', 'commune'])
          ->latest()
-         ->get();
+         ->paginate(20);
+
       return view('panel.properties.index', compact(['properties']));
    }
 
-   /**
-    * Show the form for creating a new resource.
-    *
-    * @return \Illuminate\Http\Response
-    */
    public function create()
    {
       $secretaryships = Secretaryship::orderBy('title', 'ASC')->get();
@@ -65,12 +57,6 @@ class PropertiesController extends Controller
       return view('panel.properties.create', compact(['secretaryships', 'propertytypes', 'asset_secretaryships', 'notaries', 'communes']));
    }
 
-   /**
-    * Store a newly created resource in storage.
-    *
-    * @param  \Illuminate\Http\Request  $request
-    * @return \Illuminate\Http\Response
-    */
    public function store(Request $request)
    {
       $validator = Validator::make(
@@ -121,7 +107,7 @@ class PropertiesController extends Controller
             'repeated_concept' => $request->repeated_concept,
             'discharged' => $request->discharged,
             'secretaryship_id' => $request->secretaryship,
-            'property_id' => $request->property_id,
+            'property_type_id' => $request->property_id,
             'fixed_asset_code_id' => $request->fixed_asset_code_id,
             'fixed_asset' => $request->fixed_asset,
             'sss_description' => $request->sss_description,
@@ -224,12 +210,6 @@ class PropertiesController extends Controller
       return $this->before($that, $this->after($char, $inthat));
    }
 
-   /**
-    * Show the form for editing the specified resource.
-    *
-    * @param  int  $id
-    * @return \Illuminate\Http\Response
-    */
    public function edit(Property $property)
    {
       $secretaryships = Secretaryship::orderBy('title', 'ASC')->get();
@@ -247,6 +227,7 @@ class PropertiesController extends Controller
       $destinations = Destination::orderBy('title', 'ASC')->get();
       $opportunities = Opportunity::orderBy('title', 'ASC')->get();
       $users = User::role('Collaborator')->orderBy('name', 'ASC')->get();
+      $responsables = $property->responsables();
 
       return view(
          'panel.properties.edit',
@@ -267,8 +248,22 @@ class PropertiesController extends Controller
             'destinations',
             'opportunities',
             'users',
+            'responsables'
          ])
       );
+   }
+
+   public function change_status($property){
+      $status = "Pending";
+
+      //Verificar si el usuario autenticado tiene el rol de Admin o de Supervisor
+      if(Auth::user()->hasRole(['Admin', 'Supervisor'])){
+         //Dejar el estado del inmueble como estaba
+         $status = $property->status;
+         $property->status = $status;
+         $property->user_id = Auth::id();
+         $property->update();
+      }
    }
 
    public function update_identification(Request $request, Property $property)
@@ -300,6 +295,9 @@ class PropertiesController extends Controller
       );
 
       if ($validator->passes()) {
+
+         $this->change_status($property);
+
          $property->update([
             'code' => $request->code,
             'link' => $request->link,
@@ -308,7 +306,7 @@ class PropertiesController extends Controller
             'discharged' => $request->discharged,
             'repeated_concept' => $request->repeated_concept,
             'secretaryship_id' => $request->secretaryship,
-            'property_id' => $request->property_id,
+            'property_type_id' => $request->property_id,
             'fixed_asset_code_id' => $request->fixed_asset_code_id,
             'fixed_asset' => $request->fixed_asset,
             'commercial_appraisal' => $request->commercial_appraisal,
@@ -350,6 +348,7 @@ class PropertiesController extends Controller
       );
 
       if ($validator->passes()) {
+         $this->change_status($property);
          $property->update([
             'plate_number' => $request->plate_number,
             'property_deed' => $request->property_deed,
@@ -392,6 +391,7 @@ class PropertiesController extends Controller
       if ($validator->passes()) {
          $lat = $this->getLatitude($request->lat);
          $long = $this->getLongitude($request->long);
+         $this->change_status($property);
 
          $property->update([
             'latitude' => $request->lat,
@@ -420,6 +420,8 @@ class PropertiesController extends Controller
 
    public function update_documental(Request $request, Property $property)
    {
+      $this->change_status($property);
+
       $property->update([
          'photography' => $request->photography,
          'cadastral_file' => $request->cadastral_file,
@@ -450,11 +452,15 @@ class PropertiesController extends Controller
 
    public function update(Request $request, Property $property)
    {
+      //Definir como pendiente el estado del inmueble
       $status = 'Pending';
 
-      if ($request->publish_now == 'Sí') {
-         $status = 'Published';
-      }
+      //Verificar si el que hace un cambio es un Admin o un Supervidor
+      if(Auth::user()->hasRole(['Admin', 'Supervisor'])){
+         if ($request->publish_now == 'Sí') {
+            $status = 'Published';
+         }
+      }      
 
       $property->update([
          'status' => $status,
@@ -468,8 +474,10 @@ class PropertiesController extends Controller
          'date_of_analysis_by_sss' => $request->date_of_analysis_by_sss,
          'revised' => $request->revised,
          'available' => $request->available,
-         'responsable_id' => $request->responsable_id,
       ]);
+
+      //Sincronizar los responsables
+      $property->save_responsables()->sync($request->responsable_id); 
 
       return response()->json([
          'status' => 'ok',

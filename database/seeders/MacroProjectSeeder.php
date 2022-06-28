@@ -14,6 +14,7 @@ class MacroProjectSeeder extends Seeder
    */
    public function run()
    {
+      //INSERT INTO `macroprojects`
       Macroproject::create(['name' => '-- Sin seleccionar']);
       Macroproject::create(['name' => 'Río Sur']);
       Macroproject::create(['name' => 'Río Centro']);

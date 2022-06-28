@@ -185,21 +185,26 @@
             <label class="form-label" for="responsable_id">
                Responsable
             </label>
-            <select class="form-control" name="responsable_id" id="responsable_id">
-               @foreach($users as $user)
-               <option 
-                  @if($property->responsable_id == $user->id) 
-                  selected 
-                  @endif 
-                  value="{{ $user->id }}">
-                  {{ $user->name }}
-               </option>
-               @endforeach
-            </select>
+
+            <div class="form-group">
+               <div class="form-control-wrap">
+                  <select class="form-select js-select2" multiple="multiple" data-placeholder="Selecciona el/los responsable(s)" name="responsable_id" id="responsable_id">
+                     @foreach($users as $user)
+                     <option 
+                        @if(in_array($user->id, $responsables))
+                        selected 
+                        @endif 
+                        value="{{ $user->id }}">
+                        {{ $user->name }}
+                     </option>
+                     @endforeach
+                  </select>
+               </div>
+            </div>
          </div>
       </div>
 
-      @if(Auth::user()->hasRole(['Admin']))
+      @if(Auth::user()->hasRole(['Admin', 'Supervisor']))
       <div class="col-sm-12 col-lg-4">
          <div class="form-group">
             <label class="form-label" for="publish_now">

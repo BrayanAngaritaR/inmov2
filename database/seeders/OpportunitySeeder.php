@@ -23,6 +23,8 @@ class OpportunitySeeder extends Seeder
 
       //Action::create(['title' => '-- Sin seleccionar', 'opportunity_id' => $opportunity_1['id']]);
 
+      //INSERT INTO `actions`
+
       Action::create(['title' => 'Residencial', 'opportunity_id' => $opportunity_1['id']]);
       Action::create(['title' => 'Comercial', 'opportunity_id' => $opportunity_1['id']]);
       Action::create(['title' => 'Servicios', 'opportunity_id' => $opportunity_1['id']]);
