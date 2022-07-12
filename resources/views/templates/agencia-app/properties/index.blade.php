@@ -2,7 +2,7 @@
 @section('content')
 <div class="content">
    <!-- Map -->
-   <div class="map-container fw-map big_map">
+   {{-- <div class="map-container fw-map big_map">
       <div id="map-main"></div>
       <ul class="mapnavigation no-list-style">
          <li>
@@ -23,10 +23,15 @@
          <span><i class="fal fa-location"></i></span>
       </div>
       <div class="map-close"><i class="fas fa-times"></i></div>
+   </div> --}}
+   <div style="height: 100vh; margin-top: 80px;">
+      <iframe src="https://agenciaapp.maps.arcgis.com/apps/mapviewer/index.html?webmap=0e8553dd1e8042c3a2583e354b394b99" width="100%" height="900"></iframe>
    </div>
+   <div class="limit-box fl-wrap"></div>
+   {{-- 4 botones: Gestión de activos, Oportunidades inmobiliarias, Plan rector, Gestión de Prado. --}}
    <!-- Map end -->
    <!-- breadcrumbs-->
-   <div class="breadcrumbs fw-breadcrumbs smpar fl-wrap">
+   <{{-- div class="breadcrumbs fw-breadcrumbs smpar fl-wrap">
       <div class="container-fluid">
          <div class="breadcrumbs-list">
             <a href="#">Inicio</a>
@@ -56,10 +61,10 @@
             </ul>
          </div>
       </div>
-   </div>
+   </div> --}}
    <!-- breadcrumbs end -->
    <!-- section -->
-   <section class="small-padding">
+   {{-- <section class="small-padding">
 
       <div class="container-fluid">
          <div class="row">
@@ -539,7 +544,7 @@
          </div>
       </div>
    </section>
-   <div class="limit-box fl-wrap"></div>
+   <div class="limit-box fl-wrap"></div> --}}
 </div>
 @stop
 
