@@ -183,7 +183,7 @@
       <div class="col-sm-12 col-lg-4">
          <div class="form-group">
             <label class="form-label" for="responsable_id">
-               Responsable
+               Responsable(s)
             </label>
 
             <div class="form-group">

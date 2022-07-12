@@ -367,3 +367,9 @@ p.font-medium{
 .geodir-category-listing:hover{
    border: 1px solid rgb(49 112 252 / 40%);
 }
+
+.scroll-nav.right{
+   top: 30vh;
+   left: auto;
+   right: 0;
+}
