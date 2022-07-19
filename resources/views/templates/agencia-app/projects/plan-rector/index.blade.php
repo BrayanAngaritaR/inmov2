@@ -185,9 +185,9 @@ https://developers.arcgis.com/javascript/latest/sample-code/popup-custom-action/
 <script src="https://js.arcgis.com/4.22/"></script>
 <script>
 
-   const select = document.getElementById('mapLayer');
+   // const select = document.getElementById('mapLayer');
 
-   localStorage.setItem('map-layer', 'arcgis-light-gray');
+   // localStorage.setItem('map-layer', 'arcgis-light-gray');
 
    // select.addEventListener('change', function handleChange(event) {
 
@@ -200,10 +200,10 @@ https://developers.arcgis.com/javascript/latest/sample-code/popup-custom-action/
    //    location.reload();
    // });
 
-   var mapLayer = localStorage.getItem('map-layer');
+   // var mapLayer = localStorage.getItem('map-layer');
 
-   console.log("mapLayer");
-   console.log(mapLayer);
+   // console.log("mapLayer");
+   // console.log(mapLayer);
 
    require([
       "esri/config",
