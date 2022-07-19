@@ -152,7 +152,7 @@
                      </div>
                      <button type="button" class="btn-close text-reset my-auto" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                   </div>
-                  <div class="offcanvas-body" style="max-height: 90vh; overflow-y: scroll;">
+                  <div class="offcanvas-body" style="max-height: 80vh; overflow-y: scroll;">
                      <!-- Filters -->
                      <div class="fl-wrap lws_mobile">
                         <div class="block-box fl-wrap search-sb" id="filters-column">
