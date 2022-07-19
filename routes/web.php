@@ -67,6 +67,8 @@ Route::view('/calculadora', 'templates.agencia-app.soon')
 
 Route::get('/propiedades', [App\Http\Controllers\User\PropertiesController::class, 'index'])->name('user.properties.index');
 
+Route::get('/gestion-de-activos', [App\Http\Controllers\User\Projects\AssetManagementController::class, 'index'])->name('user.properties.mangement.index');
+
 Route::get('/propiedades3', [App\Http\Controllers\User\PropertiesController::class, 'index3'])->name('user.properties.index3');
 
 Route::get('/propiedades/filtrar', [App\Http\Controllers\User\PropertiesController::class, 'filter'])->name('user.properties.filter.index');
@@ -118,6 +120,8 @@ Route::get('/panel/properties/create-old', [App\Http\Controllers\Panel\Propertie
 Route::post('/panel/properties/create', [App\Http\Controllers\Panel\PropertiesController::class, 'store'])->name('panel.properties.store');
 
 Route::get('/panel/properties/{property}/edit', [App\Http\Controllers\Panel\PropertiesController::class, 'edit'])->name('panel.properties.edit');
+
+Route::get('/panel/properties/{property}/edit/print', [App\Http\Controllers\Panel\PropertiesController::class, 'print'])->name('panel.properties.edit.print');
 
 
 #Imágenes

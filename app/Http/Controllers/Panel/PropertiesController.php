@@ -27,6 +27,7 @@ use Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Str;
 use Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PropertiesController extends Controller
 {
@@ -251,6 +252,74 @@ class PropertiesController extends Controller
             'responsables'
          ])
       );
+   }
+
+   public function print(Property $property)
+   {
+      $secretaryships = Secretaryship::orderBy('title', 'ASC')->get();
+      $propertytypes = PropertyType::all();
+      $asset_secretaryships = SecretaryshipAssetCode::all();
+      $notaries = Notary::all();
+      $communes = Commune::orderBy('name', 'ASC')->get();
+      $floor_classifications = FloorClassification::orderBy('title', 'ASC')->get();
+      $macroprojects = Macroproject::orderBy('name', 'ASC')->get();
+      $treatments = Treatment::orderBy('title', 'ASC')->get();
+      $polygons = Polygon::orderBy('title', 'ASC')->get();
+      $floor_uses = FloorUse::orderBy('title', 'ASC')->get();
+      $third_level_instruments = ThirdLevelInstrument::orderBy('title', 'ASC')->get();
+      $threats = Threat::orderBy('title', 'ASC')->get();
+      $destinations = Destination::orderBy('title', 'ASC')->get();
+      $opportunities = Opportunity::orderBy('title', 'ASC')->get();
+      $users = User::role('Collaborator')->orderBy('name', 'ASC')->get();
+      $responsables = $property->responsables();
+
+      // $data = [
+      //    'property' => $property,
+      //    'secretaryships' => $secretaryships,
+      //    'propertytypes' => $propertytypes,
+      //    'asset_secretaryships' => $asset_secretaryships,
+      //    'notaries' => $notaries,
+      //    'communes' => $communes,
+      //    'floor_classifications' => $floor_classifications,
+      //    'macroprojects' => $macroprojects,
+      //    'treatments' => $treatments,
+      //    'polygons' => $polygons,
+      //    'floor_uses' => $floor_uses,
+      //    'third_level_instruments' => $third_level_instruments,
+      //    'threats' => $threats,
+      //    'destinations' => $destinations,
+      //    'opportunities' => $opportunities,
+      //    'users' => $users,
+      //    'responsables' => $responsables,
+      // ];
+
+      // dd($data);
+      
+      $pdf = Pdf::loadView('panel.properties.print', compact([
+            'secretaryships',
+            'propertytypes',
+            'asset_secretaryships',
+            'notaries',
+            'communes',
+            'property',
+            'floor_classifications',
+            'macroprojects',
+            'treatments',
+            'polygons',
+            'floor_uses',
+            'third_level_instruments',
+            'threats',
+            'destinations',
+            'opportunities',
+            'users',
+            'responsables'
+         ]));
+      return $pdf->stream();
+
+      // return view(
+      //    'panel.properties.edit',
+         
+      // );
    }
 
    public function change_status($property){

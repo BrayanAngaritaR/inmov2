@@ -1,37 +1,16 @@
+
 @extends('templates.agencia-app.app') 
 @section('content')
 <div class="content">
-   <!-- Map -->
-   {{-- <div class="map-container fw-map big_map">
-      <div id="map-main"></div>
-      <ul class="mapnavigation no-list-style">
-         <li>
-            <a href="#" class="prevmap-nav mapnavbtn">
-               <span><i class="fas fa-caret-left"></i></span>
-            </a>
-         </li>
-         <li>
-            <a href="#" class="nextmap-nav mapnavbtn">
-               <span><i class="fas fa-caret-right"></i></span>
-            </a>
-         </li>
-      </ul>
-      <div class="scrollContorl mapnavbtn tolt" data-microtip-position="top-left" data-tooltip="Enable Scrolling">
-         <span><i class="fal fa-unlock"></i></span>
-      </div>
-      <div class="location-btn geoLocation tolt" data-microtip-position="top-left" data-tooltip="Your location">
-         <span><i class="fal fa-location"></i></span>
-      </div>
-      <div class="map-close"><i class="fas fa-times"></i></div>
-   </div> --}}
-   <div style="height: 100vh; margin-top: 80px;">
+   <div style="height: 90vh; margin-top: 80px;">
+      @include('templates.agencia-app.includes.map._right-navigation')
+
       <iframe src="https://agenciaapp.maps.arcgis.com/apps/mapviewer/index.html?webmap=0e8553dd1e8042c3a2583e354b394b99" width="100%" height="900"></iframe>
    </div>
    <div class="limit-box fl-wrap"></div>
-   {{-- 4 botones: Gestión de activos, Oportunidades inmobiliarias, Plan rector, Gestión de Prado. --}}
    <!-- Map end -->
    <!-- breadcrumbs-->
-   <{{-- div class="breadcrumbs fw-breadcrumbs smpar fl-wrap">
+   <div class="breadcrumbs fw-breadcrumbs smpar fl-wrap">
       <div class="container-fluid">
          <div class="breadcrumbs-list">
             <a href="#">Inicio</a>
@@ -61,10 +40,10 @@
             </ul>
          </div>
       </div>
-   </div> --}}
+   </div>
    <!-- breadcrumbs end -->
    <!-- section -->
-   {{-- <section class="small-padding">
+   <section class="small-padding">
 
       <div class="container-fluid">
          <div class="row">
@@ -173,7 +152,7 @@
                      </div>
                      <button type="button" class="btn-close text-reset my-auto" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                   </div>
-                  <div class="offcanvas-body">
+                  <div class="offcanvas-body" style="max-height: 90vh; overflow-y: scroll;">
                      <!-- Filters -->
                      <div class="fl-wrap lws_mobile">
                         <div class="block-box fl-wrap search-sb" id="filters-column">
@@ -544,7 +523,7 @@
          </div>
       </div>
    </section>
-   <div class="limit-box fl-wrap"></div> --}}
+   <div class="limit-box fl-wrap"></div>
 </div>
 @stop
 

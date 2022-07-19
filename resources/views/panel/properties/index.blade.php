@@ -28,7 +28,7 @@
                   @foreach($properties as $property)
                   <div class="nk-tb-item">
                      <div class="nk-tb-col">
-                        <a href="#">
+                        <a href="{{ route('user.properties.show', $property) }}" target="_blank">
                            <div class="user-card">
                               <div class="user-avatar bg-primary"><span>{{ $property->code }}</span></div>
                            </div>

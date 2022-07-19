@@ -8,6 +8,12 @@
       <div class="card-inner">
          <div class="preview-block">
 
+            <div class="col-12 text-right">
+               <a href="{{ route('panel.properties.edit.print', $property) }}" class="btn btn-outline-primary">
+                  <em class="icon ni ni-printer mr-3"></em> Imprimir
+               </a>
+            </div>
+
             @if($property->user_id)
             <div class="col-12 text-center mb-4">
                <div class="alert alert-warning">
