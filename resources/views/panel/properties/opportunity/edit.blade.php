@@ -5,7 +5,7 @@
 
 <div class="nk-block">
 
-	<a href="{{ route('panel.properties.opportunity.index', $property) }}" class="btn btn-primary-outline mb-3">
+	<a href="{{ route('panel.properties.opportunity.index', $property) }}" class="btn btn-primary-outline mb-5">
 		<em class="icon ni ni-arrow-left"></em><span>Volver</span>
 	</a>
 

@@ -52,7 +52,7 @@
       <meta charset="UTF-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Invoice</title>
+      <title>Exportar inmueble {{ $property->code }}</title>
 
       <style>
          @font-face {
@@ -379,149 +379,274 @@
             @endforeach
          </p>
 
+         <p><b>Activo fijo:</b> {{ $property->fixed_asset }}</p>
+         <p><b>Avalúo comercial:</b> {{ $property->commercial_appraisal }}</p>
+         <p><b>Descripción corta:</b> {{ $property->sss_description }}</p>
+         <p><b>Barrio o urbanización:</b> {{ $property->urbanization_or_neighborhood }}</p>
 
+         <hr>
 
-      <div class="col-sm-6 col-lg-4">
-         <div class="form-group">
-            <label class="form-label">Activo fijo*</label>
-            <div class="form-control-wrap">
-               <input type="text" class="form-control" name="fixed_asset" id="fixed_asset" placeholder="Ej: 500L" value="{{ $property->fixed_asset }}" />
-               <span class="text-danger error-text fixed_asset_err"></span>
-            </div>
-         </div>
+         <h4>INFORMACIÓN JURÍDICA</h4>
+
+         <p><b>No. de escritura:</b> {{ $property->plate_number }}</p>
+         <p><b>Superferficie jurídica (Área):</b> {{ $property->property_deed }} {{ $property->units }}</p>
+
+         <p><b>Fecha de escritura:</b> {{ $property->writing_date }}</p>
+         <p>
+            <b>Notaría:</b>
+
+            @foreach($notaries as $notary)
+               @if($property->notary_id == $notary->id)
+                  {{ $notary->title }} 
+               @endif
+            @endforeach
+         </p>
+
+         @if($property->which_notary_container)
+         <p><b>¿Cuál?:</b> {{ $property->which_notary }}</p>
+         @endif
+
+         <h4>INFORMACIÓN CATASTRAL</h4>
+
+         <p><b>CBML:</b> {{ $property->cbml }}</p>
+         <p>
+            <b>Comuna (corregimiento):</b>
+
+            @foreach($communes as $commune)
+               @if($property->commune_id == $commune->id)
+                  {{ $commune->code }} - {{ $commune->name }}
+               @endif
+            @endforeach
+         </p>
+
+         <p><b>Barrio:</b> {{ $property->district->name }}</p>
+         <p><b>Dirección de catastro:</b> {{ $property->cadastral_address }}</p>
+         <p><b>Área catastral:</b> {{ $property->cadastral_area }}</p>
+         <p><b>Área de construcción:</b> {{ $property->construction_area }}</p>
+         <p><b>Avalúo catastral:</b> ${{ number_format($property->property_valuation) }}</p>
+         <p><b>¿El bien cuenta con RPH? (Reglamento de Propiedad Horizontal):</b> @if($property->is_rph == 1) Sí @else No @endif</p>
+
+         <h4>INFORMACIÓN NORMATIVA</h4>
+
+         <h4>COORDENADAS</h4>
+         <p><b>Latitud:</b> {{ $property->latitude }}</p>
+         <p><b>Longitud:</b> {{ $property->longitude }}</p>
+
+         <h4>INFORMACIÓN NORMATIVA</h4>
+
+         <p>
+            <b>Clasificación del suelo:</b>
+
+            @foreach($floor_classifications as $floor_classification)
+               @if($property->floor_classification_id == $floor_classification->id) 
+                  {{ $floor_classification->title }}
+               @endif
+            @endforeach
+         </p>
+
+         <p>
+            <b>Macroproyecto:</b>
+
+            @foreach($macroprojects as $macroproject)
+               @if($property->macroproject_id == $macroproject->id)
+                  {{ $macroproject->name }}
+               @endif
+            @endforeach
+         </p>
+
+         <p>
+            <b>Tratamiento:</b>
+
+            @foreach($treatments as $treatment)
+               @if($property->treatment_id == $treatment->id)
+                  {{ $treatment->title }}
+               @endif
+            @endforeach
+         </p>
+
+         <p>
+            <b>Polígono:</b>
+
+            @foreach($polygons as $polygon)
+               @if($property->polygon_id == $polygon->id)
+                  {{ $polygon->title }}
+               @endif
+            @endforeach
+         </p>
+
+         <p>
+            <b>Instrumento de tercer nivel:</b>
+
+            @foreach($third_level_instruments as $third_level_instrument)
+               @if($property->third_level_instrument_id == $third_level_instrument->id) 
+                  {{ $third_level_instrument->title }}
+               @endif
+            @endforeach
+         </p>
+
+         <p>
+            <b>Uso del suelo:</b>
+
+            @foreach($floor_uses as $floor_use)
+               @if($property->floor_use_id == $floor_use->id)
+                  {{ $floor_use->title }}
+               @endif
+            @endforeach
+         </p>
+
+         <h4>SUELO DE PROTECCIÓN</h4>
+
+         <p>
+            <b>Amenaza avenidas torrenciales:</b>
+
+            @foreach($threats as $threat)
+               @if($property->threat_torrential_avenues_id == $threat->id)
+                  {{ $threat->title }}
+               @endif
+            @endforeach
+         </p>
+
+         <p>
+            <b>Amenaza de inundaciones:</b>
+
+            @foreach($threats as $threat)
+               @if($property->threat_floods_id == $threat->id)
+                  {{ $threat->title }}
+               @endif
+            @endforeach
+         </p>
+
+         <p>
+            <b>Amenaza de movimientos en masa:</b>
+
+            @foreach($threats as $threat)
+               @if($property->threat_mass_movements_id == $threat->id)
+                  {{ $threat->title }}
+               @endif
+            @endforeach
+         </p>
+
+         <p>
+            <b>Otras categorías de protección:</b>
+
+            @foreach($threats as $threat)
+               @if($property->other_protection_categories_id == $threat->id) 
+                  {{ $threat->title }}
+               @endif
+            @endforeach
+         </p>
+
+         <hr>
+
+         <h4>INFORMACIÓN DOCUMENTAL</h4>
+
+         <p><b>¿Tiene fotografía?:</b> @if($property->photography == 1) Sí @else No @endif</p>
+
+         <p><b>¿Tiene ficha catastral?:</b> @if($property->cadastral_file == 1) Sí @else No @endif</p>
+
+         <p><b>¿Tiene VUR?:</b> @if($property->vur == 1) Sí @else No @endif</p>
+
+         <p><b>¿Tiene estudio de títulos?:</b> @if($property->title_study == 1) Sí @else No @endif</p>
+
+         <p><b>¿Está georeferenciado en ARCGIS?:</b> @if($property->georeferenced == 1) Sí @else No @endif</p>
+
+         <p><b>¿Tiene escrituras?:</b> @if($property->scriptures == 1) Sí @else No @endif</p>
+
+         <p><b>¿Tiene expediente?:</b> @if($property->expedient == 1) Sí @else No @endif</p>
+
+         <p><b>¿Tiene avalúo?:</b> @if($property->has_appraise == 1) Sí @else No @endif</p>
+
+         <p><b>¿Está en comodato?:</b> @if($property->loan == 1) Sí @else No @endif</p>
+
+         @if($property->loan == 1)
+            <h4>COMODATO</h4>
+            <h4>INFORMACIÓN DEL COMODATO</h4>
+            <p><b>Fecha de inicio:</b> {{ $property->loan_start_date }}</p>
+            <p><b>Fecha de finalización:</b> {{ $property->loan_end_date }}</p>
+            <p><b>Entidad a la que se asignó:</b> {{ $property->entity_to_which_is_assigned }}</p>
+            <p><b>Entidad a la que se asignó:</b> {{ $property->loan_information }}</p>
+         @endif
+
+         <p><b>¿Tiene licencia de construcción?:</b> @if($property->building_permit == 1) Sí @else No @endif</p>
+
+         @if($property->building_permit == 1)
+            <h4>LICENCIA DE CONSTRUCCIÓN</h4>
+            <p><b>Resolución:</b> {{ $property->resolution }}</p>
+         @endif
+
+         <p><b>¿Es un bien de interés cultural?:</b> @if($property->bic == 1) Sí @else No @endif</p>
+
+         @if($property->bic == 1)
+            <h4>BIEN DE INTERÉS CULTURAL - BIC</h4>
+            <p><b>Nombre del BIC:</b> {{ $property->bic_name }}</p>
+            <p><b>Grupo del BIC:</b> {{ $property->bic_group }}</p>
+            <p><b>Orden del BIC:</b> {{ $property->bic_order }}</p>
+            <p><b>Nivel de conservación del BIC:</b> {{ $property->conservation_level }}</p>
+            <p><b>Acto administrativo de declaratoria del BIC:</b> {{ $property->bic_act }}</p>
+         @endif
+
+         <hr>
+
+         <h4>ANÁLISIS</h4>
+
+         <p>
+            <b>Destinación actual:</b>
+
+            @foreach($destinations as $destination)
+               @if($property->destination_id == $destination->id) 
+                  {{ $destination->title }}
+               @endif
+            @endforeach
+         </p>
+
+         <p>
+            <b>Oportunidad:</b>
+
+            @foreach($opportunities as $opportunity)
+               @if($property->opportunity_id == $opportunity->id)
+                  {{ $destination->title }}
+               @endif
+            @endforeach
+         </p>
+
+         <p><b>Acción:</b> {{ $property->action->title }}</p>
+         <p><b>Nivel de priorización:</b> {{ $property->priorization_level }}</p>
+         <p><b>Proyecto gestionado:</b> {{ $property->project_managed }}</p>
+         <p><b>ID de oportunidad:</b> {{ $property->opportunity_id_description }}</p>
+         <p><b>Observaciones:</b> {{ $property->observations }}</p>
+
+         <h4>DISPONIBILIDAD</h4>
+
+         <p><b>¿Analizadas por Secretaría de Suministros y Servicios?:</b>@if($property->date_of_analysis_by_sss) Sí @else No @endif</p>
+
+         <p><b>Fecha de análisis por Secretaría de Suministros y Servicios:</b>@if($property->date_of_analysis_by_sss){{ $property->date_of_analysis_by_sss }} @endif</p>
+
+         <p><b>Revisada:</b>{{ $property->revised }}</p>
+         <p><b>Disponible para analizar:</b>{{ $property->available }}</p>
+         <p>
+            <b>Responsable(s):</b>
+            @foreach($users as $user)
+               @if(in_array($user->id, $responsables))
+                  {{ $user->name }} 
+               @endif 
+            @endforeach
+         </p>
+
+         <h4>MAPA</h4>  
+
+         <p>Poner el mapa</p>
+
+         <h4>Exportado por {{ Auth::user()->name }}</h4>
+         <h4>Fecha: {{ \Carbon\Carbon::now() }}</h4>
+         <h4>{{ route('user.properties.show', $property) }}</h4>
       </div>
 
-      <div class="col-sm-6 col-lg-4">
-         <div class="form-group">
-            <label class="form-label">Avalúo comercial</label>
-            <div class="form-control-wrap">
-               <div class="input-group">
-                  <div class="input-group-prepend">
-                     <span class="input-group-text">$</span>
-                  </div>
-                  <input id="commercial_appraisal" name="commercial_appraisal" value="{{ $property->commercial_appraisal }}" type="text" placeholder="Ej: 60,000,000" class="form-control" />
-                  <span class="text-danger error-text commercial_appraisal_err"></span>
-               </div>
-            </div>
-         </div>
-      </div>
-
-      <div class="col-sm-12">
-         <div class="form-group">
-            <label class="form-label" for="sss_description">Descripción corta*</label>
-            <input class="form-control" id="sss_description" name="sss_description" placeholder="Ej: Junta de acción comunal, cancha, Biblioteca Santo Domingo, Cárcel, ..." value="{{ $property->sss_description }}" />
-            <span class="text-danger error-text sss_description_err"></span>
-         </div>
-      </div>
-
-      <div class="col-sm-12 col-lg-6">
-         <div class="form-group">
-            <label class="form-label">Dirección*</label>
-            <div class="form-control-wrap">
-               <input type="text" class="form-control" name="sss_address" id="sss_address" value="{{ $property->sss_address }}" placeholder="Ej: CR 72 A 92 BB 20" />
-               <span class="text-danger error-text sss_address_err"></span>
-            </div>
-         </div>
-      </div>
-
-      <div class="col-sm-12 col-lg-6">
-         <div class="form-group">
-            <label class="form-label">Barrio o urbanización*</label>
-            <div class="form-control-wrap">
-               <input type="text" value="{{ $property->urbanization_or_neighborhood }}" class="form-control" name="urbanization_or_neighborhood" id="urbanization_or_neighborhood" placeholder="Ej: Francisco Antonio Zea" />
-               <span class="text-danger error-text urbanization_or_neighborhood_err"></span>
-            </div>
-         </div>
-      </div>
-
-
-
-         <div class="summary-box">
-            <table cellpadding="0" cellspacing="0">
-               <tbody>
-                  <tr class="item">
-                     <td></td>
-                     <td>Subtotal:</td>
-                     <td></td>
-                  </tr>
-
-                  <tr class="item">
-                     <td></td>
-                     <td>Discount:</td>
-                     <td></td>
-                  </tr>
-
-                  <tr class="item">
-                     <td></td>
-                     <td>Subtotal Less Discount:</td>
-                     <td></td>
-                  </tr>
-
-                  <tr class="item">
-                     <td></td>
-                     <td>Tax Rate:</td>
-                     <td></td>
-                  </tr>
-
-                  <tr class="item">
-                     <td></td>
-                     <td>Total Tax:</td>
-                     <td></td>
-                  </tr>
-
-                  <tr class="item">
-                     <td></td>
-                     <td>Shipping/Handling:</td>
-                     <td></td>
-                  </tr>
-
-                  <tr class="no-border-item">
-                     <td></td>
-                     <td>Total Due:</td>
-                     <td></td>
-                  </tr>
-
-                  <tr class="total">
-                     <td></td>
-                     <td>Amount Paid:</td>
-                     <td></td>
-                  </tr>
-               </tbody>
-            </table>
-         </div>
-      </div>
-
-      <div class="page" style="page-break-after: always;">
-         <div>
-            <h4>Exportado por {{ Auth::user()->name }}</h4>
-            <h4>Fecha: {{ \Carbon\Carbon::now() }}</h4>
-            <h4>{{ url()->current() }}</h4>
-         </div>
-
-         <div class="form">
-            <label for="notes" class="label"> Notes: </label>
-            <input type="text" id="notes" class="border-bottom" value="" />
-         </div>
-
-         <div class="signer">
-            <div class="form signer-item">
-               <label for="date" class="label">Date:</label>
-               <input type="text" id="date" class="border-bottom" value="01/01/2021" />
-            </div>
-
-            <div class="form signer-item">
-               <label for="signature" class="label">Issued by:</label>
-               <input type="text" id="signature" class="border" value="Sign Here" />
-            </div>
-         </div>
-      </div>
-
-      <div id="pspdfkit-footer">
+      {{-- <div id="pspdfkit-footer">
          <div class="footer-columns">
             <h4>Exportado por {{ Auth::user()->name }}</h4>
             <h4>Fecha: {{ \Carbon\Carbon::now() }}</h4>
-            <h4>{{ url()->current() }}</h4>
+            <h4>{{ route('user.properties.show', $property) }}</h4>
          </div>
-      </div>
+      </div> --}}
    </body>
 </html>

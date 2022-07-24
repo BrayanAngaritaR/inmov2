@@ -9,7 +9,7 @@
          <div class="preview-block">
 
             <div class="col-12 text-right">
-               <a href="{{ route('panel.properties.edit.print', $property) }}" class="btn btn-outline-primary">
+               <a href="{{ route('panel.properties.edit.print', $property) }}" class="btn btn-outline-primary mb-3" target="_blank">
                   <em class="icon ni ni-printer mr-3"></em> Imprimir
                </a>
             </div>

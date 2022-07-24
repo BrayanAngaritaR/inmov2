@@ -1,6 +1,7 @@
 <nav class="scroll-nav horizontal horizontal-right scroll-init fixed-column_menu-init">
    <ul class="no-list-style">
       <li class="cursor-pointer" onclick='window.location.href = "{{ route('user.properties.mangement.index') }}"'>
+      {{-- <li class="cursor-pointer" onclick='window.location.href = "{{ route('user.properties.index') }}?commune=all?district=all?destination=all?opportunity=1?action=all?area=all?macroproject=all?treatment=all?instrument=all?floor_use=all?rph=0?loan=0?bic=0?management=0"'> --}}
          <p class="tooltip-trigger filter-opportunities font-20">
             <i class="fas fa-circle"></i>
          </p>
@@ -9,7 +10,7 @@
          </span>
       </li>
 
-      <li class="cursor-pointer" onclick='window.location.href = "{{ route('user.properties.index') }}?commune=all?district=all?destination=all?opportunity=1?action=all?area=all?macroproject=all?treatment=all?instrument=all?floor_use=all?rph=0?loan=0?bic=0?management=0"'>
+      <li class="cursor-pointer" onclick='window.location.href = "{{ route('oportunidades-inmobiliarias') }}"'>
          <p class="tooltip-trigger text-danger font-20">
             <i class="fas fa-circle"></i>
          </p>
@@ -18,7 +19,7 @@
          </span>
       </li>
 
-      <li class="cursor-pointer" onclick='window.location.href = "#"'>
+      <li class="cursor-pointer" onclick='window.location.href = "{{ route('plan-rector') }}"'>
          <p class="tooltip-trigger filter-projects font-20">
             <i class="fas fa-circle"></i>
          </p>
@@ -27,7 +28,7 @@
          </span>
       </li>
 
-      <li class="cursor-pointer" onclick='window.location.href = "#"'>
+      <li class="cursor-pointer" onclick='window.location.href = "{{ route('prado') }}"'>
          <p class="tooltip-trigger filter-plans font-20">
             <i class="fas fa-circle"></i>
          </p>
@@ -36,7 +37,7 @@
          </span>
       </li>
 
-      <li class="cursor-pointer" onclick='window.location.href = "#"'>
+      <li class="cursor-pointer" onclick='window.location.href = "{{ route('user.properties.index') }}?commune=all?district=all?destination=all?opportunity=1?action=all?area=all?macroproject=all?treatment=all?instrument=all?floor_use=all?rph=0?loan=0?bic=0?management=0"'>
          <p class="tooltip-trigger filter-projects font-20">
             <i class="fas fa-circle"></i>
          </p>
