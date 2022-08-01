@@ -10,7 +10,7 @@
          </span>
       </li>
 
-      <li class="cursor-pointer" onclick='window.location.href = "{{ route('oportunidades-inmobiliarias') }}"'>
+      <li class="cursor-pointer" onclick='window.location.href = "{{ route('user.properties.index') }}"'>
          <p class="tooltip-trigger text-danger font-20">
             <i class="fas fa-circle"></i>
          </p>

@@ -456,7 +456,7 @@
                            </a>
 
                            <div class="geodir-category-location">
-                              <a href="{{ route('user.properties.show', $property) }}" class="map-item scroll-top-map tolt" data-microtip-position="top-left" data-tooltip="On the map">
+                              <a href="{{ route('user.properties.show', $property) }}" class="map-item scroll-top-map tolt" data-microtip-position="top-left" data-tooltip="{{ $property->cadastral_address }}">
                                  <i class="fas fa-map-marker-alt"></i>
                                  {{ $property->cadastral_address }} - {{ $property->district->name }}
                               </a>

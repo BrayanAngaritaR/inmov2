@@ -1,6 +1,61 @@
 @extends('templates.agencia-app.app') @section('content')
 
 <div class="content">
+   {{-- <section class="hidden-section single-hero-section" data-scrollax-parent="true" id="sec1">
+      <div class="bg-wrap bg-parallax-wrap-gradien">
+         @forelse($images as $image)
+            @if($image->featured)
+            <div class="bg par-elem" data-bg="{{ asset('storage/images') }}/{{$property->code}}/{{ $image->url }}" data-scrollax="properties: { translateY: '10%' }"></div>
+            @endif
+         @empty
+         <div class="bg par-elem" data-bg="{{ asset('assets/images/hagamoslo.png') }}" data-scrollax="properties: { translateY: '30%' }"></div>
+         @endforelse
+      </div>
+
+      <div class="container">
+         <!--  list-single-opt_header-->
+         <div class="list-single-opt_header fl-wrap">
+            <ul class="list-single-opt_header_cat">
+               <li><a href="#" class="cat-opt color-bg">En venta</a></li>
+               <li><a href="#" class="cat-opt color-bg">Lote</a></li>
+            </ul>
+         </div>
+         <!--  list-single-opt_header end -->
+         <!--  list-single-header-item-->
+         <div class="list-single-header-item no-bg-list_sh fl-wrap">
+            <div class="row">
+               <div class="col-md-12">
+                  <h1>
+                     {{ $property->sss_description }} <span class="verified-badge tolt" data-microtip-position="bottom" data-tooltip="Verified"><i class="fas fa-check"></i></span>
+                  </h1>
+                  <div class="geodir-category-location fl-wrap">
+                     <a href="#"><i class="fas fa-map-marker-alt"></i> Área de expansión Altavista</a>
+                     <div class="listing-rating card-popup-rainingvis" data-starrating2="4"><span class="re_stars-title">Excelente</span></div>
+                  </div>
+                  <div class="share-holder hid-share">
+                     <a href="#" class="share-btn showshare sfcs"> <i class="fas fa-share-alt"></i> Compartir </a>
+                     <div class="share-container isShare"></div>
+                  </div>
+               </div>
+            </div>
+            <div class="list-single-header-footer fl-wrap">
+               <div class="list-single-header-price" data-propertyprise="50500"><strong>Avalúo catastral:</strong><span>$</span>{{ number_format($property->property_valuation) }}</div>
+               <div class="list-single-header-date"><span>Publicado:</span>{{ $property->updated_at->diffForHumans() }} | {{ $property->updated_at->format('d/m/y h:i:s') }}</div>
+               <div class="list-single-stats">
+                  <ul class="no-list-style">
+                     <li>
+                        <span class="viewed-counter"><i class="fas fa-eye"></i> Visitas - 156 </span>
+                     </li>
+                     <li>
+                        <span class="bookmark-counter"><i class="fas fa-heart"></i> En favoritos - 24 </span>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section> --}}
+
    <div class="breadcrumbs fw-breadcrumbs smpar fl-wrap">
       <div class="container">
          <div class="breadcrumbs-list">
@@ -8,16 +63,12 @@
             <a href="#">Bienes</a>
             <span>{{ $property->sss_description }}</span>
             <span>{{ $property->sss_description }}</span>
+            
          </div>
-
-         <div class="show-more-snopt smact">
-            <i class="fal fa-ellipsis-v"></i>
-         </div>
-
+         <div class="show-more-snopt smact"><i class="fal fa-ellipsis-v"></i></div>
          <div class="show-more-snopt-tooltip">
             <a href="#"> <i class="fas fa-exclamation-triangle"></i> Reportar </a>
          </div>
-
          <a class="print-btn tolt" href="javascript:window.print()" data-microtip-position="bottom" data-tooltip="Imprimir"><i class="fas fa-print"></i></a>
          <div class="like-btn border-0 text-muted shadow-none"><i class="fas fa-heart text-muted"></i> Guardar</div>
          <div class="like-btn border-0 text-muted shadow-none"><i class="fas fa-share text-muted"></i> Compartir</div>
@@ -101,7 +152,44 @@
                      </div>
                      <!-- end gallery items -->
                   </div>
-
+                  {{-- <div class="list-single-facts fl-wrap">
+                     <!-- inline-facts -->
+                     <div class="inline-facts-wrap">
+                        <div class="inline-facts">
+                           <i class="fal fa-home-lg"></i>
+                           <h6>Tipo</h6>
+                           <span>Lote</span>
+                        </div>
+                     </div>
+                     <!-- inline-facts end -->
+                     <!-- inline-facts  -->
+                     <div class="inline-facts-wrap">
+                        <div class="inline-facts">
+                           <i class="fal fa-users"></i>
+                           <h6>Oportunidad</h6>
+                           <span>Lote para construir</span>
+                        </div>
+                     </div>
+                     inline-facts end
+                     <!-- inline-facts -->
+                     <div class="inline-facts-wrap">
+                        <div class="inline-facts">
+                           <i class="fal fa-bed"></i>
+                           <h6>Habitaciones</h6>
+                           <span>3 Habitaciones / 2 plantas</span>
+                        </div>
+                     </div>
+                     <!-- inline-facts end -->
+                     <!-- inline-facts -->
+                     <div class="inline-facts-wrap">
+                        <div class="inline-facts">
+                           <i class="fal fa-bath"></i>
+                           <h6>Baños</h6>
+                           <span>1 baño</span>
+                        </div>
+                     </div>
+                     <!-- inline-facts end -->
+                  </div> --}}
                   <div class="list-single-main-container fl-wrap" id="sec3">
                      <!-- list-single-main-item -->
                      <div class="list-single-main-item fl-wrap">
@@ -371,11 +459,48 @@
                         </div>
                         <div class="profile-widget-footer fl-wrap">
                            <a href="https://app.gov.co" class="btn float-btn color-bg small-btn" target="_blank">Ver sitio web</a>
+                           {{-- <a href="#sec-contact" class="custom-scroll-link tolt" data-microtip-position="left" data-tooltip="Viewing Property"><i class="fal fa-paper-plane"></i></a> --}}
                         </div>
                      </div>
                   </div>
                </div>
-
+               <!--box-widget end -->
+               <!--box-widget end -->
+               <!--box-widget-->
+               {{-- <div class="box-widget fl-wrap hidden-section" style="margin-top: 30px;">
+                  <div class="box-widget-content fl-wrap color-bg">
+                     <div class="color-form reset-action">
+                        <div class="color-form-title fl-wrap">
+                           <h4>Calcula tu cuota</h4>
+                           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc posuere convallis purus non cursus.</p>
+                        </div>
+                        <form method="post" name="mortgage-form">
+                           <div class="fl-wrap">
+                              <label for="amt">Cantidad a prestar </label>
+                              <input id="amt" name="amt" type="text" placeholder="0" value="0" />
+                              <div class="use-current-price tolt" data-microtip-position="left" data-tooltip="Use current price"><i class="fal fa-tag"></i></div>
+                           </div>
+                           <label for="apr">Porcentaje a financiar</label>
+                           <div class="price-rage-item fl-wrap">
+                              <input type="text" id="apr" name="apr" class="price-range" data-min="0" data-max="100" data-step="1" value="0" data-prefix="%" />
+                           </div>
+                           <label for="trm">Plazo (Años)</label>
+                           <div class="price-rage-item fl-wrap">
+                              <input type="text" id="trm" name="trm" class="price-range" data-min="0" data-max="5" data-step="1" value="0" data-prefix="Y" />
+                           </div>
+                           <div class="clearfix"></div>
+                           <button type="button" id="sbt" class="color2-bg">Calcular</button>
+                           <div class="reset-form reset-btn"><i class="far fa-sync-alt"></i> Resetear</div>
+                           <div class="monterage-title fl-wrap">
+                              <h5>Cantidad a pagar:</h5>
+                              <input type="text" id="pmt" name="mPmt" value="0" />
+                              <div class="monterage-title-item">$<span></span></div>
+                           </div>
+                        </form>
+                     </div>
+                  </div>
+               </div> --}}
+               <!--box-widget end -->
                <!--box-widget-->
                <div class="box-widget fl-wrap">
                   <div class="box-widget-title fl-wrap">Documentos del inmueble</div>
@@ -433,7 +558,6 @@
    </div>
 </div>
 <!-- content end -->
-
 <!-- subscribe-wrap -->
 <div class="subscribe-wrap fl-wrap">
    <div class="container">
@@ -466,9 +590,8 @@
    </div>
 </div>
 
-@include('templates.agencia-app.includes.footer.footer') 
-@stop
-
+@include('templates.agencia-app.includes.footer.footer') @stop
 @push('scripts')
-   <script src="{{ asset('templates/agencia-app/js/map-single.js' )}}"></script>
+
+<script src="{{ asset('templates/agencia-app/js/map-single.js' )}}"></script>
 @endpush

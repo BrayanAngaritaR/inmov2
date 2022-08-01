@@ -65,7 +65,7 @@ Route::view('/calculadora', 'templates.agencia-app.soon')
 |--------------------------------------------------------------------------
 */
 
-Route::get('/propiedades', [App\Http\Controllers\User\PropertiesController::class, 'index'])->name('user.properties.index');
+Route::get('/oportunidades-inmobiliarias', [App\Http\Controllers\User\PropertiesController::class, 'index'])->name('user.properties.index');
 
 Route::get('/gestion-de-activos', [App\Http\Controllers\User\Projects\AssetManagementController::class, 'index'])->name('user.properties.mangement.index');
 
@@ -78,9 +78,9 @@ Route::get('/prado', function () {
     return view('templates.agencia-app.projects.prado');
 })->name('prado');
 
-Route::get('/oportunidades-inmobiliarias', function () {
-    return view('templates.agencia-app.projects.oportunidades-inmobiliarias');
-})->name('oportunidades-inmobiliarias');
+// Route::get('/oportunidades-inmobiliarias', function () {
+//     return view('templates.agencia-app.projects.oportunidades-inmobiliarias');
+// })->name('oportunidades-inmobiliarias');
 
 Route::get('/propiedades3', [App\Http\Controllers\User\PropertiesController::class, 'index3'])->name('user.properties.index3');
 

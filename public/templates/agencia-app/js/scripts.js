@@ -371,13 +371,13 @@ function initHomeradar() {
         url: "https://gmail.us1.list-manage.com/subscribe/post?u=1fe818378d5c129b210719d80&amp;id=a2792f681b"
     });
     $.ajaxChimp.translations.eng = {
-        submit: "Submitting...",
-        0: '<i class="fa fa-check"></i> We will be in touch soon!',
-        1: '<i class="fa fa-warning"></i> You must enter a valid e-mail address.',
-        2: '<i class="fa fa-warning"></i> E-mail address is not valid.',
-        3: '<i class="fa fa-warning"></i> E-mail address is not valid.',
-        4: '<i class="fa fa-warning"></i> E-mail address is not valid.',
-        5: '<i class="fa fa-warning"></i> E-mail address is not valid.'
+        submit: "Enviando...",
+        0: '<i class="fa fa-check"></i> ¡Estamos en contacto pronto!',
+        1: '<i class="fa fa-warning"></i> Debes ingresar un correo electrónico válido',
+        2: '<i class="fa fa-warning"></i> Correo electrónico no válido.',
+        3: '<i class="fa fa-warning"></i> Correo electrónico no válido.',
+        4: '<i class="fa fa-warning"></i> Correo electrónico no válido.',
+        5: '<i class="fa fa-warning"></i> Correo electrónico no válido.'
     };
     // scroll animation ------------------
     var progressBar = $(".js-progress-bar");
