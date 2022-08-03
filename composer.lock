@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a757a8369dad0748e3675c23643556f6",
+    "content-hash": "c35dee82eaef6c48a5a83b4907eaea99",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2115,6 +2115,64 @@
                 "source": "https://github.com/MarkBaker/PHPMatrix/tree/3.0.0"
             },
             "time": "2021-07-01T19:01:15+00:00"
+        },
+        {
+            "name": "mastani/laravel-google-static-map",
+            "version": "2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mastani/laravel-google-static-map.git",
+                "reference": "7e312779ee6ba678a3820da469cffbff9ab23281"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mastani/laravel-google-static-map/zipball/7e312779ee6ba678a3820da469cffbff9ab23281",
+                "reference": "7e312779ee6ba678a3820da469cffbff9ab23281",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "5.*|6.*|7.*|8.*|^9.0",
+                "illuminate/support": "5.*|6.*|7.*|8.*|^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Mastani\\GoogleStaticMap\\GoogleStaticMapServiceProvider"
+                    ],
+                    "aliases": {
+                        "GoogleStaticMap": "Mastani\\GoogleStaticMap\\GoogleStaticMapFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Mastani\\GoogleStaticMap\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Amin Mastani",
+                    "email": "amin.mastani@yahoo.com"
+                }
+            ],
+            "description": "Laravel Google Static Map Generator",
+            "homepage": "https://github.com/mastani/laravel-google-static-map",
+            "keywords": [
+                "generator",
+                "google",
+                "laravel",
+                "static-maps"
+            ],
+            "support": {
+                "issues": "https://github.com/mastani/laravel-google-static-map/issues",
+                "source": "https://github.com/mastani/laravel-google-static-map/tree/2.1"
+            },
+            "time": "2022-02-09T05:09:42+00:00"
         },
         {
             "name": "masterminds/html5",

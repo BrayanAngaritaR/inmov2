@@ -331,10 +331,6 @@
       </div>
 
       <div class="page" style="page-break-after: always;">
-         <div>
-            <h2>Inmueble #{{ $property->code }}</h2>
-         </div>
-
          <h4>IDENTIFICACIÓN</h4>
 
          <p><b>ID:</b> {{ $property->code }}</p>
@@ -383,9 +379,9 @@
          <p><b>Avalúo comercial:</b> {{ $property->commercial_appraisal }}</p>
          <p><b>Descripción corta:</b> {{ $property->sss_description }}</p>
          <p><b>Barrio o urbanización:</b> {{ $property->urbanization_or_neighborhood }}</p>
+      </div>
 
-         <hr>
-
+      <div class="page" style="page-break-after: always;">
          <h4>INFORMACIÓN JURÍDICA</h4>
 
          <p><b>No. de escritura:</b> {{ $property->plate_number }}</p>
@@ -493,7 +489,8 @@
                @endif
             @endforeach
          </p>
-
+      </div>
+      <div class="page" style="page-break-after: always;">
          <h4>SUELO DE PROTECCIÓN</h4>
 
          <p>
@@ -632,21 +629,13 @@
             @endforeach
          </p>
 
-         <h4>MAPA</h4>  
+         <h4>INFORMACIÓN GRÁFICA</h4>  
 
-         <p>Poner el mapa</p>
+         <img src="{{ asset($property->property_image()) }}" width="100%">
 
          <h4>Exportado por {{ Auth::user()->name }}</h4>
          <h4>Fecha: {{ \Carbon\Carbon::now() }}</h4>
          <h4>{{ route('user.properties.show', $property) }}</h4>
       </div>
-
-      {{-- <div id="pspdfkit-footer">
-         <div class="footer-columns">
-            <h4>Exportado por {{ Auth::user()->name }}</h4>
-            <h4>Fecha: {{ \Carbon\Carbon::now() }}</h4>
-            <h4>{{ route('user.properties.show', $property) }}</h4>
-         </div>
-      </div> --}}
    </body>
 </html>

@@ -132,6 +132,7 @@
                               <p><b>Barrio o urbanización</b>: {{ $property->urbanization_or_neighborhood }}</p> --}}
                               @else
                               <p><b>Matrícula</b>: {{ $property->plate }}</p>
+                              <p><b>Superferficie jurídica (Área)</b>: {{ $property->cadastral_area }} {{ $property->units }}</p>
                               @endauth
                            </div>
                         </div>
@@ -145,7 +146,7 @@
                            <div class="extra-info text-justify">
                               @auth
                               <p><b>No. de escritura</b>: {{ $property->property_deed }} {{ $property->units }}</p>
-                              <p><b>Superferficie jurídica (Área)</b>: {{ $property->secretaryship->title }}</p>
+                              <p><b>Superferficie jurídica (Área)</b>: {{ $property->cadastral_area }} {{ $property->units }}</p>
                               <p><b>Fecha de escritura</b>: {{ $property->writing_date }}</p>
                               <p><b>Notaría</b>: {{ $property->notary->title }}</p>
                               <p><b>CBML</b>: {{ $property->cbml }}</p>
