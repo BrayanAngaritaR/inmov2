@@ -4,7 +4,7 @@
    <div style="height: 100vh; margin-top: 80px;">
       @include('templates.agencia-app.includes.map._right-navigation')
 
-      <iframe src="https://agenciaapp.maps.arcgis.com/apps/mapviewer/index.html?webmap=0e8553dd1e8042c3a2583e354b394b99" width="100%" height="900"></iframe>
+      <iframe src="https://agenciaapp.maps.arcgis.com/apps/webappviewer/index.html?id=a428552c53d14dda88b4612c1ddd3bd2" width="100%" height="900"></iframe>
    </div>
    <div class="limit-box fl-wrap"></div>
 @stop
